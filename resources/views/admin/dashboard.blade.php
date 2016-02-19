@@ -8,7 +8,7 @@
             <a href="index.html">
                 <img src="img/logo-icon.png" alt="">
                 <!--<i class="fa fa-maxcdn"></i>-->
-                <span class="brand-name">SlickLab</span>
+                <span class="brand-name">DatingLogo</span>
             </a>
         </div>
         <!--responsive view logo end-->
@@ -159,7 +159,7 @@
                 <a href="index.html">
                     <img src="img/logo-icon.png" alt="">
                     <!--<i class="fa fa-maxcdn"></i>-->
-                    <span class="brand-name">SlickLab</span>
+                    <span class="brand-name">DatingLogo</span>
                 </a>
             </div>
 

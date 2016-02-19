@@ -28,6 +28,7 @@ Route::get('/', function () {
 
 Route::group(['middleware' => ['web']], function () {
     Route::get('/admin', 'Admin\AdminController@index');
+    Route::get('/admin/login', 'Admin\AdminController@login');
 });
 
 
