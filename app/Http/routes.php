@@ -27,12 +27,12 @@ Route::get('/', function () {
 */
 
 Route::group(['middleware' => ['web']], function () {
-    //
+    Route::get('/admin', 'Admin\AdminController@index');
 });
+
 
 Route::group(['middleware' => 'web'], function () {
     Route::auth();
 
-    Route::get('/', 'HomeController@index');
-    Route::get('/admin', 'Admin\AdminController@index');
+    Route::get('/home', 'HomeController@index');
 });
