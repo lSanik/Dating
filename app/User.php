@@ -25,6 +25,8 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    protected $have_role;
+
     /*
     |--------------------------------------------------------------------------
     | Relationship Methods
@@ -68,7 +70,7 @@ class User extends Authenticatable
 
     private function getUserRole()
     {
-        return $this->role()->getResults();
+        return $this->role()->all();
     }
 
     private function checkIfUserHasRole($need_role)
