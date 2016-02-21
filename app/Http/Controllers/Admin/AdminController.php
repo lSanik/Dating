@@ -10,8 +10,13 @@ use App\Http\Controllers\Controller;
 class AdminController extends Controller
 {
 
-    function index(){
+    function index()
+    {
         return view('admin.dashboard');
     }
 
+    function login()
+    {
+        return view('admin.auth.login');
+    }
 }

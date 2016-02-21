@@ -111,4 +111,14 @@
       </key>
     </database-model>
   </data-source>
+  <data-source name="MySQL - dating@localhost" uuid="c2d099d2-c6c5-4b2f-a384-8b954dd44364">
+    <database-info product="MySQL" version="5.7.11-log" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <database-model serializer="dbm" rdbms="MYSQL" format-version="2.4">
+      <schema id="1" name="dating"/>
+    </database-model>
+  </data-source>
 </component>

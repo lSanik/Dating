@@ -2712,7 +2712,7 @@ h2.form-heading {
     z-index: 2;
 }
 
-.form-signin input[type="text"], .form-signin input[type="password"] {
+.form-signin input[type="text"], .form-signin input[type="password"],.form-signin input[type="email"] {
     margin-bottom: 15px;
     border-radius: 4px;
     border: none;
