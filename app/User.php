@@ -25,58 +25,36 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    protected $have_role;
-
-    /*
-    |--------------------------------------------------------------------------
-    | Relationship Methods
-    |--------------------------------------------------------------------------
-    */
-
-    /**
-     * Many-To-Many Relationship Method for accessing the User->roles
-     *
-     * @return QueryBuilder Object
-     */
+    // The User model
     public function role()
     {
-        return $this->hasMany('App\Role', 'id', 'role_id');
+        return $this->hasOne('App\Role', 'id', 'role_id');
     }
-
     public function hasRole($roles)
     {
         $this->have_role = $this->getUserRole();
-
-        if( $this->have_role->name == 'Owner')
-        {
+        // Check if the user is a root account
+        if($this->have_role->name == 'Root') {
             return true;
         }
-
-        if( is_array('roles') )
-        {
-            foreach($roles as $need_role)
-            {
-                if($this->checkIfUserHasRole($need_role))
-                {
+        if(is_array($roles)){
+            foreach($roles as $need_role){
+                if($this->checkIfUserHasRole($need_role)) {
                     return true;
                 }
             }
-        } else {
+        } else{
             return $this->checkIfUserHasRole($roles);
         }
-
         return false;
     }
-
     private function getUserRole()
     {
-        return $this->role()->all();
+        return $this->role()->getResults();
     }
-
     private function checkIfUserHasRole($need_role)
     {
-        return( strtolower($need_role) == strtolower($this->have_role->name)) ? true : false;
+        return (strtolower($need_role)==strtolower($this->have_role->name)) ? true : false;
     }
-
 
 }
