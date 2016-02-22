@@ -23,6 +23,7 @@
                     <span>Управление</span>
                 </a>
             </li>
+            @if( Auth::User()->hasRole('Owner') )
             <li class="menu-list">
                 <a href=""><i class="fa fa fa-money"></i>
                     <span>Финансы</span></a>
@@ -37,9 +38,11 @@
                     <span>Статистика</span>
                 </a>
             </li>
+            @endif
             <li class="">
                 <h3 class="navigation-title">Профили</h3>
             </li>
+            @if( Auth::User()->hasRole('Owner') )
             <li class="menu-list">
                 <a href=""><i class="fa fa-user-secret"></i>
                     <span>Партнеры</span></a>
@@ -57,6 +60,8 @@
                     <li><a href="{{ url('#') }}"> Добавить модератора </a></li>
                 </ul>
             </li>
+            @endif
+            @if( Auth::User()->hasRole(['Partner', 'Moder']) )
             <li class="menu-list">
                 <a href=""><i class="fa fa-female "></i>
                     <span>Анкеты</span></a>
@@ -67,7 +72,7 @@
                     <li><a href="{{ url('#') }}"> Статистика по анкетам </a></li>
                 </ul>
             </li>
-
+            @endif
             <li>
                 <h3 class="navigation-title">Сообщения (поддержка)</h3>
             </li>
@@ -83,7 +88,7 @@
                     <li><a href="{{ url('#') }}">Создать сообщение</a></li>
                 </ul>
             </li>
-
+            @if( Auth::User()->hasRole('Owner') )
             <li>
                 <h3 class="navigation-title">Контент</h3>
             </li>
@@ -104,6 +109,7 @@
             <li class=""><a href="{{ url('#') }}"><i class="fa fa-codiepie"></i>
                     <span>Гороскопы </span></a>
             </li>
+            @endif()
             <li class=""><a href="{{ url('#') }}"><i class="fa fa-user-md"></i>
                     <span>Профиль </span></a>
             </li>
