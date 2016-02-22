@@ -19,6 +19,6 @@ class City extends Model
 
     public function User()
     {
-        return $this->belongsTo('User','city_id');
+        return $this->belongsTo('App\User','city_id');
     }
 }

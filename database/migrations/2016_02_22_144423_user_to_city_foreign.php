@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class UsersTableCityCollumn extends Migration
+class UserToCityForeign extends Migration
 {
     /**
      * Run the migrations.
@@ -14,11 +14,16 @@ class UsersTableCityCollumn extends Migration
     {
         Schema::table('users', function(Blueprint $table)
         {
-            $table->integer('city_id')->unsigned();
             $table->foreign('city_id')
-                ->references('cities')
-                ->on('id')
-                ->onDelecte('CASCADE')
+                ->references('id')
+                ->on('cities')
+                ->onDelete('CASCADE')
+                ->onUpdate('CASCADE');
+
+            $table->foreign('country_id')
+                ->references('country_id')
+                ->on('cities')
+                ->onDelete('CASCADE')
                 ->onUpdate('CASCADE');
         });
     }
@@ -32,8 +37,8 @@ class UsersTableCityCollumn extends Migration
     {
         Schema::table('users', function(Blueprint $table)
         {
-            $table->dropForeign('city_id');
-            $table->dropColumn('city_id');
+            $table->dropForeign('users_city_id_foreign');
+            $table->dropForeign('users_country_id_foreign');
         });
     }
 }

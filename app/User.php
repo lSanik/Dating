@@ -34,7 +34,7 @@ class User extends Authenticatable
     {
         $this->have_role = $this->getUserRole();
         // Check if the user is a root account
-        if($this->have_role->name == 'Root') {
+        if($this->have_role->name == 'Owner') {
             return true;
         }
         if(is_array($roles)){
