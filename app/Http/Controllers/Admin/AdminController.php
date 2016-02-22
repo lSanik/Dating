@@ -9,14 +9,18 @@ use App\Http\Controllers\Controller;
 
 class AdminController extends Controller
 {
-
-    function index()
+    function __construct()
     {
-        return view('admin.dashboard');
+        $this->middleware('auth');
     }
 
     function login()
     {
         return view('admin.auth.login');
+    }
+
+    function dashboard()
+    {
+        return view('admin.dashboard');
     }
 }

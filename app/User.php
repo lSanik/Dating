@@ -57,4 +57,15 @@ class User extends Authenticatable
         return (strtolower($need_role)==strtolower($this->have_role->name)) ? true : false;
     }
 
+    /** End roles */
+
+    /** Cities */
+
+    public function city()
+    {
+        return $this->hasOne('App\City','id');
+    }
+
+    /** End cities */
+
 }

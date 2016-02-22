@@ -26,13 +26,30 @@ Route::get('/', function () {
 |
 */
 
-Route::group(['middleware' => ['web']], function () {
+Route::group([  'prefix' => 'admin',
+                'middleware' => ['web', 'auth', 'roles'],
+                'roles' => ['Owner', 'Moder', 'Partner']
+], function(){
 
-    Route::get('admin', [
-       'middleware' => ['auth', 'roles'],
-        'uses' => 'Admin\AdminController@index',
-        'roles' => ['Owner','Moder','Partner']
-    ]);
+    Route::get('/', function(){
+        return redirect('admin/dashboard');
+    });
+    Route::get('dashboard', 'Admin\AdminController@dashboard');
+
+});
+
+
+Route::group(['middleware' => 'web'], function () {
+    Route::auth();
+
+    Route::get('/home', 'HomeController@index');
+});
+
+
+
+
+/*
+Route::group(['middleware' => ['web']], function () {
 
     Route::get('allAlbums', 'AlbumController@index');
     Route::get('/albums', 'AlbumController@getList' );
@@ -55,10 +72,5 @@ Route::group(['middleware' => ['web']], function () {
 });
 
 
-Route::group(['middleware' => 'web'], function () {
-    Route::auth();
 
-    Route::get('/home', 'HomeController@index');
-});
-
-
+*/
