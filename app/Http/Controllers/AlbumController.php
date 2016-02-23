@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Album;
+use App\Models\Album;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -47,7 +47,7 @@ class AlbumController extends Controller
 
         $file = $request->file('cover_image');
         $random_name = str_random(16);
-        $desination_path = '/uploads/albums/';
+        $desination_path = '/albums/';
 
         $extension = $file->getClientOriginalExtension();
         $filename = $random_name. " _cover" .$extension;

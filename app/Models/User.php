@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -35,7 +35,7 @@ class User extends Authenticatable
     // The User model
     public function role()
     {
-        return $this->hasOne('App\Role', 'id', 'role_id');
+        return $this->hasOne('App\Models\Role', 'id', 'role_id');
     }
     public function hasRole($roles)
     {
@@ -70,7 +70,7 @@ class User extends Authenticatable
 
     public function city()
     {
-        return $this->hasOne('App\City','id');
+        return $this->hasOne('App\Models\City','id');
     }
 
     /** End cities */

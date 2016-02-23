@@ -29,10 +29,31 @@ class AdminController extends Controller
         ]);
     }
 
+    function all_users()
+    {
+        return view('admin.profile.index');
+    }
+
     function profile()
     {
-        return view('admin.profile');
+        return view('admin.profile.create');
     }
+
+    function store_profile(Request $request)
+    {
+
+    }
+
+    function update_profile(Request $request, $id)
+    {
+
+    }
+
+    function destroy($id)
+    {
+
+    }
+
 
 
 }

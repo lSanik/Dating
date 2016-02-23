@@ -46,21 +46,22 @@
         </div>
 
     </section>
-
+    <?php /*
     <script src="{{ url('/assets/js/jquery-1.11.1.min.js') }}"></script>
     <script src="{{ url('/assets/js/bootstrap.min.js') }}"></script>
+  */ ?>
     <script src="{{ url('/assets/js/modernizr.min.js') }}"></script>
     <!-- script src="{{ url('/assets/js/jquery.nicescroll.js') }}"></script -->
     <script src="{{url('/assets/js/scripts.js')}}"></script>
 
-<?php /*
+
     <!-- jQuery -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <!-- Latest compiled and minified JS -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <!-- Sidebar script -->
     <script src="{{url('/assets/js/scripts.js')}}"></script>
-    */ ?>
+
     @yield('scripts')
 </body>
 </html>

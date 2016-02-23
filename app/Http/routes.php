@@ -43,10 +43,17 @@ Route::group([  'prefix' => 'admin',
     Route::get('blog/edit/{id}','Admin\BlogController@edit');
     Route::get('blog/drop/{id}', 'Admin\BlogController@destroy');
 
+    Route::get('profile', 'Admin\AdminController@all_users');
+    Route::get('profile/new','Admin\AdminController@profile');
+    Route::get('profile/show/{id}', 'Admin\AdminController@show_profile');
+
+
     Route::post('blog/new', 'Admin\BlogController@store');
     Route::post('blog/edit/{id}', 'Admin\BlogController@update');
 
+
     Route::post('profile', 'Admin\AdminController@store_profile');
+    Route::post('profile/edit/{id}','Admin\AdminController@update_profile');
 });
 
 
@@ -56,9 +63,12 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/home', 'HomeController@index');
 });
 
-/*
+
 Route::group(['middleware' => ['web']], function () {
 
+    Route::get('/blog/{id}', 'Admin\BlogController@show');
+
+/*
     Route::get('allAlbums', 'AlbumController@index');
     Route::get('/albums', 'AlbumController@getList' );
     Route::get('/create_album', 'AlbumController@getForm');
@@ -75,5 +85,5 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/addimage/{id}', array('as' => 'add_image','uses' => 'ImagesController@getForm'));
     Route::post('/addimage', array('as' => 'add_image_to_album','uses' => 'ImagesController@postAdd'));
     Route::get('/deleteimage/{id}', array('as' => 'delete_image','uses' => 'ImagesController@getDelete'));
-});
 */
+});
