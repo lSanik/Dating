@@ -14,7 +14,7 @@ class UserToCityForeign extends Migration
     {
         Schema::table('users', function(Blueprint $table)
         {
-            $table->foreign('city_id')
+           /* $table->foreign('city_id')
                 ->references('id')
                 ->on('cities')
                 ->onDelete('CASCADE')
@@ -24,7 +24,7 @@ class UserToCityForeign extends Migration
                 ->references('country_id')
                 ->on('cities')
                 ->onDelete('CASCADE')
-                ->onUpdate('CASCADE');
+                ->onUpdate('CASCADE');*/
         });
     }
 
@@ -37,8 +37,8 @@ class UserToCityForeign extends Migration
     {
         Schema::table('users', function(Blueprint $table)
         {
-            $table->dropForeign('users_city_id_foreign');
-            $table->dropForeign('users_country_id_foreign');
+         /*   $table->dropForeign('users_city_id_foreign');
+            $table->dropForeign('users_country_id_foreign');*/
         });
     }
 }

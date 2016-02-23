@@ -17,7 +17,14 @@
     <link rel="stylesheet" href="{{ url('/assets/css/default-theme.css') }}">
     <link rel="stylesheet" href="{{ url('/assets/css/style.css') }}">
 
-</head>
+    @yield('styles')
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="{{ url('/assets/js/html5shiv.js') }}"></script>
+    <script src="{{ url('/assets/js/respond.min.js') }}"></script>
+    <![endif]-->
+
 </head>
 <body class="sticky-header">
 
@@ -26,16 +33,34 @@
                 <!-- body content start-->
         <div class="body-content" >
             @include('admin.blocks.header-section')
+
+            <div class="page-head">
+                <h3 class="m-b-less">
+                    {{ $heading }}
+                </h3>
+            </div>
+
+            <div class="wrapper">
+                @yield('content')
+            </div>
         </div>
 
     </section>
 
+    <script src="{{ url('/assets/js/jquery-1.11.1.min.js') }}"></script>
+    <script src="{{ url('/assets/js/bootstrap.min.js') }}"></script>
+    <script src="{{ url('/assets/js/modernizr.min.js') }}"></script>
+    <!-- script src="{{ url('/assets/js/jquery.nicescroll.js') }}"></script -->
+    <script src="{{url('/assets/js/scripts.js')}}"></script>
 
+<?php /*
     <!-- jQuery -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <!-- Latest compiled and minified JS -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <!-- Sidebar script -->
     <script src="{{url('/assets/js/scripts.js')}}"></script>
+    */ ?>
+    @yield('scripts')
 </body>
 </html>

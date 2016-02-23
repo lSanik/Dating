@@ -95,8 +95,8 @@
             <li class="menu-list"><a href="javascript:;"><i class="fa fa-paper-plane"></i>
                     <span>Блог </span></a>
                 <ul class="child-list">
-                    <li><a href="{{ url('#') }}">Все записи</a></li>
-                    <li><a href="{{ url('#') }}">Создать запись</a></li>
+                    <li><a href="{{ url('/admin/blog') }}">Все записи</a></li>
+                    <li><a href="{{ url('/admin/blog/new') }}">Создать запись</a></li>
                 </ul>
             </li>
             <li class="menu-list"><a href="javascript:;"><i class="fa fa-paper-plane"></i>

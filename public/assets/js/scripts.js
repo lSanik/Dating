@@ -118,13 +118,13 @@
    }
 
     // right slidebar
-
+/*
     $(function(){
         $.slidebars();
-    });
+    }); */
 
     // body scroll
-
+/*
     $("html").niceScroll({
         styler: "fb",
         cursorcolor: "#a979d1",
@@ -145,7 +145,7 @@
         zindex: '12000'
     });
 
-
+*/
 
     // collapsible panel
     
