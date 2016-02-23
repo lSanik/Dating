@@ -50,16 +50,24 @@ class BlogController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @todo image uploads for cover image & blog
+     *
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
+        //@todo image uploads for cover image & blog
         $this->post->create([
             'title' => $request->input('title'),
             'body' => $request->input('body')
+        ]);
+    }
+
+    public function show($id)
+    {
+        return view('client.blog')->with([
+            'post' => $this->post->findOrFail($id)
         ]);
     }
 

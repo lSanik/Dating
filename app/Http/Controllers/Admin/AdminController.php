@@ -34,5 +34,13 @@ class AdminController extends Controller
         return view('admin.profile');
     }
 
+    function store_profile(Request $request)
+    {
+
+    }
+
+
+
+
 
 }
