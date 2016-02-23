@@ -13,7 +13,14 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'first_name', 'last_name', 'email', 'password', 'role_id'
+        'first_name',
+        'last_name',
+        'email',
+        'password',
+        'role_id',
+        'city_id',
+        'country_id',
+        'avatar'
     ];
 
     /**
@@ -34,7 +41,7 @@ class User extends Authenticatable
     {
         $this->have_role = $this->getUserRole();
         // Check if the user is a root account
-        if($this->have_role->name == 'Root') {
+        if($this->have_role->name == 'Owner') {
             return true;
         }
         if(is_array($roles)){
@@ -56,5 +63,16 @@ class User extends Authenticatable
     {
         return (strtolower($need_role)==strtolower($this->have_role->name)) ? true : false;
     }
+
+    /** End roles */
+
+    /** Cities */
+
+    public function city()
+    {
+        return $this->hasOne('App\City','id');
+    }
+
+    /** End cities */
 
 }

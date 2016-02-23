@@ -26,20 +26,44 @@ Route::get('/', function () {
 |
 */
 
-Route::group(['middleware' => ['web']], function () {
+Route::group([  'prefix' => 'admin',
+                'middleware' => ['web', 'auth', 'roles'],
+                'roles' => ['Owner', 'Moder', 'Partner']
+], function(){
 
-    Route::get('admin', [
-       'middleware' => ['auth', 'roles'],
-        'uses' => 'Admin\AdminController@index',
-        'roles' => ['Owner','Moder','Partner']
-    ]);
+    Route::get('/', function(){
+        return redirect('admin/dashboard');
+    });
+    Route::get('dashboard', 'Admin\AdminController@dashboard');
+    Route::get('profile', 'Admin\AdminController@profile');
+
+    Route::get('blog', 'Admin\BlogController@index');
+    Route::get('blog/new', 'Admin\BlogController@create');
+
+    Route::get('blog/edit/{id}','Admin\BlogController@edit');
+    Route::get('blog/drop/{id}', 'Admin\BlogController@destroy');
+
+    Route::post('blog/new', 'Admin\BlogController@store');
+    Route::post('blog/edit/{id}', 'Admin\BlogController@update');
+
+    Route::post('profile', 'Admin\AdminController@store_profile');
+});
+
+
+Route::group(['middleware' => 'web'], function () {
+    Route::auth();
+
+    Route::get('/home', 'HomeController@index');
+});
+
+/*
+Route::group(['middleware' => ['web']], function () {
 
     Route::get('allAlbums', 'AlbumController@index');
     Route::get('/albums', 'AlbumController@getList' );
     Route::get('/create_album', 'AlbumController@getForm');
     Route::post('/create_album', ['as' => 'create_album', 'uses' => 'AlbumController@postCreate']);
     Route::get('/delete_album/{id}', ['as' => 'delete_album', 'uses' => 'AlbumController@getDelete']);
-
 
     // upload image route for MediumInsert plugin
     Route::any('upload', 'PostsController@upload');
@@ -51,14 +75,5 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/addimage/{id}', array('as' => 'add_image','uses' => 'ImagesController@getForm'));
     Route::post('/addimage', array('as' => 'add_image_to_album','uses' => 'ImagesController@postAdd'));
     Route::get('/deleteimage/{id}', array('as' => 'delete_image','uses' => 'ImagesController@getDelete'));
-
 });
-
-
-Route::group(['middleware' => 'web'], function () {
-    Route::auth();
-
-    Route::get('/home', 'HomeController@index');
-});
-
-
+*/

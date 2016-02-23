@@ -1,6 +1,6 @@
 @extends('admin.layout')
 
-@section('scripts')
+@section('content')
 
 
 @stop
