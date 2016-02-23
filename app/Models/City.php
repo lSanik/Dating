@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -14,11 +14,11 @@ class City extends Model
 
     public function Countries()
     {
-        return $this->hasMany('App\Country', 'country_id');
+        return $this->hasMany('App\Models\Country', 'country_id');
     }
 
     public function User()
     {
-        return $this->belongsTo('App\User','city_id');
+        return $this->belongsTo('App\Models\User','city_id');
     }
 }
