@@ -43,17 +43,35 @@ Route::group([  'prefix' => 'admin',
     Route::get('blog/edit/{id}','Admin\BlogController@edit');
     Route::get('blog/drop/{id}', 'Admin\BlogController@destroy');
 
-    Route::get('profile', 'Admin\AdminController@all_users');
-    Route::get('profile/new','Admin\AdminController@profile');
-    Route::get('profile/show/{id}', 'Admin\AdminController@show_profile');
-
-
     Route::post('blog/new', 'Admin\BlogController@store');
     Route::post('blog/edit/{id}', 'Admin\BlogController@update');
 
 
-    Route::post('profile', 'Admin\AdminController@store_profile');
-    Route::post('profile/edit/{id}','Admin\AdminController@update_profile');
+    /** Start Partners Profile routing */
+    Route::get('partners', 'Admin\PartnerController@index');
+    Route::get('partner/new', 'Admin\PartnerController@create');
+    Route::get('partner/show/{id}', 'Admin\PartnerController@show');
+    Route::get('partner/edit/{id}', 'Admin\PartnerController@edit');
+
+    Route::post('partner/store', 'Admin\PartnerController@store');
+    Route::post('partner/edit/{id}', 'Admin\PartnerController@update');
+    Route::post('partner/drop/{id}', 'Admin\PartnerController@destroy');
+    /** End partners profile routing */
+
+    /** Start Moderator Profile routing */
+    Route::get('moderators', 'Admin\ModeratorController@index');
+    Route::get('moderator/new', 'Admin\ModeratorController@create');
+    Route::get('moderator/show/{id}', 'Admin\ModeratorController@show');
+    Route::get('moderator/edit/{id}', 'Admin\ModeratorController@edit');
+
+    Route::post('moderator/store', 'Admin\ModeratorController@store');
+    Route::post('moderator/edit/{id}', 'Admin\ModeratorController@update');
+    Route::post('moderator/drop/{id}', 'Admin\ModeratorController@destroy');
+    /** End Moderator Profile routing */
+
+    /** Old porofile */
+    Route::get('profile', 'Admin\AdminController@profile');
+    Route::post('profile', 'Admin\AdminController@profile_update');
 });
 
 
