@@ -57,7 +57,12 @@
     <!-- script src="{{ url('/assets/js/jquery.nicescroll.js') }}"></script -->
     <script src="{{url('/assets/js/scripts.js')}}"></script>
 
+
+
     <?php /*
+
+    @todo Скпипт переключения классов меню сайдбара
+
     <!-- jQuery -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <!-- Latest compiled and minified JS -->

@@ -22,6 +22,10 @@ class CreateUsersTable extends Migration
             $table->integer('city_id')->unsigned();
             $table->integer('country_id')->unsigned();
             $table->string('avatar');
+            $table->string('company_name');
+            $table->text('address');
+            $table->text('info');
+            $table->text('contacts');
             $table->rememberToken();
             $table->timestamps();
         });

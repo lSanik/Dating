@@ -24,10 +24,10 @@
                 @foreach($users as $user)
                     <tr>
                         <td> {{ $user->first_name }} </td>
-                        <td> {{ $user->last_name }}</td>
-                        <td> {{ $user->email }}</td>
+                        <td> {{ $user->last_name }} </td>
+                        <td> {{ $user->email }} </td>
                         <td class="hidden-xs">
-                            <a href="{{ url('/admin/partner/show/'. $user->id ) }}" class="btn btn-success btn-xs" target="_blank"><i class="fa fa-eye"></i></a>
+                            <a href="{{ url('/admin/partner/show/'. $user->id ) }}" class="btn btn-success btn-xs"><i class="fa fa-eye"></i></a>
                             <a href="{{ url('/admin/partner/edit/'.$user->id ) }}" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
                             <a href="{{ url('/admin/partner/drop/'.$user->id) }}" class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
                         </td>

@@ -7,8 +7,19 @@
 
 @section('content')
     <div class="row">
-        <!-- Form -->
-        {!! Form::open(['url' => '/admin/partner/store', 'class' => 'form-horizontal']) !!}
+
+        @if (count($errors) > 0)
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
+
+                    <!-- Form -->
+        {!! Form::open(['url' => '/admin/partner/store', 'class' => 'form-horizontal', 'enctype' => 'multipart/form-data']) !!}
         <div class="col-lg-6">
             <section class="panel">
                 <header class="panel-heading">

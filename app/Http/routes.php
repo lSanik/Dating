@@ -34,6 +34,7 @@ Route::group([  'prefix' => 'admin',
     Route::get('/', function(){
         return redirect('admin/dashboard');
     });
+
     Route::get('dashboard', 'Admin\AdminController@dashboard');
     Route::get('profile', 'Admin\AdminController@profile');
 
@@ -52,10 +53,10 @@ Route::group([  'prefix' => 'admin',
     Route::get('partner/new', 'Admin\PartnerController@create');
     Route::get('partner/show/{id}', 'Admin\PartnerController@show');
     Route::get('partner/edit/{id}', 'Admin\PartnerController@edit');
+    Route::get('partner/drop/{id}', 'Admin\PartnerController@destroy');
 
     Route::post('partner/store', 'Admin\PartnerController@store');
     Route::post('partner/edit/{id}', 'Admin\PartnerController@update');
-    Route::post('partner/drop/{id}', 'Admin\PartnerController@destroy');
     /** End partners profile routing */
 
     /** Start Moderator Profile routing */
