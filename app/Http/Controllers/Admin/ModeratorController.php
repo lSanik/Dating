@@ -10,6 +10,8 @@ use App\Http\Controllers\Controller;
 class ModeratorController extends Controller
 {
     /**
+     * @todo Cаша (Управление модераторами по аналогии с партнерами)
+     *
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response

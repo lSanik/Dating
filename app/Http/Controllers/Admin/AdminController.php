@@ -56,29 +56,4 @@ class AdminController extends Controller
             ->get(['users.id', 'email', 'first_name', 'last_name', 'name']);*/
     }
 
-    function profile()
-    {
-        $head = 'Новый профиль партнера/модератора';
-        return view('admin.profile.create')->with('heading', $head);
-    }
-
-    function store_profile(Request $request)
-    {
-
-    }
-
-    function update_profile(Request $request, $id)
-    {
-
-    }
-
-    function destroy($id)
-    {
-
-    }
-
-
-
-
-
 }
