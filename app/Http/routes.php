@@ -70,6 +70,16 @@ Route::group([  'prefix' => 'admin',
     Route::post('moderator/drop/{id}', 'Admin\ModeratorController@destroy');
     /** End Moderator Profile routing */
 
+    /** Start Girls Profile routing */
+    Route::get('girls', 'Admin\GirlsController@index');
+    Route::get('girl/new', 'Admin\GirlsController@create');
+    Route::get('girl/edit/{id}', 'Admin\GirlsController@edit');
+    Route::get('girl/show/{id}', 'Admin\GirlsController@show');
+
+    Route::post('girl/store', 'Admin\GirlsController@store');
+    Route::post('girl/edit/{id}','Admin\GirlsController@update');
+    /** End Girls Profile routing */
+
     /** Old porofile */
     Route::get('profile', 'Admin\AdminController@profile');
     Route::post('profile', 'Admin\AdminController@profile_update');

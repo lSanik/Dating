@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePartnersTable extends Migration
+class CreateProfilesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,17 +12,18 @@ class CreatePartnersTable extends Migration
      */
     public function up()
     {
-        Schema::create('partners', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('company_name');
-            $table->text('address');
-            $table->text('info');
-            $table->text('contacts');
-            $table->integer('user_id')->unsigned();
+        Schema::create('profiles', function (Blueprint $table) {
+            $table->integer('user_id');
 
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users');
+
+            $table->enum('gender', ['male', 'female']);
+            $table->integer('height');
+            $table->integer('weight');
+            $table->enum('eye', ['Amber', 'Blue', 'Brown', 'Brown', 'Gray', 'Green', 'Hazel']);
+            $table->enum('heir', ['Blonde' ]);
 
             $table->timestamps();
         });
@@ -35,7 +36,6 @@ class CreatePartnersTable extends Migration
      */
     public function down()
     {
-
-        Schema::drop('partners');
+        Schema::drop('profiles');
     }
 }
