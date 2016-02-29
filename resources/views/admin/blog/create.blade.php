@@ -2,14 +2,13 @@
 
 @section('styles')
 
-    <link href="{{ url('/assets/vendor/summernote/dist/summernote.css') }}" rel="stylesheet">
-    <link href="{{ url('/assets/css/bootstrap-reset.css') }}" rel="stylesheet">
-    <link href="{{ url('/assets/css/fileinput.css') }}" rel="stylesheet">
+<link href="{{ url('/assets/vendor/summernote/dist/summernote.css') }}" rel="stylesheet">
+<link href="{{ url('/assets/css/bootstrap-reset.css') }}" rel="stylesheet">
 @stop
 
 @section('content')
 
-    <section class="panel col-md-8">
+    <section class="panel">
         <header class="panel-heading ">
             <div class="form-horizontal">
                 <div class="form-group">
@@ -541,31 +540,16 @@
                 </div>
             </div>
         </div>
-    </section>
-    <section class="panel col-md-4">
-        <header class="panel-heading ">
-            Изображение
-        </header>
-        <div class="panel-body">
-           <div class="form-group">
-               <div class="form-group">
-                   <label>File input</label>
-                   <input id="file-0" class="file" type="file" multiple=false>
-               </div>
-           </div>
-        </div>
         <div class="panel-footer text-center text-capitalize" style="background-color: white">
             <input type="hidden" name="_token" value="{!! csrf_token() !!}">
             <button type="button" id="send" class="btn btn-success">Опубликовать</button>
         </div>
     </section>
+
 @stop
 
 @section('scripts')
     <script src="{{ url('/assets/vendor/summernote/dist/summernote.min.js') }}"></script>
-    <!--bootstrap-fileinput-master-->
-    <script type="text/javascript" src="{{ url('/assets/js/bootstrap-fileinput-master/js/fileinput.js') }}"></script>
-    <script type="text/javascript" src="{{ url('/assets/js/file-input-init.js') }}"></script>
     <script>
         jQuery(document).ready(function(){
             $('.summernote').summernote({

@@ -15,7 +15,7 @@
                 <div class="form-group">
                     <label class="col-sm-2 col-sm-2 control-label">Заголовок</label>
                     <div class="col-sm-10">
-                        <input class="form-control" type="text" name="title" placeholder="Заголовок">
+                        <input class="form-control" type="text" name="title" placeholder="Заголовок" value="{{ $post->title }}">
                     </div>
                 </div>
             </div>
@@ -529,8 +529,7 @@
                 </div>
                 <textarea style="height: 175px;" class="note-codable"></textarea>
                 <div style="height: 175px;" class="note-editable" contenteditable="true">
-                    <div style="text-align: justify;">Hello <span style="background-color: rgb(255, 255, 255);">Summernote</span>
-                    </div>
+                    {!! $post->body !!}
                 </div>
                 <div class="note-statusbar">
                     <div class="note-resizebar">

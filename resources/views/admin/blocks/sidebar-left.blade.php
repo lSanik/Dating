@@ -17,7 +17,7 @@
 
         <!--sidebar nav start-->
         <ul class="nav nav-pills nav-stacked side-navigation">
-            <li class="active">
+            <li >
                 <a href="{{ url('/admin/dashboard') }}">
                     <i class="fa fa-home"></i>
                     <span>Управление</span>
@@ -47,8 +47,8 @@
                 <a href=""><i class="fa fa-user-secret"></i>
                     <span>Партнеры</span></a>
                 <ul class="child-list">
-                    <li><a href="{{ url('#') }}"> Все партнеры </a></li>
-                    <li><a href="{{ url('#') }}"> Добавить партнера </a></li>
+                    <li><a href="{{ url('/admin/partners/') }}"> Все партнеры </a></li>
+                    <li><a href="{{ url('/admin/partner/new') }}"> Добавить партнера </a></li>
                     <li><a href="{{ url('#') }}"> Статистика по партнерам </a></li>
                 </ul>
             </li>
@@ -110,7 +110,7 @@
                     <span>Гороскопы </span></a>
             </li>
             @endif()
-            <li class=""><a href="{{ url('#') }}"><i class="fa fa-user-md"></i>
+            <li class=""><a href="{{ url('/admin/profile/') }}"><i class="fa fa-user-md"></i>
                     <span>Профиль </span></a>
             </li>
         </ul>
