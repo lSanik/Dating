@@ -20,7 +20,6 @@
 
                     <!-- Form -->
             {!! Form::open(['url' => '#', 'class' => 'form-horizontal', 'enctype' => 'multipart/form-data']) !!}
-            {!! Form::hidden('id', $user->id) !!}
             <div class="col-lg-6">
                 <section class="panel">
                     <header class="panel-heading">
@@ -52,10 +51,9 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="email" class="col-lg-2 col-sm-2 control-label">Phone</label>
+                            <label for="phone" class="col-lg-2 col-sm-2 control-label"> Телефон </label>
                             <div class="col-lg-10">
-                                {!! Form::text('phone', $user->phone,
-                                ['class'=>'form-control', 'placeholder' => '', 'required' => 'required']) !!}
+                                <input type="phone" name="phone" value="{{ $user->phone }}" class="form-control" required>
                             </div>
                         </div>
 
@@ -100,6 +98,14 @@
                         </div>
 
                         <div class="form-group">
+                            <label for="email" class="col-lg-2 col-sm-2 control-label">Адрес</label>
+                            <div class="col-lg-10">
+                                {!! Form::text('address', $user->address,
+                                ['class'=>'form-control', 'placeholder' => '']) !!}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
                             <label for="email" class="col-lg-2 col-sm-2 control-label">Контакты</label>
                             <div class="col-lg-10">
                                 {!! Form::textarea('contacts', $user->contacts,
@@ -125,7 +131,7 @@
     <script>
         $(document).ready(function(){
             $('input[type="file"]').change(function(){
-                $('#preview').css('display', 'none');
+               $('#preview').css('display', 'none');
             });
         });
     </script>
