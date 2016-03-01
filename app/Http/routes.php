@@ -26,6 +26,23 @@ Route::get('/', function () {
 |
 */
 
+
+Route::group(['prefix' => LaravelLocalization::setLocale(),
+              'middleware' => [ 'localeSessionRedirect', 'localizationRedirect' ]
+], function()
+{
+    /** ADD ALL LOCALIZED ROUTES INSIDE THIS GROUP **/
+    Route::get('/', function()
+    {
+        return view('home');
+    });
+
+    Route::get('/blog/{id}', 'Admin\BlogController@show');
+
+
+});
+
+
 Route::group([  'prefix' => 'admin',
                 'middleware' => ['web', 'auth', 'roles'],
                 'roles' => ['Owner', 'Moder', 'Partner']
@@ -88,6 +105,8 @@ Route::group([  'prefix' => 'admin',
     Route::get('profile', 'Admin\AdminController@profile');
     Route::post('profile', 'Admin\AdminController@profile_update');
 });
+
+
 
 
 Route::group(['middleware' => 'web'], function () {
