@@ -195,6 +195,8 @@ class ModeratorController extends Controller
         $user->save();
 
         return redirect('/admin/moderators');
+
+
     }
 
     /**
