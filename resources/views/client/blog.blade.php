@@ -7,7 +7,8 @@
             {{ $post->title }}
         </header>
         <div class="panel-body">
-            {{ $post->cover_image }}
+
+           <img src="{{  url('/uploads/blog/'.$post->cover_image) }}" alt="{{ $post->title }}">
             {!! $post->body !!}
         </div>
     </article>

@@ -38,6 +38,8 @@ Route::group([  'prefix' => 'admin',
     Route::get('dashboard', 'Admin\AdminController@dashboard');
     Route::get('profile', 'Admin\AdminController@profile');
 
+
+    /** Start Blog Routing */
     Route::get('blog', 'Admin\BlogController@index');
     Route::get('blog/new', 'Admin\BlogController@create');
 
@@ -46,6 +48,7 @@ Route::group([  'prefix' => 'admin',
 
     Route::post('blog/new', 'Admin\BlogController@store');
     Route::post('blog/edit/{id}', 'Admin\BlogController@update');
+    /** Stop Blog Routing */
 
 
     /** Start Partners Profile routing */

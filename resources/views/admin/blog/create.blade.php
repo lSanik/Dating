@@ -4,17 +4,26 @@
 
 <link href="{{ url('/assets/vendor/summernote/dist/summernote.css') }}" rel="stylesheet">
 <link href="{{ url('/assets/css/bootstrap-reset.css') }}" rel="stylesheet">
+<link href="{{ url('/assets/css/fileinput.css') }}" rel="stylesheet">
+
+    <style>
+        .fileinput-upload-button{
+            display: none;
+        }
+
+    </style>
+
 @stop
 
 @section('content')
 
-    <section class="panel">
+    <section class="panel col-md-8">
         <header class="panel-heading ">
             <div class="form-horizontal">
                 <div class="form-group">
                     <label class="col-sm-2 col-sm-2 control-label">Заголовок</label>
                     <div class="col-sm-10">
-                        <input class="form-control" type="text" name="title" placeholder="Заголовок">
+                        <input class="form-control" type="text" name="titlef" placeholder="Заголовок">
                     </div>
                 </div>
             </div>
@@ -541,15 +550,42 @@
             </div>
         </div>
         <div class="panel-footer text-center text-capitalize" style="background-color: white">
-            <input type="hidden" name="_token" value="{!! csrf_token() !!}">
-            <button type="button" id="send" class="btn btn-success">Опубликовать</button>
+
+
         </div>
     </section>
+    <section class="panel col-md-4">
+        <header class="panel-heading ">
+            Изображение
+        </header>
+        <div class="panel-body">
+                <div class="form-group">
+                    <label>File input</label>
+                        {!! Form::open(['url' => '/admin/blog/new', 'id' => 'form-hidden', 'enctype' => 'multipart/form-data', 'method' => 'POST']) !!}
+                        {!! Form::hidden('title') !!}
+                        {!! Form::hidden('body') !!}
+
+                    <input id="file-0" class="file" type="file" name="cover_image" multiple=false value="" accept="image/*">
+
+                    <div class="text-center text-capitalize" style="background-color: white; margin-top: 35px;">
+                        <button type="submit" id="send" class="btn btn-success">Опубликовать</button>
+                        {!! Form::close() !!}
+                    </div>
+                </div>
+        </div>
+
+
+    </section>
+
 
 @stop
 
 @section('scripts')
     <script src="{{ url('/assets/vendor/summernote/dist/summernote.min.js') }}"></script>
+
+    <script type="text/javascript" src="{{ url('/assets/js/bootstrap-fileinput-master/js/fileinput.js') }}"></script>
+    <script type="text/javascript" src="{{ url('/assets/js/file-input-init.js') }}"></script>
+
     <script>
         jQuery(document).ready(function(){
             $('.summernote').summernote({
@@ -561,25 +597,12 @@
                 focus: true                 // set focus to editable area after initializing summernote
             });
 
-            $('#send').click(function(){
-                var title = $('input[name="title"]').val();
-                var body = $('.note-editable').html();
+            $('input[name="titlef"]').on('change', function(){
+                $('input[name="title"]').val( $(this).val() );
+            });
 
-                $.ajax({
-                    type: 'POST',
-                    url: '/admin/blog/new',
-                    data:{
-                        title: title,
-                        body: body,
-                        _token: $('input[name="_token"]').val()
-                    },
-                    success: function( response ){
-                        console.log(response);
-                    },
-                    error: function( response ){
-                        console.log(response);
-                    }
-                });
+            $('#send').on('click', function(){
+                $('input[name="body"]').val( $('.note-editable').html() );
             });
         });
     </script>

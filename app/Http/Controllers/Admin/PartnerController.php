@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Partner;
+
 use Illuminate\Http\Request;
 
 use App\Models\User;
@@ -53,7 +53,7 @@ class PartnerController extends Controller
     public function store(Request $request)
     {
         $user = new User();
-        $partner = new Partner();
+
 
         $rules = [
             'first_name' => 'required',

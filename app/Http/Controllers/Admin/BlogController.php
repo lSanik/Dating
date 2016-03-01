@@ -13,6 +13,11 @@ class BlogController extends Controller
 {
     private $post;
 
+
+    /*
+     * @todo загрузка файлов бля блоговой записи с полся body
+     */
+
     public function __construct(Post $post)
     {
         $this->post = $post;
@@ -57,11 +62,33 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-        //@todo image uploads for cover image & blog
-        $this->post->create([
-            'title' => $request->input('title'),
-            'body' => $request->input('body')
-        ]);
+
+        $rulse = [
+            'title' => 'required',
+            'body'  => 'required'
+        ];
+
+        if( !empty( $request->file() )){
+
+            $file = $request->file('cover_image');
+            $fileName = time() . '-' . $file->getClientOriginalName();
+            $destination = public_path() . '/uploads/blog';
+
+            $file->move($destination, $fileName);
+        }
+
+        if( is_file( $destination."/".$fileName) )
+        {
+            $this->post->create([
+                'title' => $request->input('title'),
+                'body'  => $request->input('body'),
+                'cover_image' => $fileName
+            ]);
+        }
+
+
+        return redirect('/admin/blog');
+
     }
 
     public function show($id)

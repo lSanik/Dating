@@ -82,12 +82,10 @@
 
             $('a').each(function(){
 
-                var $this = $(this);
                 // if the current path is like this link, make it active
-                console.log( $(this).attr('href') );
-                if($this.attr('href').indexOf(url) !== -1){
-                    $this.parent().addClass('active');
-                    $this.closest('.menu-list').addClass('nav-active');
+                if($(this).attr('href').indexOf(url) !== -1){
+                    $(this).parent().addClass('active');
+                    $(this).closest('.menu-list').addClass('nav-active');
                 }
 
             });
