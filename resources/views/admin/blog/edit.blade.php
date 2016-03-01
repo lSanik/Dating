@@ -557,7 +557,7 @@
             <div class="form-group">
                 <div class="form-group">
                     <label>File input</label>
-                    <img src="{{ $post->cover_image }}">
+                    <img src="{{ url('/uploads/blog/'.$post->cover_image) }}" width="100%">
                     <input id="file-0" class="file" type="file" multiple=false value="{{ $post->cover_image }}">
                 </div>
             </div>

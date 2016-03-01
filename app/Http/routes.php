@@ -26,6 +26,23 @@ Route::get('/', function () {
 |
 */
 
+
+Route::group(['prefix' => LaravelLocalization::setLocale(),
+              'middleware' => [ 'localeSessionRedirect', 'localizationRedirect' ]
+], function()
+{
+    /** ADD ALL LOCALIZED ROUTES INSIDE THIS GROUP **/
+    Route::get('/', function()
+    {
+        return view('home');
+    });
+
+    Route::get('/blog/{id}', 'Admin\BlogController@show');
+
+
+});
+
+
 Route::group([  'prefix' => 'admin',
                 'middleware' => ['web', 'auth', 'roles'],
                 'roles' => ['Owner', 'Moder', 'Partner']
@@ -67,10 +84,10 @@ Route::group([  'prefix' => 'admin',
     Route::get('moderator/new', 'Admin\ModeratorController@create');
     Route::get('moderator/show/{id}', 'Admin\ModeratorController@show');
     Route::get('moderator/edit/{id}', 'Admin\ModeratorController@edit');
+    Route::get('moderator/drop/{id}', 'Admin\ModeratorController@destroy');
 
     Route::post('moderator/store', 'Admin\ModeratorController@store');
     Route::post('moderator/edit/{id}', 'Admin\ModeratorController@update');
-    Route::post('moderator/drop/{id}', 'Admin\ModeratorController@destroy');
     /** End Moderator Profile routing */
 
     /** Start Girls Profile routing */
@@ -88,6 +105,8 @@ Route::group([  'prefix' => 'admin',
     Route::get('profile', 'Admin\AdminController@profile');
     Route::post('profile', 'Admin\AdminController@profile_update');
 });
+
+
 
 
 Route::group(['middleware' => 'web'], function () {
