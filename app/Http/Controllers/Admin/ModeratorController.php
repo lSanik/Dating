@@ -1,11 +1,16 @@
 <?php
 
+
 namespace App\Http\Controllers\Admin;
+
 
 use Illuminate\Http\Request;
 
+use App\Models\User;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Validator;
 
 class ModeratorController extends Controller
 {
@@ -18,7 +23,16 @@ class ModeratorController extends Controller
      */
     public function index()
     {
-        //
+        $user = new User();
+        $users = $user->where('users.role_id', '=', 2)
+            ->rightJoin('roles', 'users.role_id', '=', 'roles.id')
+            ->select(['users.id', 'email', 'first_name', 'last_name', 'name'])
+            ->paginate(15);
+
+        return view('admin.profile.moderator.index')->with([
+            'users'     => $users,
+            'heading'   => 'Все модераторы'
+        ]);
     }
 
     /**
@@ -28,7 +42,9 @@ class ModeratorController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.profile.moderator.create')->with([
+            'heading' => 'Добавить модератора'
+            ]);
     }
 
     /**
@@ -39,7 +55,49 @@ class ModeratorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = new User();
+
+        $rules = [
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'email' => 'required|unique',
+            'phone' => 'required|unique',
+            'password' => 'required'
+        ];
+
+        /*
+        $this->validate($request, $rules);
+
+        $validator = Validator::make( $request->input(), $rules);
+        if ($validator->fails()) {
+            $messages = $validator->messages();
+            return Redirect::back()->withErrors($validator)->withInput();
+        } */
+        if( !empty( $request->file() )){
+
+            $file = $request->file('avatar');
+            $fileName = time() . '-' . $file->getClientOriginalName();
+            $destination = public_path() . '/uploads/admins';
+
+            $file->move($destination, $fileName);
+        } else $fileName='empty.png';
+
+
+        User::create([
+            'email'      => $request->input('email'),
+            'first_name' => $request->input('first_name'),
+            'last_name'  => $request->input('last_name'),
+            'role_id'    => 2,
+            'password'   => bcrypt( $request->input('password')),
+            'avatar'     => $fileName,
+            'info'       => $request->input('info'),
+            'company_name'    => $request->input('company'),
+            'contacts'   => $request->input('contacts'),
+            'phone'     => $request->input('phone')
+        ]);
+
+
+        return redirect('/admin/moderators');
     }
 
     /**
@@ -50,7 +108,12 @@ class ModeratorController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::findOrFail($id);
+
+        return view('admin.profile.moderator.show')->with([
+            'heading' => 'Модератор',
+            'user'  => $user
+        ]);
     }
 
     /**
@@ -61,7 +124,12 @@ class ModeratorController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::findOrFail($id);
+
+        return view('admin.profile.moderator.edit')->with([
+            'user'  => $user,
+            'heading' => 'Редактировать модератора'
+        ]);
     }
 
     /**
@@ -73,7 +141,60 @@ class ModeratorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::find($id);
+
+        if( !empty( $request->input('first_name') ) )
+            $user->first_name = $request->input('first_name');
+
+        if( !empty( $request->input('last_name') ) )
+            $user->last_name  = $request->input('last_name');
+
+        if( !empty( $request->input('company') ))
+            $user->company_name    = $request->input('company');
+
+        if( !empty( $request->input('info') ))
+            $user->info       = $request->input('info');
+
+        if( !empty( $request->input('contacts')) )
+            $user->contacts   = $request->input('contacts');
+
+        if( !empty( $request->input('phone') ))
+            $user->phone        = $request->input('phone');
+
+        if( !empty( $request->input('address')) )
+            $user->address        = $request->input('address');
+
+        // Check email changes
+        if( $request->input('email') != $user->email )
+        {
+            $user->email      = $request->input('email');
+        }
+
+        // Check password changes
+        if( !empty( $request->input('confirm') ) )
+        {
+            if( $request->input('confirm') == $request->input('password') )
+                $user->password   = brypt($request->input('password'));
+        }
+
+        /** Check new file  */
+        if( !empty( $request->file() ) )
+        {
+            if( File::exists('/uploads/admins/'.$user->avatar) )
+                File::delete('/uploads/admins/'.$user->avatar); // delete old file
+
+            $file = $request->file('avatar');
+
+            $fileName = time() . '-' . $file->getClientOriginalName();
+            $destination = public_path() . '/uploads/admins';
+            $file->move($destination, $fileName);
+
+            $user->avatar     = $fileName;
+        }
+
+        $user->save();
+
+        return redirect('/admin/moderators');
     }
 
     /**
@@ -84,6 +205,8 @@ class ModeratorController extends Controller
      */
     public function destroy($id)
     {
-        //
+        User::where('id', $id)->delete();
+
+        return redirect('/admin/moderators');
     }
 }

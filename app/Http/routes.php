@@ -67,10 +67,10 @@ Route::group([  'prefix' => 'admin',
     Route::get('moderator/new', 'Admin\ModeratorController@create');
     Route::get('moderator/show/{id}', 'Admin\ModeratorController@show');
     Route::get('moderator/edit/{id}', 'Admin\ModeratorController@edit');
+    Route::get('moderator/drop/{id}', 'Admin\ModeratorController@destroy');
 
     Route::post('moderator/store', 'Admin\ModeratorController@store');
     Route::post('moderator/edit/{id}', 'Admin\ModeratorController@update');
-    Route::post('moderator/drop/{id}', 'Admin\ModeratorController@destroy');
     /** End Moderator Profile routing */
 
     /** Start Girls Profile routing */
