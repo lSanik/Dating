@@ -111,24 +111,7 @@ Route::group([  'prefix' => 'admin',
         // @todo Create gifts routs
         // @todo Make gifts Controllers
         // @todo Make gifts DB
-    // @todo Create gifts routs
-    // @todo Make gifts Controllers
-    // @todo Make gifts DB
-    // @todo Create gifts routs
-    // @todo Make gifts Controllers
-    // @todo Make gifts DB
-    // @todo Create gifts routs
-    // @todo Make gifts Controllers
-    // @todo Make gifts DB
-    // @todo Create gifts routs
-    // @todo Make gifts Controllers
-    // @todo Make gifts DB
-    // @todo Create gifts routs
-    // @todo Make gifts Controllers
-    // @todo Make gifts DB
-    // @todo Create gifts routs
-    // @todo Make gifts Controllers
-    // @todo Make gifts DB
+    
     /** End gifts */
 
     /** Old porofile */
