@@ -20,6 +20,7 @@ class BlogController extends Controller
 
     /*
      * @todo загрузка файлов бля блоговой записи с полся body
+     * @todo мультиязычность
      */
 
     public function __construct(Post $post)
@@ -152,7 +153,7 @@ class BlogController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //@todo - Добить блог (Саша)
+        //@todo - Добить блог
         print_r($request);
         print_r($id);
     }

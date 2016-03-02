@@ -67,7 +67,7 @@
 
     <?php /*
 
-    @todo Скпипт переключения классов меню сайдбара
+
 
     <!-- jQuery -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
