@@ -51,6 +51,13 @@
                         </div>
 
                         <div class="form-group">
+                            <label for="phone" class="col-lg-2 col-sm-2 control-label"> Телефон </label>
+                            <div class="col-lg-10">
+                                <input type="phone" name="phone" value="{{ $user->phone }}" class="form-control" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
                             <label for="password" class="col-lg-2 col-sm-2 control-label">Password</label>
                             <div class="col-lg-10">
                                 <input type="password" class="form-control" name="password">
@@ -87,6 +94,14 @@
                             <div class="col-lg-10">
                                 {!! Form::textarea('info', $user->info,
                                 ['class'=>'form-control', 'placeholder' => '', 'rows' => 4]) !!}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email" class="col-lg-2 col-sm-2 control-label">Адрес</label>
+                            <div class="col-lg-10">
+                                {!! Form::text('address', $user->address,
+                                ['class'=>'form-control', 'placeholder' => '']) !!}
                             </div>
                         </div>
 

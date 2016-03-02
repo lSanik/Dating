@@ -17,7 +17,7 @@
 
         <!--sidebar nav start-->
         <ul class="nav nav-pills nav-stacked side-navigation">
-            <li class="active">
+            <li >
                 <a href="{{ url('/admin/dashboard') }}">
                     <i class="fa fa-home"></i>
                     <span>Управление</span>
@@ -61,34 +61,54 @@
                 </ul>
             </li>
             @endif
-            @if( Auth::User()->hasRole(['Partner', 'Moder']) )
+            @if( Auth::User()->hasRole(['Partner']) )
             <li class="menu-list">
                 <a href=""><i class="fa fa-female "></i>
                     <span>Анкеты</span></a>
                 <ul class="child-list">
+                    <li><a href="{{ url('/girl/check') }}"> Проверить наличие анкеты </a></li>
+                    <li><a href="{{ url('#') }}"> Активные </a></li>
+                    <li><a href="{{ url('#') }}"> Приостановленные </a></li>
+                    <li><a href="{{ url('#') }}"> Отклоненные </a></li>
+                    <li><a href="{{ url('#') }}"> Удаленные </a></li>
+                    <li><a href="{{ url('#') }}"> На модерации </a></li>
+                    <li class="nav-divider"></li>
                     <li><a href="{{ url('#') }}"> Все анкеты </a></li>
                     <li><a href="{{ url('#') }}"> Добавить анкету </a></li>
-                    <li><a href="{{ url('#') }}"> Создать рассылку </a></li>
-                    <li><a href="{{ url('#') }}"> Статистика по анкетам </a></li>
                 </ul>
             </li>
+                <li>
+                    <a href="#"> Финансовые отчеты </a>
+                </li>
+                <li>
+                    <a href="#"> Рассылка </a>
+                </li>
+                <li>
+                    <a href="#"> Подарки </a>
+                </li>
+                <li>
+                    <a href="#"> Обратная связь </a>
+                </li>
+                <li>
+                    <a href="#"> Сообщения от мужчин </a>
+                </li>
             @endif
             <li>
                 <h3 class="navigation-title">Сообщения (поддержка)</h3>
             </li>
-            <li class="menu-list"><a href="javascript:;"><i class="fa fa-envelope-o"></i> <span>От Партнеров<span class="label noti-arrow bg-danger pull-right">4 Unread</span> </span></a>
-                <ul class="child-list">
-                    <li><a href="{{ url('#') }}">Все сообщения</a></li>
-                    <li><a href="{{ url('#') }}">Создать сообщение</a></li>
-                </ul>
-            </li>
-            <li class="menu-list"><a href="javascript:;"><i class="fa fa-envelope-o"></i> <span>От Клиентов<span class="label noti-arrow bg-danger pull-right">4 Unread</span> </span></a>
+            <li class="menu-list"><a href="javascript:;"><i class="fa fa-envelope-o"></i> <span>Сообщения<span class="label noti-arrow bg-danger pull-right">4 Unread</span> </span></a>
                 <ul class="child-list">
                     <li><a href="{{ url('#') }}">Все сообщения</a></li>
                     <li><a href="{{ url('#') }}">Создать сообщение</a></li>
                 </ul>
             </li>
             @if( Auth::User()->hasRole('Owner') )
+                <li class="menu-list"><a href="javascript:;"><i class="fa fa-envelope-o"></i> <span>От Клиентов<span class="label noti-arrow bg-danger pull-right">4 Unread</span> </span></a>
+                    <ul class="child-list">
+                        <li><a href="{{ url('#') }}">Все сообщения</a></li>
+                        <li><a href="{{ url('#') }}">Создать сообщение</a></li>
+                    </ul>
+                </li>
             <li>
                 <h3 class="navigation-title">Контент</h3>
             </li>
@@ -116,32 +136,6 @@
         </ul>
         <!--sidebar nav end-->
 
-        <!--sidebar widget start-->
-        <div class="sidebar-widget">
-            <h4>Server Status</h4>
-            <ul class="list-group">
-                <li>
-                    <span class="label label-danger pull-right">33%</span>
-                    <p>CPU Used</p>
-                    <div class="progress progress-xs">
-                        <div class="progress-bar progress-bar-danger" style="width: 33%;">
-                            <span class="sr-only">33%</span>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <span class="label label-warning pull-right">65%</span>
-                    <p>Bandwidth</p>
-                    <div class="progress progress-xs">
-                        <div class="progress-bar progress-bar-warning" style="width: 65%;">
-                            <span class="sr-only">65%</span>
-                        </div>
-                    </div>
-                </li>
-                <li class="text-center"><a href="{{ url('#') }}" class="btn btn-success btn-sm ">Детально</a></li>
-            </ul>
-        </div>
-        <!--sidebar widget end-->
 
     </div>
 </div>

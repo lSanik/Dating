@@ -19,14 +19,19 @@ class CreateUsersTable extends Migration
             $table->string('password', 60);
             $table->string('first_name');
             $table->string('last_name');
-            $table->integer('role_id');
             $table->string('avatar');
+
             $table->string('company_name');
             $table->text('address');
             $table->text('info');
             $table->text('contacts');
+
+            $table->integer('status_id')->unsigned();
+            $table->integer('role_id')->unsigned();
             $table->integer('city_id')->unsigned();
-            $table->integer('country_id')->unsigned();
+
+            $table->integer('partner_id');
+
             $table->rememberToken();
             $table->timestamps();
         });

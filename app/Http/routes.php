@@ -26,6 +26,23 @@ Route::get('/', function () {
 |
 */
 
+
+Route::group(['prefix' => LaravelLocalization::setLocale(),
+              'middleware' => [ 'localeSessionRedirect', 'localizationRedirect' ]
+], function()
+{
+    /** ADD ALL LOCALIZED ROUTES INSIDE THIS GROUP **/
+    Route::get('/', function()
+    {
+        return view('home');
+    });
+
+    Route::get('/blog/{id}', 'Admin\BlogController@show');
+
+
+});
+
+
 Route::group([  'prefix' => 'admin',
                 'middleware' => ['web', 'auth', 'roles'],
                 'roles' => ['Owner', 'Moder', 'Partner']
@@ -36,8 +53,9 @@ Route::group([  'prefix' => 'admin',
     });
 
     Route::get('dashboard', 'Admin\AdminController@dashboard');
-    Route::get('profile', 'Admin\AdminController@profile');
+    Route::get('profile', 'Admin\AdminController@profile'); //end
 
+    /** Start Blog Routing */
     Route::get('blog', 'Admin\BlogController@index');
     Route::get('blog/new', 'Admin\BlogController@create');
 
@@ -46,6 +64,7 @@ Route::group([  'prefix' => 'admin',
 
     Route::post('blog/new', 'Admin\BlogController@store');
     Route::post('blog/edit/{id}', 'Admin\BlogController@update');
+    /** Stop Blog Routing */
 
 
     /** Start Partners Profile routing */
@@ -64,26 +83,42 @@ Route::group([  'prefix' => 'admin',
     Route::get('moderator/new', 'Admin\ModeratorController@create');
     Route::get('moderator/show/{id}', 'Admin\ModeratorController@show');
     Route::get('moderator/edit/{id}', 'Admin\ModeratorController@edit');
+    Route::get('moderator/drop/{id}', 'Admin\ModeratorController@destroy');
 
     Route::post('moderator/store', 'Admin\ModeratorController@store');
     Route::post('moderator/edit/{id}', 'Admin\ModeratorController@update');
-    Route::post('moderator/drop/{id}', 'Admin\ModeratorController@destroy');
     /** End Moderator Profile routing */
 
     /** Start Girls Profile routing */
-    Route::get('girls', 'Admin\GirlsController@index');
-    Route::get('girl/new', 'Admin\GirlsController@create');
-    Route::get('girl/edit/{id}', 'Admin\GirlsController@edit');
-    Route::get('girl/show/{id}', 'Admin\GirlsController@show');
+    Route::get('girls', 'Admin\GirlsController@index'); //All
+    Route::get('girl/new', 'Admin\GirlsController@create'); //Add new
 
-    Route::post('girl/store', 'Admin\GirlsController@store');
-    Route::post('girl/edit/{id}','Admin\GirlsController@update');
+    Route::get('/girl/check', 'Admin\GirlsController@check'); //Check by passport
+    Route::get('/girls/{status}', 'Admin\GirlsController@getByStatus'); //Return all by status
+
+
+    Route::get('girl/edit/{id}', 'Admin\GirlsController@edit'); // Edit Girl profile
+    Route::get('girl/show/{id}', 'Admin\GirlsController@show'); // Show Girl profile
+
+    Route::post('girl/store', 'Admin\GirlsController@store'); //Store new to db
+    Route::post('girl/edit/{id}','Admin\GirlsController@update'); // Update db
+
+
     /** End Girls Profile routing */
+
+
+    /** Start Gifts  */
+        // @todo Create gifts routs
+        // @todo Make gifts Controllers
+        // @todo Make gifts DB
+    /** End gifts */
 
     /** Old porofile */
     Route::get('profile', 'Admin\AdminController@profile');
     Route::post('profile', 'Admin\AdminController@profile_update');
 });
+
+
 
 
 Route::group(['middleware' => 'web'], function () {

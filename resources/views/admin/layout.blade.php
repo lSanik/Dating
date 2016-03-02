@@ -20,6 +20,11 @@
     <link rel="stylesheet" href="{{ url('/assets/css/default-theme.css') }}">
     <link rel="stylesheet" href="{{ url('/assets/css/style.css') }}">
 
+    <style>
+        .nav-divider{
+            background-color: #8a8a71 !important;
+        }
+    </style>
     @yield('styles')
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -27,6 +32,7 @@
     <script src="{{ url('/assets/js/html5shiv.js') }}"></script>
     <script src="{{ url('/assets/js/respond.min.js') }}"></script>
     <![endif]-->
+
 
 </head>
 <body class="sticky-header">
@@ -71,5 +77,25 @@
     <script src="{{url('/assets/js/scripts.js')}}"></script>
 */ ?>
     @yield('scripts')
+
+    <script>
+        /**
+         * Active menu
+         */
+        $(document).ready(function(){
+            var url = window.location;
+
+            $('a').each(function(){
+
+                // if the current path is like this link, make it active
+                if($(this).attr('href').indexOf(url) !== -1){
+                    $(this).parent().addClass('active');
+                    $(this).closest('.menu-list').addClass('nav-active');
+                }
+
+            });
+        });
+
+    </script>
 </body>
 </html>

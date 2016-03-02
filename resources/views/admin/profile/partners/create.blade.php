@@ -48,6 +48,13 @@
                         </div>
 
                         <div class="form-group">
+                            <label for="phone" class="col-lg-2 col-sm-2 control-label"> Телефон </label>
+                            <div class="col-lg-10">
+                                <input type="phone" name="phone" class="form-control" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
                             <label for="password" class="col-lg-2 col-sm-2 control-label">Password</label>
                             <div class="col-lg-10">
                                 <input type="password" class="form-control" name="password" required>

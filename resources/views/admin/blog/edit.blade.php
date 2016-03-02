@@ -5,6 +5,14 @@
     <link href="{{ url('/assets/vendor/summernote/dist/summernote.css') }}" rel="stylesheet">
     <link href="{{ url('/assets/css/bootstrap-reset.css') }}" rel="stylesheet">
     <link href="{{ url('/assets/css/fileinput.css') }}" rel="stylesheet">
+
+    <style>
+        .fileinput-upload-button{
+            display: none;
+        }
+
+    </style>
+
 @stop
 
 @section('content')
@@ -549,6 +557,7 @@
             <div class="form-group">
                 <div class="form-group">
                     <label>File input</label>
+                    <img src="{{ url('/uploads/blog/'.$post->cover_image) }}" width="100%">
                     <input id="file-0" class="file" type="file" multiple=false value="{{ $post->cover_image }}">
                 </div>
             </div>
@@ -576,7 +585,7 @@
                 focus: true                 // set focus to editable area after initializing summernote
             });
 
-            $('#send').click(function(){
+          /*  $('#send').click(function(){
                 var title = $('input[name="title"]').val();
                 var body = $('.note-editable').html();
 
@@ -595,7 +604,7 @@
                         console.log(response);
                     }
                 });
-            });
+            });*/
         });
     </script>
 @stop

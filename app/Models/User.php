@@ -17,6 +17,7 @@ class User extends Authenticatable
         'last_name',
         'email',
         'password',
+        'status_id',
         'role_id',
         'city_id',
         'country_id',
@@ -31,6 +32,11 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function status()
+    {
+        return $this->belongsTo('App\Models\Status', 'status_id', 'id');
+    }
 
 
     // The User model

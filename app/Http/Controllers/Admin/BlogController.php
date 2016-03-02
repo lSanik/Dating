@@ -4,14 +4,23 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 
+use App;
+
 use App\Models\Post;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Config;
+
 
 class BlogController extends Controller
 {
     private $post;
+
+
+    /*
+     * @todo загрузка файлов бля блоговой записи с полся body
+     */
 
     public function __construct(Post $post)
     {
@@ -57,17 +66,63 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-        //@todo image uploads for cover image & blog
-        $this->post->create([
-            'title' => $request->input('title'),
-            'body' => $request->input('body')
-        ]);
+
+        $rulse = [
+            'title' => 'required',
+            'body'  => 'required'
+        ];
+
+        if( !empty( $request->file() )){
+
+            $file = $request->file('cover_image');
+            $fileName = time() . '-' . $file->getClientOriginalName();
+            $destination = public_path() . '/uploads/blog';
+
+            $file->move($destination, $fileName);
+        }
+
+        if( is_file( $destination."/".$fileName) )
+        {
+            $this->post->create([
+                'title' => $request->input('title'),
+                'body'  => $request->input('body'),
+                'cover_image' => $fileName
+            ]);
+        }
+
+
+        return redirect('/admin/blog');
+
     }
+
 
     public function show($id)
     {
+        $lang_code = App::getLocale();
+
+        $default_lang = Config::get('app.fallback_locale');
+
+        $supported = Config::get('app.locales');
+
+
+
+
+        if( $lang_code == $default_lang )
+        {
+            $post = $this->post->findOrFail($id);
+
+        } else {
+
+            if( in_array($lang_code, $supported) )
+            {
+                //@todo multilanguge
+
+                $post = $this->post->find($id)->lang($lang_code)->get();
+            }
+        }
+
         return view('client.blog')->with([
-            'post' => $this->post->findOrFail($id)
+            'post' => $post
         ]);
     }
 

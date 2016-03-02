@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Partner;
+
 use Illuminate\Http\Request;
 
 use App\Models\User;
@@ -53,16 +53,25 @@ class PartnerController extends Controller
     public function store(Request $request)
     {
         $user = new User();
-        $partner = new Partner();
+
 
         $rules = [
             'first_name' => 'required',
             'last_name' => 'required',
             'email' => 'required|unique',
+            'phone' => 'required|unique',
             'password' => 'required'
         ];
 
+        /*
         $this->validate($request, $rules);
+
+        $validator = Validator::make( $request->input(), $rules);
+        if ($validator->fails()) {
+            $messages = $validator->messages();
+            return Redirect::back()->withErrors($validator)->withInput();
+        } */
+
 
         $file = $request->file('avatar');
         $fileName = time() . '-' . $file->getClientOriginalName();
@@ -80,6 +89,7 @@ class PartnerController extends Controller
             'info'       => $request->input('info'),
             'company_name'    => $request->input('company'),
             'contacts'   => $request->input('contacts'),
+            'phone'     => $request->input('phone')
         ]);
 
 
@@ -129,12 +139,26 @@ class PartnerController extends Controller
     {
         $user = User::find($id);
 
-        $user->first_name = $request->input('first_name');
-        $user->last_name  = $request->input('last_name');
+        if( !empty( $request->input('first_name') ) )
+            $user->first_name = $request->input('first_name');
 
-        $user->company_name    = $request->input('company');
-        $user->info       = $request->input('info');
-        $user->contacts   = $request->input('contacts');
+        if( !empty( $request->input('last_name') ) )
+            $user->last_name  = $request->input('last_name');
+
+        if( !empty( $request->input('company') ))
+            $user->company_name    = $request->input('company');
+
+        if( !empty( $request->input('info') ))
+            $user->info       = $request->input('info');
+
+        if( !empty( $request->input('contacts')) )
+            $user->contacts   = $request->input('contacts');
+
+        if( !empty( $request->input('phone') ))
+            $user->phone        = $request->input('phone');
+
+        if( !empty( $request->input('address')) )
+            $user->address        = $request->input('address');
 
         // Check email changes
         if( $request->input('email') != $user->email )
