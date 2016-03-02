@@ -33,6 +33,7 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+
     public function status()
     {
         return $this->belongsTo('App\Models\Status', 'status_id', 'id');

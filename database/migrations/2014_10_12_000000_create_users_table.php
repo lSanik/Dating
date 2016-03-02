@@ -26,11 +26,15 @@ class CreateUsersTable extends Migration
             $table->text('info');
             $table->text('contacts');
 
+
             $table->integer('status_id')->unsigned();
-            $table->integer('role_id')->unsigned();
-            $table->integer('city_id')->unsigned();
 
             $table->integer('partner_id');
+
+            $table->integer('role_id')->unsigned();
+            $table->integer('city_id')->unsigned();
+            $table->integer('country_id')->unsigned();
+
 
             $table->rememberToken();
             $table->timestamps();

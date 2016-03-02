@@ -68,7 +68,6 @@
     <?php /*
 
 
-
     <!-- jQuery -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <!-- Latest compiled and minified JS -->

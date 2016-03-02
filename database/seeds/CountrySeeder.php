@@ -262,7 +262,6 @@ class CountrySeeder extends Seeder
             [246, 'ZW', 'Zimbabwe', 'created_at' => \Carbon\Carbon::now()],
         ];
 
-
         DB::table('countries')->insert($countries);
     }
 }

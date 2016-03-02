@@ -23,6 +23,7 @@ class Post extends Model
         if ($lang == null) {
             $lang = App::getLocale();
         }
+
         return $this->hasMany('App\Models\PostTranslation')->where('locale', '=', $lang);
     }
 }
