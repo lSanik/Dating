@@ -5,8 +5,12 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 
+
+use App\Role;
+
 class HomeController extends Controller
 {
+    public $haveRole;
     /**
      * Create a new controller instance.
      *
@@ -15,6 +19,7 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+
     }
 
     /**
@@ -26,4 +31,6 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+
 }
