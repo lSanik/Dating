@@ -91,14 +91,6 @@ Route::group([  'prefix' => 'admin',
     Route::post('moderator/edit/{id}', 'Admin\ModeratorController@update');
     /** End Moderator Profile routing */
 
-
-    /** Start Girls Profile routing */
-    Route::get('girls', 'Admin\GirlsController@index');
-    Route::get('girl/new', 'Admin\GirlsController@create');
-    Route::get('girl/edit/{id}', 'Admin\GirlsController@edit');
-    Route::get('girl/show/{id}', 'Admin\GirlsController@show');
-
-
     /** Start Partners Profile routing */
     Route::get('partners', 'Admin\PartnerController@index');
     Route::get('partner/new', 'Admin\PartnerController@create');
@@ -109,11 +101,6 @@ Route::group([  'prefix' => 'admin',
     Route::post('partner/store', 'Admin\PartnerController@store');
     Route::post('partner/edit/{id}', 'Admin\PartnerController@update');
     /** End partners profile routing */
-
-    Route::post('girl/store', 'Admin\GirlsController@store');
-    Route::post('girl/edit/{id}','Admin\GirlsController@update');
-    /** End Girls Profile routing */
-
 
 
 
@@ -163,6 +150,9 @@ Route::group(['middleware' => 'web'], function () {
 
 
 Route::group(['middleware' => ['web']], function () {
+
+    Route::post('/get/states/', 'StatesController@statesByCountry');
+    Route::post('/get/cities/', 'CityController@getCityByState');
 
     Route::get('/blog/{id}', 'Admin\BlogController@show');
 

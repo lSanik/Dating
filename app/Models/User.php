@@ -39,7 +39,6 @@ class User extends Authenticatable
         return $this->belongsTo('App\Models\Status', 'status_id', 'id');
     }
 
-
     // The User model
     public function role()
     {

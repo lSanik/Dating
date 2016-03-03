@@ -56,8 +56,8 @@
                 <a href=""><i class="fa fa-user"></i>
                     <span>Модераторы</span></a>
                 <ul class="child-list">
-                    <li><a href="{{ url('#') }}"> Все модераторы </a></li>
-                    <li><a href="{{ url('#') }}"> Добавить модератора </a></li>
+                    <li><a href="{{ url('/admin/moderators') }}"> Все модераторы </a></li>
+                    <li><a href="{{ url('/admin/moderator/new') }}"> Добавить модератора </a></li>
                 </ul>
             </li>
             @endif
@@ -66,31 +66,31 @@
                 <a href=""><i class="fa fa-female "></i>
                     <span>Анкеты</span></a>
                 <ul class="child-list">
-                    <li><a href="{{ url('/girl/check') }}"> Проверить наличие анкеты </a></li>
-                    <li><a href="{{ url('#') }}"> Активные </a></li>
-                    <li><a href="{{ url('#') }}"> Приостановленные </a></li>
-                    <li><a href="{{ url('#') }}"> Отклоненные </a></li>
-                    <li><a href="{{ url('#') }}"> Удаленные </a></li>
-                    <li><a href="{{ url('#') }}"> На модерации </a></li>
+                    <li><a href="{{ url('/admin/girl/check') }}"> Проверить наличие анкеты </a></li>
+                    <li><a href="{{ url('/admin/girls/active') }}"> Активные </a></li>
+                    <li><a href="{{ url('/admin/girls/wait') }}"> Приостановленные </a></li>
+                    <li><a href="{{ url('/admin/girls/no') }}"> Отклоненные </a></li>
+                    <li><a href="{{ url('/admin/girls/deleted') }}"> Удаленные </a></li>
+                    <li><a href="{{ url('/admin/girls/moderation') }}"> На модерации </a></li>
                     <li class="nav-divider"></li>
-                    <li><a href="{{ url('#') }}"> Все анкеты </a></li>
-                    <li><a href="{{ url('#') }}"> Добавить анкету </a></li>
+                    <li><a href="{{ url('/admin/girls') }}"> Все анкеты </a></li>
+                    <li><a href="{{ url('/admin/girl/new') }}"> Добавить анкету </a></li>
                 </ul>
             </li>
                 <li>
-                    <a href="#"> Финансовые отчеты </a>
+                    <a href="{{ url('admin/finance') }}"> Финансовые отчеты </a>
                 </li>
                 <li>
                     <a href="#"> Рассылка </a>
                 </li>
                 <li>
-                    <a href="#"> Подарки </a>
+                    <a href="{{ url('admin/presents') }}"> Подарки </a>
                 </li>
                 <li>
-                    <a href="#"> Обратная связь </a>
+                    <a href="{{ url('admin/support') }}"> Обратная связь </a>
                 </li>
                 <li>
-                    <a href="#"> Сообщения от мужчин </a>
+                    <a href="{{ url('admin/messages_from_man') }}"> Сообщения от мужчин </a>
                 </li>
             @endif
             <li>
@@ -105,8 +105,8 @@
             @if( Auth::User()->hasRole('Owner') )
                 <li class="menu-list"><a href="javascript:;"><i class="fa fa-envelope-o"></i> <span>От Клиентов<span class="label noti-arrow bg-danger pull-right">4 Unread</span> </span></a>
                     <ul class="child-list">
-                        <li><a href="{{ url('#') }}">Все сообщения</a></li>
-                        <li><a href="{{ url('#') }}">Создать сообщение</a></li>
+                        <li><a href="{{ url('/admin/messages/') }}">Все сообщения</a></li>
+                        <li><a href="{{ url('/admin/message/new') }}">Создать сообщение</a></li>
                     </ul>
                 </li>
             <li>
@@ -122,11 +122,11 @@
             <li class="menu-list"><a href="javascript:;"><i class="fa fa-paper-plane"></i>
                     <span>Страницы </span></a>
                 <ul class="child-list">
-                    <li><a href="{{ url('#') }}">Все страницы</a></li>
-                    <li><a href="{{ url('#') }}">Добавить страницу</a></li>
+                    <li><a href="{{ url('/admin/pages') }}">Все страницы</a></li>
+                    <li><a href="{{ url('/admin/page/new') }}">Добавить страницу</a></li>
                 </ul>
             </li>
-            <li class=""><a href="{{ url('#') }}"><i class="fa fa-codiepie"></i>
+            <li class=""><a href="{{ url('/admin/horoscope') }}"><i class="fa fa-codiepie"></i>
                     <span>Гороскопы </span></a>
             </li>
             @endif()
@@ -135,8 +135,6 @@
             </li>
         </ul>
         <!--sidebar nav end-->
-
-
     </div>
 </div>
 <!-- sidebar left end-->

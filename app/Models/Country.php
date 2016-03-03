@@ -13,4 +13,10 @@ class Country extends Model
         'id', 'sortname', 'name'
     ];
 
+
+    protected function states()
+    {
+        $this->hasMany('State');
+    }
+
 }
