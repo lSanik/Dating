@@ -25,5 +25,6 @@ class DatabaseSeeder extends Seeder
        // $this->call(States::class);
         //@todo seeder
 
+        $this->call(StatusTableSeeder::class);
     }
 }

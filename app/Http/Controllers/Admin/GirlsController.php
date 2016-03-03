@@ -14,6 +14,7 @@ use App\Models\User;
 use App\Models\Country;
 use App\Models\State;
 use App\Models\City;
+use Illuminate\Support\Facades\Auth;
 
 class GirlsController extends Controller
 {
@@ -61,6 +62,7 @@ class GirlsController extends Controller
 
         $countries = Country::all();
 
+
         return view('admin.girls.create')->with([
             'heading' => 'Добавить девушку',
             'selects' => $selects,
@@ -76,7 +78,67 @@ class GirlsController extends Controller
      */
     public function store(Request $request)
     {
-        print_r( $request->input() );
+        if( !$this->check( $request->input('passno') ) )
+        {
+            /**
+             * Create user with role female
+             */
+            $user = new User();
+
+            $user->first_name   = $request->input('first_name');
+            $user->last_name  = $request->input('second_name');
+            $user->email        = $request->input('email');
+            $user->phone        = $request->input('phone');
+            $user->password     = bcrypt( $request->input('password') );
+            $user->role_id      = 5;
+            $user->city_id      = $request->input('city');
+            $user->status_id    = 5;
+            $user->partner_id   = Auth::user()->id;
+
+            $id = $user->save();
+            unset($user);
+
+
+            /**
+             * Add girl passport
+             */
+            $passport = new Passport();
+
+            $passport->user_id  = $id;
+            $passport->passno   = $request->input('passno');
+            $passport->date     = $request->input('pass_date');
+
+            $passport->save();
+            unset($passport);
+
+            /**
+             * Add girl profile
+             */
+            $profile = new Profile();
+
+            $profile->user_id       = $id;
+
+            $profile->birthday      = $request->input('birthday');
+            $profile->height        = $request->input('height');
+            $profile->weight        = $request->input('weight');
+
+            /** Enums gender */
+            $profile->gender        = $request->input('gender');
+            $profile->eye           = $request->input('eye');
+            $profile->hair          = $request->input('hair');
+            $profile->education     = $request->input('education');
+            $profile->kids          = $request->input('kids');
+            $profile->want_kids     = $request->input('want_kids');
+            $profile->religion      = $request->input('religion');
+            $profile->smoke         = $request->input('smoke');
+            $profile->drink         = $request->input('drink');
+            $profile->occupation    = $request->input('occupation');
+
+            $profile->save();
+            unset($profile);
+
+            //@todo прописать if на возможные незаполненные поля.
+        }
     }
 
     /**
@@ -129,16 +191,15 @@ class GirlsController extends Controller
         return $status;
     }
 
-    public function check()
+    public function check($passno)
     {
-        return view('admin.girls.check');
-    }
+        $passport = $this->passport->where( 'passno', '=', $passno )->get();
 
-    public function checkPost($no, $date)
-    {
-        return $no . $date;
-    }
 
+
+        return False;
+
+    }
 
 
 }

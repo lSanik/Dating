@@ -17,15 +17,6 @@
             <div class="row">
                 {!! Form::open(['url' => 'admin/girl/store', 'class' => 'form']) !!}
                     <div class="col-md-6">
-
-                        <div class="form-group">
-                            <div class="col-md-6">{!! Form::label('first_name', 'Имя') !!}</div>
-                            <div class="col-md-6">{!! Form::text('first_name', null, ['class'=>'form-control', 'placeholder' => 'Name']) !!}</div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-6">{!! Form::label('second_name', 'Фамилия') !!}</div>
-                            <div class="col-md-6">{!! Form::text('second_name', null, ['class'=>'form-control', 'placeholder' => 'Surname']) !!}</div>
-                        </div>
                         <div class="form-group">
                             <div class="col-md-6">{!! Form::label('passno','№ паспорта') !!}</div>
                             <div class="col-md-6">{!! Form::text('passno', null, ['class' => 'form-control']) !!}</div>
@@ -34,9 +25,26 @@
                             <div class="col-md-6">{!! Form::label('pass_date', 'Дата выдачи') !!}</div>
                             <div class="col-md-6">{!! Form::text('pass_date', \Carbon\Carbon::now() , ['class' => 'form-control hasDatepicker', 'id' => 'datepicker']) !!}</div>
                         </div>
+
+                        <div class="form-group">
+                            <div class="col-md-6">{!! Form::label('first_name', 'Имя') !!}</div>
+                            <div class="col-md-6">{!! Form::text('first_name', null, ['class'=>'form-control', 'placeholder' => 'Name']) !!}</div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-6">{!! Form::label('second_name', 'Фамилия') !!}</div>
+                            <div class="col-md-6">{!! Form::text('second_name', null, ['class'=>'form-control hasDatePicker', 'placeholder' => 'Surname']) !!}</div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-6">{!! Form::label('birthday', 'Дата рождения') !!}</div>
+                            <div class="col-md-6">{!! Form::text('birthday', null, ['class' => 'form-control']) !!}</div>
+                        </div>
                         <div class="form-group">
                             <div class="col-md-6">{!! Form::label('email','Email') !!}</div>
                             <div class="col-md-6">{!! Form::email('email', null, ['class' => 'form-control', 'placeholder' => 'email@email.com', 'required' => 'required']) !!}</div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-6">{!! Form::label('phone', 'Phone') !!}</div>
+                            <div class="col-md-6">{!! Form::text('phone', null, ['class' => 'form-control']) !!}</div>
                         </div>
                         <div class="form-group">
                             <div class="col-md-6">{!! Form::label('password', 'Password') !!}</div>
@@ -72,6 +80,18 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
+                            <div class="col-md-6">{!! Form::label('height', 'Рост') !!}</div>
+                            <div class="col-md-6">{!! Form::text('height', null, ['class' => 'form-control']) !!} </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-6">{!! Form::label('weight', 'Вес') !!}</div>
+                            <div class="col-md-6">{!! Form::text('weight', null, ['class' => 'form-control']) !!} </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-6">{!! Form::label('occupation', 'Род деятельности') !!}</div>
+                            <div class="col-md-6">{!! Form::text('occupation', null, ['class' => 'form-control']) !!} </div>
+                        </div>
+                        <div class="form-group">
                             <div class="col-md-6">{!! Form::label('gender', 'Пол') !!}</div>
                             <div class="col-md-6">{!! Form::select('gender', $selects['gender'],'female',  ['class' => 'form-control']) !!}</div>
                         </div>
@@ -92,8 +112,8 @@
                             <div class="col-md-6">{!! Form::select('kids', $selects['kids'],null,  ['class' => 'form-control']) !!}</div>
                         </div>
                         <div class="form-group">
-                            <div class="col-md-6">{!! Form::label('want_k', 'Желание завести детей') !!}</div>
-                            <div class="col-md-6">{!! Form::select('want_k', $selects['want_k'],null,  ['class' => 'form-control']) !!}</div>
+                            <div class="col-md-6">{!! Form::label('want_kids', 'Желание завести детей') !!}</div>
+                            <div class="col-md-6">{!! Form::select('want_kids', $selects['want_k'],null,  ['class' => 'form-control']) !!}</div>
                         </div>
                         <div class="form-group">
                             <div class="col-md-6">{!! Form::label('family', 'Семейное положение') !!}</div>
@@ -134,7 +154,7 @@
 
     <script>
         $(function() {
-            $( "#datepicker" ).datepicker();
+            $( ".hasDatepicker" ).datepicker();
 
             $('select[name="county"]').on('change', function(){
                 $('select[name="city"]').empty();

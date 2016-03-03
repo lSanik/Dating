@@ -38,7 +38,7 @@ class StatusTableSeeder extends Seeder
         ]);
 
         DB::table('status')->insert([
-            'id'            => 2,
+            'id'            => 5,
             'name'          => 'onmoderation',
             'description'   => 'On moderation'
         ]);
