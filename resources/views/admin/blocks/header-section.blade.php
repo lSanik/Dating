@@ -1,4 +1,4 @@
-<!-- header section start-->
+ <!-- header section start-->
 <div class="header-section">
 
     <!--logo and logo icon start-->
@@ -201,7 +201,21 @@
         <!--right notification start-->
         <div class="right-notification">
             <ul class="notification-menu">
-                    <li>
+                <li class="dropdown">
+                    <a href="javascript:;" data-toggle="dropdown" class="dropdown-toggle" aria-expanded="false">
+                        <img src="{{ url('/assets/img/flags/'.App::getLocale().'.png') }}" alt="{{App::getLocale()}}"><span>{{ trans( 'langs.'.App::getLocale() ) }}</span>
+                        <b class=" fa fa-angle-down"></b>
+                    </a>
+                    <ul role="menu" class="dropdown-menu language-switch">
+                        @foreach( Config::get('app.locales') as $locale )
+                            @if( $locale != App::getLocale() )
+                                <li><a tabindex="-1" href="/{{ $locale }}/{{ substr(Route::getCurrentRoute()->getPath(), 3) }}"><span> {{ trans('langs.'.$locale) }} </span><img src="{{ url('/assets/img/flags/'.$locale.'.png') }}" alt="{{$locale}}"></a></li>
+                            @endif
+                        @endforeach
+
+                    </ul>
+                </li>
+                <li>
                     <a href="javascript:;" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                         <img src="{{ url('/uploads/admins/'.Auth::user()->avatar )}}" alt="">
                         {{ Auth::user()->first_name }} {{ Auth::user()->last_name }}

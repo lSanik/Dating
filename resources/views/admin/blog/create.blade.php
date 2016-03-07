@@ -17,15 +17,37 @@
 
 @section('content')
 
+
+
+
     <section class="panel col-md-8">
         <header class="panel-heading ">
+            <div class="row">
             <div class="form-horizontal">
-                <div class="form-group">
-                    <label class="col-sm-2 col-sm-2 control-label">Заголовок</label>
-                    <div class="col-sm-10">
-                        <input class="form-control" type="text" name="titlef" placeholder="Заголовок">
+
+                <div class="col-sm-8">
+                    <div class="form-group">
+                        <label for="titlef" class="col-sm-2">Заголовок</label>
+                        <div class="">
+                            <input class="form-control" type="text" name="titlef" placeholder="Заголовок">
+                        </div>
                     </div>
                 </div>
+
+                <div class="col-sm-4">
+                    <label class="col-sm-2" for="locale"> Язык </label>
+                    <div class="">
+                        <select name="locale" class="form-control">
+                            <option value="{{ App::getLocale() }}" selected="selected">{{ trans('langs.'.App::getLocale()) }}</option>
+                            @foreach( Config::get('app.locales') as $locale )
+                                @if( $locale != App::getLocale() )
+                                   <option value="{{ $locale }}"> {{ trans('langs.'.$locale) }} </option>
+                                @endif
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+            </div>
             </div>
         </header>
         <div class="panel-body">
@@ -564,6 +586,7 @@
                         {!! Form::open(['url' => '/admin/blog/new', 'id' => 'form-hidden', 'enctype' => 'multipart/form-data', 'method' => 'POST']) !!}
                         {!! Form::hidden('title') !!}
                         {!! Form::hidden('body') !!}
+                        {!! Form::hidden('current_locale') !!}
 
                     <input id="file-0" class="file" type="file" name="cover_image" multiple=false value="" accept="image/*">
 
@@ -587,6 +610,7 @@
     <script type="text/javascript" src="{{ url('/assets/js/file-input-init.js') }}"></script>
 
     <script>
+
         jQuery(document).ready(function(){
             $('.summernote').summernote({
                 height: 200,                 // set editor height
@@ -595,6 +619,12 @@
                 maxHeight: null,             // set maximum height of editor
 
                 focus: true                 // set focus to editable area after initializing summernote
+            });
+
+            $('input[name="current_locale"]').val( $('select[name="locale"]').val() );
+
+            $('select[name="locale"]').on('change', function(){
+                $('input[name="current_locale"]').val( $(this).val() );
             });
 
             $('input[name="titlef"]').on('change', function(){

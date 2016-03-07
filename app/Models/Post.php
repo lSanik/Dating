@@ -12,18 +12,13 @@ class Post extends Model
     protected $table = 'posts';
 
     protected $fillable = [
-        'title',
-        'body',
         'cover_image'
     ];
 
 
-    public function lang( $lang = null )
+    public function lang( $lang  )
     {
-        if ($lang == null) {
-            $lang = App::getLocale();
-        }
-
         return $this->hasMany('App\Models\PostTranslation')->where('locale', '=', $lang);
     }
+
 }

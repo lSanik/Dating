@@ -42,9 +42,14 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
 
 });
 
+Route::group([  'prefix' => LaravelLocalization::setLocale(),
+                'middleware' => ['localeSessionRedirect', 'localizationRedirect']
+], function(){
 
-Route::group([  'prefix' => 'admin',
-                'middleware' => ['web', 'auth', 'roles'],
+});
+
+Route::group([  'prefix' => LaravelLocalization::setLocale().'/admin',
+                'middleware' => ['web', 'auth', 'roles' ],
                 'roles' => ['Owner', 'Moder', 'Partner']
 ], function(){
 
@@ -55,7 +60,7 @@ Route::group([  'prefix' => 'admin',
     Route::get('dashboard', 'Admin\AdminController@dashboard');
     Route::get('profile', 'Admin\AdminController@profile'); //end
 
-
+    Route::post('profile', 'Admin\AdminController@profile_update');
     /** Start Blog Routing */
     Route::get('blog', 'Admin\BlogController@index');
     Route::get('blog/new', 'Admin\BlogController@create');

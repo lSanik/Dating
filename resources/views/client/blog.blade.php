@@ -2,15 +2,17 @@
 
 @section('content')
 
-    <article class="panel">
-        <header class="panel-heading">
-            {{ $post->title }}
-        </header>
-        <div class="panel-body">
 
-           <img src="{{  url('/uploads/blog/'.$post->cover_image) }}" alt="{{ $post->title }}">
-            {!! $post->body !!}
-        </div>
-    </article>
+<article class="panel">
+   <header class="panel-heading">
+      {{ $post[0]->title }}
+   </header>
+   <div class="panel-body">
+
+      <img src="{{  url('/uploads/blog/'.$image->cover_image) }}" alt="{{ $post[0]->title }}">
+      {!! $post[0]->body !!}
+   </div>
+</article>
+
 
 @stop

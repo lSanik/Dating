@@ -14,6 +14,6 @@ class PostTranslation extends Model
 
     public function post()
     {
-        $this->belongsTo('Post');
+        $this->hasOne('App\Models\Post');
     }
 }

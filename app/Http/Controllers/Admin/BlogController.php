@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App;
 
 use App\Models\Post;
+use App\Models\PostTranslation;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -16,6 +17,7 @@ use Illuminate\Support\Facades\Config;
 class BlogController extends Controller
 {
     private $post;
+    private $trans;
 
 
     /*
@@ -23,9 +25,10 @@ class BlogController extends Controller
      * @todo мультиязычность
      */
 
-    public function __construct(Post $post)
+    public function __construct(Post $post, PostTranslation $trans)
     {
         $this->post = $post;
+        $this->trans = $trans;
     }
 
     /**
@@ -36,11 +39,12 @@ class BlogController extends Controller
     public function index()
     {
         $heading = 'Все записи';
-        $posts = $this->post->all();
+        $posts = $this->trans->all();
 
         return view('admin.blog.index')->with([
             'heading' => $heading,
             'posts' => $posts,
+
         ]);
     }
 
@@ -51,9 +55,10 @@ class BlogController extends Controller
      */
     public function create()
     {
+
         $heading = 'Добавить новую запись';
         return view('admin.blog.create')->with([
-            'heading' => $heading
+            'heading' => $heading,
         ]);
     }
 
@@ -67,11 +72,12 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-
         $rulse = [
             'title' => 'required',
             'body'  => 'required'
         ];
+
+        $fileName = '';
 
         if( !empty( $request->file() )){
 
@@ -82,49 +88,35 @@ class BlogController extends Controller
             $file->move($destination, $fileName);
         }
 
-        if( is_file( $destination."/".$fileName) )
-        {
-            $this->post->create([
-                'title' => $request->input('title'),
-                'body'  => $request->input('body'),
-                'cover_image' => $fileName
-            ]);
-        }
+        $this->post->cover_image = $fileName;
+        $id = $this->post->save();
 
+        $post = $this->trans;
+        $post->post_id = $id;
+        $post->locale = $request->input('current_locale');
+        $post->title = $request->input('title');
+        $post->body = $request->input('body');
+        $post->save();
 
         return redirect('/admin/blog');
+
 
     }
 
 
     public function show($id)
     {
-        $lang_code = App::getLocale();
-
-        $default_lang = Config::get('app.fallback_locale');
-
-        $supported = Config::get('app.locales');
-
-
-
-
-        if( $lang_code == $default_lang )
+        if( in_array( App::getLocale(), Config::get('app.locales') ) )
         {
-            $post = $this->post->findOrFail($id);
-
-        } else {
-
-            if( in_array($lang_code, $supported) )
-            {
-                //@todo multilanguge
-
-                $post = $this->post->find($id)->lang($lang_code)->get();
-            }
+            $post = $this->post->find($id)->lang( App::getLocale() )->get();
+            $image = $this->post->select('cover_image')->find($id);
         }
 
         return view('client.blog')->with([
-            'post' => $post
+            'post' =>  json_decode($post),
+            'image' => $image
         ]);
+
     }
 
 

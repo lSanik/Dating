@@ -195,10 +195,7 @@ class GirlsController extends Controller
     {
         $passport = $this->passport->where( 'passno', '=', $passno )->get();
 
-
-
         return False;
-
     }
 
 
