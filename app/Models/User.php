@@ -34,6 +34,10 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function tickets()
+    {
+        return $this->hasMany('App\Models\TicketData', 'user_id', 'id');
+    }
 
     public function status()
     {
@@ -45,6 +49,7 @@ class User extends Authenticatable
     {
         return $this->belongsTo('App\Models\Role', 'role_id', 'id');
     }
+
     public function hasRole($roles)
     {
         $this->have_role = $this->getUserRole();
@@ -63,10 +68,12 @@ class User extends Authenticatable
         }
         return false;
     }
+
     private function getUserRole()
     {
         return $this->role()->getResults();
     }
+
     private function checkIfUserHasRole($need_role)
     {
         return (strtolower($need_role)==strtolower($this->have_role->name)) ? true : false;

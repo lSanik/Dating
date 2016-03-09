@@ -167,6 +167,12 @@ return [
          */
 
         Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider::class,
+
+        /*
+         * Social Atuh
+         */
+
+        Laravel\Socialite\SocialiteServiceProvider::class,
     ],
 
     /*
@@ -217,7 +223,8 @@ return [
         'Form'      => Collective\Html\FormFacade::class,
         'Html'      => Collective\Html\HtmlFacade::class,
         'Str'       => Illuminate\Support\Str::class,
-        'LaravelLocalization'   => Mcamara\LaravelLocalization\Facades\LaravelLocalization::class
+        'LaravelLocalization'   => Mcamara\LaravelLocalization\Facades\LaravelLocalization::class,
+        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
 
     ],
 

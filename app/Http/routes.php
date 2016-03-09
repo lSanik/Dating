@@ -142,15 +142,27 @@ Route::group([  'prefix' => LaravelLocalization::setLocale().'/admin',
     // @todo Create gifts routs
     // @todo Make gifts Controllers
     // @todo Make gifts DB
-
     /** End gifts */
+
+
+    /** Ticket System Routes */
+
+    Route::get('support', 'Admin\TicketController@index'); // show ticket form page
+    Route::get('support/{ticket_id}', 'Admin\TicketController@show'); // show one ticket
+
+    Route::post('support', 'Admin\TicketController@create'); //create new ticket
+    Route::post('support/{ticket_id}', 'Admin\TicketController@answer'); //add new answer to ticket
+
+    /** End ticket System Routes */
 
 });
 
 Route::group(['middleware' => 'web'], function () {
-    Route::auth();
 
     Route::get('/home', 'HomeController@index');
+
+
+
 });
 
 
