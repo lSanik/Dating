@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 
 /*
 |--------------------------------------------------------------------------
@@ -25,7 +23,19 @@ Route::get('/', function () {
 | kernel and includes session state, CSRF protection, and more.
 |
 */
+Route::group(['middleware' => 'web'], function () {
 
+    Route::get('/social/redirect/{provider}',[
+        'as'     => 'social.redirect',
+        'uses'   => 'Auth\AuthController@getSocialRedirect'
+    ]);
+
+    Route::get('/social/handle/{provider}',[
+        'as'    => 'social.handle',
+        'uses'  => 'Auth\AuthController@getSocialHandle'
+    ]);
+
+});
 
 Route::group(['prefix' => LaravelLocalization::setLocale(),
               'middleware' => [ 'localeSessionRedirect', 'localizationRedirect' ]
@@ -157,17 +167,10 @@ Route::group([  'prefix' => LaravelLocalization::setLocale().'/admin',
 
 });
 
-Route::group(['middleware' => 'web'], function () {
-
-    Route::get('/home', 'HomeController@index');
-
-
-
-});
 
 
 Route::group(['middleware' => ['web']], function () {
-
+    Route::get('/','HomeController@index');
     Route::post('/get/states/', 'StatesController@statesByCountry');
     Route::post('/get/cities/', 'CityController@getCityByState');
 
@@ -191,4 +194,10 @@ Route::group(['middleware' => ['web']], function () {
     Route::post('/addimage', array('as' => 'add_image_to_album','uses' => 'ImagesController@postAdd'));
     Route::get('/deleteimage/{id}', array('as' => 'delete_image','uses' => 'ImagesController@getDelete'));
 */
+});
+
+Route::group(['middleware' => 'web'], function () {
+    Route::auth();
+
+    Route::get('/home', 'HomeController@index');
 });

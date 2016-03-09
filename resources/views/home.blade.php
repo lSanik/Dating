@@ -8,10 +8,7 @@
                 <div class="panel-heading">Dashboard</div>
 
                 <div class="panel-body">
-
-                    <h1>{{ trans('home.home') }}</h1>
-
-
+                    You are logged in!
                 </div>
             </div>
         </div>

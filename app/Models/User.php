@@ -44,6 +44,13 @@ class User extends Authenticatable
         return $this->belongsTo('App\Models\Status', 'status_id', 'id');
     }
 
+    // Social Media Auth
+    public function social()
+    {
+        $this->hasMany('App\Models\Social');
+    }
+
+
     // The User model
     public function role()
     {
