@@ -29,6 +29,6 @@ class CreateSocialsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('socials');
+        Schema::drop('socials_login');
     }
 }

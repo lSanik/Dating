@@ -9,6 +9,7 @@ use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Illuminate\Contracts\Auth\Guard;
 
 class AuthController extends Controller
 {
@@ -31,6 +32,7 @@ class AuthController extends Controller
      * @var string
      */
     protected $redirectTo = '/';
+    protected $auth;
     // @todo check user status
     /**
      * Create a new authentication controller instance.
@@ -39,7 +41,9 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest', ['except' => 'logout']);
+        $this->middleware('guest', ['except' =>
+                                        ['logout','resendEmail', 'activateAccount']
+                                ]);
     }
 
     /**
@@ -75,9 +79,47 @@ class AuthController extends Controller
         ]);
     }
 
+    public function sendEmail(User $user)
+    {
+        $data = [
+            'name' => $user->first_name. " " . $user->last_name,
+            'code' => $user->activation_code
+        ];
+
+        \Mail::queue('emails.activateAccount', $data, function($message) use ($user){
+            $message->subject( \Lang::get('auth.pleaseActivate') );
+            $message->to($user->email);
+        });
+    }
+
+    public function resendEmail()
+    {
+        $user = \Auth::user();
+        if( $user->resent >= 3 )
+        {
+            return view('auth.tooManyEmails')->with('email', $user->email);
+        } else {
+            $user->resent = $user->resent + 1;
+            $user->save();
+            $this->sendEmail($user);
+            return view('auth.activateAccount')->with('email', $user->email);
+        }
+    }
+
+    public function activateAccount($code, User $user)
+    {
+
+        if( $user->accountIsActive($code) )
+        {
+            \Session::flash('message', \Lang::get('auth.successActivated') );
+            return redirect('/');
+        }
+
+    }
 
     public function getSocialRedirect( $provider )
     {
+
         $providerKey = \Config::get('services.' . $provider );
 
         if( empty($providerKey) )
@@ -87,26 +129,43 @@ class AuthController extends Controller
 
     }
 
-    public function getSocialHandle( $provider )
+    /**
+     * @param $provider
+     */
+    public function getSocialHandle($provider )
     {
         $user = Socialite::driver( $provider )->user();
 
-        $social_user = null;
+        dd($user);
 
-        $user_check = User::where('email', '=', $user->email)->first();
+
+        //@todo Register & Login logic
+        //@todo Man page empty fields registration
+
+       /* $social_user = null;
+
+        $user_check = User::where('email', '=', $user->email)->first(); //check user email
 
         if( !empty($user_check) )
         {
             $social_user = $user_check;
         }
-        else
+        else /* Register new User
         {
+
             $same_social_id = Social::where('social_id', '=', $user->id)->where('provider', '=', $provider)->first();
 
             if( empty($same_social_id) )
             {
                 $new_social_user = new User;
-                $new_social_email = $user->email;
+                $new_social_user->email = $user->email;
+
+
+                /* Unique User Phone
+                $new_social_user->phone = str_random(60).$user->email;
+
+
+
                 $name = explode(' ', $user->name);
 
                 if( is_array($name) )
@@ -140,7 +199,7 @@ class AuthController extends Controller
                 $social_data->social_id     = $user->id;
                 $social_data->provider      = $provider;
 
-                $new_social_user->social()->save($social_data);
+                $new_social_user->social()->save( $social_data );
             }
             else{
                 //Load Existing social user
@@ -148,9 +207,8 @@ class AuthController extends Controller
             }
         }
 
-        $this->auth->login($social_user, true);
+        $this->auth->login($social_user, true); */
 
     }
-
 
 }

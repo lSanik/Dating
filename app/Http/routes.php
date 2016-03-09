@@ -23,6 +23,8 @@
 | kernel and includes session state, CSRF protection, and more.
 |
 */
+
+
 Route::group(['middleware' => 'web'], function () {
 
     Route::get('/social/redirect/{provider}',[
