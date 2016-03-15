@@ -37,7 +37,18 @@ class GirlsController extends Controller
      */
     public function index()
     {
-        return view('admin.girls.index');
+        if( Auth::user()->hasRole('Owner') )
+            $girls = User::where('role_id', '=', '5')->get();
+        else
+            if( Auth::user()->hasRole('Partner') )
+                $girls = User::where('role_id', '=', '5')
+                                ->where('partner_id', '=', Auth::user()->id)
+                                ->get();
+
+        return view('admin.girls.index')->with([
+            'heading' => 'Все девушки',
+            'girls' => $girls
+        ]);
     }
 
     /**
@@ -78,66 +89,107 @@ class GirlsController extends Controller
      */
     public function store(Request $request)
     {
-        if( !$this->check( $request->input('passno') ) )
+
+        $this->validate($request, [
+            'first_name'    => 'required|max:255',
+            'second_name'   => 'required|max:255',
+            'birthday'      => 'required',
+            'email'         => 'required|max:128',
+            'phone'         => 'required|max:20',
+            'password'      => 'required',
+            'county'        => 'required',
+            'state'         => 'required',
+            'city'          => 'required',
+            'passno'        => 'required',
+            'pass_date'     => 'required',
+            'pass_photo'    => 'required',
+        ]);
+
+        //Проверка паспорта в базе
+        $check = $passp = $this->passport->where('passno', 'like', str_replace(" ","", $request->input('passno')))->first();
+
+        if( !$check )
         {
-            /**
-             * Create user with role female
-             */
-            $user = new User();
+            $user_avatar    = 'empty_girl.png';
+            $passport_cover = '';
 
-            $user->first_name   = $request->input('first_name');
-            $user->last_name  = $request->input('second_name');
-            $user->email        = $request->input('email');
-            $user->phone        = $request->input('phone');
-            $user->password     = bcrypt( $request->input('password') );
-            $user->role_id      = 5;
-            $user->city_id      = $request->input('city');
-            $user->status_id    = 5;
-            $user->partner_id   = Auth::user()->id;
+            /** Cech for images */
+            if( $request->file('avatar') )
+            {
+                $file = $request->file('avatar');
+                $user_avatar = time() . '-' . $file->getClientOriginalName();
+                $destination = public_path() . '/uploads/girls/avatars';
+                $file->move($destination, $user_avatar);
+            }
 
-            $id = $user->save();
-            unset($user);
-
-
-            /**
-             * Add girl passport
-             */
-            $passport = new Passport();
-
-            $passport->user_id  = $id;
-            $passport->passno   = $request->input('passno');
-            $passport->date     = $request->input('pass_date');
-
-            $passport->save();
-            unset($passport);
+            if( $request->input('pass_photo') ){
+                $file = $request->file('avatar');
+                $passport_cover = time(). '-' . $file->getClientOriginalName();
+                $destination = public_path() . '/uploads/girls/passports';
+                $file->move($destination, $passport_cover);
+            }
 
             /**
-             * Add girl profile
+             * Create user with role female/male
              */
-            $profile = new Profile();
 
-            $profile->user_id       = $id;
+            $this->user->avatar         = $user_avatar;
+            $this->user->first_name     = $request->input('first_name');
+            $this->user->last_name      = $request->input('second_name');
+            $this->user->email          = $request->input('email');
+            $this->user->phone          = $request->input('phone');
+            $this->user->password       = bcrypt( $request->input('password') );
+            $this->user->city_id        = $request->input('city');
 
-            $profile->birthday      = $request->input('birthday');
-            $profile->height        = $request->input('height');
-            $profile->weight        = $request->input('weight');
+            $this->user->partner_id     = Auth::user()->id;
 
-            /** Enums gender */
-            $profile->gender        = $request->input('gender');
-            $profile->eye           = $request->input('eye');
-            $profile->hair          = $request->input('hair');
-            $profile->education     = $request->input('education');
-            $profile->kids          = $request->input('kids');
-            $profile->want_kids     = $request->input('want_kids');
-            $profile->religion      = $request->input('religion');
-            $profile->smoke         = $request->input('smoke');
-            $profile->drink         = $request->input('drink');
-            $profile->occupation    = $request->input('occupation');
+            $gender = $request->input('gender');
 
-            $profile->save();
-            unset($profile);
+            /** Проверка пола учасника */
+            if( $gender == 'female'){
+                $this->user->role_id    = 5;
+                $this->user->status_id  = 5;
+            } else {
+                $this->user->role_id    = 4;
+                $this->user->status_id  = 1;
+            }
 
-            //@todo прописать if на возможные незаполненные поля.
+            $id = $this->user->save();
+
+            /**
+             *  Add girl passport
+             */
+
+            $this->passport->user_id    = $id;
+            $this->passport->passno     = str_replace(" ", "", $request->input('passno'));
+            $this->passport->date       = $request->input('pass_date');
+            $this->passport->cover      = $passport_cover;
+
+            $this->passport->save();
+
+            /**
+             * Create girl profile
+             */
+
+            $this->profile->user_id     = $id;
+            $this->profile->birthday    = $request->input('birthday');
+            $this->profile->height      = $request->input('height');
+            $this->profile->weight      = $request->input('weight');
+
+            /** Enums */
+
+            $this->profile->gender      = $request->input('gender');
+            $this->profile->eye         = $request->input('eye');
+            $this->profile->hair        = $request->input('hair');
+            $this->profile->education   = $request->input('education');
+            $this->profile->kids        = $request->input('kids');
+            $this->profile->want_kids   = $request->input('want_kids');
+            $this->profile->religion    = $request->input('religion');
+            $this->profile->smoke       = $request->input('smoke');
+            $this->profile->drink       = $request->input('drink');
+            $this->profile->occupation  = $request->input('occupation');
+
+            $this->profile->save();
         }
     }
 
@@ -160,7 +212,33 @@ class GirlsController extends Controller
      */
     public function edit($id)
     {
-        return view('admin.girls.edit');
+        $user = $this->user->where('id', '=', $id)->get();
+        $passport = $this->passport->where('user_id', '=', $id)->get();
+        $profile = $this->profile->where('user_id', '=', $id)->get();
+
+        $selects = [
+            'gender'    => $this->profile->getEnum('gender'),
+            'eye'       => $this->profile->getEnum('eye'),
+            'hair'      => $this->profile->getEnum('hair'),
+            'education' => $this->profile->getEnum('education'),
+            'kids'      => $this->profile->getEnum('kids'),
+            'want_k'    => $this->profile->getEnum('want_kids'),
+            'family'    => $this->profile->getEnum('family'),
+            'religion'  => $this->profile->getEnum('religion'),
+            'smoke'     => $this->profile->getEnum('smoke'),
+            'drink'     => $this->profile->getEnum('drink')
+        ];
+
+        $countries = Country::all();
+
+        return view('admin.girls.edit')->with([
+            'heading' => 'Редактировать профиль',
+            'user' => $user,
+            'passport' => $passport,
+            'profile' => $profile,
+            'selects' => $selects,
+            'countries' => $countries
+        ]);
     }
 
     /**
@@ -172,7 +250,7 @@ class GirlsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //@todo Update профиля девушки
     }
 
     /**
@@ -183,20 +261,31 @@ class GirlsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        //@todo SoftDelete Row whre ID
     }
 
     public function getByStatus($status)
     {
-        return $status;
+        $girls = $this->user->status($status)->get();
+        dd($girls);
     }
 
-    public function check($passno)
+    /**
+     * Check existence of passport in database
+     *
+     * firstly for ajax request
+     *
+     * @param Request $request
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
+     */
+    public function check(Request $request)
     {
-        $passport = $this->passport->where( 'passno', '=', $passno )->get();
+        $passp = $this->passport->where('passno', 'like', str_replace(" ","", $request->input('passno')))->first();
 
-        return False;
+        if( $passp )
+            return response('<span class="bg-danger">Такой номер пасспорта существует в базе</span>', 200);
+        else
+            return response('<span class="bg-success">Номер паспорта в базе не обнаружен</span>', 200);
     }
-
 
 }

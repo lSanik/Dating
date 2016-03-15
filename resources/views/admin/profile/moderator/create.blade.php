@@ -8,7 +8,7 @@
 @section('content')
     <div class="row">
         <!-- Form -->
-        {!! Form::open(['url' => '#', 'class' => 'form-horizontal']) !!}
+        {!! Form::open(['url' => '/admin/moderator/store', 'class' => 'form-horizontal']) !!}
         <div class="col-lg-6">
             <section class="panel">
                 <header class="panel-heading">
@@ -26,6 +26,13 @@
                             <label for="last_name" class="col-lg-2 col-sm-2 control-label">Фамилия</label>
                             <div class="col-lg-10">
                                 {!! Form::text('last_name', null, ['class'=>'form-control', 'placeholder' => '']) !!}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone" class="col-lg-2 col-sm-2 control-label"> Телефон </label>
+                            <div class="col-lg-10">
+                                <input type="phone" name="phone" class="form-control" required>
                             </div>
                         </div>
 
@@ -81,7 +88,7 @@
                     </div>
 
                     <div class="panel-footer text-center" style="background-color: white">
-                        <button type="button" class="btn btn-success"> Добавить партнера </button>
+                        <button type="submit" class="btn btn-success"> Добавить модератора</button>
                     </div>
                 </div>
             </section>

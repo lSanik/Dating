@@ -37,6 +37,7 @@ class TicketController extends Controller
             'selects' => $selects,
             'tickets' => $tickets,
         ]);
+
     }
 
 

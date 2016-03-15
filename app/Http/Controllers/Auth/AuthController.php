@@ -78,7 +78,7 @@ class AuthController extends Controller
             'role_id'   => '4'
         ]);
     }
-
+    /*
     public function sendEmail(User $user)
     {
         $data = [
@@ -128,19 +128,20 @@ class AuthController extends Controller
         return Socialite::driver( $provider )->redirect();
 
     }
-
+    */
     /**
      * @param $provider
      */
-    public function getSocialHandle($provider )
+    public function getSocialHandle( $provider )
     {
+        /*
         $user = Socialite::driver( $provider )->user();
 
-        dd($user);
+        dd($user); */
 
 
         //@todo Register & Login logic
-        //@todo Man page empty fields registration
+        //@todo Man page - ( empty fields before registration)
 
        /* $social_user = null;
 

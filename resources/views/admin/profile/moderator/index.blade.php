@@ -9,7 +9,7 @@
         <section class="panel">
             <header class="panel-heading head-border">
                 Все записи
-                <a href="{{ url('/admin/partner/new') }}" class="btn btn-success btn-sm pull-right"><i class="fa fa-plus"></i> Добавить </a>
+                <a href="{{ url('/admin/moderator/new') }}" class="btn btn-success btn-sm pull-right"><i class="fa fa-plus"></i> Добавить </a>
             </header>
             <table class="table table-striped custom-table table-hover">
                 <thead>

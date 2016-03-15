@@ -13,7 +13,7 @@
 
     <section class="panel">
         <header class="panel-heading">
-            Добавить новую анкету
+            Редактировать анкету
         </header>
         <div class="panel-body">
             @if (count($errors) > 0)
@@ -25,6 +25,9 @@
                     </ul>
                 </div>
             @endif
+
+
+
             <!-- Nav tabs -->
             <ul class="nav nav-tabs" role="tablist">
                 <li role="presentation" class="active"><a href="#osn" aria-controls="osn" role="tab" data-toggle="tab">Онсновная информация</a></li>

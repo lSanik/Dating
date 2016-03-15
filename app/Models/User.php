@@ -2,10 +2,13 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
+
+
     protected $table = 'users';
     /**
      * The attributes that are mass assignable.
@@ -39,9 +42,42 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\TicketData', 'user_id', 'id');
     }
 
+    //Status
     public function status()
     {
         return $this->belongsTo('App\Models\Status', 'status_id', 'id');
+    }
+
+    public function hasStatus( $status )
+    {
+        echo $status;
+        $this->has_status = $this->getStatus();
+        echo $this->has_status->name;
+
+         if( is_array( $status ) )
+        {
+            foreach( $status as $status ){
+                if( $this->checkUserStatus($status) )
+                {
+                    return true;
+                }
+            }
+        } else {
+            return $this->checkUserStatus($status);
+        }
+
+        return false;
+
+    }
+
+    public function getStatus()
+    {
+        return $this->status()->getResults();
+    }
+
+    public function checkUserStatus($need_status)
+    {
+        return (strtolower($need_status)==strtolower($this->has_status->name)) ? true : false;
     }
 
     // Social Media Auth
@@ -57,6 +93,7 @@ class User extends Authenticatable
         return $this->belongsTo('App\Models\Role', 'role_id', 'id');
     }
 
+    //User role
     public function hasRole($roles)
     {
         $this->have_role = $this->getUserRole();
@@ -85,16 +122,21 @@ class User extends Authenticatable
     {
         return (strtolower($need_role)==strtolower($this->have_role->name)) ? true : false;
     }
-
     /** End roles */
 
     /** Cities */
-
     public function city()
     {
         return $this->hasOne('App\Models\City','id');
     }
 
     /** End cities */
+
+    /** Presents for partner */
+
+    public function presents()
+    {
+        return $this->hasMany('App\Models\Presents', 'partner_id', 'id');
+    }
 
 }

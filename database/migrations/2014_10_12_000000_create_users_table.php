@@ -35,7 +35,6 @@ class CreateUsersTable extends Migration
             $table->integer('city_id')->unsigned();
             $table->integer('country_id')->unsigned();
 
-
             $table->rememberToken();
             $table->timestamps();
         });

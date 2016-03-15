@@ -58,19 +58,19 @@ class PartnerController extends Controller
         $rules = [
             'first_name' => 'required',
             'last_name' => 'required',
-            'email' => 'required|unique',
-            'phone' => 'required|unique',
+            'email' => 'required',
+            'phone' => 'required',
             'password' => 'required'
         ];
 
-        /*
+
         $this->validate($request, $rules);
 
         $validator = Validator::make( $request->input(), $rules);
         if ($validator->fails()) {
             $messages = $validator->messages();
             return Redirect::back()->withErrors($validator)->withInput();
-        } */
+        }
 
 
         $file = $request->file('avatar');
@@ -79,18 +79,29 @@ class PartnerController extends Controller
         $file->move($destination, $fileName);
 
 
-        User::create([
-            'email'      => $request->input('email'),
-            'first_name' => $request->input('first_name'),
-            'last_name'  => $request->input('last_name'),
-            'role_id'    => 3,
-            'password'   => bcrypt( $request->input('password')),
-            'avatar'     => $fileName,
-            'info'       => $request->input('info'),
-            'company_name'    => $request->input('company'),
-            'contacts'   => $request->input('contacts'),
-            'phone'     => $request->input('phone')
-        ]);
+
+        $u = new User();
+
+        $u->email           = $request->input('email');
+        $u->password        = bcrypt( $request->input('password'));
+        $u->phone           = $request->input('phone');
+        $u->first_name      = $request->input('first_name');
+        $u->last_name       = $request->input('last_name');
+        $u->role_id         = 3;
+
+        $u->avatar          = $fileName;
+
+        if( !empty( $request->input('info') ) )
+            $u->info        = $request->input('info');
+
+        if( !empty( $request->input('company') ) )
+            $u->company_name = $request->input('company');
+
+        if( !empty( $request->input('contacts') ) )
+            $u->contacts     = $request->input('contacts');
+
+
+        $u->save();
 
 
         return redirect('/admin/partners');

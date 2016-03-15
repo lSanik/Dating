@@ -145,7 +145,7 @@ class BlogController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //@todo - Добить блог
+        //@todo - Добить апдейт записи
         print_r($request);
         print_r($id);
     }

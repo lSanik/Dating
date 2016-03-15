@@ -136,24 +136,25 @@ Route::group([  'prefix' => LaravelLocalization::setLocale().'/admin',
     Route::get('girls', 'Admin\GirlsController@index'); //All
     Route::get('girl/new', 'Admin\GirlsController@create'); //Add new
 
-    Route::get('/girl/check', 'Admin\GirlsController@check'); //Check by passport
-    Route::get('/girls/{status}', 'Admin\GirlsController@getByStatus'); //Return all by status
-
+    Route::get('girls/{status}', 'Admin\GirlsController@getByStatus'); //Return all by status
 
     Route::get('girl/edit/{id}', 'Admin\GirlsController@edit'); // Edit Girl profile
     Route::get('girl/show/{id}', 'Admin\GirlsController@show'); // Show Girl profile
 
+    Route::post('girl/check', ['as' => 'check_pass', 'uses' => 'Admin\GirlsController@check']); // Check passport at DB
     Route::post('girl/store', 'Admin\GirlsController@store'); //Store new to db
     Route::post('girl/edit/{id}','Admin\GirlsController@update');// Update db
-
-
     /** End Girls Profile routing */
 
 
     /** Start Gifts  */
-    // @todo Create gifts routs
-    // @todo Make gifts Controllers
-    // @todo Make gifts DB
+    Route::get('gifts/', 'Admin\PresentsController@index');
+    Route::get('gifts/new', 'Admin\PresentsController@create');
+    Route::get('gifts/edit/{id}', 'Admin\PresentsController@edit');
+    Route::get('gifts/drop/{id}', 'Admin\PresentsController@drop');
+
+    Route::post('gifts/store', 'Admin\PresentsController@store');
+    Route::post('gifts/update/{id}', 'Admin\PresentsController@update');
     /** End gifts */
 
 
@@ -196,6 +197,12 @@ Route::group(['middleware' => ['web']], function () {
     Route::post('/addimage', array('as' => 'add_image_to_album','uses' => 'ImagesController@postAdd'));
     Route::get('/deleteimage/{id}', array('as' => 'delete_image','uses' => 'ImagesController@getDelete'));
 */
+});
+
+Route::group(['middleware' => 'web'], function () {
+    Route::auth();
+
+    Route::get('/home', 'HomeController@index');
 });
 
 Route::group(['middleware' => 'web'], function () {

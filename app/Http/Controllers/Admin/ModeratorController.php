@@ -42,7 +42,7 @@ class ModeratorController extends Controller
     {
         return view('admin.profile.moderator.create')->with([
             'heading' => 'Добавить модератора'
-            ]);
+        ]);
     }
 
     /**
@@ -81,18 +81,28 @@ class ModeratorController extends Controller
         } else $fileName='empty.png';
 
 
-        User::create([
-            'email'      => $request->input('email'),
-            'first_name' => $request->input('first_name'),
-            'last_name'  => $request->input('last_name'),
-            'role_id'    => 2,
-            'password'   => bcrypt( $request->input('password')),
-            'avatar'     => $fileName,
-            'info'       => $request->input('info'),
-            'company_name'    => $request->input('company'),
-            'contacts'   => $request->input('contacts'),
-            'phone'     => $request->input('phone')
-        ]);
+        $u = new User();
+
+        $u->email           = $request->input('email');
+        $u->password        = bcrypt( $request->input('password'));
+        $u->phone           = $request->input('phone');
+        $u->first_name      = $request->input('first_name');
+        $u->last_name       = $request->input('last_name');
+        $u->role_id         = 2;
+
+        $u->avatar          = $fileName;
+
+        if( !empty( $request->input('info') ) )
+            $u->info        = $request->input('info');
+
+        if( !empty( $request->input('company') ) )
+            $u->company_name = $request->input('company');
+
+        if( !empty( $request->input('contacts') ) )
+            $u->contacts     = $request->input('contacts');
+
+
+        $u->save();
 
 
         return redirect('/admin/moderators');

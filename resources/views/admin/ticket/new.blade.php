@@ -14,10 +14,31 @@
                     <header class="panel-heading">
                         Ваши запросы
                     </header>
-
-                    <pre>
-                        {{ var_dump( $tickets ) }}
-                    </pre>
+                    <table class="table table-hovered">
+                        <thead>
+                            <tr>
+                                <th> ID </th>
+                                <th> Тематика </th>
+                                <th> Тема </th>
+                                <th> Партнер </th>
+                                <th> Статус </th>
+                                <th><i class="fa fa-cogs"></i> Действия </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($tickets as $t)
+                                {{ print_r($t) }}
+                                <tr>
+                                    <td>{{ $t->id }}</td>
+                                    <td>{{ $t->subject }}</td>
+                                    <td>{{ $t->subject }}</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
 
             <div class="col-md-6">

@@ -3,11 +3,11 @@
 @section('styles')
 
 @stop
-@section('content')
-    <div class="content">
 
-    </div>
+@section('content')
+
 @stop
+
 @section('scripts')
 
 @stop

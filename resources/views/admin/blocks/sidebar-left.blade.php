@@ -1,14 +1,5 @@
 <!-- sidebar left start-->
 <div class="sidebar-left">
-    <!--responsive view logo start-->
-    <div class="logo dark-logo-bg visible-xs-* visible-sm-*">
-        <a href="{{ url(App::getLocale().'/admin/dashboard') }}">
-            <img src="img/logo-icon.png" alt="">
-            <!--<i class="fa fa-maxcdn"></i>-->
-            <span class="brand-name">Dating</span>
-        </a>
-    </div>
-    <!--responsive view logo end-->
 
     <div class="sidebar-left-info">
         <!-- visible small devices start-->
@@ -61,36 +52,35 @@
                 </ul>
             </li>
             @endif
-            @if( Auth::User()->hasRole(['Partner']) )
+            @if( Auth::User()->hasRole('Partner') )
             <li class="menu-list">
                 <a href=""><i class="fa fa-female "></i>
                     <span>Анкеты</span></a>
                 <ul class="child-list">
-                    <li><a href="{{ url(App::getLocale().'/admin/girl/check') }}"> Проверить наличие анкеты </a></li>
+                    <li><a href="{{ url(App::getLocale().'/admin/girls') }}"> Все анкеты </a></li>
+                    <li><a href="{{ url(App::getLocale().'/admin/girl/new') }}"> Добавить анкету </a></li>
+                    <li><a href="#" data-toggle="modal" data-target="#check"> Проверить наличие анкеты </a></li>
                     <li><a href="{{ url(App::getLocale().'/admin/girls/active') }}"> Активные </a></li>
                     <li><a href="{{ url(App::getLocale().'/admin/girls/wait') }}"> Приостановленные </a></li>
                     <li><a href="{{ url(App::getLocale().'/admin/girls/no') }}"> Отклоненные </a></li>
                     <li><a href="{{ url(App::getLocale().'/admin/girls/deleted') }}"> Удаленные </a></li>
                     <li><a href="{{ url(App::getLocale().'/admin/girls/moderation') }}"> На модерации </a></li>
-                    <li class="nav-divider"></li>
-                    <li><a href="{{ url(App::getLocale().'/admin/girls') }}"> Все анкеты </a></li>
-                    <li><a href="{{ url(App::getLocale().'/admin/girl/new') }}"> Добавить анкету </a></li>
                 </ul>
             </li>
                 <li>
-                    <a href="{{ url(App::getLocale().'admin/finance') }}"> Финансовые отчеты </a>
+                    <a href="{{ url(App::getLocale().'/admin/finance') }}"> <i class="fa fa-money"></i>Финансовые отчеты</a>
                 </li>
                 <li>
-                    <a href="#"> Рассылка </a>
+                    <a href="#"><i class="fa fa-envelope-o"></i> Рассылка </a>
                 </li>
                 <li>
-                    <a href="{{ url(App::getLocale().'admin/presents') }}"> Подарки </a>
+                    <a href="{{ url(App::getLocale().'/admin/gifts') }}"><i class="fa fa-gift"></i> Подарки </a>
                 </li>
                 <li>
-                    <a href="{{ url(App::getLocale().'admin/support') }}"> Обратная связь </a>
+                    <a href="{{ url(App::getLocale().'/admin/support') }}"><i class="fa fa-life-ring"></i> Обратная связь </a>
                 </li>
                 <li>
-                    <a href="{{ url(App::getLocale().'admin/messages_from_man') }}"> Сообщения от мужчин </a>
+                    <a href="{{ url(App::getLocale().'/admin/messages_from_man') }}"> Сообщения от мужчин </a>
                 </li>
             @endif
             <li>
