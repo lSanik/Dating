@@ -91,7 +91,7 @@
                                 {!! Form::text('pass_date', \Carbon\Carbon::now() , ['class' => 'form-control default-date-picker', 'id' => 'datepicker']) !!}
                             </div>
                             <div class="form-group">
-                                {!! Form::label('avatar', 'Фото/Скан паспорта') !!}
+                                {!! Form::label('pass_photo', 'Фото/Скан паспорта') !!}
                                 <input type="file" class="form-control file" name="pass_photo" accept="image/*">
                             </div>
 

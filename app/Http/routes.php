@@ -148,13 +148,13 @@ Route::group([  'prefix' => LaravelLocalization::setLocale().'/admin',
 
 
     /** Start Gifts  */
-    Route::get('gifts/', 'Admin\PresentsController@index');
-    Route::get('gifts/new', 'Admin\PresentsController@create');
-    Route::get('gifts/edit/{id}', 'Admin\PresentsController@edit');
-    Route::get('gifts/drop/{id}', 'Admin\PresentsController@drop');
+    Route::get('gifts/', 'Admin\GiftsController@index');
+    Route::get('gifts/new', 'Admin\GiftsController@create');
+    Route::get('gifts/edit/{id}', 'Admin\GiftsController@edit');
+    Route::get('gifts/drop/{id}', 'Admin\GiftsController@drop');
 
-    Route::post('gifts/store', 'Admin\PresentsController@store');
-    Route::post('gifts/update/{id}', 'Admin\PresentsController@update');
+    Route::post('gifts/store', 'Admin\GiftsController@store');
+    Route::post('gifts/update/{id}', 'Admin\GiftsController@update');
     /** End gifts */
 
 

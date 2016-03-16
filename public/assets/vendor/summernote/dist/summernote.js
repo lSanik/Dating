@@ -289,7 +289,7 @@
     };
 
     /**
-     * returns true if the value is present in the list.
+     * returns true if the value is presents in the list.
      */
     var contains = function (array, item) {
       return $.inArray(item, array) !== -1;

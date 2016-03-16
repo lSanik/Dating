@@ -27,7 +27,7 @@
                         </thead>
                         <tbody>
                             @foreach($tickets as $t)
-                                {{ print_r($t) }}
+
                                 <tr>
                                     <td>{{ $t->id }}</td>
                                     <td>{{ $t->subject }}</td>

@@ -123,13 +123,13 @@ class GirlsController extends Controller
                 $file->move($destination, $user_avatar);
             }
 
-            if( $request->input('pass_photo') ){
+            if( $request->input('pass_photo') )
+            {
                 $file = $request->file('avatar');
                 $passport_cover = time(). '-' . $file->getClientOriginalName();
                 $destination = public_path() . '/uploads/girls/passports';
                 $file->move($destination, $passport_cover);
 
-                $this->passport->cover = $passport_cover;
             }
 
             /**
@@ -165,6 +165,7 @@ class GirlsController extends Controller
             $this->passport->user_id    = $this->user->id;
             $this->passport->passno     = str_replace(" ", "", $request->input('passno'));
             $this->passport->date       = $request->input('pass_date');
+            $this->passport->cover = $passport_cover;
             $this->passport->save();
             /**
              * Create girl profile
@@ -261,8 +262,7 @@ class GirlsController extends Controller
 
     public function getByStatus($status)
     {
-        $girls = $this->user->status($status)->get();
-        dd($girls);
+        dd($status);
     }
 
     /**

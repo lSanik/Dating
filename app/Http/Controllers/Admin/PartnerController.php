@@ -56,11 +56,12 @@ class PartnerController extends Controller
 
 
         $rules = [
-            'first_name' => 'required',
-            'last_name' => 'required',
-            'email' => 'required',
-            'phone' => 'required',
-            'password' => 'required'
+            'first_name'    => 'required',
+            'last_name'     => 'required',
+            'email'         => 'required',
+            'phone'         => 'required',
+            'password'      => 'required',
+            'avatar'        => 'required'
         ];
 
 
