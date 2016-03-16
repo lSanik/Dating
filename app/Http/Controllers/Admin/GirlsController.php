@@ -23,7 +23,7 @@ class GirlsController extends Controller
     private $profile;
     private $passport;
 
-    public function __construct(Passport $passport, Profile $profile, User $user)
+    public function __construct(User $user, Profile $profile, Passport $passport)
     {
         $this->user = $user;
         $this->profile = $profile;
@@ -73,7 +73,6 @@ class GirlsController extends Controller
 
         $countries = Country::all();
 
-
         return view('admin.girls.create')->with([
             'heading' => 'Добавить девушку',
             'selects' => $selects,
@@ -93,7 +92,7 @@ class GirlsController extends Controller
         $this->validate($request, [
             'first_name'    => 'required|max:255',
             'second_name'   => 'required|max:255',
-            'birthday'      => 'required',
+            'birthday'      => 'required|date',
             'email'         => 'required|max:128',
             'phone'         => 'required|max:20',
             'password'      => 'required',
@@ -101,12 +100,14 @@ class GirlsController extends Controller
             'state'         => 'required',
             'city'          => 'required',
             'passno'        => 'required',
-            'pass_date'     => 'required',
+            'pass_date'     => 'required|date',
             'pass_photo'    => 'required',
+            'height'        => 'numeric',
+            'weight'        => 'numeric',
         ]);
 
         //Проверка паспорта в базе
-        $check = $passp = $this->passport->where('passno', 'like', str_replace(" ","", $request->input('passno')))->first();
+        $check = $this->passport->where('passno', 'like', str_replace(" ","", $request->input('passno')))->first();
 
         if( !$check )
         {
@@ -127,6 +128,8 @@ class GirlsController extends Controller
                 $passport_cover = time(). '-' . $file->getClientOriginalName();
                 $destination = public_path() . '/uploads/girls/passports';
                 $file->move($destination, $passport_cover);
+
+                $this->passport->cover = $passport_cover;
             }
 
             /**
@@ -154,24 +157,20 @@ class GirlsController extends Controller
                 $this->user->status_id  = 1;
             }
 
-            $id = $this->user->save();
+            $this->user->save();
 
             /**
              *  Add girl passport
              */
-
-            $this->passport->user_id    = $id;
+            $this->passport->user_id    = $this->user->id;
             $this->passport->passno     = str_replace(" ", "", $request->input('passno'));
             $this->passport->date       = $request->input('pass_date');
-            $this->passport->cover      = $passport_cover;
-
             $this->passport->save();
-
             /**
              * Create girl profile
              */
 
-            $this->profile->user_id     = $id;
+            $this->profile->user_id           = $this->user->id;
             $this->profile->birthday    = $request->input('birthday');
             $this->profile->height      = $request->input('height');
             $this->profile->weight      = $request->input('weight');
@@ -191,6 +190,8 @@ class GirlsController extends Controller
 
             $this->profile->save();
         }
+
+        return redirect('/admin/girls');
     }
 
     /**
@@ -212,9 +213,7 @@ class GirlsController extends Controller
      */
     public function edit($id)
     {
-        $user = $this->user->where('id', '=', $id)->get();
-        $passport = $this->passport->where('user_id', '=', $id)->get();
-        $profile = $this->profile->where('user_id', '=', $id)->get();
+        $user = $this->user->find($id);
 
         $selects = [
             'gender'    => $this->profile->getEnum('gender'),
@@ -229,15 +228,11 @@ class GirlsController extends Controller
             'drink'     => $this->profile->getEnum('drink')
         ];
 
-        $countries = Country::all();
 
         return view('admin.girls.edit')->with([
             'heading' => 'Редактировать профиль',
             'user' => $user,
-            'passport' => $passport,
-            'profile' => $profile,
             'selects' => $selects,
-            'countries' => $countries
         ]);
     }
 

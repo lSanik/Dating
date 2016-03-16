@@ -14,9 +14,13 @@ class CreatePassportTable extends Migration
     {
         Schema::create('passport', function(Blueprint $table)
         {
+            $table->increments('id');
             $table->integer('user_id')->unsigned();
 
             $table->foreign('user_id')->references('id')->on('users');
+
+            $table->text('cover');
+            $table->string('video');
 
             $table->string('passno');
             $table->date('date');

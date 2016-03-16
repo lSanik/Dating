@@ -18,7 +18,7 @@ class Profile extends Model
     ];
 
     public function user(){
-        $this->hasOne('User', null, 'user_id');
+        return $this->belongsTo('App\Models\User');
     }
 
     public function getEnum($field)

@@ -225,7 +225,6 @@ return [
         'Str'       => Illuminate\Support\Str::class,
         'LaravelLocalization'   => Mcamara\LaravelLocalization\Facades\LaravelLocalization::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
-
     ],
 
 ];

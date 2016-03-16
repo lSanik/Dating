@@ -22,7 +22,7 @@ class BlogController extends Controller
 
     /*
      * @todo загрузка файлов бля блоговой записи с полся body
-     * @todo мультиязычность
+     * @todo Если нет языка пользователя показывать который есть или редиректить на все записи доступные по языку пользователя
      */
 
     public function __construct(Post $post, PostTranslation $trans)
@@ -86,17 +86,16 @@ class BlogController extends Controller
             $destination = public_path() . '/uploads/blog';
 
             $file->move($destination, $fileName);
+            $this->post->cover_image = $fileName;
         }
+        $this->post->save();
 
-        $this->post->cover_image = $fileName;
-        $id = $this->post->save();
+        $this->trans->post_id   = $this->post->id;
+        $this->trans->locale    = $request->input('current_locale');
+        $this->trans->title     = $request->input('title');
+        $this->trans->body      = $request->input('body');
 
-        $post = $this->trans;
-        $post->post_id = $id;
-        $post->locale = $request->input('current_locale');
-        $post->title = $request->input('title');
-        $post->body = $request->input('body');
-        $post->save();
+        $this->trans->save();
 
         return redirect('/admin/blog');
 
@@ -106,6 +105,7 @@ class BlogController extends Controller
 
     public function show($id)
     {
+        //@todo Show
         if( in_array( App::getLocale(), Config::get('app.locales') ) )
         {
             $post = $this->post->find($id)->lang( App::getLocale() )->get();

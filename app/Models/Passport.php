@@ -12,10 +12,10 @@ class Passport extends Model
     protected $table = 'passport';
 
     protected $fillable = [
-        'passno', 'date'
+        'passno', 'date', 'cover'
     ];
 
     public function user(){
-        $this->hasOne('User', null, 'user_id');
+        return $this->belongsTo('App\Models\User');
     }
 }

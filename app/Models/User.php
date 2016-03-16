@@ -139,4 +139,15 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\Presents', 'partner_id', 'id');
     }
 
+    /** Profile */
+    public function profile()
+    {
+        return $this->hasOne('App\Models\Profile', 'user_id', 'id');
+    }
+
+    public function passport()
+    {
+        return $this->hasOne('App\Models\Passport', 'user_id', 'id');
+    }
+
 }

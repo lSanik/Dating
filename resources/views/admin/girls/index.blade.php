@@ -23,7 +23,7 @@
             <tr>
                 <td>{{ $girl->id }}</td>
                 <td>{{ $girl->first_name }} {{ $girl->last_name }}</td>
-                <td>{{ $girl->avatar }}</td>
+                <td><img width="150px" src="{{ url('uploads/girls/avatars/'.$girl->avatar)}}"></td>
                 @if( Auth::user()->hasRole('Owner') )
                     <td>{{ $girl->partner_id }}</td> <!-- Уточнить что выводить -->
                 @endif
