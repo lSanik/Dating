@@ -8,7 +8,7 @@
 
     <section class="panel">
         <header class="panel-heading text-right">
-            <a href="{{ url('/admin/gifts/new') }}" class="btn btn-success"> Добавить подарок </a>
+            <a href="{{ url(App::getLocale().'/admin/gifts/new') }}" class="btn btn-success"> Добавить подарок </a>
         </header>
         <div class="panel-body">
 

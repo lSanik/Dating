@@ -165,7 +165,8 @@ Route::group([  'prefix' => LaravelLocalization::setLocale().'/admin',
 
     /** Ticket System Routes */
 
-    Route::get('support', 'Admin\TicketController@index'); // show ticket form page
+    Route::get('support', 'Admin\TicketController@index'); 
+    Route::get('support/new', 'Admin\TicketController@newTicket');
     Route::get('support/{ticket_id}', 'Admin\TicketController@show'); // show one ticket
 
     Route::post('support', 'Admin\TicketController@create'); //create new ticket

@@ -14,6 +14,9 @@ use Illuminate\Support\Facades\Auth;
 class TicketController extends Controller
 {
     //@todo Пересмотреть логику работы
+    //@todo Таскать кол.во непрочитанных сообщений
+    //@todo Добавить нотификейшн о непрочитанном
+
     private $ticket;
     private $tData;
 
@@ -25,16 +28,10 @@ class TicketController extends Controller
 
     public function index()
     {
-
-        $selects = [
-            'subject' => $this->ticket->getEnum('subject'),
-        ];
-
         $tickets = $this->ticket->all();
 
-        return view('admin.ticket.new')->with([
+        return view('admin.ticket.all')->with([
             'heading' => 'Новое сообещние администратору/модератору',
-            'selects' => $selects,
             'tickets' => $tickets,
         ]);
 
@@ -54,6 +51,19 @@ class TicketController extends Controller
             'heading' => 'Ticket #'.$id,
             'messages' => $messages,
         ]); */
+    }
+
+    public function newTicket()
+    {
+        $selects = [
+            'subject' => $this->ticket->getEnum('subject'),
+        ];
+
+        return view('admin.ticket.new')->with([
+           'heading' => 'Новое сообщениее',
+            'selects' => $selects,
+        ]);
+
     }
 
     public function create(Request $request)

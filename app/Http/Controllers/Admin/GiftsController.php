@@ -62,7 +62,6 @@ class GiftsController extends Controller
 
         $this->validate($request, [
             'image' => 'required',
-            'title' => 'required|max:255',
             'price' => 'required'
         ]);
 
@@ -79,12 +78,15 @@ class GiftsController extends Controller
         $this->present->partner_id = \Auth::user()->id;
         $this->present->save();
 
-
-        $this->pt->present_id = $this->present->id;
-        $this->pt->locale = $request->input('lang');
-        $this->pt->title = $request->input('title');
-        $this->pt->description = $request->input('description');
-        $this->pt->save();
+        foreach( \Config::get('app.locales') as $locale )
+        {
+            $this->pt->insert([
+                'present_id' => $this->present->id,
+                'locale'     => $locale,
+                'title'      => $request->input('title_'.$locale),
+                'description'=> $request->input('description'.$locale),
+            ]);
+        }
 
         \Session::flash('flash_success', 'Подарок добавлен');
 
@@ -112,7 +114,9 @@ class GiftsController extends Controller
     {
 
         $present = $this->present->where('id', '=', $id)->first();
-        $present_locale = $this->pt->where('present_id', '=', $id)->first();
+        $present_locale = $this->pt->where('present_id', '=', $id)
+                                    ->select(['locale', 'title', 'description'])
+                                    ->get();
 
 
         return view('admin.presents.edit')->with([
@@ -122,36 +126,6 @@ class GiftsController extends Controller
         ]);
     }
 
-    public function check_language(Request $request)
-    {
-        $response = $this->pt->where('present_id', '=',  $request->input('id') )
-                             ->where('locale', '=', $request->input('code'))
-                             ->first();
-
-        return $response;
-    }
-
-    public function save_present_translation(Request $request)
-    {
-
-        $check = $this->pt->where('present_id', '=', $request->input('present_id'))
-                             ->where('locale', '=', $request->input('locale'))
-                             ->first();
-
-        if( $check )
-            return "False";
-        else {
-            $this->pt->insert([
-                'present_id' => $request->input('present_id'),
-                'locale' => $request->input('locale'),
-                'title' => $request->input('title'),
-                'description' => $request->input('description')
-            ]);
-        }
-
-        return "True";
-
-    }
 
     /**
      * Update the specified resource in storage.
@@ -160,10 +134,35 @@ class GiftsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function update(Request $request, $id)
     {
-        dd($request->input());
-        dd($request->file());
+        //@todo апдейт дроп картинки
+        //@todo защита от дурака (хз еще)
+        //@todo check на изображение
+
+        $this->validate($request, [
+            'price' => 'required'
+        ]);
+
+        $present = $this->present->find($id);
+        $present->price = $request->input('price');
+        $present->save();
+
+
+        foreach( \Config::get('app.locales') as $locale )
+        {
+            $this->pt->where('present_id', '=', $id)
+                     ->where('locale', '=', $locale)
+                     ->update([
+                         'title'        => $request->input('title_'.$locale),
+                         'description'  => $request->input('description_'.$locale),
+                     ]);
+        }
+
+        \Session::flash('flash_success', 'Подарок успешно обновлен');
+
+        return redirect(\App::getLocale().'/admin/gifts');
     }
 
     /**
@@ -174,6 +173,9 @@ class GiftsController extends Controller
      */
     public function drop($id)
     {
+        $this->present->delete($id);
+
+        \Session::flash('flash_success', 'Подарок удален');
         return redirect('/admin/gifts/');
     }
 }

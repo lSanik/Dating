@@ -3,6 +3,11 @@
 @section('styles')
     <link href="{{ url('/assets/css/fileinput.css') }}" rel="stylesheet">
     <link href="{{ url('assets/css/datepicker.css') }}" rel="stylesheet">
+
+    <style>
+        .active { display: block }
+        .hidden { display: none }
+    </style>
 @stop
 
 @section('content')
@@ -32,8 +37,9 @@
                                 @foreach(Config::get('app.locales') as $locale)
                                     @if(App::getLocale() == $locale)
                                         <option value="{{ $locale }}" selected="selected"> {{ trans('langs.'.$locale) }} </option>
+                                    @else
+                                        <option value="{{ $locale }}"> {{ trans('langs.'.$locale) }} </option>
                                     @endif
-                                    <option value="{{ $locale }}"> {{ trans('langs.'.$locale) }} </option>
                                 @endforeach
                             </select>
                         </div>
@@ -44,14 +50,23 @@
                             {!! Form::text('price', null, ['class' => 'form-control', 'pattern' => '\-?\d+(\.\d{0,})?']) !!}
                         </div>
                     </div>
-                    <div class="form-group">
-                        {!! Form::label('title', 'Название') !!}
-                        {!! Form::text('title', null, ['class' => 'form-control']) !!}
-                    </div>
-                    <div class="form-group">
-                        {!! Form::label('description', 'Описание') !!}
-                        {!! Form::text('description', null, ['class' => 'form-control']) !!}
-                    </div>
+
+                    @foreach( Config::get('app.locales') as $locale )
+                        <div class="hidden" id="{{ $locale }}">
+
+                            <div class="form-group">
+                                {!! Form::label('title'.$locale, 'Название ('.trans('langs.'.$locale).')') !!}
+                                {!! Form::text('title_'.$locale, null, ['class' => 'form-control']) !!}
+                            </div>
+                            <div class="form-group">
+                                {!! Form::label('description'.$locale, 'Описание ('.trans('langs.'.$locale).')') !!}
+                                {!! Form::text('description_'.$locale, null, ['class' => 'form-control']) !!}
+                            </div>
+                        </div>
+                    @endforeach
+
+
+
                     <div class="form-group text-center">
                         {!! Form::submit('Сохранить', ['class' => 'btn btn-success']) !!}
                     </div>
@@ -65,4 +80,22 @@
 @section('scripts')
     <script type="text/javascript" src="{{ url('/assets/js/bootstrap-fileinput-master/js/fileinput.js') }}"></script>
     <script type="text/javascript" src="{{ url('/assets/js/file-input-init.js') }}"></script>
+
+    <script>
+        $(document).ready(function(){
+            var prev = $('select[name="lang"]').val();
+
+            $("#"+prev).toggleClass('hidden');
+
+            $('select[name="lang"]').change(function(){
+
+                var lang = $(this).val();
+                $("#"+lang).toggleClass('hidden');
+                $("#"+prev).toggleClass('hidden');
+                prev = lang;
+            });
+
+
+        });
+    </script>
 @stop

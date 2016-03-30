@@ -2,95 +2,106 @@
 
 @section('styles')
 
+        <link rel="stylesheet" href="{{ url('/assets/js/bootstrap-wysihtml5/bootstrap-wysihtml5.css') }}">
+
 @stop
 
 @section('content')
 
-        <section class="panel">
+        <!--mail inbox start-->
+<div class="mail-box">
+    <aside class="sm-side">
+        <div class="m-title">
+            <h3>Inbox</h3>
+            <span>14 unread mail</span>
+        </div>
+        <div class="inbox-body">
+            <a class="btn btn-compose" href="#">
+                Compose
+            </a>
+        </div>
+        <ul class="inbox-nav inbox-divider">
+            <li class="active">
+                <a href="#"><i class="fa fa-inbox"></i> Inbox <span class="label label-danger pull-right">2</span></a>
+            </li>
+            <li>
+                <a href="#"><i class="fa fa-envelope"></i> Sent Mail</a>
+            </li>
+            <li>
+                <a href="#"><i class="fa fa-briefcase"></i> Important</a>
+            </li>
+            <li>
+                <a href="#"><i class="fa fa-star"></i> Starred </a>
+            </li>
+            <li>
+                <a href="#"><i class=" fa fa-external-link"></i> Drafts <span class="label label-info pull-right">30</span></a>
+            </li>
+            <li>
+                <a href="#"><i class=" fa fa-trash"></i> Trash</a>
+            </li>
+        </ul>
 
-            <div class="panel-body">
-
-                <div class="col-md-6">
-                    <header class="panel-heading">
-                        Ваши запросы
-                    </header>
-                    <table class="table table-hovered">
-                        <thead>
-                            <tr>
-                                <th> ID </th>
-                                <th> Тематика </th>
-                                <th> Тема </th>
-                                <th> Партнер </th>
-                                <th> Статус </th>
-                                <th><i class="fa fa-cogs"></i> Действия </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($tickets as $t)
-
-                                <tr>
-                                    <td>{{ $t->id }}</td>
-                                    <td>{{ $t->subject }}</td>
-                                    <td>{{ $t->subject }}</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
-
-            <div class="col-md-6">
-                <header class="panel-heading">
-                    Отправить сообщение в службу поддержки партнеров
-                </header>
-
-                    {!! Form::open(['url' => '/admin/support', 'class' => 'form-inline']) !!}
-                    <div class="row">
-                        <div class="col-md-3">
-                            {!! Form::label('subjects', 'Тематика') !!}
+    </aside>
+    <aside class="lg-side">
+        <div class="inbox-head">
+            <div class="mail-option">
+                <h3 class="pull-left">New Mail</h3>
+            </div>
+        </div>
+        <div class="inbox-body">
+            <div class="compose-mail">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label for="to" class="col-sm-1 control-label">To</label>
+                        <div class="col-sm-11">
+                            <input type="text" name="to" tabindex="1" id="to" class="form-control">
                         </div>
-                        <div class="col-md-9">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subjects" class="col-sm-1 control-label">Subject</label>
+                        <div class="col-sm-11">
                             <select name="subjects" class="form-control">
                                 @foreach($selects['subject'] as $key => $value)
                                     <option value="{{ $key }}">{{ trans('support.'.$value) }}</option>
                                 @endforeach
                             </select>
                         </div>
-
                     </div>
-                    <div class="row">
-                        <div class="col-md-3">
-                            {!! Form::label('subject', 'Тема') !!}
-                        </div>
-                        <div class="col-md-9">
-                            {!! Form::text('subject', null, ['class' => 'form-control col-md-12']) !!}
-                        </div>
-
-                    </div>
-                    <div class="row">
-                        <div class="col-md-3">
-                            {!! Form::label('message', 'Сообщение') !!}
-                        </div>
-                        <div class="col-md-9">
-                            {!! Form::textarea('message', null, ['class' => 'form-control']) !!}
-                        </div>
-
-                    </div>
-                    <div class="row">
-                        <div class="text-center">
-                            {!! Form::submit( trans('buttons.send'), ['class' => 'btn btn-success'] ) !!}
+                    <div class="form-group">
+                        <label for="subject" class="col-sm-1 control-label">Subject</label>
+                        <div class="col-sm-11">
+                            <input type="text" name="subject" tabindex="1" id="subject" class="form-control">
                         </div>
                     </div>
-                    {!! Form::close() !!}
-                </div>
+                    <div class="compose-editor form-group">
+                        <label for="subject" class="col-sm-1 control-label">Message</label>
+                        <div class="col-sm-11">
+                            <textarea name="message" class="wysihtml5 form-control" rows="9"></textarea>
+                        </div>
+                    </div>
+                    <hr/>
+                </form>
             </div>
-        </section>
+            <div class="compose-btn pull-right">
+                <a class="btn  btn-success" href="#">{{  trans('buttons.send') }}</a>
+            </div>
+        </div>
+    </aside>
+</div>
+<!--mail inbox end-->
 
 
 @stop
 
 @section('scripts')
+    <!--bootstrap-wysihtml5-->
+    <script type="text/javascript" src="{{ url('/assets/js/bootstrap-wysihtml5/wysihtml5-0.3.0.js') }}"></script>
+    <script type="text/javascript" src="{{ url('/assets/js/bootstrap-wysihtml5/bootstrap-wysihtml5.js') }}"></script>
 
+    <script>
+        jQuery(document).ready(function(){
+            $('.wysihtml5').wysihtml5();
+        });
+    </script>
 @stop
