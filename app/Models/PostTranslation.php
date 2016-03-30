@@ -9,11 +9,14 @@ class PostTranslation extends Model
     protected $table = 'post_translation';
 
     protected $fillable = [
-        'post_id', 'locale', 'title', 'body', 'cover_img'
+        'post_id',
+        'locale',
+        'title',
+        'body',
     ];
 
     public function post()
     {
-        $this->hasOne('App\Models\Post');
+        return $this->hasOne('App\Models\Post');
     }
 }

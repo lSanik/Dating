@@ -81,7 +81,8 @@ Route::group([  'prefix' => LaravelLocalization::setLocale().'/admin',
     Route::get('blog/drop/{id}', 'Admin\BlogController@destroy');
 
     Route::post('blog/new', 'Admin\BlogController@store');
-    Route::post('blog/edit/{id}', 'Admin\BlogController@update');
+    Route::post('blog/update', 'Admin\BlogController@update');
+
     /** Stop Blog Routing */
 
 
@@ -144,6 +145,7 @@ Route::group([  'prefix' => LaravelLocalization::setLocale().'/admin',
     Route::post('girl/check', ['as' => 'check_pass', 'uses' => 'Admin\GirlsController@check']); // Check passport at DB
     Route::post('girl/store', 'Admin\GirlsController@store'); //Store new to db
     Route::post('girl/edit/{id}','Admin\GirlsController@update');// Update db
+
     /** End Girls Profile routing */
 
 
@@ -155,6 +157,9 @@ Route::group([  'prefix' => LaravelLocalization::setLocale().'/admin',
 
     Route::post('gifts/store', 'Admin\GiftsController@store');
     Route::post('gifts/update/{id}', 'Admin\GiftsController@update');
+
+    Route::post('gifts/check_lang', ['as' => 'check_lang', 'uses' => 'Admin\GiftsController@check_language']);
+    Route::post('gifts/save_present_translation', ['as' => 'save_present_translation', 'uses' => 'Admin\GiftsController@save_present_translation']);
     /** End gifts */
 
 

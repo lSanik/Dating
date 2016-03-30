@@ -67,7 +67,7 @@ return [
 
     'locale' => 'en',
     'locales' => [
-        'ru', 'en','de','fr','es'
+        'en', 'ru','de','fr','es'
     ],
 
     /*
@@ -187,7 +187,6 @@ return [
     */
 
     'aliases' => [
-
         'App'       => Illuminate\Support\Facades\App::class,
         'Artisan'   => Illuminate\Support\Facades\Artisan::class,
         'Auth'      => Illuminate\Support\Facades\Auth::class,

@@ -4,18 +4,17 @@ namespace App\Models;
 
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Config;
 
 
 class Post extends Model
 {
-
-    use SoftDeletes;
-
     protected $table = 'posts';
 
     protected $fillable = [
+        'title',
+        'body',
+        'locale',
         'cover_image'
     ];
 
@@ -25,4 +24,13 @@ class Post extends Model
         return $this->hasMany('App\Models\PostTranslation')->where('locale', '=', $lang);
     }
 
+    public function postTrans(){
+        return $this->hasMany('App\Models\PostTranslation');
+
+        //$this->hasMany('App\Models\PostTranslation')->where('id', '=', $id)->all();
+    }
+    public function translate()
+    {
+        return $this->hasMany('App\Models\PostTranslation');
+    }
 }

@@ -28,7 +28,7 @@
                 <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Данные профиля</a></li>
                 <li role="presentation"><a href="#photoalbums" aria-controls="photoalbums" role="tab" data-toggle="tab">Фотоальбомы</a></li>
             </ul>
-            {!! Form::open(['url' => 'admin/girl/store', 'class' => 'form', 'enctype' => 'multipart/form-data']) !!}
+            {!! Form::open(['url' => '#', 'class' => 'form', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
                 <!-- Tab panes -->
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane active" id="osn">
@@ -36,7 +36,7 @@
                             <h3> Основная информация профиля </h3>
                             <div class="form-group">
                                 {!! Form::label('avatar', 'Аватар') !!}<br/>
-                                <img src="{{ url('/uploads/girls/avatars/'. $user->avatar) }}" id="preview-avatar">
+                                <img width="373rem" src="{{ url('/uploads/girls/avatars/'. $user->avatar) }}" id="preview-avatar">
                                 <input type="file" class="form-control file" name="avatar" accept="image/*" value="{{ $user->avatar }}">
                             </div>
                             <div class="form-group">
@@ -65,15 +65,24 @@
                             </div>
                             <div class="form-group">
                                 {!! Form::label('coutry', 'Cтрана') !!}
-                                <select name="county" class="form-control"></select>
+                                <select name="county" class="form-control">
+                                    @foreach($countries as $country)
+                                        <option value="{{ $country->id }}"
+                                                @if( $country->id == $user->country_id )
+                                                selected="selected"
+                                                @endif
+                                                > {{ $country->name }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                             <div class="form-group">
                                 {!! Form::label('state', 'Штат') !!}
+                                {!! Form::hidden('user_state_id', $user->state_id ) !!}
                                 <select name="state" class="form-control"></select>
                             </div>
                             <div class="form-group">
                                 {!! Form::label('city', 'Город') !!}
-                                <input type="hidden" name="city_id" value="{{ $user->city_id }}">
+                                {!! Form::hidden('user_city_id', $user->city_id ) !!}
                                 <select name="city" class="form-control"></select>
                             </div>
                             <div class="form-group">
@@ -87,7 +96,7 @@
                             <div class="form-group">
                                 {!! Form::label('avatar', 'Фото/Скан паспорта') !!}
                                 <br/>
-                                <img src="{{ url('girls/passports/'. $user->passport->cover) }}">
+                                <img width="373rem" src="{{ url('/uploads/girls/passports/'. $user->passport->cover) }}">
                                 <input type="file" class="form-control file" name="pass_photo" value="{{ $user->passport->cover }}" disabled="disabled" accept="image/*">
                             </div>
 
@@ -154,7 +163,11 @@
                         </div>
                     </div>
                     <div role="tabpanel" class="tab-pane" id="photoalbums">
-
+                        <div class="row">
+                            <div class="col-md-6 col-md-offset-3">
+                                @todo вывод альбомов и кнопка добавить альбом
+                            </div>
+                        </div>
                     </div>
                 </div>
             {!! Form::close() !!}
@@ -171,13 +184,70 @@
 
 
     <script>
+
+        function get_cities( $id )
+        {
+            $.ajax({
+                type: 'POST',
+                url: '{{ url('/get/cities/') }}',
+                data: {id: $id, _token: $('input[name="_token').val() },
+                success: function( response ){
+                    $('select[name="city"]').empty();
+                    for ( var i = 0; i < response.length; i++)
+                    {
+                        if( response[i].id == $('input[name="user_city_id"]').val() )
+                            $('select[name="city"]').append("<option value='" + response[i].id + "'  selected='selected'>" + response[i].name + "</option>");
+                        else
+                            $('select[name="city"]').append("<option value='" + response[i].id + "'>" + response[i].name + "</option>");
+                    }
+
+                },
+                error: function( response ){
+                    console.log( response );
+                }
+            });
+        }
+
+        function get_states( $id )
+        {
+            $.ajax({
+                type: 'POST',
+                url: '{{ url('/get/states/') }}',
+                data: {id: $id, _token: $('input[name="_token"]').val()  },
+                success: function( response ){
+                    $('select[name="state"]').empty();
+
+                    for( var i = 0; i < response.length; i++ )
+                    {
+                        if( response[i].id == $('input[name="user_state_id"]').val() )
+                            $('select[name="state"]').append("<option value='" + response[i].id + "' selected='selected'>" + response[i].name + "</option>");
+                        else
+                            $('select[name="state"]').append("<option value='" + response[i].id + "'>" + response[i].name + "</option>");
+                    }
+                },
+                error: function( response ){
+                    console.log( response )
+                }
+            });
+
+            get_cities($id);
+        }
+
+        $(window).on('load', function(){
+
+            get_states( $('select[name="county"]').val() );
+
+        });
+
         $(function() {
             $('input[name="avatar"]').change(function(){
                 $('#preview-avatar').css('display', 'none');
             });
 
             $('select[name="county"]').on('change', function(){
+
                 $('select[name="city"]').empty();
+
                 $.ajax({
                     type: 'POST',
                     url: '{{ url('/get/states/')  }}',

@@ -16,7 +16,8 @@ class CreatePresentsTranslationsTable extends Migration
             $table->increments('id');
             $table->integer('present_id')->unsigned();
             $table->string('locale');
-            $table->string('name');
+            $table->string('title');
+            $table->text('description');
             $table->timestamps();
 
             $table->foreign('present_id')->references('id')->on('presents')->onDelete('CASCADE');

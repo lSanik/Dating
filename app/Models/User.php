@@ -24,6 +24,7 @@ class User extends Authenticatable
         'partner_id',
         'role_id',
         'city_id',
+        'state_id',
         'country_id',
         'avatar'
     ];

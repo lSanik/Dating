@@ -2,9 +2,9 @@
 
 @section('styles')
 
-<link href="{{ url('/assets/vendor/summernote/dist/summernote.css') }}" rel="stylesheet">
-<link href="{{ url('/assets/css/bootstrap-reset.css') }}" rel="stylesheet">
-<link href="{{ url('/assets/css/fileinput.css') }}" rel="stylesheet">
+    <link href="{{ url('/assets/vendor/summernote/dist/summernote.css') }}" rel="stylesheet">
+    <link href="{{ url('/assets/css/bootstrap-reset.css') }}" rel="stylesheet">
+    <link href="{{ url('/assets/css/fileinput.css') }}" rel="stylesheet">
 
     <style>
         .fileinput-upload-button{
@@ -23,31 +23,44 @@
     <section class="panel col-md-8">
         <header class="panel-heading ">
             <div class="row">
-            <div class="form-horizontal">
+                <div class="form-horizontal">
+                    <div class="col-sm-12">
+                        <label class="col-sm-2" for="locale"> Язык </label>
+                        <ul class="nav nav-tabs col-sm-12">
+                            @foreach(Config::get('app.locales') as $locale)
+                                @if( $locale == App::getLocale() )
+                                    <li class="active"><img class="lang_icon" src="/assets/img/flags/{{ $locale }}.png"><a data-toggle="tab" href="#{{ $locale }}" data-target="#{{ $locale }}, #{{ $locale }}_1">{{ trans('langs.'.$locale) }}</a></li>
+                                @else
+                                    <li><img class="lang_icon" src="/assets/img/flags/{{ $locale }}.png"><a data-toggle="tab" href="#{{ $locale }}" data-target="#{{ $locale }}, #{{ $locale }}_1" data-toggle="tab">{{ trans('langs.'.$locale) }}</a></li>
+                                    @endif
+                                    @endforeach
 
-                <div class="col-sm-8">
-                    <div class="form-group">
-                        <label for="titlef" class="col-sm-2">Заголовок</label>
-                        <div class="">
-                            <input class="form-control" type="text" name="titlef" placeholder="Заголовок">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-4">
-                    <label class="col-sm-2" for="locale"> Язык </label>
-                    <div class="">
+                                            <!--
                         <select name="locale" class="form-control">
                             <option value="{{ App::getLocale() }}" selected="selected">{{ trans('langs.'.App::getLocale()) }}</option>
                             @foreach( Config::get('app.locales') as $locale )
-                                @if( $locale != App::getLocale() )
-                                   <option value="{{ $locale }}"> {{ trans('langs.'.$locale) }} </option>
+                                    @if( $locale != App::getLocale() )
+                                            <option value="{{ $locale }}"> {{ trans('langs.'.$locale) }} </option>
                                 @endif
-                            @endforeach
-                        </select>
+                                    @endforeach
+                                            </select>-->
+                        </ul>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label for="titlef" class="col-sm-2">Заголовок</label>
+                            <div class="col-sm-12">
+                                <div class="tab-content">
+                                    @foreach(Config::get('app.locales') as $locale)
+                                        <div class="title-input  tab-pane fade @if($locale == App::getLocale()) in active @endif" id="{{ $locale }}_1" value="">
+                                            <input class="form-control "  type="text" name="titlef_{{ $locale }}" placeholder="Заголовок">
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
             </div>
         </header>
         <div class="panel-body">
@@ -557,10 +570,14 @@
                         <button data-original-title="Help" type="button" class="btn btn-default btn-sm btn-small" title="" data-event="showHelpDialog" data-hide="true" tabindex="-1"><i class="fa fa-question"></i></button>
                     </div>
                 </div>
-                <textarea style="height: 175px;" class="note-codable"></textarea>
-                <div style="height: 175px;" class="note-editable" contenteditable="true">
-                    <div style="text-align: justify;">Hello <span style="background-color: rgb(255, 255, 255);">Summernote</span>
-                    </div>
+                <div class="tab-content">
+                    <textarea style="height: 175px;" class="note-codable"></textarea>
+                    @foreach(Config::get('app.locales') as $locale)
+                        <section  style="height: 175px;" class="note-editable tab-pane fade @if($locale == App::getLocale()) in active @endif " id="{{ $locale }}" contenteditable="true">
+                            <div style="text-align: justify;">Hello <span style="background-color: rgb(255, 255, 255);">Summernote</span>
+                            </div>
+                        </section>
+                    @endforeach
                 </div>
                 <div class="note-statusbar">
                     <div class="note-resizebar">
@@ -581,20 +598,21 @@
             Изображение
         </header>
         <div class="panel-body">
-                <div class="form-group">
-                    <label>File input</label>
-                        {!! Form::open(['url' => '/admin/blog/new', 'id' => 'form-hidden', 'enctype' => 'multipart/form-data', 'method' => 'POST']) !!}
-                        {!! Form::hidden('title') !!}
-                        {!! Form::hidden('body') !!}
-                        {!! Form::hidden('current_locale') !!}
+            <div class="form-group">
+                <label>File input</label>
+                {!! Form::open(['url' => '/admin/blog/new', 'id' => 'form-hidden', 'enctype' => 'multipart/form-data', 'method' => 'POST']) !!}
+                <!-- //Form::hidden('title[]')-->
+                <!-- //Form::hidden('body[]') -->
+                {!! Form::hidden('current_locale') !!}
+                <div class="body-list"></div>
+                <div class="title-list"></div>
+                <input id="file-0" class="file" type="file" name="cover_image" multiple=false value="" accept="image/*">
 
-                    <input id="file-0" class="file" type="file" name="cover_image" multiple=false value="" accept="image/*">
-
-                    <div class="text-center text-capitalize" style="background-color: white; margin-top: 35px;">
-                        <button type="submit" id="send" class="btn btn-success">Опубликовать</button>
-                        {!! Form::close() !!}
-                    </div>
+                <div class="text-center text-capitalize" style="background-color: white; margin-top: 35px;">
+                    <button type="submit" id="send" class="btn btn-success">Опубликовать</button>
+                {!! Form::close() !!}
                 </div>
+            </div>
         </div>
 
 
@@ -627,13 +645,34 @@
                 $('input[name="current_locale"]').val( $(this).val() );
             });
 
-            $('input[name="titlef"]').on('change', function(){
-                $('input[name="title"]').val( $(this).val() );
-            });
+            //@todo -Глянь если криво могу переделать
+            @foreach(Config::get('app.locales') as $locale)
+            /*$('input[name="titlef_{{ $locale }}"]').on('change', function(){
+                if( $('input[name="title[{{ $locale }}]"]').length!=0){
+                    $('input[name="title[{{ $locale }}]"]').val( $('input[name="titlef_{{ $locale }}"]'));
+                } else {
+                    $('.title-list').append('<input type="hidden" name="title[{{ $locale }}]" value=\'' + $(this).val() + '\' >');
+                }
+            });*/
+            @endforeach
 
             $('#send').on('click', function(){
-                $('input[name="body"]').val( $('.note-editable').html() );
+
+                @foreach(Config::get('app.locales') as $locale)
+                    if( $('input[name="title[{{ $locale }}]"]').length!=0){
+                    $('input[name="title[{{ $locale }}]"]').val( $('input[name="titlef_{{ $locale }}"]').val() );
+                } else {
+                    $('.title-list').append('<input type="hidden" name="title[{{ $locale }}]" value=\'' + $('input[name="titlef_{{ $locale }}"]').val() + '\' >');
+                }
+                @endforeach
+
+                     arr=document.getElementsByClassName("note-editable");
+                     for (i = 0; i < arr.length; i++) {
+                     $('.body-list').append('<input type="hidden" name="body['+arr[i].id+']" value=\'' + arr[i].innerHTML + '\' >');
+                     }
+
             });
+        //@todo Конец глянь*
         });
     </script>
 @stop

@@ -39,12 +39,12 @@ class BlogController extends Controller
     public function index()
     {
         $heading = 'Все записи';
-        $posts = $this->trans->all();
-
+        $posts = $this->post->all();
+        $translation = $this->trans->all();
         return view('admin.blog.index')->with([
             'heading' => $heading,
             'posts' => $posts,
-
+            'translation' => $translation
         ]);
     }
 
@@ -57,8 +57,10 @@ class BlogController extends Controller
     {
 
         $heading = 'Добавить новую запись';
+
         return view('admin.blog.create')->with([
             'heading' => $heading,
+            'locales' => Config::get('app.locales')
         ]);
     }
 
@@ -90,15 +92,24 @@ class BlogController extends Controller
         }
         $this->post->save();
 
-        $this->trans->post_id   = $this->post->id;
-        $this->trans->locale    = $request->input('current_locale');
-        $this->trans->title     = $request->input('title');
-        $this->trans->body      = $request->input('body');
+        $locales=Config::get('app.locales');
+        $title=$request->input('title');
+        $body=$request->input('body');
 
-        $this->trans->save();
-
+        foreach($locales as $key => $locale ){
+            if(!$title[$locale]) $title[$locale]=null;
+            //$this->trans->post_id   = $this->post->id;
+            //$this->trans->locale    = $locale;
+            //$this->trans->title     = $title[$locale];
+            //$this->trans->body      = $body[$locale];
+            $this->trans->insert([
+                'post_id' =>$this->post->id,
+                'locale' => $locale,
+                'title' => $title[$locale],
+                'body' => $body[$locale]
+            ]);
+        }
         return redirect('/admin/blog');
-
 
     }
 
@@ -108,7 +119,8 @@ class BlogController extends Controller
         //@todo Show
         if( in_array( App::getLocale(), Config::get('app.locales') ) )
         {
-            $post = $this->post->find($id)->lang( App::getLocale() )->get();
+            $post = $this->post->find($id);//->lang( App::getLocale() )->get();
+            $trans = $this->trans->post($id);
             $image = $this->post->select('cover_image')->find($id);
         }
 
@@ -128,12 +140,25 @@ class BlogController extends Controller
      */
     public function edit($id)
     {
-        $post = $this->post->findOrFail($id);
-        $heading = 'Редактировать: '.$post->title;
+        $post = $this->post->find($id);
+        $trans = $this->post->find($id)->postTrans;
+        //dd($trans);
+        $heading_text="";
+        foreach($trans as $ts){
+            if($ts->locale==App::getLocale()) {
+                $heading_text = $ts->title;
+            }
+
+        }
+        $heading = 'Редактировать: '.$heading_text;
+
+
         return view('admin.blog.edit')->with([
+            'heading' => $heading,
             'post' => $post,
-            'heading' => $heading
+            'trans' => $trans
         ]);
+
     }
 
     /**
@@ -143,11 +168,42 @@ class BlogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         //@todo - Добить апдейт записи
-        print_r($request);
-        print_r($id);
+        $rulse = [
+            'id' => 'required',
+            'title' => 'required',
+            'body'  => 'required'
+        ];
+
+        $fileName = '';
+
+        if( !empty( $request->file() )){
+
+            $file = $request->file('cover_image');
+            $fileName = time() . '-' . $file->getClientOriginalName();
+            $destination = public_path() . '/uploads/blog';
+
+            $file->move($destination, $fileName);
+            $this->post->cover_image = $fileName;
+        }
+
+        $this->post->id=$request->input('id');
+        $this->post->update();
+
+        $locales=Config::get('app.locales');
+        $title=$request->input('title');
+        $body=$request->input('body');
+        $id=$request->input('id');
+        foreach($locales as $key => $locale ){
+            if(!$title[$locale]) $title[$locale]='null';
+            $this->trans->where('post_id', '=', $id)->where('locale', '=', $locale)->update([
+                'title' => $title[$locale],
+                'body' => $body[$locale]
+            ]);
+        }
+        return redirect('/admin/blog');
     }
 
     /**

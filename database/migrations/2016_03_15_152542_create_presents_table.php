@@ -17,7 +17,7 @@ class CreatePresentsTable extends Migration
             $table->integer('partner_id')->unsigned();
             $table->foreign('partner_id')->references('id')->on('users')->onDelete('CASCADE');
             $table->text('image');
-            $table->integer('price');
+            $table->double('price');
             $table->timestamps();
         });
 

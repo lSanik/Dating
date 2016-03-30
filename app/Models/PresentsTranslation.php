@@ -9,11 +9,11 @@ class PresentsTranslation extends Model
     protected $table = 'presents_translations';
 
     protected $fillable = [
-        'present_id', 'locale', 'name'
+        'present_id', 'locale', 'title', 'description'
     ];
 
     public function present()
     {
-        $this->hasOne('App\Models\Presents', 'id', 'present_id');
+        $this->belongsTo('App\Models\Presents');
     }
 }

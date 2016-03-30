@@ -19,11 +19,33 @@
 
     <section class="panel col-md-8">
         <header class="panel-heading ">
-            <div class="form-horizontal">
-                <div class="form-group">
-                    <label class="col-sm-2 col-sm-2 control-label">Заголовок</label>
-                    <div class="col-sm-10">
-                        <input class="form-control" type="text" name="title" placeholder="Заголовок" value="{{ $post->title }}">
+            <div class="row">
+                <div class="form-horizontal">
+                    <div class="col-sm-12">
+                        <label class="col-sm-2" for="locale"> Язык </label>
+                        <ul class="nav nav-tabs col-sm-12">
+                            @foreach($trans as $tr)
+                                @if( $tr->locale == App::getLocale() )
+                                    <li class="active"><img class="lang_icon" src="/assets/img/flags/{{  $tr->locale }}.png"><a data-toggle="tab" href="#{{  $tr->locale }}" data-target="#{{  $tr->locale }}, #{{  $tr->locale }}_1">{{ trans('langs.'. $tr->locale) }}</a></li>
+                                @else
+                                    <li><img class="lang_icon" src="/assets/img/flags/{{  $tr->locale }}.png"><a data-toggle="tab" href="#{{ $tr->locale }}" data-target="#{{  $tr->locale }}, #{{  $tr->locale }}_1" data-toggle="tab">{{ trans('langs.'. $tr->locale) }}</a></li>
+                                @endif
+                            @endforeach
+                        </ul>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label for="titlef" class="col-sm-2">Заголовок</label>
+                            <div class="col-sm-12">
+                                <div class="tab-content">
+                                    @foreach($trans as $tr)
+                                        <div class="title-input  tab-pane fade @if($tr->locale == App::getLocale()) in active @endif" id="{{ $tr->locale }}_1" >
+                                            <input class="form-control "  type="text" name="titlef_{{ $tr->locale }}" placeholder="Заголовок" value="{{ $tr->title }}">
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -535,9 +557,13 @@
                         <button data-original-title="Help" type="button" class="btn btn-default btn-sm btn-small" title="" data-event="showHelpDialog" data-hide="true" tabindex="-1"><i class="fa fa-question"></i></button>
                     </div>
                 </div>
-                <textarea style="height: 175px;" class="note-codable"></textarea>
-                <div style="height: 175px;" class="note-editable" contenteditable="true">
-                    {!! $post->body !!}
+                <div class="tab-content">
+                    <textarea style="height: 175px;" class="note-codable"></textarea>
+                    @foreach($trans as $tr)
+                        <section  style="height: 175px;" class="note-editable tab-pane fade @if($tr->locale == App::getLocale()) in active @endif " id="{{ $tr->locale }}" contenteditable="true">
+                            {!! $tr->body !!}
+                        </section>
+                    @endforeach
                 </div>
                 <div class="note-statusbar">
                     <div class="note-resizebar">
@@ -553,19 +579,26 @@
         <header class="panel-heading ">
             Изображение
         </header>
+        {!! Form::open(['url' => '/admin/blog/update', 'id' => 'form-hidden', 'enctype' => 'multipart/form-data', 'method' => 'POST']) !!}
         <div class="panel-body">
             <div class="form-group">
                 <div class="form-group">
+
+                    {!! Form::hidden('current_locale') !!}
+                    <div class="body-list"></div>
+                    <div class="title-list"></div>
                     <label>File input</label>
                     <img src="{{ url('/uploads/blog/'.$post->cover_image) }}" width="100%">
                     <input id="file-0" class="file" type="file" multiple=false value="{{ $post->cover_image }}">
+                    <input type="hidden" name="id" value="{!! $post->id; !!}">
                 </div>
             </div>
         </div>
         <div class="panel-footer text-center text-capitalize" style="background-color: white">
             <input type="hidden" name="_token" value="{!! csrf_token() !!}">
-            <button type="button" id="send" class="btn btn-success">Опубликовать</button>
+            <button type="submit" type="button" id="send" class="btn btn-success">Опубликовать</button>
         </div>
+        {!! Form::close() !!}
     </section>
 @stop
 
@@ -584,17 +617,40 @@
 
                 focus: true                 // set focus to editable area after initializing summernote
             });
+            $('input[name="current_locale"]').val( $('select[name="locale"]').val() );
 
-          /*  $('#send').click(function(){
+            $('select[name="locale"]').on('change', function(){
+                $('input[name="current_locale"]').val( $(this).val() );
+            });
+
+            $('#send').on('click', function(){
+
+                @foreach(Config::get('app.locales') as $locale)
+
+                if( $('input[name="title[{{ $locale }}]"]').length!=0){
+                    $('input[name="title[{{ $locale }}]"]').val( $('input[name="titlef_{{ $locale }}"]').val() );
+                } else {
+                    $('.title-list').append('<input type="hidden" name="title[{{ $locale }}]" value=\'' + $('input[name="titlef_{{ $locale }}"]').val() + '\' >');
+                }
+                @endforeach
+                arr=document.getElementsByClassName("note-editable");
+
+                for (i = 0; i < arr.length; i++) {
+                    $('.body-list').append('<input type="hidden" name="body['+arr[i].id+']" value=\'' + arr[i].innerHTML + '\' >');
+                }
+
+            });
+            /*$('#send').click(function(){
                 var title = $('input[name="title"]').val();
-                var body = $('.note-editable').html();
-
+                var body = document.getElementsByClassName("note-editable");
+                var id = {!! $post->id; !!};
                 $.ajax({
                     type: 'POST',
-                    url: '/admin/blog/new',
+                    url: '/admin/blog/update',
                     data:{
                         title: title,
                         body: body,
+                        id: id,
                         _token: $('input[name="_token"]').val()
                     },
                     success: function( response ){
@@ -604,7 +660,8 @@
                         console.log(response);
                     }
                 });
-            });*/
+
+             });*/
         });
     </script>
 @stop

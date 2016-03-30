@@ -4197,7 +4197,21 @@ table.sliders tr td {
 .ui-slider-vertical .ui-slider-handle {
     left: -0.5em  !important;
 }
-
+.panel-heading .nav.nav-tabs li{
+    border: 2px solid #DDDDDD;
+    padding: 0 5px 0 5px;
+    margin: 0 5px 0 0px;
+    border-bottom: none;
+    border-radius: 5px 5px 0px 0px;
+}
+.panel-heading  .nav.nav-tabs > li > a{
+color:black;
+    text-transform: capitalize;
+}
+.panel-heading  .nav.nav-tabs li.active{
+    font-weight: 700;
+    text-decoration: underline;
+}
 .ui-slider .ui-slider-handle {
     cursor: default;
     height: 1.3em;

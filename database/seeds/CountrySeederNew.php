@@ -12,6 +12,7 @@ class CountrySeederNew extends Seeder
     public function run()
     {
         DB::table('countries')->delete();
+
         $countries = [
             [1, 'AF', 'Afghanistan', 'created_at' => \Carbon\Carbon::now()],
             [2, 'AL', 'Albania', 'created_at' => \Carbon\Carbon::now()],

@@ -11,7 +11,7 @@
         </header>
         <div class="panel-body">
             <div class="col-md-6">
-                <img src="{{ url( '/uploads/admins/'. $user->url ) }}">
+                <img src="{{ url( '/uploads/admins/'. $user->avatar ) }}">
             </div>
             <div class="col-md-6">
                 <div class="row">

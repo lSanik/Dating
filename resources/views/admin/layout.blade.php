@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="_token" value="{{ csrf_token() }}">
     <meta name="author" content="Mosaddek" />
     <meta name="keyword" content="slick, flat, dashboard, bootstrap, admin, template, theme, responsive, fluid, retina" />
     <meta name="description" content="" />
@@ -11,10 +12,10 @@
     <title>{{ trans('admin.dashboard') }}</title>
 
     <!-- Latest compiled and minified CSS -->
-    <!-- link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"-->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
-    <link rel="stylesheet" href="{{ url('/assets/css/bootstrap.min.css') }}">
+    <!--link rel="stylesheet" href="{{ url('/assets/css/bootstrap.min.css') }}" -->
     <link rel="stylesheet" href="{{ url('/assets/css/font-awesome.css') }}">
 
     <link rel="stylesheet" href="{{ url('/assets/css/default-theme.css') }}">
@@ -57,6 +58,9 @@
                 </h3>
             </div>
 
+            @include('admin.blocks.flash-error')
+            @include('admin.blocks.flash-success')
+
             <div class="wrapper">
                 @yield('content')
             </div>
@@ -91,15 +95,21 @@
         </div>
     </div>
 
-    <script src="{{ url('/assets/js/jquery-1.11.1.min.js') }}"></script>
-    <script src="{{ url('/assets/js/bootstrap.min.js') }}"></script>
+    <!-- jQuery -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <!-- Latest compiled and minified JS -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <!-- Sidebar script -->
+    <script src="{{url('/assets/js/scripts.js')}}"></script>
+
 
     <script src="{{ url('/assets/js/modernizr.min.js') }}"></script>
     <!-- script src="{{ url('/assets/js/jquery.nicescroll.js') }}"></script -->
-    <script src="{{url('/assets/js/scripts.js')}}"></script>
+    <!-- script src="{{url('/assets/js/scripts.js')}}"></script-->
 
     <script>
         $(document).ready(function(){
+            
             /**
              * Check passport
              */
@@ -132,16 +142,15 @@
     <?php /*
 
 
-    <!-- jQuery -->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-    <!-- Latest compiled and minified JS -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <!-- Sidebar script -->
-    <script src="{{url('/assets/js/scripts.js')}}"></script>
+    <script src="{{ url('/assets/js/jquery-1.11.1.min.js') }}"></script>
+    <script src="{{ url('/assets/js/bootstrap.min.js') }}"></script>
+
+
 */ ?>
     @yield('scripts')
 
     <script>
+
 
         $(document).ready(function(){
             /**
@@ -149,13 +158,15 @@
              */
             var url = window.location;
 
-            $('a').each(function(){
+            $('.nav a').each(function(){
                 // if the current path is like this link, make it active
                 if($(this).attr('href').indexOf(url) !== -1){
                     $(this).parent().addClass('active');
                     $(this).closest('.menu-list').addClass('nav-active');
                 }
             });
+
+
         });
 
     </script>

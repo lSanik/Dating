@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -22,6 +23,7 @@ class GirlsController extends Controller
     private $user;
     private $profile;
     private $passport;
+    private $passport_cover_path;
 
     public function __construct(User $user, Profile $profile, Passport $passport)
     {
@@ -88,7 +90,6 @@ class GirlsController extends Controller
      */
     public function store(Request $request)
     {
-
         $this->validate($request, [
             'first_name'    => 'required|max:255',
             'second_name'   => 'required|max:255',
@@ -111,10 +112,15 @@ class GirlsController extends Controller
 
         if( !$check )
         {
-            $user_avatar    = 'empty_girl.png';
-            $passport_cover = '';
 
-            /** Cech for images */
+           if( $this->age( $request->input('birthday') ) < 18 )
+           {
+               \Session::flash('flash_error', 'Девушка младше 18');
+               return redirect(\App::getLocale().'/admin/girl/new');
+           }
+
+            $user_avatar    = 'empty_girl.png';
+
             if( $request->file('avatar') )
             {
                 $file = $request->file('avatar');
@@ -123,12 +129,13 @@ class GirlsController extends Controller
                 $file->move($destination, $user_avatar);
             }
 
-            if( $request->input('pass_photo') )
+            if( $request->file('pass_photo') )
             {
-                $file = $request->file('avatar');
-                $passport_cover = time(). '-' . $file->getClientOriginalName();
+
+                $file = $request->file('pass_photo');
+                $this->passport_cover_path = time(). '-' . $file->getClientOriginalName();
                 $destination = public_path() . '/uploads/girls/passports';
-                $file->move($destination, $passport_cover);
+                $file->move($destination, $this->passport_cover_path);
 
             }
 
@@ -142,7 +149,12 @@ class GirlsController extends Controller
             $this->user->email          = $request->input('email');
             $this->user->phone          = $request->input('phone');
             $this->user->password       = bcrypt( $request->input('password') );
+
+            $this->user->country_id     = $request->input('county');
+            $this->user->state_id       = $request->input('state');
             $this->user->city_id        = $request->input('city');
+
+
 
             $this->user->partner_id     = Auth::user()->id;
 
@@ -162,17 +174,21 @@ class GirlsController extends Controller
             /**
              *  Add girl passport
              */
+
+
             $this->passport->user_id    = $this->user->id;
             $this->passport->passno     = str_replace(" ", "", $request->input('passno'));
-            $this->passport->date       = $request->input('pass_date');
-            $this->passport->cover = $passport_cover;
+            $this->passport->date       = Carbon::createFromFormat('d/m/Y', $request->input('pass_date'));
+            $this->passport->cover      = $this->passport_cover_path;
             $this->passport->save();
+
+
             /**
              * Create girl profile
              */
 
-            $this->profile->user_id           = $this->user->id;
-            $this->profile->birthday    = $request->input('birthday');
+            $this->profile->user_id     = $this->user->id;
+            $this->profile->birthday    = Carbon::createFromFormat('d/m/Y',$request->input('birthday'));
             $this->profile->height      = $request->input('height');
             $this->profile->weight      = $request->input('weight');
 
@@ -191,6 +207,8 @@ class GirlsController extends Controller
 
             $this->profile->save();
         }
+
+        \Session::flash('flash_success', 'Девушка успешно добавлена');
 
         return redirect('/admin/girls');
     }
@@ -229,11 +247,16 @@ class GirlsController extends Controller
             'drink'     => $this->profile->getEnum('drink')
         ];
 
+        $countries  = Country::all();
+        $states     = State::all();
+
 
         return view('admin.girls.edit')->with([
             'heading' => 'Редактировать профиль',
             'user' => $user,
             'selects' => $selects,
+            'countries' => $countries,
+            'states' => $states
         ]);
     }
 
@@ -247,6 +270,8 @@ class GirlsController extends Controller
     public function update(Request $request, $id)
     {
         //@todo Update профиля девушки
+
+        dd( $request->input());
     }
 
     /**
@@ -281,6 +306,16 @@ class GirlsController extends Controller
             return response('<span class="bg-danger">Такой номер пасспорта существует в базе</span>', 200);
         else
             return response('<span class="bg-success">Номер паспорта в базе не обнаружен</span>', 200);
+    }
+
+
+
+    private function age( $bithday )
+    {
+
+        $age = Carbon::now()->diffInYears( Carbon::createFromFormat('d/m/Y', $bithday) );
+
+        return $age;
     }
 
 }

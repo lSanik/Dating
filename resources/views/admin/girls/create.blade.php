@@ -1,14 +1,14 @@
 @extends('admin.layout')
 
 @section('styles')
-    <link href="{{ url('/assets/css/bootstrap-reset.css') }}" rel="stylesheet">
+    <!-- ink href="{{ url('/assets/css/bootstrap-reset.css') }}" rel="stylesheet" -->
     <link href="{{ url('/assets/css/fileinput.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="{{ url('assets/css/datepicker.css') }}">
+    <link href="{{ url('assets/css/datepicker.css') }}" rel="stylesheet">
 
 
 
 @stop
-<!-- todo DatePicker на дату выдачи паспорта и дату рождения https://jqueryui.com/datepicker/ -->
+
 @section('content')
 
     <section class="panel">
@@ -88,7 +88,7 @@
                             </div>
                             <div class="form-group">
                                 {!! Form::label('pass_date', 'Дата выдачи паспорта') !!}
-                                {!! Form::text('pass_date', \Carbon\Carbon::now() , ['class' => 'form-control default-date-picker', 'id' => 'datepicker']) !!}
+                                {!! Form::text('pass_date', null, ['class' => 'form-control default-date-picker', 'id' => 'datepicker']) !!}
                             </div>
                             <div class="form-group">
                                 {!! Form::label('pass_photo', 'Фото/Скан паспорта') !!}
@@ -162,11 +162,19 @@
         </div>
     </section>
 
+
+
 @stop
 
 @section('scripts')
+    <script type="text/javascript" src="{{ url('/assets/js/jquery-ui_jquery-ui-1.10.1.custom.min.js') }}"></script>
 
-    <script src="{{ url('/assets/js/bootstrap-datepicker.js') }}"></script>
+
+    <!--bootstrap picker-->
+    <script type="text/javascript" src="{{ url('/assets/js/bootstrap-datepicker/js/bootstrap-datepicker.js') }}"></script>
+    <script type="text/javascript" src="{{ url('/assets/js/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js') }}"></script>
+
+
     <script type="text/javascript" src="{{ url('/assets/js/bootstrap-fileinput-master/js/fileinput.js') }}"></script>
     <script type="text/javascript" src="{{ url('/assets/js/file-input-init.js') }}"></script>
 
@@ -174,8 +182,13 @@
         $(function() {
 
 
+            $('.default-date-picker').datepicker();
+
+
             $('select[name="county"]').on('change', function(){
+
                 $('select[name="city"]').empty();
+
                 $.ajax({
                     type: 'POST',
                     url: '{{ url('/get/states/')  }}',
@@ -211,7 +224,7 @@
                     error: function( response ){
                         console.log( response );
                     }
-                })
+                });
 
             });
         });
