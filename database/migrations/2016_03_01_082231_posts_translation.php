@@ -19,7 +19,7 @@ class PostsTranslation extends Migration
 
             $table->string('locale')->index();
 
-            $table->string('title');
+            $table->string('title')->nullable();
             $table->text('body');
 
             $table->unique(['post_id', 'locale']);

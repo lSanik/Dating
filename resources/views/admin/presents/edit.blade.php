@@ -27,7 +27,7 @@
                 <div class="form-group">
                     {!! Form::label('image', 'Фото подарка') !!} <br/>
                     <img src="/uploads/presents/{{ $present->image }}" id="preview-image" width="250px" alt="{{ $present->image }}"/>
-                    <input type="file" class="form-control file" name="image" value="{{ $present->image }}" accept="image/*">
+                    <input type="file" class="form-control file" name="image" value="" accept="image/*">
                 </div>
 
                 <div class="col-md-6">

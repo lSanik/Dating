@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Models\Country;
 use App\Models\Social;
 use App\Models\User;
 use Laravel\Socialite\Facades\Socialite;
@@ -33,6 +34,7 @@ class AuthController extends Controller
      */
     protected $redirectTo = '/';
     protected $auth;
+    private $social_user;
     // @todo check user status
     /**
      * Create a new authentication controller instance.
@@ -78,7 +80,7 @@ class AuthController extends Controller
             'role_id'   => '4'
         ]);
     }
-    /*
+
     public function sendEmail(User $user)
     {
         $data = [
@@ -128,44 +130,38 @@ class AuthController extends Controller
         return Socialite::driver( $provider )->redirect();
 
     }
-    */
+
     /**
      * @param $provider
      */
     public function getSocialHandle( $provider )
     {
-        /*
         $user = Socialite::driver( $provider )->user();
 
-        dd($user); */
-
-
         //@todo Register & Login logic
-        //@todo Man page - ( empty fields before registration)
-
-       /* $social_user = null;
 
         $user_check = User::where('email', '=', $user->email)->first(); //check user email
 
         if( !empty($user_check) )
         {
-            $social_user = $user_check;
+            $this->social_user = $user_check;
         }
-        else /* Register new User
+        else /* Register new User */
         {
 
             $same_social_id = Social::where('social_id', '=', $user->id)->where('provider', '=', $provider)->first();
 
             if( empty($same_social_id) )
             {
+
+                /*return view('auth.add_new_profile')->with([
+                    'user_data' => $user,
+                    'countries' => Country::all(),
+                ]);*/
+
                 $new_social_user = new User;
                 $new_social_user->email = $user->email;
-
-
-                /* Unique User Phone
-                $new_social_user->phone = str_random(60).$user->email;
-
-
+                $new_social_user->phone = ' ';
 
                 $name = explode(' ', $user->name);
 
@@ -177,38 +173,40 @@ class AuthController extends Controller
                     if(!empty($name[1]))
                         $new_social_user->last_name = $name[1];
                 }
-                else
-                {
-                    //todo Действие если нет имени и фамилии просьба ввода
-                }
+
 
                 $new_social_user->active = '1';
 
                 $the_activation_code = str_random(60) . $user->email;
                 $new_social_user->activation_code = $the_activation_code;
 
-                $new_social_user->role_id = 1;
+                $new_social_user->role_id = 4;
                 $new_social_user->status_id = 0;
                 $new_social_user->partner_id = 0;
                 $new_social_user->city_id = 0;
                 $new_social_user->country_id = 0;
 
                 $new_social_user->save();
+                $this->social_user = $new_social_user;
 
                 $social_data                = new Social;
 
+                $social_data->user_id       = $new_social_user->id;
                 $social_data->social_id     = $user->id;
                 $social_data->provider      = $provider;
 
-                $new_social_user->social()->save( $social_data );
+
+
+                //$new_social_user->social()->save( $social_data );
             }
             else{
                 //Load Existing social user
-                $social_user = $same_social_id->user;
+                $this->social_user = $same_social_id->user;
             }
+
         }
 
-        $this->auth->login($social_user, true); */
+        $this->auth->login($this->social_user , true);
 
     }
 

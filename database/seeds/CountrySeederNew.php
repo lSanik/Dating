@@ -13,256 +13,255 @@ class CountrySeederNew extends Seeder
     {
         DB::table('countries')->delete();
 
-        $countries = [
-            [1, 'AF', 'Afghanistan', 'created_at' => \Carbon\Carbon::now()],
-            [2, 'AL', 'Albania', 'created_at' => \Carbon\Carbon::now()],
-            [3, 'DZ', 'Algeria', 'created_at' => \Carbon\Carbon::now()],
-            [4, 'AS', 'American Samoa', 'created_at' => \Carbon\Carbon::now()],
-            [5, 'AD', 'Andorra', 'created_at' => \Carbon\Carbon::now()],
-            [6, 'AO', 'Angola', 'created_at' => \Carbon\Carbon::now()],
-            [7, 'AI', 'Anguilla', 'created_at' => \Carbon\Carbon::now()],
-            [8, 'AQ', 'Antarctica', 'created_at' => \Carbon\Carbon::now()],
-            [9, 'AG', 'Antigua And Barbuda', 'created_at' => Carbon\Carbon::now()],
-            [10, 'AR', 'Argentina', 'created_at' => \Carbon\Carbon::now()],
-            [11, 'AM', 'Armenia', 'created_at' => \Carbon\Carbon::now()],
-            [12, 'AW', 'Aruba', 'created_at' => \Carbon\Carbon::now()],
-            [13, 'AU', 'Australia', 'created_at' => \Carbon\Carbon::now()],
-            [14, 'AT', 'Austria', 'created_at' => \Carbon\Carbon::now()],
-            [15, 'AZ', 'Azerbaijan', 'created_at' => \Carbon\Carbon::now()],
-            [16, 'BS', 'Bahamas The', 'created_at' => \Carbon\Carbon::now()],
-            [17, 'BH', 'Bahrain', 'created_at' => \Carbon\Carbon::now()],
-            [18, 'BD', 'Bangladesh', 'created_at' => \Carbon\Carbon::now()],
-            [19, 'BB', 'Barbados', 'created_at' => \Carbon\Carbon::now()],
-            [20, 'BY', 'Belarus', 'created_at' => \Carbon\Carbon::now()],
-            [21, 'BE', 'Belgium', 'created_at' => \Carbon\Carbon::now()],
-            [22, 'BZ', 'Belize', 'created_at' => \Carbon\Carbon::now()],
-            [23, 'BJ', 'Benin', 'created_at' => \Carbon\Carbon::now()],
-            [24, 'BM', 'Bermuda', 'created_at' => \Carbon\Carbon::now()],
-            [25, 'BT', 'Bhutan', 'created_at' => \Carbon\Carbon::now()],
-            [26, 'BO', 'Bolivia', 'created_at' => \Carbon\Carbon::now()],
-            [27, 'BA', 'Bosnia and Herzegovina', 'created_at' => Carbon\Carbon::now()],
-            [28, 'BW', 'Botswana', 'created_at' => \Carbon\Carbon::now()],
-            [29, 'BV', 'Bouvet Island', 'created_at' => \Carbon\Carbon::now()],
-            [30, 'BR', 'Brazil', 'created_at' => \Carbon\Carbon::now()],
-            [31, 'IO', 'British Indian Ocean Territory', 'created_at' => Carbon\Carbon::now()],
-            [32, 'BN', 'Brunei', 'created_at' => \Carbon\Carbon::now()],
-            [33, 'BG', 'Bulgaria', 'created_at' => \Carbon\Carbon::now()],
-            [34, 'BF', 'Burkina Faso', 'created_at' => \Carbon\Carbon::now()],
-            [35, 'BI', 'Burundi', 'created_at' => \Carbon\Carbon::now()],
-            [36, 'KH', 'Cambodia', 'created_at' => \Carbon\Carbon::now()],
-            [37, 'CM', 'Cameroon', 'created_at' => \Carbon\Carbon::now()],
-            [38, 'CA', 'Canada', 'created_at' => \Carbon\Carbon::now()],
-            [39, 'CV', 'Cape Verde', 'created_at' => \Carbon\Carbon::now()],
-            [40, 'KY', 'Cayman Islands', 'created_at' => \Carbon\Carbon::now()],
-            [41, 'CF', 'Central African Republic', 'created_at' => Carbon\Carbon::now()],
-            [42, 'TD', 'Chad', 'created_at' => \Carbon\Carbon::now()],
-            [43, 'CL', 'Chile', 'created_at' => \Carbon\Carbon::now()],
-            [44, 'CN', 'China', 'created_at' => \Carbon\Carbon::now()],
-            [45, 'CX', 'Christmas Island', 'created_at' => Carbon\Carbon::now()],
-            [46, 'CC', 'Cocos (Keeling) Islands', 'created_at' => Carbon\Carbon::now()],
-            [47, 'CO', 'Colombia', 'created_at' => \Carbon\Carbon::now()],
-            [48, 'KM', 'Comoros', 'created_at' => \Carbon\Carbon::now()],
-            [49, 'CG', 'Congo', 'created_at' => \Carbon\Carbon::now()],
-            [50, 'CD', 'Congo The Democratic Republic Of The', 'created_at' => Carbon\Carbon::now()],
-            [51, 'CK', 'Cook Islands', 'created_at' => \Carbon\Carbon::now()],
-            [52, 'CR', 'Costa Rica', 'created_at' => \Carbon\Carbon::now()],
-            [53, 'CI', 'Cote D\'Ivoire (Ivory Coast)', 'created_at' => Carbon\Carbon::now()],
-            [54, 'HR', 'Croatia (Hrvatska)', 'created_at' => Carbon\Carbon::now()],
-            [55, 'CU', 'Cuba', 'created_at' => \Carbon\Carbon::now()],
-            [56, 'CY', 'Cyprus', 'created_at' => \Carbon\Carbon::now()],
-            [57, 'CZ', 'Czech Republic', 'created_at' => \Carbon\Carbon::now()],
-            [58, 'DK', 'Denmark', 'created_at' => \Carbon\Carbon::now()],
-            [59, 'DJ', 'Djibouti', 'created_at' => \Carbon\Carbon::now()],
-            [60, 'DM', 'Dominica', 'created_at' => \Carbon\Carbon::now()],
-            [61, 'DO', 'Dominican Republic', 'created_at' => Carbon\Carbon::now()],
-            [62, 'TP', 'East Timor', 'created_at' => \Carbon\Carbon::now()],
-            [63, 'EC', 'Ecuador', 'created_at' => \Carbon\Carbon::now()],
-            [64, 'EG', 'Egypt', 'created_at' => \Carbon\Carbon::now()],
-            [65, 'SV', 'El Salvador', 'created_at' => \Carbon\Carbon::now()],
-            [66, 'GQ', 'Equatorial Guinea', 'created_at' => Carbon\Carbon::now()],
-            [67, 'ER', 'Eritrea', 'created_at' => \Carbon\Carbon::now()],
-            [68, 'EE', 'Estonia', 'created_at' => \Carbon\Carbon::now()],
-            [69, 'ET', 'Ethiopia', 'created_at' => \Carbon\Carbon::now()],
-            [70, 'XA', 'External Territories of Australia', 'created_at' => Carbon\Carbon::now()],
-            [71, 'FK', 'Falkland Islands', 'created_at' => Carbon\Carbon::now()],
-            [72, 'FO', 'Faroe Islands', 'created_at' => \Carbon\Carbon::now()],
-            [73, 'FJ', 'Fiji Islands', 'created_at' => \Carbon\Carbon::now()],
-            [74, 'FI', 'Finland', 'created_at' => \Carbon\Carbon::now()],
-            [75, 'FR', 'France', 'created_at' => \Carbon\Carbon::now()],
-            [76, 'GF', 'French Guiana', 'created_at' => \Carbon\Carbon::now()],
-            [77, 'PF', 'French Polynesia', 'created_at' => Carbon\Carbon::now()],
-            [78, 'TF', 'French Southern Territories', 'created_at' => Carbon\Carbon::now()],
-            [79, 'GA', 'Gabon', 'created_at' => \Carbon\Carbon::now()],
-            [80, 'GM', 'Gambia The', 'created_at' => \Carbon\Carbon::now()],
-            [81, 'GE', 'Georgia', 'created_at' => \Carbon\Carbon::now()],
-            [82, 'DE', 'Germany', 'created_at' => \Carbon\Carbon::now()],
-            [83, 'GH', 'Ghana', 'created_at' => \Carbon\Carbon::now()],
-            [84, 'GI', 'Gibraltar', 'created_at' => \Carbon\Carbon::now()],
-            [85, 'GR', 'Greece', 'created_at' => \Carbon\Carbon::now()],
-            [86, 'GL', 'Greenland', 'created_at' => \Carbon\Carbon::now()],
-            [87, 'GD', 'Grenada', 'created_at' => \Carbon\Carbon::now()],
-            [88, 'GP', 'Guadeloupe', 'created_at' => \Carbon\Carbon::now()],
-            [89, 'GU', 'Guam', 'created_at' => \Carbon\Carbon::now()],
-            [90, 'GT', 'Guatemala', 'created_at' => \Carbon\Carbon::now()],
-            [91, 'XU', 'Guernsey and Alderney', 'created_at' => Carbon\Carbon::now()],
-            [92, 'GN', 'Guinea', 'created_at' => \Carbon\Carbon::now()],
-            [93, 'GW', 'Guinea-Bissau', 'created_at' => \Carbon\Carbon::now()],
-            [94, 'GY', 'Guyana', 'created_at' => \Carbon\Carbon::now()],
-            [95, 'HT', 'Haiti', 'created_at' => \Carbon\Carbon::now()],
-            [96, 'HM', 'Heard and McDonald Islands', 'created_at' => Carbon\Carbon::now()],
-            [97, 'HN', 'Honduras', 'created_at' => \Carbon\Carbon::now()],
-            [98, 'HK', 'Hong Kong S.A.R.', 'created_at' => Carbon\Carbon::now()],
-            [99, 'HU', 'Hungary', 'created_at' => \Carbon\Carbon::now()],
-            [100, 'IS', 'Iceland', 'created_at' => \Carbon\Carbon::now()],
-            [101, 'IN', 'India', 'created_at' => \Carbon\Carbon::now()],
-            [102, 'ID', 'Indonesia', 'created_at' => \Carbon\Carbon::now()],
-            [103, 'IR', 'Iran', 'created_at' => \Carbon\Carbon::now()],
-            [104, 'IQ', 'Iraq', 'created_at' => \Carbon\Carbon::now()],
-            [105, 'IE', 'Ireland', 'created_at' => \Carbon\Carbon::now()],
-            [106, 'IL', 'Israel', 'created_at' => \Carbon\Carbon::now()],
-            [107, 'IT', 'Italy', 'created_at' => \Carbon\Carbon::now()],
-            [108, 'JM', 'Jamaica', 'created_at' => \Carbon\Carbon::now()],
-            [109, 'JP', 'Japan', 'created_at' => \Carbon\Carbon::now()],
-            [110, 'XJ', 'Jersey', 'created_at' => \Carbon\Carbon::now()],
-            [111, 'JO', 'Jordan', 'created_at' => \Carbon\Carbon::now()],
-            [112, 'KZ', 'Kazakhstan', 'created_at' => \Carbon\Carbon::now()],
-            [113, 'KE', 'Kenya', 'created_at' => \Carbon\Carbon::now()],
-            [114, 'KI', 'Kiribati', 'created_at' => \Carbon\Carbon::now()],
-            [115, 'KP', 'Korea North', 'created_at' => \Carbon\Carbon::now()],
-            [116, 'KR', 'Korea South', 'created_at' => \Carbon\Carbon::now()],
-            [117, 'KW', 'Kuwait', 'created_at' => \Carbon\Carbon::now()],
-            [118, 'KG', 'Kyrgyzstan', 'created_at' => \Carbon\Carbon::now()],
-            [119, 'LA', 'Laos', 'created_at' => \Carbon\Carbon::now()],
-            [120, 'LV', 'Latvia', 'created_at' => \Carbon\Carbon::now()],
-            [121, 'LB', 'Lebanon', 'created_at' => \Carbon\Carbon::now()],
-            [122, 'LS', 'Lesotho', 'created_at' => \Carbon\Carbon::now()],
-            [123, 'LR', 'Liberia', 'created_at' => \Carbon\Carbon::now()],
-            [124, 'LY', 'Libya', 'created_at' => \Carbon\Carbon::now()],
-            [125, 'LI', 'Liechtenstein', 'created_at' => \Carbon\Carbon::now()],
-            [126, 'LT', 'Lithuania', 'created_at' => \Carbon\Carbon::now()],
-            [127, 'LU', 'Luxembourg', 'created_at' => \Carbon\Carbon::now()],
-            [128, 'MO', 'Macau S.A.R.', 'created_at' => \Carbon\Carbon::now()],
-            [129, 'MK', 'Macedonia', 'created_at' => \Carbon\Carbon::now()],
-            [130, 'MG', 'Madagascar', 'created_at' => \Carbon\Carbon::now()],
-            [131, 'MW', 'Malawi', 'created_at' => \Carbon\Carbon::now()],
-            [132, 'MY', 'Malaysia', 'created_at' => \Carbon\Carbon::now()],
-            [133, 'MV', 'Maldives', 'created_at' => \Carbon\Carbon::now()],
-            [134, 'ML', 'Mali', 'created_at' => \Carbon\Carbon::now()],
-            [135, 'MT', 'Malta', 'created_at' => \Carbon\Carbon::now()],
-            [136, 'XM', 'Man (Isle of)', 'created_at' => \Carbon\Carbon::now()],
-            [137, 'MH', 'Marshall Islands', 'created_at' => Carbon\Carbon::now()],
-            [138, 'MQ', 'Martinique', 'created_at' => \Carbon\Carbon::now()],
-            [139, 'MR', 'Mauritania', 'created_at' => \Carbon\Carbon::now()],
-            [140, 'MU', 'Mauritius', 'created_at' => \Carbon\Carbon::now()],
-            [141, 'YT', 'Mayotte', 'created_at' => \Carbon\Carbon::now()],
-            [142, 'MX', 'Mexico', 'created_at' => \Carbon\Carbon::now()],
-            [143, 'FM', 'Micronesia', 'created_at' => \Carbon\Carbon::now()],
-            [144, 'MD', 'Moldova', 'created_at' => \Carbon\Carbon::now()],
-            [145, 'MC', 'Monaco', 'created_at' => \Carbon\Carbon::now()],
-            [146, 'MN', 'Mongolia', 'created_at' => \Carbon\Carbon::now()],
-            [147, 'MS', 'Montserrat', 'created_at' => \Carbon\Carbon::now()],
-            [148, 'MA', 'Morocco', 'created_at' => \Carbon\Carbon::now()],
-            [149, 'MZ', 'Mozambique', 'created_at' => \Carbon\Carbon::now()],
-            [150, 'MM', 'Myanmar', 'created_at' => \Carbon\Carbon::now()],
-            [151, 'NA', 'Namibia', 'created_at' => \Carbon\Carbon::now()],
-            [152, 'NR', 'Nauru', 'created_at' => \Carbon\Carbon::now()],
-            [153, 'NP', 'Nepal', 'created_at' => \Carbon\Carbon::now()],
-            [154, 'AN', 'Netherlands Antilles', 'created_at' => Carbon\Carbon::now()],
-            [155, 'NL', 'Netherlands The', 'created_at' => Carbon\Carbon::now()],
-            [156, 'NC', 'New Caledonia', 'created_at' => \Carbon\Carbon::now()],
-            [157, 'NZ', 'New Zealand', 'created_at' => \Carbon\Carbon::now()],
-            [158, 'NI', 'Nicaragua', 'created_at' => \Carbon\Carbon::now()],
-            [159, 'NE', 'Niger', 'created_at' => \Carbon\Carbon::now()],
-            [160, 'NG', 'Nigeria', 'created_at' => \Carbon\Carbon::now()],
-            [161, 'NU', 'Niue', 'created_at' => \Carbon\Carbon::now()],
-            [162, 'NF', 'Norfolk Island', 'created_at' => Carbon\Carbon::now()],
-            [163, 'MP', 'Northern Mariana Islands', 'created_at' => Carbon\Carbon::now()],
-            [164, 'NO', 'Norway', 'created_at' => \Carbon\Carbon::now()],
-            [165, 'OM', 'Oman', 'created_at' => \Carbon\Carbon::now()],
-            [166, 'PK', 'Pakistan', 'created_at' => \Carbon\Carbon::now()],
-            [167, 'PW', 'Palau', 'created_at' => \Carbon\Carbon::now()],
-            [168, 'PS', 'Palestinian Territory Occupied', 'created_at' => Carbon\Carbon::now()],
-            [169, 'PA', 'Panama', 'created_at' => \Carbon\Carbon::now()],
-            [170, 'PG', 'Papua new Guinea', 'created_at' => Carbon\Carbon::now()],
-            [171, 'PY', 'Paraguay', 'created_at' => \Carbon\Carbon::now()],
-            [172, 'PE', 'Peru', 'created_at' => \Carbon\Carbon::now()],
-            [173, 'PH', 'Philippines', 'created_at' => \Carbon\Carbon::now()],
-            [174, 'PN', 'Pitcairn Island', 'created_at' => Carbon\Carbon::now()],
-            [175, 'PL', 'Poland', 'created_at' => \Carbon\Carbon::now()],
-            [176, 'PT', 'Portugal', 'created_at' => \Carbon\Carbon::now()],
-            [177, 'PR', 'Puerto Rico', 'created_at' => \Carbon\Carbon::now()],
-            [178, 'QA', 'Qatar', 'created_at' => \Carbon\Carbon::now()],
-            [179, 'RE', 'Reunion', 'created_at' => \Carbon\Carbon::now()],
-            [180, 'RO', 'Romania', 'created_at' => \Carbon\Carbon::now()],
-            [181, 'RU', 'Russia', 'created_at' => \Carbon\Carbon::now()],
-            [182, 'RW', 'Rwanda', 'created_at' => \Carbon\Carbon::now()],
-            [183, 'SH', 'Saint Helena', 'created_at' => \Carbon\Carbon::now()],
-            [184, 'KN', 'Saint Kitts And Nevis', 'created_at' => Carbon\Carbon::now()],
-            [185, 'LC', 'Saint Lucia', 'created_at' => \Carbon\Carbon::now()],
-            [186, 'PM', 'Saint Pierre and Miquelon', 'created_at' => Carbon\Carbon::now()],
-            [187, 'VC', 'Saint Vincent And The Grenadines', 'created_at' => Carbon\Carbon::now()],
-            [188, 'WS', 'Samoa', 'created_at' => \Carbon\Carbon::now()],
-            [189, 'SM', 'San Marino', 'created_at' => \Carbon\Carbon::now()],
-            [190, 'ST', 'Sao Tome and Principe', 'created_at' => Carbon\Carbon::now()],
-            [191, 'SA', 'Saudi Arabia', 'created_at' => \Carbon\Carbon::now()],
-            [192, 'SN', 'Senegal', 'created_at' => \Carbon\Carbon::now()],
-            [193, 'RS', 'Serbia', 'created_at' => \Carbon\Carbon::now()],
-            [194, 'SC', 'Seychelles', 'created_at' => \Carbon\Carbon::now()],
-            [195, 'SL', 'Sierra Leone', 'created_at' => \Carbon\Carbon::now()],
-            [196, 'SG', 'Singapore', 'created_at' => \Carbon\Carbon::now()],
-            [197, 'SK', 'Slovakia', 'created_at' => \Carbon\Carbon::now()],
-            [198, 'SI', 'Slovenia', 'created_at' => \Carbon\Carbon::now()],
-            [199, 'XG', 'Smaller Territories of the UK', 'created_at' => Carbon\Carbon::now()],
-            [200, 'SB', 'Solomon Islands', 'created_at' => Carbon\Carbon::now()],
-            [201, 'SO', 'Somalia', 'created_at' => \Carbon\Carbon::now()],
-            [202, 'ZA', 'South Africa', 'created_at' => \Carbon\Carbon::now()],
-            [203, 'GS', 'South Georgia', 'created_at' => \Carbon\Carbon::now()],
-            [204, 'SS', 'South Sudan', 'created_at' => \Carbon\Carbon::now()],
-            [205, 'ES', 'Spain', 'created_at' => \Carbon\Carbon::now()],
-            [206, 'LK', 'Sri Lanka', 'created_at' => \Carbon\Carbon::now()],
-            [207, 'SD', 'Sudan', 'created_at' => \Carbon\Carbon::now()],
-            [208, 'SR', 'Suriname', 'created_at' => \Carbon\Carbon::now()],
-            [209, 'SJ', 'Svalbard And Jan Mayen Islands', 'created_at' => Carbon\Carbon::now()],
-            [210, 'SZ', 'Swaziland', 'created_at' => \Carbon\Carbon::now()],
-            [211, 'SE', 'Sweden', 'created_at' => \Carbon\Carbon::now()],
-            [212, 'CH', 'Switzerland', 'created_at' => \Carbon\Carbon::now()],
-            [213, 'SY', 'Syria', 'created_at' => \Carbon\Carbon::now()],
-            [214, 'TW', 'Taiwan', 'created_at' => \Carbon\Carbon::now()],
-            [215, 'TJ', 'Tajikistan', 'created_at' => \Carbon\Carbon::now()],
-            [216, 'TZ', 'Tanzania', 'created_at' => \Carbon\Carbon::now()],
-            [217, 'TH', 'Thailand', 'created_at' => \Carbon\Carbon::now()],
-            [218, 'TG', 'Togo', 'created_at' => \Carbon\Carbon::now()],
-            [219, 'TK', 'Tokelau', 'created_at' => \Carbon\Carbon::now()],
-            [220, 'TO', 'Tonga', 'created_at' => \Carbon\Carbon::now()],
-            [221, 'TT', 'Trinidad And Tobago', 'created_at' => Carbon\Carbon::now()],
-            [222, 'TN', 'Tunisia', 'created_at' => \Carbon\Carbon::now()],
-            [223, 'TR', 'Turkey', 'created_at' => \Carbon\Carbon::now()],
-            [224, 'TM', 'Turkmenistan', 'created_at' => \Carbon\Carbon::now()],
-            [225, 'TC', 'Turks And Caicos Islands', 'created_at' => Carbon\Carbon::now()],
-            [226, 'TV', 'Tuvalu', 'created_at' => \Carbon\Carbon::now()],
-            [227, 'UG', 'Uganda', 'created_at' => \Carbon\Carbon::now()],
-            [228, 'UA', 'Ukraine', 'created_at' => \Carbon\Carbon::now()],
-            [229, 'AE', 'United Arab Emirates', 'created_at' => Carbon\Carbon::now()],
-            [230, 'GB', 'United Kingdom', 'created_at' => Carbon\Carbon::now()],
-            [231, 'US', 'United States', 'created_at' => \Carbon\Carbon::now()],
-            [232, 'UM', 'United States Minor Outlying Islands', 'created_at' => Carbon\Carbon::now()],
-            [233, 'UY', 'Uruguay', 'created_at' => \Carbon\Carbon::now()],
-            [234, 'UZ', 'Uzbekistan', 'created_at' => \Carbon\Carbon::now()],
-            [235, 'VU', 'Vanuatu', 'created_at' => \Carbon\Carbon::now()],
-            [236, 'VA', 'Vatican City State (Holy See)', 'created_at' => Carbon\Carbon::now()],
-            [237, 'VE', 'Venezuela', 'created_at' => \Carbon\Carbon::now()],
-            [238, 'VN', 'Vietnam', 'created_at' => \Carbon\Carbon::now()],
-            [239, 'VG', 'Virgin Islands (British)', 'created_at' => Carbon\Carbon::now()],
-            [240, 'VI', 'Virgin Islands (US)', 'created_at' => Carbon\Carbon::now()],
-            [241, 'WF', 'Wallis And Futuna Islands', 'created_at' => Carbon\Carbon::now()],
-            [242, 'EH', 'Western Sahara', 'created_at' => Carbon\Carbon::now()],
-            [243, 'YE', 'Yemen', 'created_at' => \Carbon\Carbon::now()],
-            [244, 'YU', 'Yugoslavia', 'created_at' => \Carbon\Carbon::now()],
-            [245, 'ZM', 'Zambia', 'created_at' => \Carbon\Carbon::now()],
-            [246, 'ZW', 'Zimbabwe', 'created_at' => \Carbon\Carbon::now()],
-        ];
+        
+        DB::table('countries')->insert(['id' => 1,'sortname' => 'AF', 'name' => 'Afghanistan', ]);
+        DB::table('countries')->insert(['id' => 2,'sortname' => 'AL', 'name' => 'Albania', ]);
+        DB::table('countries')->insert(['id' => 3,'sortname' => 'DZ', 'name' => 'Algeria', ]);
+        DB::table('countries')->insert(['id' => 4,'sortname' => 'AS', 'name' => 'American Samoa', ]);
+        DB::table('countries')->insert(['id' => 5,'sortname' => 'AD', 'name' => 'Andorra', ]);
+        DB::table('countries')->insert(['id' => 6,'sortname' => 'AO', 'name' => 'Angola', ]);
+        DB::table('countries')->insert(['id' => 7,'sortname' => 'AI', 'name' => 'Anguilla', ]);
+        DB::table('countries')->insert(['id' => 8,'sortname' => 'AQ', 'name' => 'Antarctica', ]);
+        DB::table('countries')->insert(['id' => 9,'sortname' => 'AG', 'name' => 'Antigua And Barbuda',]);
+        DB::table('countries')->insert(['id' => 10, 'sortname' => 'AR', 'name' =>'Argentina', ]);
+        DB::table('countries')->insert(['id' => 11, 'sortname' => 'AM', 'name' =>'Armenia', ]);
+        DB::table('countries')->insert(['id' => 12, 'sortname' => 'AW', 'name' =>'Aruba', ]);
+        DB::table('countries')->insert(['id' => 13, 'sortname' => 'AU', 'name' =>'Australia', ]);
+        DB::table('countries')->insert(['id' => 14, 'sortname' => 'AT', 'name' =>'Austria', ]);
+        DB::table('countries')->insert(['id' => 15, 'sortname' => 'AZ', 'name' =>'Azerbaijan', ]);
+        DB::table('countries')->insert(['id' => 16, 'sortname' => 'BS', 'name' =>'Bahamas The', ]);
+        DB::table('countries')->insert(['id' => 17, 'sortname' => 'BH', 'name' =>'Bahrain', ]);
+        DB::table('countries')->insert(['id' => 18, 'sortname' => 'BD', 'name' =>'Bangladesh', ]);
+        DB::table('countries')->insert(['id' => 19, 'sortname' => 'BB', 'name' =>'Barbados', ]);
+        DB::table('countries')->insert(['id' => 20, 'sortname' => 'BY', 'name' =>'Belarus', ]);
+        DB::table('countries')->insert(['id' => 21, 'sortname' => 'BE', 'name' =>'Belgium', ]);
+        DB::table('countries')->insert(['id' => 22, 'sortname' => 'BZ', 'name' =>'Belize', ]);
+        DB::table('countries')->insert(['id' => 23, 'sortname' => 'BJ', 'name' =>'Benin', ]);
+        DB::table('countries')->insert(['id' => 24, 'sortname' => 'BM', 'name' =>'Bermuda', ]);
+        DB::table('countries')->insert(['id' => 25, 'sortname' => 'BT', 'name' =>'Bhutan', ]);
+        DB::table('countries')->insert(['id' => 26, 'sortname' => 'BO', 'name' =>'Bolivia', ]);
+        DB::table('countries')->insert(['id' => 27, 'sortname' => 'BA', 'name' =>'Bosnia and Herzegovina',]);
+        DB::table('countries')->insert(['id' => 28, 'sortname' => 'BW', 'name' =>'Botswana', ]);
+        DB::table('countries')->insert(['id' => 29, 'sortname' => 'BV', 'name' =>'Bouvet Island', ]);
+        DB::table('countries')->insert(['id' => 30, 'sortname' => 'BR', 'name' =>'Brazil', ]);
+        DB::table('countries')->insert(['id' => 31, 'sortname' => 'IO', 'name' =>'British Indian Ocean Territory',]);
+        DB::table('countries')->insert(['id' => 32, 'sortname' => 'BN', 'name' =>'Brunei', ]);
+        DB::table('countries')->insert(['id' => 33, 'sortname' => 'BG', 'name' =>'Bulgaria', ]);
+        DB::table('countries')->insert(['id' => 34, 'sortname' => 'BF', 'name' =>'Burkina Faso', ]);
+        DB::table('countries')->insert(['id' => 35, 'sortname' => 'BI', 'name' =>'Burundi', ]);
+        DB::table('countries')->insert(['id' => 36, 'sortname' => 'KH', 'name' =>'Cambodia', ]);
+        DB::table('countries')->insert(['id' => 37, 'sortname' => 'CM', 'name' =>'Cameroon', ]);
+        DB::table('countries')->insert(['id' => 38, 'sortname' => 'CA', 'name' =>'Canada', ]);
+        DB::table('countries')->insert(['id' => 39, 'sortname' => 'CV', 'name' =>'Cape Verde', ]);
+        DB::table('countries')->insert(['id' => 40, 'sortname' => 'KY', 'name' =>'Cayman Islands', ]);
+        DB::table('countries')->insert(['id' => 41, 'sortname' => 'CF', 'name' =>'Central African Republic',]);
+        DB::table('countries')->insert(['id' => 42, 'sortname' => 'TD', 'name' =>'Chad', ]);
+        DB::table('countries')->insert(['id' => 43, 'sortname' => 'CL', 'name' =>'Chile', ]);
+        DB::table('countries')->insert(['id' => 44, 'sortname' => 'CN', 'name' =>'China', ]);
+        DB::table('countries')->insert(['id' => 45, 'sortname' => 'CX', 'name' =>'Christmas Island',]);
+        DB::table('countries')->insert(['id' => 46, 'sortname' => 'CC', 'name' =>'Cocos (Keeling) Islands',]);
+        DB::table('countries')->insert(['id' => 47, 'sortname' => 'CO', 'name' =>'Colombia', ]);
+        DB::table('countries')->insert(['id' => 48, 'sortname' => 'KM', 'name' =>'Comoros', ]);
+        DB::table('countries')->insert(['id' => 49, 'sortname' => 'CG', 'name' =>'Congo', ]);
+        DB::table('countries')->insert(['id' => 50, 'sortname' => 'CD', 'name' =>'Congo The Democratic Republic Of The',]);
+        DB::table('countries')->insert(['id' => 51, 'sortname' => 'CK', 'name' =>'Cook Islands', ]);
+        DB::table('countries')->insert(['id' => 52, 'sortname' => 'CR', 'name' =>'Costa Rica', ]);
+        DB::table('countries')->insert(['id' => 53, 'sortname' => 'CI', 'name' =>'Cote D\'Ivoire (Ivory Coast)',]);
+        DB::table('countries')->insert(['id' => 54, 'sortname' => 'HR', 'name' =>'Croatia (Hrvatska)',]);
+        DB::table('countries')->insert(['id' => 55, 'sortname' => 'CU', 'name' =>'Cuba', ]);
+        DB::table('countries')->insert(['id' => 56, 'sortname' => 'CY', 'name' =>'Cyprus', ]);
+        DB::table('countries')->insert(['id' => 57, 'sortname' => 'CZ', 'name' =>'Czech Republic', ]);
+        DB::table('countries')->insert(['id' => 58, 'sortname' => 'DK', 'name' =>'Denmark', ]);
+        DB::table('countries')->insert(['id' => 59, 'sortname' => 'DJ', 'name' =>'Djibouti', ]);
+        DB::table('countries')->insert(['id' => 60, 'sortname' => 'DM', 'name' =>'Dominica', ]);
+        DB::table('countries')->insert(['id' => 61, 'sortname' => 'DO', 'name' =>'Dominican Republic',]);
+        DB::table('countries')->insert(['id' => 62, 'sortname' => 'TP', 'name' =>'East Timor', ]);
+        DB::table('countries')->insert(['id' => 63, 'sortname' => 'EC', 'name' =>'Ecuador', ]);
+        DB::table('countries')->insert(['id' => 64, 'sortname' => 'EG', 'name' =>'Egypt', ]);
+        DB::table('countries')->insert(['id' => 65, 'sortname' => 'SV', 'name' =>'El Salvador', ]);
+        DB::table('countries')->insert(['id' => 66, 'sortname' => 'GQ', 'name' =>'Equatorial Guinea',]);
+        DB::table('countries')->insert(['id' => 67, 'sortname' => 'ER', 'name' =>'Eritrea', ]);
+        DB::table('countries')->insert(['id' => 68, 'sortname' => 'EE', 'name' =>'Estonia', ]);
+        DB::table('countries')->insert(['id' => 69, 'sortname' => 'ET', 'name' =>'Ethiopia', ]);
+        DB::table('countries')->insert(['id' => 70, 'sortname' => 'XA', 'name' =>'External Territories of Australia',]);
+        DB::table('countries')->insert(['id' => 71, 'sortname' => 'FK', 'name' =>'Falkland Islands',]);
+        DB::table('countries')->insert(['id' => 72, 'sortname' => 'FO', 'name' =>'Faroe Islands', ]);
+        DB::table('countries')->insert(['id' => 73, 'sortname' => 'FJ', 'name' =>'Fiji Islands', ]);
+        DB::table('countries')->insert(['id' => 74, 'sortname' => 'FI', 'name' =>'Finland', ]);
+        DB::table('countries')->insert(['id' => 75, 'sortname' => 'FR', 'name' =>'France', ]);
+        DB::table('countries')->insert(['id' => 76, 'sortname' => 'GF', 'name' =>'French Guiana', ]);
+        DB::table('countries')->insert(['id' => 77, 'sortname' => 'PF', 'name' =>'French Polynesia',]);
+        DB::table('countries')->insert(['id' => 78, 'sortname' => 'TF', 'name' =>'French Southern Territories',]);
+        DB::table('countries')->insert(['id' => 79, 'sortname' => 'GA', 'name' =>'Gabon', ]);
+        DB::table('countries')->insert(['id' => 80, 'sortname' => 'GM', 'name' =>'Gambia The', ]);
+        DB::table('countries')->insert(['id' => 81, 'sortname' => 'GE', 'name' =>'Georgia', ]);
+        DB::table('countries')->insert(['id' => 82, 'sortname' => 'DE', 'name' =>'Germany', ]);
+        DB::table('countries')->insert(['id' => 83, 'sortname' => 'GH', 'name' =>'Ghana', ]);
+        DB::table('countries')->insert(['id' => 84, 'sortname' => 'GI', 'name' =>'Gibraltar', ]);
+        DB::table('countries')->insert(['id' => 85, 'sortname' => 'GR', 'name' =>'Greece', ]);
+        DB::table('countries')->insert(['id' => 86, 'sortname' => 'GL', 'name' =>'Greenland', ]);
+        DB::table('countries')->insert(['id' => 87, 'sortname' => 'GD', 'name' =>'Grenada', ]);
+        DB::table('countries')->insert(['id' => 88, 'sortname' => 'GP', 'name' =>'Guadeloupe', ]);
+        DB::table('countries')->insert(['id' => 89, 'sortname' => 'GU', 'name' =>'Guam', ]);
+        DB::table('countries')->insert(['id' => 90, 'sortname' => 'GT', 'name' =>'Guatemala', ]);
+        DB::table('countries')->insert(['id' => 91, 'sortname' => 'XU', 'name' =>'Guernsey and Alderney',]);
+        DB::table('countries')->insert(['id' => 92, 'sortname' => 'GN', 'name' =>'Guinea', ]);
+        DB::table('countries')->insert(['id' => 93, 'sortname' => 'GW', 'name' =>'Guinea-Bissau', ]);
+        DB::table('countries')->insert(['id' => 94, 'sortname' => 'GY', 'name' =>'Guyana', ]);
+        DB::table('countries')->insert(['id' => 95, 'sortname' => 'HT', 'name' =>'Haiti', ]);
+        DB::table('countries')->insert(['id' => 96, 'sortname' => 'HM', 'name' =>'Heard and McDonald Islands',]);
+        DB::table('countries')->insert(['id' => 97, 'sortname' => 'HN', 'name' =>'Honduras', ]);
+        DB::table('countries')->insert(['id' => 98, 'sortname' => 'HK', 'name' =>'Hong Kong S.A.R.',]);
+        DB::table('countries')->insert(['id' => 99, 'sortname' => 'HU', 'name' =>'Hungary', ]);
+        DB::table('countries')->insert(['id' => 100,'sortname' =>  'IS','name' => 'Iceland', ]);
+        DB::table('countries')->insert(['id' => 101,'sortname' =>  'IN','name' => 'India', ]);
+        DB::table('countries')->insert(['id' => 102,'sortname' =>  'ID','name' => 'Indonesia', ]);
+        DB::table('countries')->insert(['id' => 103,'sortname' =>  'IR','name' => 'Iran', ]);
+        DB::table('countries')->insert(['id' => 104,'sortname' =>  'IQ','name' => 'Iraq', ]);
+        DB::table('countries')->insert(['id' => 105,'sortname' =>  'IE','name' => 'Ireland', ]);
+        DB::table('countries')->insert(['id' => 106,'sortname' =>  'IL','name' => 'Israel', ]);
+        DB::table('countries')->insert(['id' => 107,'sortname' =>  'IT','name' => 'Italy', ]);
+        DB::table('countries')->insert(['id' => 108,'sortname' =>  'JM','name' => 'Jamaica', ]);
+        DB::table('countries')->insert(['id' => 109,'sortname' =>  'JP','name' => 'Japan', ]);
+        DB::table('countries')->insert(['id' => 110,'sortname' =>  'XJ','name' => 'Jersey', ]);
+        DB::table('countries')->insert(['id' => 111,'sortname' =>  'JO','name' => 'Jordan', ]);
+        DB::table('countries')->insert(['id' => 112,'sortname' =>  'KZ','name' => 'Kazakhstan', ]);
+        DB::table('countries')->insert(['id' => 113,'sortname' =>  'KE','name' => 'Kenya', ]);
+        DB::table('countries')->insert(['id' => 114,'sortname' =>  'KI','name' => 'Kiribati', ]);
+        DB::table('countries')->insert(['id' => 115,'sortname' =>  'KP','name' => 'Korea North', ]);
+        DB::table('countries')->insert(['id' => 116,'sortname' =>  'KR','name' => 'Korea South', ]);
+        DB::table('countries')->insert(['id' => 117,'sortname' =>  'KW','name' => 'Kuwait', ]);
+        DB::table('countries')->insert(['id' => 118,'sortname' =>  'KG','name' => 'Kyrgyzstan', ]);
+        DB::table('countries')->insert(['id' => 119,'sortname' =>  'LA','name' => 'Laos', ]);
+        DB::table('countries')->insert(['id' => 120,'sortname' =>  'LV','name' => 'Latvia', ]);
+        DB::table('countries')->insert(['id' => 121,'sortname' =>  'LB','name' => 'Lebanon', ]);
+        DB::table('countries')->insert(['id' => 122,'sortname' =>  'LS','name' => 'Lesotho', ]);
+        DB::table('countries')->insert(['id' => 123,'sortname' =>  'LR','name' => 'Liberia', ]);
+        DB::table('countries')->insert(['id' => 124,'sortname' =>  'LY','name' => 'Libya', ]);
+        DB::table('countries')->insert(['id' => 125,'sortname' =>  'LI','name' => 'Liechtenstein', ]);
+        DB::table('countries')->insert(['id' => 126,'sortname' =>  'LT','name' => 'Lithuania', ]);
+        DB::table('countries')->insert(['id' => 127,'sortname' =>  'LU','name' => 'Luxembourg', ]);
+        DB::table('countries')->insert(['id' => 128,'sortname' =>  'MO','name' => 'Macau S.A.R.', ]);
+        DB::table('countries')->insert(['id' => 129,'sortname' =>  'MK','name' => 'Macedonia', ]);
+        DB::table('countries')->insert(['id' => 130,'sortname' =>  'MG','name' => 'Madagascar', ]);
+        DB::table('countries')->insert(['id' => 131,'sortname' =>  'MW','name' => 'Malawi', ]);
+        DB::table('countries')->insert(['id' => 132,'sortname' =>  'MY','name' => 'Malaysia', ]);
+        DB::table('countries')->insert(['id' => 133,'sortname' =>  'MV','name' => 'Maldives', ]);
+        DB::table('countries')->insert(['id' => 134,'sortname' =>  'ML','name' => 'Mali', ]);
+        DB::table('countries')->insert(['id' => 135,'sortname' =>  'MT','name' => 'Malta', ]);
+        DB::table('countries')->insert(['id' => 136,'sortname' =>  'XM','name' => 'Man (Isle of)', ]);
+        DB::table('countries')->insert(['id' => 137,'sortname' =>  'MH','name' => 'Marshall Islands',]);
+        DB::table('countries')->insert(['id' => 138,'sortname' =>  'MQ','name' => 'Martinique', ]);
+        DB::table('countries')->insert(['id' => 139,'sortname' =>  'MR','name' => 'Mauritania', ]);
+        DB::table('countries')->insert(['id' => 140,'sortname' =>  'MU','name' => 'Mauritius', ]);
+        DB::table('countries')->insert(['id' => 141,'sortname' =>  'YT','name' => 'Mayotte', ]);
+        DB::table('countries')->insert(['id' => 142,'sortname' =>  'MX','name' => 'Mexico', ]);
+        DB::table('countries')->insert(['id' => 143,'sortname' =>  'FM','name' => 'Micronesia', ]);
+        DB::table('countries')->insert(['id' => 144,'sortname' =>  'MD','name' => 'Moldova', ]);
+        DB::table('countries')->insert(['id' => 145,'sortname' =>  'MC','name' => 'Monaco', ]);
+        DB::table('countries')->insert(['id' => 146,'sortname' =>  'MN','name' => 'Mongolia', ]);
+        DB::table('countries')->insert(['id' => 147,'sortname' =>  'MS','name' => 'Montserrat', ]);
+        DB::table('countries')->insert(['id' => 148,'sortname' =>  'MA','name' => 'Morocco', ]);
+        DB::table('countries')->insert(['id' => 149,'sortname' =>  'MZ','name' => 'Mozambique', ]);
+        DB::table('countries')->insert(['id' => 150,'sortname' =>  'MM','name' => 'Myanmar', ]);
+        DB::table('countries')->insert(['id' => 151,'sortname' =>  'NA','name' => 'Namibia', ]);
+        DB::table('countries')->insert(['id' => 152,'sortname' =>  'NR','name' => 'Nauru', ]);
+        DB::table('countries')->insert(['id' => 153,'sortname' =>  'NP','name' => 'Nepal', ]);
+        DB::table('countries')->insert(['id' => 154,'sortname' =>  'AN','name' => 'Netherlands Antilles',]);
+        DB::table('countries')->insert(['id' => 155,'sortname' =>  'NL','name' => 'Netherlands The',]);
+        DB::table('countries')->insert(['id' => 156,'sortname' =>  'NC','name' => 'New Caledonia', ]);
+        DB::table('countries')->insert(['id' => 157,'sortname' =>  'NZ','name' => 'New Zealand', ]);
+        DB::table('countries')->insert(['id' => 158,'sortname' =>  'NI','name' => 'Nicaragua', ]);
+        DB::table('countries')->insert(['id' => 159,'sortname' =>  'NE','name' => 'Niger', ]);
+        DB::table('countries')->insert(['id' => 160,'sortname' =>  'NG','name' => 'Nigeria', ]);
+        DB::table('countries')->insert(['id' => 161,'sortname' =>  'NU','name' => 'Niue', ]);
+        DB::table('countries')->insert(['id' => 162,'sortname' =>  'NF','name' => 'Norfolk Island',]);
+        DB::table('countries')->insert(['id' => 163,'sortname' =>  'MP','name' => 'Northern Mariana Islands',]);
+        DB::table('countries')->insert(['id' => 164,'sortname' =>  'NO','name' => 'Norway', ]);
+        DB::table('countries')->insert(['id' => 165,'sortname' =>  'OM','name' => 'Oman', ]);
+        DB::table('countries')->insert(['id' => 166,'sortname' =>  'PK','name' => 'Pakistan', ]);
+        DB::table('countries')->insert(['id' => 167,'sortname' =>  'PW','name' => 'Palau', ]);
+        DB::table('countries')->insert(['id' => 168,'sortname' =>  'PS','name' => 'Palestinian Territory Occupied',]);
+        DB::table('countries')->insert(['id' => 169,'sortname' =>  'PA','name' => 'Panama', ]);
+        DB::table('countries')->insert(['id' => 170,'sortname' =>  'PG','name' => 'Papua new Guinea',]);
+        DB::table('countries')->insert(['id' => 171,'sortname' =>  'PY','name' => 'Paraguay', ]);
+        DB::table('countries')->insert(['id' => 172,'sortname' =>  'PE','name' => 'Peru', ]);
+        DB::table('countries')->insert(['id' => 173,'sortname' =>  'PH','name' => 'Philippines', ]);
+        DB::table('countries')->insert(['id' => 174,'sortname' =>  'PN','name' => 'Pitcairn Island',]);
+        DB::table('countries')->insert(['id' => 175,'sortname' =>  'PL','name' => 'Poland', ]);
+        DB::table('countries')->insert(['id' => 176,'sortname' =>  'PT','name' => 'Portugal', ]);
+        DB::table('countries')->insert(['id' => 177,'sortname' =>  'PR','name' => 'Puerto Rico', ]);
+        DB::table('countries')->insert(['id' => 178,'sortname' =>  'QA','name' => 'Qatar', ]);
+        DB::table('countries')->insert(['id' => 179,'sortname' =>  'RE','name' => 'Reunion', ]);
+        DB::table('countries')->insert(['id' => 180,'sortname' =>  'RO','name' => 'Romania', ]);
+        DB::table('countries')->insert(['id' => 181,'sortname' =>  'RU','name' => 'Russia', ]);
+        DB::table('countries')->insert(['id' => 182,'sortname' =>  'RW','name' => 'Rwanda', ]);
+        DB::table('countries')->insert(['id' => 183,'sortname' =>  'SH','name' => 'Saint Helena', ]);
+        DB::table('countries')->insert(['id' => 184,'sortname' =>  'KN','name' => 'Saint Kitts And Nevis',]);
+        DB::table('countries')->insert(['id' => 185,'sortname' =>  'LC','name' => 'Saint Lucia', ]);
+        DB::table('countries')->insert(['id' => 186,'sortname' =>  'PM','name' => 'Saint Pierre and Miquelon',]);
+        DB::table('countries')->insert(['id' => 187,'sortname' =>  'VC','name' => 'Saint Vincent And The Grenadines',]);
+        DB::table('countries')->insert(['id' => 188,'sortname' =>  'WS','name' => 'Samoa', ]);
+        DB::table('countries')->insert(['id' => 189,'sortname' =>  'SM','name' => 'San Marino', ]);
+        DB::table('countries')->insert(['id' => 190,'sortname' =>  'ST','name' => 'Sao Tome and Principe',]);
+        DB::table('countries')->insert(['id' => 191,'sortname' =>  'SA','name' => 'Saudi Arabia', ]);
+        DB::table('countries')->insert(['id' => 192,'sortname' =>  'SN','name' => 'Senegal', ]);
+        DB::table('countries')->insert(['id' => 193,'sortname' =>  'RS','name' => 'Serbia', ]);
+        DB::table('countries')->insert(['id' => 194,'sortname' =>  'SC','name' => 'Seychelles', ]);
+        DB::table('countries')->insert(['id' => 195,'sortname' =>  'SL','name' => 'Sierra Leone', ]);
+        DB::table('countries')->insert(['id' => 196,'sortname' =>  'SG','name' => 'Singapore', ]);
+        DB::table('countries')->insert(['id' => 197,'sortname' =>  'SK','name' => 'Slovakia', ]);
+        DB::table('countries')->insert(['id' => 198,'sortname' =>  'SI','name' => 'Slovenia', ]);
+        DB::table('countries')->insert(['id' => 199,'sortname' =>  'XG','name' => 'Smaller Territories of the UK',]);
+        DB::table('countries')->insert(['id' => 200,'sortname' =>  'SB','name' => 'Solomon Islands',]);
+        DB::table('countries')->insert(['id' => 201,'sortname' =>  'SO','name' => 'Somalia', ]);
+        DB::table('countries')->insert(['id' => 202,'sortname' =>  'ZA','name' => 'South Africa', ]);
+        DB::table('countries')->insert(['id' => 203,'sortname' =>  'GS','name' => 'South Georgia', ]);
+        DB::table('countries')->insert(['id' => 204,'sortname' =>  'SS','name' => 'South Sudan', ]);
+        DB::table('countries')->insert(['id' => 205,'sortname' =>  'ES','name' => 'Spain', ]);
+        DB::table('countries')->insert(['id' => 206,'sortname' =>  'LK','name' => 'Sri Lanka', ]);
+        DB::table('countries')->insert(['id' => 207,'sortname' =>  'SD','name' => 'Sudan', ]);
+        DB::table('countries')->insert(['id' => 208,'sortname' =>  'SR','name' => 'Suriname', ]);
+        DB::table('countries')->insert(['id' => 209,'sortname' =>  'SJ','name' => 'Svalbard And Jan Mayen Islands',]);
+        DB::table('countries')->insert(['id' => 210,'sortname' =>  'SZ','name' => 'Swaziland', ]);
+        DB::table('countries')->insert(['id' => 211,'sortname' =>  'SE','name' => 'Sweden', ]);
+        DB::table('countries')->insert(['id' => 212,'sortname' =>  'CH','name' => 'Switzerland', ]);
+        DB::table('countries')->insert(['id' => 213,'sortname' =>  'SY','name' => 'Syria', ]);
+        DB::table('countries')->insert(['id' => 214,'sortname' =>  'TW','name' => 'Taiwan', ]);
+        DB::table('countries')->insert(['id' => 215,'sortname' =>  'TJ','name' => 'Tajikistan', ]);
+        DB::table('countries')->insert(['id' => 216,'sortname' =>  'TZ','name' => 'Tanzania', ]);
+        DB::table('countries')->insert(['id' => 217,'sortname' =>  'TH','name' => 'Thailand', ]);
+        DB::table('countries')->insert(['id' => 218,'sortname' =>  'TG','name' => 'Togo', ]);
+        DB::table('countries')->insert(['id' => 219,'sortname' =>  'TK','name' => 'Tokelau', ]);
+        DB::table('countries')->insert(['id' => 220,'sortname' =>  'TO','name' => 'Tonga', ]);
+        DB::table('countries')->insert(['id' => 221,'sortname' =>  'TT','name' => 'Trinidad And Tobago',]);
+        DB::table('countries')->insert(['id' => 222,'sortname' =>  'TN','name' => 'Tunisia', ]);
+        DB::table('countries')->insert(['id' => 223,'sortname' =>  'TR','name' => 'Turkey', ]);
+        DB::table('countries')->insert(['id' => 224,'sortname' =>  'TM','name' => 'Turkmenistan', ]);
+        DB::table('countries')->insert(['id' => 225,'sortname' =>  'TC','name' => 'Turks And Caicos Islands',]);
+        DB::table('countries')->insert(['id' => 226,'sortname' =>  'TV','name' => 'Tuvalu', ]);
+        DB::table('countries')->insert(['id' => 227,'sortname' =>  'UG','name' => 'Uganda', ]);
+        DB::table('countries')->insert(['id' => 228,'sortname' =>  'UA','name' => 'Ukraine', ]);
+        DB::table('countries')->insert(['id' => 229,'sortname' =>  'AE','name' => 'United Arab Emirates',]);
+        DB::table('countries')->insert(['id' => 230,'sortname' =>  'GB','name' => 'United Kingdom',]);
+        DB::table('countries')->insert(['id' => 231,'sortname' =>  'US','name' => 'United States', ]);
+        DB::table('countries')->insert(['id' => 232,'sortname' =>  'UM','name' => 'United States Minor Outlying Islands',]);
+        DB::table('countries')->insert(['id' => 233,'sortname' =>  'UY','name' => 'Uruguay', ]);
+        DB::table('countries')->insert(['id' => 234,'sortname' =>  'UZ','name' => 'Uzbekistan', ]);
+        DB::table('countries')->insert(['id' => 235,'sortname' =>  'VU','name' => 'Vanuatu', ]);
+        DB::table('countries')->insert(['id' => 236,'sortname' =>  'VA','name' => 'Vatican City State (Holy See)',]);
+        DB::table('countries')->insert(['id' => 237,'sortname' =>  'VE','name' => 'Venezuela', ]);
+        DB::table('countries')->insert(['id' => 238,'sortname' =>  'VN','name' => 'Vietnam', ]);
+        DB::table('countries')->insert(['id' => 239,'sortname' =>  'VG','name' => 'Virgin Islands (British)',]);
+        DB::table('countries')->insert(['id' => 240,'sortname' =>  'VI','name' => 'Virgin Islands (US)',]);
+        DB::table('countries')->insert(['id' => 241,'sortname' =>  'WF','name' => 'Wallis And Futuna Islands',]);
+        DB::table('countries')->insert(['id' => 242,'sortname' =>  'EH','name' => 'Western Sahara',]);
+        DB::table('countries')->insert(['id' => 243,'sortname' =>  'YE','name' => 'Yemen', ]);
+        DB::table('countries')->insert(['id' => 244,'sortname' =>  'YU','name' => 'Yugoslavia', ]);
+        DB::table('countries')->insert(['id' => 245,'sortname' =>  'ZM','name' => 'Zambia', ]);
+        DB::table('countries')->insert(['id' => 246,'sortname' =>  'ZW','name' => 'Zimbabwe', ]);
 
 
-        DB::table('countries')->insert($countries);
+        
     }
 }

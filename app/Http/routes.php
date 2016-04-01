@@ -165,9 +165,9 @@ Route::group([  'prefix' => LaravelLocalization::setLocale().'/admin',
 
     /** Ticket System Routes */
 
-    Route::get('support', 'Admin\TicketController@index'); 
+    Route::get('support', 'Admin\TicketController@index');
     Route::get('support/new', 'Admin\TicketController@newTicket');
-    Route::get('support/{ticket_id}', 'Admin\TicketController@show'); // show one ticket
+    Route::get('support/show/{ticket_id}', 'Admin\TicketController@show'); // show one ticket
 
     Route::post('support', 'Admin\TicketController@create'); //create new ticket
     Route::post('support/{ticket_id}', 'Admin\TicketController@answer'); //add new answer to ticket
@@ -180,10 +180,20 @@ Route::group([  'prefix' => LaravelLocalization::setLocale().'/admin',
 
 Route::group(['middleware' => ['web']], function () {
     Route::get('/','HomeController@index');
+
+    /** Global blog */
+    Route::get('/blog/{id}', 'Admin\BlogController@show');
+
+    /** Users */
+    Route::post('/user/create/', 'UsersController@register');
+
+    /** Access to States and Cities from different places of code */
     Route::post('/get/states/', 'StatesController@statesByCountry');
     Route::post('/get/cities/', 'CityController@getCityByState');
 
-    Route::get('/blog/{id}', 'Admin\BlogController@show');
+
+
+
 
 /*
     Route::get('allAlbums', 'AlbumController@index');

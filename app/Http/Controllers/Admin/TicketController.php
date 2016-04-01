@@ -34,23 +34,16 @@ class TicketController extends Controller
             'heading' => 'Новое сообещние администратору/модератору',
             'tickets' => $tickets,
         ]);
-
     }
 
 
     public function show($id)
     {
-        $messages = $this->ticket->find($id)->messages();
-
-        foreach($messages as $message)
-        {
-            print_r($message);
-        }
-
-        /*return view('admin.ticket.show')->with([
+    
+        return view('admin.ticket.show')->with([
             'heading' => 'Ticket #'.$id,
-            'messages' => $messages,
-        ]); */
+
+        ]);
     }
 
     public function newTicket()

@@ -14,8 +14,7 @@ class Countries extends Migration
     {
         Schema::create('countries', function(Blueprint $table){
             $table->increments('id');
-            $table->string('sortname', 3);
-
+            $table->string('sortname', 2);
             $table->string('name', 256);
             $table->timestamps();
 

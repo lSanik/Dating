@@ -137,18 +137,25 @@ class GiftsController extends Controller
 
     public function update(Request $request, $id)
     {
-        //@todo апдейт дроп картинки
-        //@todo защита от дурака (хз еще)
-        //@todo check на изображение
-
         $this->validate($request, [
             'price' => 'required'
         ]);
 
+        if( $request->file('image') )
+        {
+            $present_file = time() . '-' . $request->file('image')->getClientOriginalName();
+            $destination  = public_path() . '/uploads/presents/';
+            $request->file('image')->move( $destination, $present_file );
+
+            $oldFile = $this->present->select('image')->first($id);
+
+            $this->removeOldImage( $destination.$oldFile->image );
+        }
+
         $present = $this->present->find($id);
+        $present->image = $present_file;
         $present->price = $request->input('price');
         $present->save();
-
 
         foreach( \Config::get('app.locales') as $locale )
         {
@@ -164,6 +171,26 @@ class GiftsController extends Controller
 
         return redirect(\App::getLocale().'/admin/gifts');
     }
+
+    private function removeOldImage( $path )
+    {
+        if( file_exists($path) ){
+
+            if( unlink( $path ) )
+            {
+                return true;
+
+            } else {
+
+                return false;
+            }
+
+        } else {
+            return true;
+        }
+
+    }
+
 
     /**
      * Remove the specified resource from storage.
