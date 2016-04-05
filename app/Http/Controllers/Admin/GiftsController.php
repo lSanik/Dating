@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Ticket;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Presents;
@@ -17,6 +18,9 @@ class GiftsController extends Controller
 
     public function __construct(Presents $present, User $user, PresentsTranslation $pt)
     {
+        $this->middleware('auth');
+        \Auth::user()->hasRole(['Owner', 'Moder', 'Partner']);
+
         $this->present = $present;
         $this->user = $user;
         $this->pt = $pt;
@@ -47,7 +51,7 @@ class GiftsController extends Controller
         $heading = 'Добавить подарок';
 
         return view('admin.presents.create')->with([
-            'heading' => $heading
+            'heading' => $heading,
         ]);
     }
 
@@ -122,7 +126,8 @@ class GiftsController extends Controller
         return view('admin.presents.edit')->with([
             'heading' => 'Редактировать подарок',
             'present' => $present,
-            'loc'  => $present_locale
+            'loc'  => $present_locale,
+
         ]);
     }
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Ticket;
 use Illuminate\Http\Request;
 
 use App;
@@ -23,10 +24,14 @@ class BlogController extends Controller
     /*
      * @todo загрузка файлов бля блоговой записи с полся body
      * @todo Если нет языка пользователя показывать который есть или редиректить на все записи доступные по языку пользователя
+     * @todo Rewrite unread shit to Provider
      */
 
     public function __construct(Post $post, PostTranslation $trans)
     {
+        $this->middleware('auth');
+        \Auth::user()->hasRole(['Owner', 'Moder', 'Partner']);
+
         $this->post = $post;
         $this->trans = $trans;
     }
@@ -44,7 +49,7 @@ class BlogController extends Controller
         return view('admin.blog.index')->with([
             'heading' => $heading,
             'posts' => $posts,
-            'translation' => $translation
+            'translation' => $translation,
         ]);
     }
 
@@ -60,7 +65,7 @@ class BlogController extends Controller
 
         return view('admin.blog.create')->with([
             'heading' => $heading,
-            'locales' => Config::get('app.locales')
+            'locales' => Config::get('app.locales'),
         ]);
     }
 
@@ -126,7 +131,8 @@ class BlogController extends Controller
 
         return view('client.blog')->with([
             'post' =>  json_decode($post),
-            'image' => $image
+            'image' => $image,
+
         ]);
 
     }
@@ -156,7 +162,8 @@ class BlogController extends Controller
         return view('admin.blog.edit')->with([
             'heading' => $heading,
             'post' => $post,
-            'trans' => $trans
+            'trans' => $trans,
+
         ]);
 
     }

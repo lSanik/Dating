@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Models\Ticket;
 use App\Models\Passport;
 use App\Models\Profile;
 use App\Models\User;
@@ -27,6 +28,9 @@ class GirlsController extends Controller
 
     public function __construct(User $user, Profile $profile, Passport $passport)
     {
+        $this->middleware('auth');
+        Auth::user()->hasRole(['Owner', 'Moder', 'Partner']);
+
         $this->user = $user;
         $this->profile = $profile;
         $this->passport = $passport;
@@ -49,7 +53,7 @@ class GirlsController extends Controller
 
         return view('admin.girls.index')->with([
             'heading' => 'Все девушки',
-            'girls' => $girls
+            'girls' => $girls,
         ]);
     }
 
@@ -78,7 +82,7 @@ class GirlsController extends Controller
         return view('admin.girls.create')->with([
             'heading' => 'Добавить девушку',
             'selects' => $selects,
-            'countries' => $countries
+            'countries' => $countries,
         ]);
     }
 
@@ -256,7 +260,8 @@ class GirlsController extends Controller
             'user' => $user,
             'selects' => $selects,
             'countries' => $countries,
-            'states' => $states
+            'states' => $states,
+            
         ]);
     }
 

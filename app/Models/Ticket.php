@@ -2,36 +2,40 @@
 
 namespace App\Models;
 
-use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
 
 class Ticket extends Model
 {
-    protected $table = 'tickets';
+    protected $table = 'ticket_messages';
 
     protected $fillable = [
-        'subject', 'status', 'viewed', 'u_id'
+        'from', 'subjects',
+        'subject', 'message', 'status',
     ];
 
-    public function messages()
+    public function subjects()
     {
-        return $this->hasMany('App\Models\TicketData', 'id', 't_id');
+        return $this->hasOne('App\Models\TicketSubjects');
     }
 
-    public function getEnum($field)
+    public function reply()
     {
-        $type = DB::select( DB::raw("SHOW COLUMNS FROM {$this->table} WHERE Field = '{$field}'") )[0]->Type;
-
-        preg_match('/^enum\((.*)\)$/', $type, $matches);
-
-        $enum = [];
-
-        foreach( explode(',', $matches[1]) as $value )
-        {
-            $v = trim( $value, "'" );
-            $enum = array_add($enum, $v, $v);
-        }
-
-        return $enum;
+        return $this->hasMany('App\Models\TicketReply');
     }
+
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User');
+    }
+
+    public static function unreadCount()
+    {
+
+    }
+
+    public static function unread()
+    {
+
+    }
+
 }

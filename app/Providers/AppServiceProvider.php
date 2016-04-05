@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+
 use Illuminate\Support\ServiceProvider;
+
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,7 +15,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        view()->share('new_ticket_messages', \App\Models\Ticket::unread());
+        view()->share('unread_ticket_count', \App\Models\Ticket::unreadCount());
     }
 
     /**

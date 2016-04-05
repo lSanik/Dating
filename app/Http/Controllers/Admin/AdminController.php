@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 
+use App\Models\Ticket;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -14,10 +15,12 @@ use Illuminate\Support\Facades\File;
 
 class AdminController extends Controller
 {
+
     function __construct()
     {
         $this->middleware('auth');
         Auth::user()->hasRole(['Owner', 'Moder', 'Partner']);
+
     }
 
     function login()
@@ -28,8 +31,9 @@ class AdminController extends Controller
     function dashboard()
     {
         $heading = 'Управление';
+
         return view('admin.dashboard')->with([
-            'heading' => $heading
+            'heading' => $heading,
         ]);
     }
 
@@ -49,7 +53,8 @@ class AdminController extends Controller
 
         return view('admin.profile.index')->with([
             'users' => $users,
-            'heading' => $header
+            'heading' => $header,
+
         ]);
 
         /*$users = DB::table('users')
@@ -65,7 +70,8 @@ class AdminController extends Controller
 
         return view('admin.profile')->with([
             'user' => $user,
-            'heading' => 'Профиль пользователя'
+            'heading' => 'Профиль пользователя',
+          
         ]);
     }
 

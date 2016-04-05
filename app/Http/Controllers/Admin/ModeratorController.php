@@ -7,6 +7,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 
 use App\Models\User;
+use App\Models\Ticket;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
@@ -14,6 +15,7 @@ use Illuminate\Support\Facades\Validator;
 
 class ModeratorController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -29,7 +31,7 @@ class ModeratorController extends Controller
 
         return view('admin.profile.moderator.index')->with([
             'users'     => $users,
-            'heading'   => 'Все модераторы'
+            'heading'   => 'Все модераторы',
         ]);
     }
 
@@ -41,7 +43,8 @@ class ModeratorController extends Controller
     public function create()
     {
         return view('admin.profile.moderator.create')->with([
-            'heading' => 'Добавить модератора'
+            'heading' => 'Добавить модератора',
+
         ]);
     }
 
@@ -120,7 +123,8 @@ class ModeratorController extends Controller
 
         return view('admin.profile.moderator.show')->with([
             'heading' => 'Модератор',
-            'user'  => $user
+            'user'  => $user,
+
         ]);
     }
 
@@ -136,7 +140,7 @@ class ModeratorController extends Controller
 
         return view('admin.profile.moderator.edit')->with([
             'user'  => $user,
-            'heading' => 'Редактировать модератора'
+            'heading' => 'Редактировать модератора',
         ]);
     }
 

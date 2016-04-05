@@ -29,79 +29,58 @@
                 <li class="d-none">
                     <a href="javascript:;" class="btn btn-default dropdown-toggle info-number" data-toggle="dropdown">
                         <i class="fa fa-envelope-o"></i>
-                        <span class="badge bg-primary">6</span>
+                        <span class="badge bg-success">
+
+                            @php /*
+                            @if( $unread_ticket_count  )
+                                {{ $unread_ticket_count }}
+                            @else
+                                0
+                            @endif
+                            */ @endphp
+                        </span>
                     </a>
 
                     <div class="dropdown-menu dropdown-title">
                         <div class="title-row">
                             <h5 class="title purple">
-                                You have 6 Unread Mail
+                                You have
+                            @php /*
+                                @if( $unread_ticket_count )
+                                    {{ $unread_ticket_count }}
+                                @else
+                                    0
+                                @endif
+                                Unread Messages
+                                */ @endphp
                             </h5>
-                            <a href="javascript:;" class="btn-primary btn-view-all">View all</a>
+                            <a href="/{{ App::getLocale() }}/admin/support" class="btn-success btn-view-all">View all</a>
                         </div>
                         <div class="notification-list mail-list">
-                            <a href="javascript:;" class="single-mail">
-                                <span class="icon bg-primary">
-                                    S
-                                </span>
-                                <strong>Smith Doe</strong>
-                                <small> Just Now</small>
-                                <p>
-                                    <small>Hello smith i have some query about your</small>
-                                </p>
-                                <span class="un-read tooltips" data-original-title="Mark as Read" data-toggle="tooltip" data-placement="left">
-                                    <i class="fa fa-circle"></i>
-                                </span>
-                            </a>
-                            <a href="javascript:;" class="single-mail">
-                                <span class="icon bg-success">
-                                    A
-                                </span>
-                                <strong>Anthony Jones </strong>
-                                <small> 30 Mins Ago</small>
-                                <p>
-                                    <small>Hello this is an example message</small>
-                                </p>
-                                <span class="un-read tooltips" data-original-title="Mark as Read" data-toggle="tooltip" data-placement="left">
-                                    <i class="fa fa-circle"></i>
-                                </span>
-                            </a>
-                            <a href="javascript:;" class="single-mail">
-                                <span class="icon bg-warning">
-                                    B
-                                </span> Billy Jones
-                                <small> 2 Days Ago</small>
-                                <p>
-                                    <small>Slicklab is awesome Dashboard</small>
-                                </p>
-                                <span class="read tooltips" data-original-title="Mark as Unread" data-toggle="tooltip" data-placement="left">
-                                    <i class="fa fa-circle-o"></i>
-                                </span>
-                            </a>
-                            <a href="javascript:;" class="single-mail">
-                                <span class="icon bg-dark">
-                                    J
-                                </span> John Doe
-                                <small> 1 Week Ago</small>
-                                <p>
-                                    <small>Build with Twitter Bootstrap 3</small>
-                                </p>
-                                <span class="read tooltips" data-original-title="Mark as Unread" data-toggle="tooltip" data-placement="left">
-                                    <i class="fa fa-circle-o"></i>
-                                </span>
-                            </a>
-                            <a href="javascript:;" class="single-mail">
-                                <span class="icon bg-danger">
-                                    S
-                                </span> Smith Doe
-                                <small> Just Now</small>
-                                <p>
-                                    <small>No hassle, very easy to use</small>
-                                </p>
-                                <span class="read tooltips" data-original-title="Mark as Unread" data-toggle="tooltip" data-placement="left">
-                                    <i class="fa fa-circle-o"></i>
-                                </span>
-                            </a>
+                        @php /*
+                            @if($new_ticket_messages)
+                                @foreach($new_ticket_messages as $mess)
+                                    <a href="/{{ App::getLocale() }}/admin/support/show/{{ $mess->id }}" class="single-mail">
+                                        <!-- Refactor -->
+                                        @php
+                                            $x = rand(0,5);
+                                            $classes = [
+                                                'bg-info','bg-success','bg-warning',
+                                                'bg-primary','bg-danger','bg-dark'
+                                            ];
+                                        @endphp
+                                        <span class="icon {{ $classes[$x] }}">
+                                            {{ $mess->first_name{0} }}
+                                        </span>
+                                        <strong>{{ $mess->first_name }} {{ $mess->last_name }}</strong>
+                                        <small>{{ $mess->subject }}</small>
+                                        <p>
+                                            <small>Тематика: {{ trans('support.'.$mess->name) }}</small>
+                                        </p>
+                                    </a>
+                                @endforeach
+                            @endif
+*/ @endphp
                         </div>
                     </div>
                 </li>

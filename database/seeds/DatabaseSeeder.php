@@ -19,8 +19,9 @@ class DatabaseSeeder extends Seeder
 
         $this->call(CountrySeederNew::class);
         $this->call(States::class);
+        $this->call(CitiesSeeder::class); 
 
-        $this->call(CitiesSeeder::class);
+        $this->call(TicketSubjects::class);
 
         //@todo seeder for cities2.sql
 

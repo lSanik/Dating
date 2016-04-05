@@ -22,22 +22,13 @@
         </div>
         <ul class="inbox-nav inbox-divider">
             <li class="active">
-                <a href="#"><i class="fa fa-inbox"></i> Inbox <span class="label label-danger pull-right">2</span></a>
+                <a href="#"><i class="fa fa-inbox"></i> Все </a>
             </li>
             <li>
-                <a href="#"><i class="fa fa-envelope"></i> Sent Mail</a>
+                <a href="#"><i class="fa fa-envelope"></i> Ответ получен <span class="label label-danger pull-right">2</span></a>
             </li>
             <li>
-                <a href="#"><i class="fa fa-briefcase"></i> Important</a>
-            </li>
-            <li>
-                <a href="#"><i class="fa fa-star"></i> Starred </a>
-            </li>
-            <li>
-                <a href="#"><i class=" fa fa-external-link"></i> Drafts <span class="label label-info pull-right">30</span></a>
-            </li>
-            <li>
-                <a href="#"><i class=" fa fa-trash"></i> Trash</a>
+                <a href="#"><i class="fa fa-trash"></i> Закрытые </a>
             </li>
         </ul>
 
@@ -49,43 +40,45 @@
             </div>
         </div>
         <div class="inbox-body">
-            <div class="compose-mail">
-                <form class="form-horizontal">
-                    <div class="form-group">
-                        <label for="to" class="col-sm-1 control-label">To</label>
-                        <div class="col-sm-11">
-                            <input type="text" name="to" tabindex="1" id="to" class="form-control">
-                        </div>
-                    </div>
+            {!! Form::open(['url' => '/admin/support/', 'class' => 'form-horizontal', 'method' => 'POST']) !!}
 
-                    <div class="form-group">
-                        <label for="subjects" class="col-sm-1 control-label">Subject</label>
-                        <div class="col-sm-11">
-                            <select name="subjects" class="form-control">
-                                @foreach($selects['subject'] as $key => $value)
-                                    <option value="{{ $key }}">{{ trans('support.'.$value) }}</option>
-                                @endforeach
-                            </select>
+                <div class="compose-mail">
+
+                        <!-- div class="form-group">
+                            <label for="to" class="col-sm-1 control-label">To</label>
+                            <div class="col-sm-11">
+                                <input type="text" name="to" tabindex="1" id="to" class="form-control">
+                            </div>
+                        </div -->
+
+                        <div class="form-group">
+                            <label for="subjects" class="col-sm-1 control-label">Subject</label>
+                            <div class="col-sm-11">
+                                <select name="subjects" class="form-control">
+                                    @foreach($selects as $s)
+                                        <option value="{{ $s->id }}"> {{ trans('support.'.$s->name) }} </option>
+                                    @endforeach
+                                </select>
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="subject" class="col-sm-1 control-label">Subject</label>
-                        <div class="col-sm-11">
-                            <input type="text" name="subject" tabindex="1" id="subject" class="form-control">
+                        <div class="form-group">
+                            <label for="subject" class="col-sm-1 control-label">Subject</label>
+                            <div class="col-sm-11">
+                                <input type="text" name="subject" tabindex="1" id="subject" class="form-control">
+                            </div>
                         </div>
-                    </div>
-                    <div class="compose-editor form-group">
-                        <label for="subject" class="col-sm-1 control-label">Message</label>
-                        <div class="col-sm-11">
-                            <textarea name="message" class="wysihtml5 form-control" rows="9"></textarea>
+                        <div class="compose-editor form-group">
+                            <label for="subject" class="col-sm-1 control-label">Message</label>
+                            <div class="col-sm-11">
+                                <textarea name="message" class="wysihtml5 form-control" rows="9"></textarea>
+                            </div>
                         </div>
-                    </div>
-                    <hr/>
-                </form>
-            </div>
-            <div class="compose-btn pull-right">
-                <a class="btn  btn-success" href="#">{{  trans('buttons.send') }}</a>
-            </div>
+                        <hr/>
+                </div>
+                <div class="compose-btn pull-right">
+                    <input type="submit" value="{{  trans('buttons.send') }}" class="btn  btn-success" >
+                </div>
+            {!! Form::close() !!}
         </div>
     </aside>
 </div>

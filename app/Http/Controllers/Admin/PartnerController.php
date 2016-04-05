@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 
 use App\Models\User;
+use App\Models\Ticket;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
@@ -13,7 +14,8 @@ use Illuminate\Support\Facades\Validator;
 
 class PartnerController extends Controller
 {
-    /**
+    
+     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -28,7 +30,7 @@ class PartnerController extends Controller
 
         return view('admin.profile.partners.index')->with([
             'users'     => $users,
-            'heading'   => 'Все партнеры'
+            'heading'   => 'Все партнеры',
         ]);
     }
 
@@ -40,7 +42,9 @@ class PartnerController extends Controller
     public function create()
     {
         return view('admin.profile.partners.create')->with([
-            'heading' => 'Добавить партнера'
+            'heading' => 'Добавить партнера',
+
+
         ]);
     }
 
@@ -123,7 +127,7 @@ class PartnerController extends Controller
 
         return view('admin.profile.partners.show')->with([
             'heading' => 'Пользователь',
-            'user'  => $user
+            'user'  => $user,
         ]);
     }
 
@@ -139,7 +143,7 @@ class PartnerController extends Controller
 
         return view('admin.profile.partners.edit')->with([
             'user'  => $user,
-            'heading' => 'Редактировать пользователя'
+            'heading' => 'Редактировать пользователя',
         ]);
     }
 
