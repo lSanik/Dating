@@ -51,7 +51,6 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
 
     Route::get('/blog/{id}', 'Admin\BlogController@show');
 
-
 });
 
 Route::group([  'prefix' => LaravelLocalization::setLocale(),
@@ -168,8 +167,12 @@ Route::group([  'prefix' => LaravelLocalization::setLocale().'/admin',
     Route::get('support/new', 'Admin\TicketController@newTicket');
     Route::get('support/show/{ticket_id}', 'Admin\TicketController@show'); // show one ticket
 
+    Route::get('support/answered', 'Admin\TicketController@answered');
+    Route::get('support/closed', 'Admin\TicketController@closed');
+
     Route::post('support', 'Admin\TicketController@create'); //create new ticket
     Route::post('support/show/{ticket_id}', 'Admin\TicketController@answer');
+    Route::post('support/close/{ticket_id}', 'Admin\TicketController@close');
     Route::post('support/{ticket_id}', 'Admin\TicketController@answer'); //add new answer to ticket
     /** End ticket System Routes */
 

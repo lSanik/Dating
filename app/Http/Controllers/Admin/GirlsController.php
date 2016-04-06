@@ -34,6 +34,9 @@ class GirlsController extends Controller
         $this->user = $user;
         $this->profile = $profile;
         $this->passport = $passport;
+
+        view()->share('new_ticket_messages', parent::getUnreadMessages());
+        view()->share('unread_ticket_count', parent::getUnreadMessagesCount());
     }
 
     /**

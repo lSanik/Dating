@@ -31,13 +31,12 @@
                         <i class="fa fa-envelope-o"></i>
                         <span class="badge bg-success">
 
-                            @php /*
                             @if( $unread_ticket_count  )
                                 {{ $unread_ticket_count }}
                             @else
                                 0
                             @endif
-                            */ @endphp
+
                         </span>
                     </a>
 
@@ -45,19 +44,17 @@
                         <div class="title-row">
                             <h5 class="title purple">
                                 You have
-                            @php /*
                                 @if( $unread_ticket_count )
                                     {{ $unread_ticket_count }}
                                 @else
                                     0
                                 @endif
                                 Unread Messages
-                                */ @endphp
                             </h5>
                             <a href="/{{ App::getLocale() }}/admin/support" class="btn-success btn-view-all">View all</a>
                         </div>
                         <div class="notification-list mail-list">
-                        @php /*
+
                             @if($new_ticket_messages)
                                 @foreach($new_ticket_messages as $mess)
                                     <a href="/{{ App::getLocale() }}/admin/support/show/{{ $mess->id }}" class="single-mail">
@@ -80,7 +77,7 @@
                                     </a>
                                 @endforeach
                             @endif
-*/ @endphp
+
                         </div>
                     </div>
                 </li>

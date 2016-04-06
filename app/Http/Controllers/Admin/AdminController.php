@@ -21,6 +21,8 @@ class AdminController extends Controller
         $this->middleware('auth');
         Auth::user()->hasRole(['Owner', 'Moder', 'Partner']);
 
+        view()->share('new_ticket_messages', parent::getUnreadMessages());
+        view()->share('unread_ticket_count', parent::getUnreadMessagesCount());
     }
 
     function login()

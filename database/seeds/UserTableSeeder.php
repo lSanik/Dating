@@ -62,5 +62,25 @@ class UserTableSeeder extends Seeder
             'last_name'   => 'MFM',
             'phone'         => '1234567'
         ]);
+
+        DB::table('users')->insert([
+            'id'            => 6,
+            'email'         => 'partner1@partner.com',
+            'password'      => bcrypt('partner'),
+            'role_id'       => 3,
+            'first_name'    => 'Partner',
+            'last_name'   => 'PDM',
+            'phone'         => '12235345'
+        ]);
+
+        DB::table('users')->insert([
+            'id'            => 7,
+            'email'         => 'partner2@partner.com',
+            'password'      => bcrypt('partner'),
+            'role_id'       => 3,
+            'first_name'    => 'Partner',
+            'last_name'   => 'PDM',
+            'phone'         => '12261345'
+        ]);
     }
 }

@@ -16,9 +16,7 @@ use Illuminate\Support\Facades\Auth;
 
 class TicketController extends Controller
 {
-    //@todo Пересмотреть логику работы
-    //@todo Таскать кол.во непрочитанных сообщений
-    //@todo Добавить нотификейшн о непрочитанном
+    //@todo Пересмотреть логику работы REFACTOR code
 
     private $ticket;
     private $ts;
@@ -30,6 +28,9 @@ class TicketController extends Controller
 
         $this->ticket = $ticket;
         $this->ts = $ts;
+
+        view()->share('new_ticket_messages', parent::getUnreadMessages());
+        view()->share('unread_ticket_count', parent::getUnreadMessagesCount());
     }
 
     public function index()
@@ -39,15 +40,68 @@ class TicketController extends Controller
                 ->join('ticket_subjects', 'ticket_messages.subjects', '=', 'ticket_subjects.id')
                 ->join('users', 'ticket_messages.from', '=', 'users.id')
                 ->select('ticket_messages.*', 'ticket_subjects.name',
-                    'users.first_name', 'users.last_name', 'users.id as uid')
+                    'users.first_name', 'users.last_name', 'users.id as uid', 'users.avatar')
                 ->get();
         } else {
             $tickets = $this->ticket->where('from', '=', \Auth::user()->id )
+                ->where('status', '!=', '2')
                 ->join('ticket_subjects', 'ticket_messages.subjects', '=', 'ticket_subjects.id')
                 ->join('users', 'ticket_messages.from', '=', 'users.id')
                 ->select('ticket_messages.*', 'ticket_subjects.name',
-                    'users.first_name', 'users.last_name', 'users.id as uid')
+                    'users.first_name', 'users.last_name', 'users.id as uid', 'users.avatar')
                 ->paginate(10);
+        }
+
+        return view('admin.ticket.all')->with([
+            'heading' => 'Новое сообещние администратору/модератору',
+            'tickets' => $tickets,
+        ]);
+    }
+
+    public function answered()
+    {
+        if( \Auth::user()->hasRole('Owner') || \Auth::user()->hasRole('Moder')) {
+            $tickets = \DB::table('ticket_messages')->where('status', '=', '1')
+                ->join('ticket_subjects', 'ticket_messages.subjects', '=', 'ticket_subjects.id')
+                ->join('users', 'ticket_messages.from', '=', 'users.id')
+                ->select('ticket_messages.*', 'ticket_subjects.name',
+                    'users.first_name', 'users.last_name', 'users.id as uid', 'users.avatar')
+                ->get();
+        } else {
+            $tickets = $this->ticket->where('from', '=', \Auth::user()->id )
+                ->where('status', '=', '0')
+                ->join('ticket_subjects', 'ticket_messages.subjects', '=', 'ticket_subjects.id')
+                ->join('users', 'ticket_messages.from', '=', 'users.id')
+                ->select('ticket_messages.*', 'ticket_subjects.name',
+                    'users.first_name', 'users.last_name', 'users.id as uid', 'users.avatar')
+                ->paginate(10);
+        }
+
+        return view('admin.ticket.all')->with([
+            'heading' => 'Новое сообещние администратору/модератору',
+            'tickets' => $tickets,
+        ]);
+    }
+
+
+    public function closed()
+    {
+        if( !\Auth::user()->hasRole('Owner') || !\Auth::user()->hasRole('Moder')){
+            $tickets = \DB::table('ticket_messages')
+                ->where('from', '=', \Auth::user()->id)
+                ->where('status', '=', '2')
+                ->join('ticket_subjects', 'ticket_messages.subjects', '=', 'ticket_subjects.id')
+                ->join('users', 'ticket_messages.from', '=', 'users.id')
+                ->select('ticket_messages.*', 'ticket_subjects.name',
+                    'users.first_name', 'users.last_name', 'users.id as uid', 'users.avatar')
+                ->get();
+        } else {
+            $tickets = \DB::table('ticket_messages')->where('status', '=', '2')
+                ->join('ticket_subjects', 'ticket_messages.subjects', '=', 'ticket_subjects.id')
+                ->join('users', 'ticket_messages.from', '=', 'users.id')
+                ->select('ticket_messages.*', 'ticket_subjects.name',
+                    'users.first_name', 'users.last_name', 'users.id as uid', 'users.avatar')
+                ->get();
         }
 
         return view('admin.ticket.all')->with([
@@ -63,7 +117,7 @@ class TicketController extends Controller
                                 ->join('ticket_subjects', 'ticket_messages.subjects', '=', 'ticket_subjects.id')
                                 ->join('users', 'ticket_messages.from', '=', 'users.id')
                                 ->select('ticket_messages.*', 'ticket_subjects.name',
-                                    'users.first_name', 'users.last_name', 'users.id as uid')
+                                    'users.first_name', 'users.last_name', 'users.id as uid', 'users.avatar')
                                 ->get();
 
         $reply = TicketReply::where('message_id', '=', $id)
@@ -78,6 +132,18 @@ class TicketController extends Controller
             'reply'   => $reply
         ]);
     }
+
+    public function close($id)
+    {
+        $ticket = $this->ticket->find($id);
+        $ticket->status = 2;
+        $ticket->save();
+
+        \Session::flash('flash_success', 'Тикет закрыт');
+        return redirect(\App::getLocale().'/admin/support');
+    }
+
+
 
     public function newTicket()
     {
@@ -118,4 +184,7 @@ class TicketController extends Controller
        \Session::flash('flash_success', 'Ответ добавлен');
         return redirect(\App::getLocale().'/admin/support/show/'.$id);
     }
+
+
+
 }

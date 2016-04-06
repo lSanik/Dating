@@ -10,5 +10,15 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
-    
+
+    public static function getUnreadMessages()
+    {
+        return \App\Models\Ticket::unread();
+    }
+
+
+    public static function getUnreadMessagesCount()
+    {
+        return \App\Models\Ticket::unreadCount();
+    }
 }

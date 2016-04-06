@@ -30,12 +30,30 @@ class Ticket extends Model
 
     public static function unreadCount()
     {
-
+        return self::where('status', '=', self::getStatus())->count();
     }
 
     public static function unread()
     {
+        return self::where('status', '=', self::getStatus())
+                    ->join('ticket_subjects', 'ticket_messages.subjects', '=', 'ticket_subjects.id')
+                    ->join('users', 'ticket_messages.from', '=', 'users.id')
+                    ->select('ticket_messages.*', 'ticket_subjects.name',
+                        'users.first_name', 'users.last_name', 'users.id as uid')
+                    ->paginate(5);
+    }
 
+    private static function getStatus()
+    {
+        if( \Auth::user()->hasRole('Owner') || \Auth::user()->hasRole('Moder') )
+        {
+            return 0;
+        }
+
+        if( \Auth::user()->hasRole('Partner') )
+        {
+            return 1;
+        }
     }
 
 }

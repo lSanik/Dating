@@ -16,6 +16,12 @@ use Illuminate\Support\Facades\Validator;
 class ModeratorController extends Controller
 {
 
+    public function __construct()
+    {
+        view()->share('new_ticket_messages', parent::getUnreadMessages());
+        view()->share('unread_ticket_count', parent::getUnreadMessagesCount());
+    }
+
     /**
      * Display a listing of the resource.
      *

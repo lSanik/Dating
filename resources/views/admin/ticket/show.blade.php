@@ -9,29 +9,7 @@
 
     <!--mail inbox start-->
     <div class="mail-box">
-        <aside class="sm-side">
-            <div class="m-title">
-                <h3>Inbox</h3>
-                <span>14 unread mail</span>
-            </div>
-            <div class="inbox-body">
-                <a class="btn btn-compose" href="inbox-compose.html">
-                    Compose
-                </a>
-            </div>
-            <ul class="inbox-nav inbox-divider">
-                <li class="active">
-                    <a href="#"><i class="fa fa-inbox"></i> Все </a>
-                </li>
-                <li>
-                    <a href="#"><i class="fa fa-envelope"></i> Ответ получен <span class="label label-danger pull-right">2</span></a>
-                </li>
-                <li>
-                    <a href="#"><i class="fa fa-trash"></i> Закрытые </a>
-                </li>
-            </ul>
-
-        </aside>
+        @include('admin.ticket.aside')
         <aside class="lg-side" style="height: 1200px">
 
             <div class="inbox-body">
@@ -39,8 +17,14 @@
 
                 <div class="heading-inbox row">
 
-                    <div class="col-md-12">
+                    <div class="col-md-10">
                         <h4> {{ $t->subject }}  [Тематика: {{ trans('support.'.$t->name) }}]  </h4>
+
+                    </div>
+                    <div class="col-md-2">
+                            {!! Form::open(['url' => App::getLocale().'/admin/support/close/'.$t->id]) !!}
+                            {!! Form::submit(trans('buttons.close'),['class' => 'btn btn-danger']) !!}
+                            {!! Form::close() !!}
                     </div>
 
                 </div>
@@ -48,7 +32,7 @@
                     <div class="row">
                         <div class="col-md-6 col-xs-12">
                             <div class="pull-left">
-                                <img alt="" src="img/img2.jpg">
+                                <img alt="" src="/uploads/admins/{{ $t->avatar }}">
                             </div>
                             <div class="s-info">
                                 <strong>{{ $t->first_name }} {{ $t->last_name }}</strong>

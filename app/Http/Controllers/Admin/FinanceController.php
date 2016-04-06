@@ -15,7 +15,7 @@ class FinanceController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**

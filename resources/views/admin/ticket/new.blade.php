@@ -10,29 +10,7 @@
 
         <!--mail inbox start-->
 <div class="mail-box">
-    <aside class="sm-side">
-        <div class="m-title">
-            <h3>Inbox</h3>
-            <span>14 unread mail</span>
-        </div>
-        <div class="inbox-body">
-            <a class="btn btn-compose" href="#">
-                Compose
-            </a>
-        </div>
-        <ul class="inbox-nav inbox-divider">
-            <li class="active">
-                <a href="#"><i class="fa fa-inbox"></i> Все </a>
-            </li>
-            <li>
-                <a href="#"><i class="fa fa-envelope"></i> Ответ получен <span class="label label-danger pull-right">2</span></a>
-            </li>
-            <li>
-                <a href="#"><i class="fa fa-trash"></i> Закрытые </a>
-            </li>
-        </ul>
-
-    </aside>
+    @include('admin.ticket.aside')
     <aside class="lg-side">
         <div class="inbox-head">
             <div class="mail-option">

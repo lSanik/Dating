@@ -34,6 +34,9 @@ class BlogController extends Controller
 
         $this->post = $post;
         $this->trans = $trans;
+
+        view()->share('new_ticket_messages', parent::getUnreadMessages());
+        view()->share('unread_ticket_count', parent::getUnreadMessagesCount());
     }
 
     /**

@@ -24,6 +24,9 @@ class GiftsController extends Controller
         $this->present = $present;
         $this->user = $user;
         $this->pt = $pt;
+
+        view()->share('new_ticket_messages', parent::getUnreadMessages());
+        view()->share('unread_ticket_count', parent::getUnreadMessagesCount());
     }
 
     /**

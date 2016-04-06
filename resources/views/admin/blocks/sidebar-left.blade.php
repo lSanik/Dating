@@ -19,8 +19,8 @@
                 <a href="#"><i class="fa fa fa-money"></i>
                     <span>Финансы</span></a>
                 <ul class="child-list">
-                    <li><a href="{{ url(App::getLocale().'#') }}"> Статистика </a></li>
-                    <li><a href="{{ url(App::getLocale().'#') }}"> Управление  </a></li>
+                    <li><a href="{{ url(App::getLocale().'/admin/finance/stat') }}"> Статистика </a></li>
+                    <li><a href="{{ url(App::getLocale().'/admin/finance/control') }}"> Управление  </a></li>
                 </ul>
             </li>
             <li class="">
