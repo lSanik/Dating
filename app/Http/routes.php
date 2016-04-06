@@ -176,6 +176,13 @@ Route::group([  'prefix' => LaravelLocalization::setLocale().'/admin',
     Route::post('support/{ticket_id}', 'Admin\TicketController@answer'); //add new answer to ticket
     /** End ticket System Routes */
 
+    /** Finance */
+    Route::get('finance', 'Admin\FinanceController@index');
+    Route::get('finance/control', 'Admin\FinanceController@control');
+
+    Route::post('finance/{id}','Admin\FinanceController@saveData');
+    /* End finance */
+
 });
 
 
