@@ -92,7 +92,7 @@
                             </div>
                             <div class="form-group">
                                 {!! Form::label('pass_photo', 'Фото/Скан паспорта') !!}
-                                <input type="file" class="form-control file" name="pass_photo" accept="image/*">
+                                <input type="file" class="form-control file" name="pass_photo[]" accept="image/*" multiple>
                             </div>
 
                         </div>
@@ -114,43 +114,103 @@
                             </div>
                             <div class="form-group">
                                 {!! Form::label('gender', 'Пол') !!}
-                                {!! Form::select('gender', $selects['gender'],'female',  ['class' => 'form-control']) !!}
+
+                                <select name="gender" class="form-control">
+                                    @foreach($selects['gender'] as $key => $value)
+                                        <option value="{{ $key }}"> {{ trans('profile.'.$value) }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                             <div class="form-group">
                                 {!! Form::label('eye', 'Цвет глаз') !!}
-                                {!! Form::select('eye', $selects['eye'] ,null,  ['class' => 'form-control']) !!}
+                                <select name="eye" class="form-control">
+                                    @foreach($selects['eye'] as $key => $value)
+                                        <option value="{{ $key }}"> {{ trans('profile.'.$value) }}</option>
+                                    @endforeach
+                                </select>
+
                             </div>
                             <div class="form-group">
                                 {!! Form::label('hair', 'Цвет волос') !!}
-                                {!! Form::select('hair', $selects['hair'],null,  ['class' => 'form-control']) !!}
+                                <select name="hair" class="form-control">
+                                    @foreach($selects['hair'] as $key => $value)
+                                        <option value="{{ $key }}"> {{ trans('profile.'.$value) }}</option>
+                                    @endforeach
+                                </select>
+
                             </div>
                             <div class="form-group">
                                 {!! Form::label('education', 'Образование') !!}
-                                {!! Form::select('education', $selects['education'],null,  ['class' => 'form-control']) !!}
+                                {!! Form::select('education', $selects['education'], null,['class' => 'form-control']) !!}
                             </div>
                             <div class="form-group">
                                 {!! Form::label('kids', 'Дети') !!}
-                                {!! Form::select('kids', $selects['kids'],null,  ['class' => 'form-control']) !!}
+                                <select name="kids" class="form-control">
+                                    @foreach($selects['kids'] as $key => $value)
+                                        <option value="{{ $key }}"> {{ trans('profile.'.$value) }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                             <div class="form-group">
                                 {!! Form::label('want_kids', 'Желание завести детей') !!}
-                                {!! Form::select('want_kids', $selects['want_k'],null,  ['class' => 'form-control']) !!}
+                                <select name="want_k" class="form-control">
+                                    @foreach($selects['want_k'] as $key => $value)
+                                        <option value="{{ $key }}"> {{ trans('profile.'.$value) }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                             <div class="form-group">
                                 {!! Form::label('family', 'Семейное положение') !!}
-                                {!! Form::select('family', $selects['family'],null,  ['class' => 'form-control']) !!}
+                                <select name="family" class="form-control">
+                                    @foreach($selects['family'] as $key => $value)
+                                        <option value="{{ $key }}"> {{ trans('profile.'.$value) }}</option>
+                                    @endforeach
+                                </select>
+
                             </div>
                             <div class="form-group">
                                 {!! Form::label('religion', 'Вероисповедание') !!}
-                                {!! Form::select('religion', $selects['religion'],null,  ['class' => 'form-control']) !!}
+                                <select name="religion" class="form-control">
+                                    @foreach($selects['religion'] as $key => $value)
+                                        <option value="{{ $key }}"> {{ trans('profile.'.$value) }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                             <div class="form-group">
                                 {!! Form::label('smoke', 'Отношение к курению') !!}
-                                {!! Form::select('smoke', $selects['smoke'],null,  ['class' => 'form-control']) !!}
+                                <select name="smoke" class="form-control">
+                                    @foreach($selects['smoke'] as $key => $value)
+                                        <option value="{{ $key }}"> {{ trans('profile.'.$value) }}</option>
+                                    @endforeach
+                                </select>
+
                             </div>
                             <div class="form-group">
                                 {!! Form::label('drink', 'Отношение к алкоголюы') !!}
-                                {!! Form::select('drink', $selects['drink'],null,  ['class' => 'form-control']) !!}
+                                <select name="drink" class="form-control">
+                                    @foreach($selects['drink'] as $key => $value)
+                                        <option value="{{ $key }}"> {{ trans('profile.'.$value) }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-inline">
+                                <header>Ищу (возраст)</header>
+                                <div class="col-md-6">
+                                    {!! Form::label('l_age_start', 'От: ') !!}
+                                    {!! Form::number('l_age_start', '18', ['class' => 'form-control']) !!}
+                                </div>
+                                <div class="col-md-6">
+                                    {!! Form::label('l_age_stop', 'До: ') !!}
+                                    {!! Form::number('l_age_stop', '40', ['class' => 'form-control']) !!}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                {!! Form::label('looking', 'О партнере ') !!}
+                                <textarea class="form-control" name="looking"></textarea>
+                            </div>
+                            <div class="form-group">
+                                {!! Form::label('about', 'О девушке ') !!}
+                                <textarea class="form-control" name="about"></textarea>
                             </div>
                             <div class="form-group">
                                 {!! Form::submit('Submit', ['class' => 'btn btn-success']) !!}
@@ -162,18 +222,14 @@
         </div>
     </section>
 
-
-
 @stop
 
 @section('scripts')
     <script type="text/javascript" src="{{ url('/assets/js/jquery-ui_jquery-ui-1.10.1.custom.min.js') }}"></script>
 
-
     <!--bootstrap picker-->
     <script type="text/javascript" src="{{ url('/assets/js/bootstrap-datepicker/js/bootstrap-datepicker.js') }}"></script>
     <script type="text/javascript" src="{{ url('/assets/js/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js') }}"></script>
-
 
     <script type="text/javascript" src="{{ url('/assets/js/bootstrap-fileinput-master/js/fileinput.js') }}"></script>
     <script type="text/javascript" src="{{ url('/assets/js/file-input-init.js') }}"></script>

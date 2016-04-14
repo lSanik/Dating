@@ -45,6 +45,7 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\Ticket', 'froms', 'id');
     }
 
+
     //Status
     public function status()
     {
@@ -86,7 +87,7 @@ class User extends Authenticatable
     // Social Media Auth
     public function social()
     {
-        $this->hasMany('App\Models\Social');
+        return $this->hasMany('App\Models\Social', 'user_id');
     }
 
 

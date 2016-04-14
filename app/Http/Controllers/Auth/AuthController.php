@@ -49,7 +49,7 @@ class AuthController extends Controller
     }
 
     /**
-     * Get a validator for an incoming registration request.
+      * Get a validator for an incoming registration request.
      *
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
@@ -74,13 +74,13 @@ class AuthController extends Controller
     {
         return User::create([
             'first_name' => $data['first_name'],
-            'last_name' => $data['last_name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-            'role_id'   => '4'
+            'last_name'  => $data['last_name'],
+            'email'      => $data['email'],
+            'password'   => bcrypt($data['password']),
+            'role_id'    => $data['role_id'] ? $data['role_id'] : 6,
         ]);
     }
-
+    /** @todo Sender  */
     public function sendEmail(User $user)
     {
         $data = [
@@ -107,7 +107,7 @@ class AuthController extends Controller
             return view('auth.activateAccount')->with('email', $user->email);
         }
     }
-
+    //@todo Activation
     public function activateAccount($code, User $user)
     {
 
@@ -138,75 +138,47 @@ class AuthController extends Controller
     {
         $user = Socialite::driver( $provider )->user();
 
-        //@todo Register & Login logic
+        $user_check = Social::where('provider', '=', $provider)->where('social_id', '=', $user->getId())->first();
+        $user_check_email = User::where('email', '=', $user->getEmail())->first();
 
-        $user_check = User::where('email', '=', $user->email)->first(); //check user email
+        if( $user_check || $user_check_email ) {
+            \Auth::loginUsingId($user_check->user_id);
+            return redirect('/home');
+        } else {
 
-        if( !empty($user_check) )
-        {
-            $this->social_user = $user_check;
-        }
-        else /* Register new User */
-        {
+            $name = explode(' ', $user->getName());
+            $password = substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 15);
+            $email = $user->getEmail();
 
-            $same_social_id = Social::where('social_id', '=', $user->id)->where('provider', '=', $provider)->first();
-
-            if( empty($same_social_id) )
-            {
-
-                /*return view('auth.add_new_profile')->with([
-                    'user_data' => $user,
-                    'countries' => Country::all(),
-                ]);*/
-
-                $new_social_user = new User;
-                $new_social_user->email = $user->email;
-                $new_social_user->phone = ' ';
-
-                $name = explode(' ', $user->name);
-
-                if( is_array($name) )
-                {
-                    if(!empty($name[0]))
-                        $new_social_user->first_name = $name[0];
-
-                    if(!empty($name[1]))
-                        $new_social_user->last_name = $name[1];
+            if( $provider == 'twitter' ){
+                $role_id = 6;
+                $email = $user->getName()."@example.com";
+            } else {
+                if( $user->user['gender'] == 'male'){
+                    $role_id = 4;
+                } elseif( $user->user['gender'] == 'female') {
+                    $role_id = 5;
                 }
-
-
-                $new_social_user->active = '1';
-
-                $the_activation_code = str_random(60) . $user->email;
-                $new_social_user->activation_code = $the_activation_code;
-
-                $new_social_user->role_id = 4;
-                $new_social_user->status_id = 0;
-                $new_social_user->partner_id = 0;
-                $new_social_user->city_id = 0;
-                $new_social_user->country_id = 0;
-
-                $new_social_user->save();
-                $this->social_user = $new_social_user;
-
-                $social_data                = new Social;
-
-                $social_data->user_id       = $new_social_user->id;
-                $social_data->social_id     = $user->id;
-                $social_data->provider      = $provider;
-
-
-
-                //$new_social_user->social()->save( $social_data );
-            }
-            else{
-                //Load Existing social user
-                $this->social_user = $same_social_id->user;
             }
 
+            $usr = new User();
+            $usr->first_name = $name[0];
+            $usr->last_name  = $name[1];
+            $usr->email      = $email;
+            $usr->password   = bcrypt($password);
+            $usr->role_id    = $role_id;
+            $usr->save();
+
+            $social = new Social();
+            $social->provider = $provider;
+            $social->social_id = $user->getId();
+
+            $usr->social()->save($social);
+
+            \Auth::loginUsingId($usr->id);
+            return redirect('/home');
         }
 
-        $this->auth->login($this->social_user , true);
 
     }
 

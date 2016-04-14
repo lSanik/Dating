@@ -9,6 +9,10 @@ class Social extends Model
 {
     protected $table = 'socials_login';
 
+    protected $fillable = [
+        'provider', 'social_id'
+    ];
+
     public function user()
     {
         return $this->belongsTo('App\Models\User');

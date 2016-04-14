@@ -54,7 +54,7 @@ class GirlsController extends Controller
                                 ->where('partner_id', '=', Auth::user()->id)
                                 ->get();
 
-        return view('admin.girls.index')->with([
+        return view('admin.profile.girls.index')->with([
             'heading' => 'Все девушки',
             'girls' => $girls,
         ]);
@@ -82,7 +82,7 @@ class GirlsController extends Controller
 
         $countries = Country::all();
 
-        return view('admin.girls.create')->with([
+        return view('admin.profile.girls.create')->with([
             'heading' => 'Добавить девушку',
             'selects' => $selects,
             'countries' => $countries,
@@ -128,6 +128,13 @@ class GirlsController extends Controller
 
             $user_avatar    = 'empty_girl.png';
 
+            //dd( $request->allFiles()['pass_photo'] );
+
+            foreach ($request->allFiles()['pass_photo'] as $file) {
+                dd($file);
+            }
+
+            /*
             if( $request->file('avatar') )
             {
                 $file = $request->file('avatar');
@@ -145,10 +152,12 @@ class GirlsController extends Controller
                 $file->move($destination, $this->passport_cover_path);
 
             }
+            */
+
 
             /**
              * Create user with role female/male
-             */
+
 
             $this->user->avatar         = $user_avatar;
             $this->user->first_name     = $request->input('first_name');
@@ -167,7 +176,7 @@ class GirlsController extends Controller
 
             $gender = $request->input('gender');
 
-            /** Проверка пола учасника */
+            /** Проверка пола учасника
             if( $gender == 'female'){
                 $this->user->role_id    = 5;
                 $this->user->status_id  = 5;
@@ -180,7 +189,6 @@ class GirlsController extends Controller
 
             /**
              *  Add girl passport
-             */
 
 
             $this->passport->user_id    = $this->user->id;
@@ -189,17 +197,21 @@ class GirlsController extends Controller
             $this->passport->cover      = $this->passport_cover_path;
             $this->passport->save();
 
-
             /**
              * Create girl profile
-             */
+
 
             $this->profile->user_id     = $this->user->id;
             $this->profile->birthday    = Carbon::createFromFormat('d/m/Y',$request->input('birthday'));
             $this->profile->height      = $request->input('height');
             $this->profile->weight      = $request->input('weight');
 
-            /** Enums */
+            $this->profile->about       = $request->input('about');
+            $this->profile->looking     = $request->input('looking');
+            $this->profile->l_age_start = $request->input('l_age_start');
+            $this->profile->l_age_stop  = $request->input('l_age_stop');
+
+            /** Enums
 
             $this->profile->gender      = $request->input('gender');
             $this->profile->eye         = $request->input('eye');
@@ -212,7 +224,9 @@ class GirlsController extends Controller
             $this->profile->drink       = $request->input('drink');
             $this->profile->occupation  = $request->input('occupation');
 
-            $this->profile->save();
+
+
+            $this->profile->save(); */
         }
 
         \Session::flash('flash_success', 'Девушка успешно добавлена');
@@ -228,7 +242,7 @@ class GirlsController extends Controller
      */
     public function show($id)
     {
-        return view('admin.girls.girl');
+        return view('admin.profile.girls.girl');
     }
 
     /**
@@ -258,7 +272,7 @@ class GirlsController extends Controller
         $states     = State::all();
 
 
-        return view('admin.girls.edit')->with([
+        return view('admin.profile.girls.edit')->with([
             'heading' => 'Редактировать профиль',
             'user' => $user,
             'selects' => $selects,
@@ -320,7 +334,6 @@ class GirlsController extends Controller
 
     private function age( $bithday )
     {
-
         $age = Carbon::now()->diffInYears( Carbon::createFromFormat('d/m/Y', $bithday) );
 
         return $age;
