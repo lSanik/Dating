@@ -11,6 +11,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Ticket;
 use App\Models\Passport;
 use App\Models\Profile;
+use App\Models\ProfileMedia;
 use App\Models\User;
 
 use App\Models\Country;
@@ -18,13 +19,15 @@ use App\Models\State;
 use App\Models\City;
 use Illuminate\Support\Facades\Auth;
 
+
+//@todo refactor this shit
 class GirlsController extends Controller
 {
 
     private $user;
     private $profile;
     private $passport;
-    private $passport_cover_path;
+    private $passport_photos = [];
 
     public function __construct(User $user, Profile $profile, Passport $passport)
     {
@@ -114,6 +117,8 @@ class GirlsController extends Controller
             'weight'        => 'numeric',
         ]);
 
+        //dd($request->input());
+
         //Проверка паспорта в базе
         $check = $this->passport->where('passno', 'like', str_replace(" ","", $request->input('passno')))->first();
 
@@ -128,13 +133,6 @@ class GirlsController extends Controller
 
             $user_avatar    = 'empty_girl.png';
 
-            //dd( $request->allFiles()['pass_photo'] );
-
-            foreach ($request->allFiles()['pass_photo'] as $file) {
-                dd($file);
-            }
-
-            /*
             if( $request->file('avatar') )
             {
                 $file = $request->file('avatar');
@@ -143,21 +141,17 @@ class GirlsController extends Controller
                 $file->move($destination, $user_avatar);
             }
 
-            if( $request->file('pass_photo') )
-            {
-
-                $file = $request->file('pass_photo');
-                $this->passport_cover_path = time(). '-' . $file->getClientOriginalName();
+            foreach ($request->allFiles()['pass_photo'] as $file) {
+                $pass = time(). '-' . $file->getClientOriginalName();
                 $destination = public_path() . '/uploads/girls/passports';
-                $file->move($destination, $this->passport_cover_path);
-
+                $file->move($destination, $pass);
+                array_push($this->passport_photos, $pass);
             }
-            */
 
-
-            /**
+            /*
              * Create user with role female/male
-
+             *
+             */
 
             $this->user->avatar         = $user_avatar;
             $this->user->first_name     = $request->input('first_name');
@@ -176,7 +170,7 @@ class GirlsController extends Controller
 
             $gender = $request->input('gender');
 
-            /** Проверка пола учасника
+            /** Проверка пола учасника */
             if( $gender == 'female'){
                 $this->user->role_id    = 5;
                 $this->user->status_id  = 5;
@@ -189,17 +183,29 @@ class GirlsController extends Controller
 
             /**
              *  Add girl passport
+             */
 
 
             $this->passport->user_id    = $this->user->id;
             $this->passport->passno     = str_replace(" ", "", $request->input('passno'));
             $this->passport->date       = Carbon::createFromFormat('d/m/Y', $request->input('pass_date'));
-            $this->passport->cover      = $this->passport_cover_path;
             $this->passport->save();
 
-            /**
-             * Create girl profile
+            $media = new ProfileMedia();
+            foreach ($this->passport_photos as $p )
+            {
+                $media->insert([
+                    'user_id'     => $this->user->id,
+                    'media_key'   => 'passport',
+                    'media_value' => $p
+                ]);
+            }
 
+
+             /**
+             * Create girl profile
+             *
+             */
 
             $this->profile->user_id     = $this->user->id;
             $this->profile->birthday    = Carbon::createFromFormat('d/m/Y',$request->input('birthday'));
@@ -211,27 +217,26 @@ class GirlsController extends Controller
             $this->profile->l_age_start = $request->input('l_age_start');
             $this->profile->l_age_stop  = $request->input('l_age_stop');
 
-            /** Enums
+            /** Enums */
 
             $this->profile->gender      = $request->input('gender');
             $this->profile->eye         = $request->input('eye');
             $this->profile->hair        = $request->input('hair');
             $this->profile->education   = $request->input('education');
             $this->profile->kids        = $request->input('kids');
-            $this->profile->want_kids   = $request->input('want_kids');
+            $this->profile->want_kids   = $request->input('want_k');
             $this->profile->religion    = $request->input('religion');
             $this->profile->smoke       = $request->input('smoke');
             $this->profile->drink       = $request->input('drink');
             $this->profile->occupation  = $request->input('occupation');
 
+            $this->profile->save();
 
-
-            $this->profile->save(); */
         }
 
-        \Session::flash('flash_success', 'Девушка успешно добавлена');
+        /* \Session::flash('flash_success', 'Девушка успешно добавлена');
 
-        return redirect('/admin/girls');
+        return redirect('/admin/girls'); */
     }
 
     /**

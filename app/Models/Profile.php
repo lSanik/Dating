@@ -21,6 +21,11 @@ class Profile extends Model
         return $this->belongsTo('App\Models\User');
     }
 
+    public function media()
+    {
+        return $this->hasMany('App\Models\ProfileMedia');
+    }
+
     public function getEnum($field)
     {
         $type = DB::select( DB::raw("SHOW COLUMNS FROM {$this->table} WHERE Field = '{$field}'") )[0]->Type;
