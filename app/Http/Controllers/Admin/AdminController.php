@@ -31,11 +31,44 @@ class AdminController extends Controller
     }
 
     function dashboard()
-    {
+    {//@todo refactor this shit
         $heading = 'Управление';
+        $girls = User::where('role_id', '=', '5')->get();
+
+        $active = User::where('role_id', '=', '5')
+                      ->where('status_id', '=', 1)
+                      ->get();
+        $deactive = User::where('role_id', '=', '5')
+                        ->where('status_id', '=', 2)
+                        ->get();
+
+        $dismiss = User::where('role_id', '=', '5')
+                        ->where('status_id', '=', 3)
+                        ->get();
+
+        $deleted = User::where('role_id', '=', '5')
+                    ->where('status_id', '=', 4)
+                    ->get();
+
+        $moder  = User::where('role_id', '=', '5')
+                        ->where('status_id', '=', 5)
+                        ->get();
+
+        $partner    = User::where('role_id', '=', '3')->get();
+        $moderator  = User::where('role_id', '=', '2')->get();
+        $man        = User::where('role_id', '=', '4')->get();
 
         return view('admin.dashboard')->with([
-            'heading' => $heading,
+            'heading'       => $heading,
+            'girls'         => $girls,
+            'active'        => $active,
+            'deactive'      => $deactive,
+            'dismiss'       => $dismiss,
+            'deleted'       => $deleted,
+            'moderation'    => $moder,
+            'partner'       => $partner,
+            'moderator'     => $moderator,
+            'man'           => $man
         ]);
     }
 

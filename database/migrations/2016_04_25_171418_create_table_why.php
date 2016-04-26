@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProfileMediaTable extends Migration
+class CreateTableWhy extends Migration
 {
     /**
      * Run the migrations.
@@ -12,12 +12,11 @@ class CreateProfileMediaTable extends Migration
      */
     public function up()
     {
-        Schema::create('profile_media', function(Blueprint $table){
+        Schema::create('custom_comment', function(Blueprint $table){
             $table->increments('id');
-            $table->integer('profile_id')->unsigned();
-            $table->foreign('profile_id')->references('id')->on('profile')->onDelete("CASCADE");
-            $table->text('media_key');
-            $table->text('media_value');
+            $table->integer('uid');
+            $table->string('meta_key');
+            $table->string('meta_value');
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ class CreateProfileMediaTable extends Migration
      */
     public function down()
     {
-        Schema::drop('profile_media');
+        Schema::drop('custom_comment');
     }
 }

@@ -23,6 +23,11 @@ class Ticket extends Model
         return $this->hasMany('App\Models\TicketReply');
     }
 
+    public function media()
+    {
+        return $this->hasMany('App\Models\TicketMessageMedia');
+    }
+
     public function user()
     {
         return $this->belongsTo('App\Models\User');

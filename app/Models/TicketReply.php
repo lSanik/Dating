@@ -21,4 +21,9 @@ class TicketReply extends Model
     {
         return $this->belongsTo('App\Models\Users');
     }
+
+    public function media()
+    {
+        return $this->hasMany('App\Models\TicketReplyMedia');
+    }
 }

@@ -13,6 +13,7 @@ class AddProfileTableFields extends Migration
     public function up()
     {
         Schema::table('profile', function(Blueprint $table){
+            $table->increments('id');
             $table->text('about');
             $table->text('looking');
             $table->integer('l_age_start');
@@ -28,6 +29,7 @@ class AddProfileTableFields extends Migration
     public function down()
     {
         Schema::table('profile', function(Blueprint $table){
+            $table->dropColumn('id');
             $table->dropColumn('about');
             $table->dropColumn('looking');
             $table->dropColumn('l_age_start');

@@ -22,11 +22,23 @@
                 </div>
             @endif
 
+            @if( !empty($why) && ( $user->status_id == 2 || $user->status_id == 3 || $user->status_id == 4 )   )
+                <div class="alert alert-info">
+                    @foreach($why as $w)
+                        @if($w->meta_key == "status_comment")
+                            <b><i>Причина:</i></b> {{ $w->meta_value }} <br/>
+                        @endif
+                    @endforeach
+                </div>
+            @endif
             <!-- Nav tabs -->
             <ul class="nav nav-tabs" role="tablist">
                 <li role="presentation" class="active"><a href="#osn" aria-controls="osn" role="tab" data-toggle="tab">Онсновная информация</a></li>
                 <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Данные профиля</a></li>
                 <li role="presentation"><a href="#photoalbums" aria-controls="photoalbums" role="tab" data-toggle="tab">Фотоальбомы</a></li>
+                @if( Auth::user()->hasRole('Owner') || Auth::user()->hasRole('Moder') )
+                    <li role="presentation"><a href="#status" aria-controls="status" role="tab" data-toggle="tab">Статус</a></li>
+                @endif
             </ul>
             {!! Form::open(['url' => '#', 'class' => 'form', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
                 <!-- Tab panes -->
@@ -169,6 +181,39 @@
                             </div>
                         </div>
                     </div>
+                    @if( Auth::user()->hasRole('Owner') || Auth::user()->hasRole('Moder') )
+                        <div role="tabpanel" class="tab-pane" id="status">
+                            <div class="row">
+                                <div class="col-md-6 col-md-offset-3">
+                                    <div class="form-group" style="margin-top: 20px">
+
+                                        <select name="status" class="form-control">
+                                            @foreach($statuses as $status)
+                                                <option value="{{ $status->id }}" {{ $status->id == $user->status_id ? "selected" : ''}}>{{ trans('status.'.$status->name) }}</option>
+                                            @endforeach
+                                        </select>
+                                        <input type="hidden" name="user_id" value="{{ $user->id }}">
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="why">Причина отказа (если есть):</label>
+                                        <textarea name="why" class="form-control">
+                                            @if( !empty($why) && ( $user->status_id == 2 || $user->status_id == 3 || $user->status_id == 4 )   )
+                                                @foreach($why as $w)
+                                                    @if($w->meta_key == "status_comment")
+                                                         {{ $w->meta_value }}
+                                                    @endif
+                                                @endforeach
+                                            @endif
+                                        </textarea>
+                                    </div>
+                                    <div class="form-group text-center">
+                                        <button class="btn btn-success status">Сохранить</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
                 </div>
             {!! Form::close() !!}
         </div>
@@ -240,6 +285,28 @@
         });
 
         $(function() {
+
+            $('button.status').click(function(){
+
+
+
+                $.ajax({
+                    type: 'POST',
+                    url: '{{ url('/admin/girl/changeStatus') }}',
+                    data: { id: $('select[name="status"]').val(),
+                            user_id: $('input[name="user_id"]').val(),
+                            why: $('textarea[name="why"]').val(),
+                            _token: $('input[name="_token"]').val() },
+                    success: function( response ){
+                        console.log(response);
+                    },
+                    error: function( response ){
+                        console.log(response);
+                    }
+                });
+
+            });
+
             $('input[name="avatar"]').change(function(){
                 $('#preview-avatar').css('display', 'none');
             });

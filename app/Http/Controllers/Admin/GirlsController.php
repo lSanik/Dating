@@ -13,6 +13,8 @@ use App\Models\Passport;
 use App\Models\Profile;
 use App\Models\ProfileMedia;
 use App\Models\User;
+use App\Models\Status;
+use App\Models\Why;
 
 use App\Models\Country;
 use App\Models\State;
@@ -32,7 +34,6 @@ class GirlsController extends Controller
     public function __construct(User $user, Profile $profile, Passport $passport)
     {
         $this->middleware('auth');
-        Auth::user()->hasRole(['Owner', 'Moder', 'Partner']);
 
         $this->user = $user;
         $this->profile = $profile;
@@ -49,7 +50,7 @@ class GirlsController extends Controller
      */
     public function index()
     {
-        if( Auth::user()->hasRole('Owner') )
+        if( Auth::user()->hasRole('Owner') || Auth::user()->hasRole('Moder'))
             $girls = User::where('role_id', '=', '5')->get();
         else
             if( Auth::user()->hasRole('Partner') )
@@ -191,20 +192,9 @@ class GirlsController extends Controller
             $this->passport->date       = Carbon::createFromFormat('d/m/Y', $request->input('pass_date'));
             $this->passport->save();
 
-            $media = new ProfileMedia();
-            foreach ($this->passport_photos as $p )
-            {
-                $media->insert([
-                    'user_id'     => $this->user->id,
-                    'media_key'   => 'passport',
-                    'media_value' => $p
-                ]);
-            }
-
 
              /**
              * Create girl profile
-             *
              */
 
             $this->profile->user_id     = $this->user->id;
@@ -232,11 +222,22 @@ class GirlsController extends Controller
 
             $this->profile->save();
 
+            /** Passport multi add photos */
+            foreach ($this->passport_photos as $p )
+            {
+                $media = new ProfileMedia();
+                $media->media_key   = 'passport';
+                $media->media_value = $p;
+                $this->profile->media()->save($media);
+            }
+
+            //@todo Загрузка 5 фотографий вкладка.
+
         }
 
-        /* \Session::flash('flash_success', 'Девушка успешно добавлена');
+         \Session::flash('flash_success', 'Девушка успешно добавлена');
 
-        return redirect('/admin/girls'); */
+        return redirect('/admin/girls');
     }
 
     /**
@@ -276,6 +277,9 @@ class GirlsController extends Controller
         $countries  = Country::all();
         $states     = State::all();
 
+        $statuses   = Status::all();
+
+        $why = Why::where('uid', '=', $id)->select(['meta_key', 'meta_value'])->get();
 
         return view('admin.profile.girls.edit')->with([
             'heading' => 'Редактировать профиль',
@@ -283,7 +287,8 @@ class GirlsController extends Controller
             'selects' => $selects,
             'countries' => $countries,
             'states' => $states,
-            
+            'statuses' => $statuses,
+            'why' => $why
         ]);
     }
 
@@ -314,7 +319,54 @@ class GirlsController extends Controller
 
     public function getByStatus($status)
     {
-        dd($status);
+        $s = Status::where('name', 'like', '%'.$status.'%')->first();
+
+        $girls = []; //without -> role moder -> error -> undefined variable girls on line 335
+
+        if( Auth::user()->hasRole('Owner') || Auth::user()->hasRole('Moder') )
+            $girls = User::where('role_id', '=', '5')
+                            ->where('status_id', '=', $s->id)
+                            ->get();
+        else
+            if( Auth::user()->hasRole('Partner') )
+                $girls = User::where('role_id', '=', '5')
+                    ->where('partner_id', '=', Auth::user()->id)
+                    ->where('status_id', '=', $s->id)
+                    ->get();
+
+        return view('admin.profile.girls.status')->with([
+            'heading' => 'Девушки по статусу анкеты '.$status,
+            'girls' => $girls
+        ]);
+    }
+
+    public function changeStatus(Request $request)
+    {
+        $girl = User::find($request->input('user_id'));
+        $girl->status_id = $request->input('id');
+
+        if( !empty($request->input('why') ) ){
+
+            $why = Why::where('uid', '=', $request->input('user_id'))->
+                        where('meta_key', 'like', '%status_comment%')->get();
+
+            if( empty($why[0]) ){
+
+                $why = new Why();
+                $why->uid = $request->input('user_id');
+                $why->meta_key = 'status_comment';
+                $why->meta_value = $request->input('why');
+                $why->save();
+
+            } else {
+                Why::where('uid', '=', $request->input('user_id'))
+                     ->where('meta_key', 'like', '%status_comment%')
+                     ->update(['meta_value' => $request->input('why')]);
+            }
+
+        }
+
+        $girl->save();
     }
 
     /**

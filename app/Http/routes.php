@@ -144,7 +144,7 @@ Route::group([  'prefix' => LaravelLocalization::setLocale().'/admin',
     Route::post('girl/check', ['as' => 'check_pass', 'uses' => 'Admin\GirlsController@check']); // Check passport at DB
     Route::post('girl/store', 'Admin\GirlsController@store'); //Store new to db
     Route::post('girl/edit/{id}','Admin\GirlsController@update');// Update db
-
+    Route::post('girl/changeStatus', 'Admin\GirlsController@changeStatus'); //change girlStatus from edit profile page
     /** End Girls Profile routing */
 
 
@@ -179,6 +179,7 @@ Route::group([  'prefix' => LaravelLocalization::setLocale().'/admin',
     /** Finance */
     Route::get('finance', 'Admin\FinanceController@index');
     Route::get('finance/control', 'Admin\FinanceController@control');
+    Route::get('finance/stat', 'Admin\FinanceController@stat');
 
     Route::post('finance/{id}','Admin\FinanceController@saveData');
     /* End finance */

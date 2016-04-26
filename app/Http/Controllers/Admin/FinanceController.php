@@ -28,7 +28,7 @@ class FinanceController extends Controller
      */
     public function index()
     {
-        
+        return view('admin.finance.index');
     }
 
     public function control()
@@ -50,7 +50,10 @@ class FinanceController extends Controller
         return redirect('/'.\App::getLocale().'/admin/finance/control');
     }
 
-
+    public function stat()
+    {
+        return view('admin.finance.stat');
+    }
     /**
      * Show the form for creating a new resource.
      *
