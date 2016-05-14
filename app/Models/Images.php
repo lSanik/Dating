@@ -11,9 +11,10 @@ class Images extends Model
 
     protected $table = 'images';
 
-    protected $fillable = [
-        'album_id',
-        'description',
-        'image'
-    ];
+    protected $fillable = ['image'];
+
+    public function album()
+    {
+        return $this->belongsTo('App\Album', 'album_id');
+    }
 }

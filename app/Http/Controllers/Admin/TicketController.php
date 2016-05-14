@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 
 use App\Models\Ticket;
 use App\Models\TicketSubjects;
+use App\Models\TiketMessageMedia;
+use App\Models\TicketReplyMedia;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
@@ -164,6 +166,10 @@ class TicketController extends Controller
         $this->ticket->message      = $request->input('message');
         $this->ticket->status       = 0;
         $this->ticket->save();
+
+        if( $request->file() ){
+            dd($request->file());
+        }
 
         return redirect(\App::getLocale().'/admin/support');
     }

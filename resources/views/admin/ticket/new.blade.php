@@ -3,6 +3,7 @@
 @section('styles')
 
         <link rel="stylesheet" href="{{ url('/assets/js/bootstrap-wysihtml5/bootstrap-wysihtml5.css') }}">
+        <link href="{{ url('/assets/css/fileinput.css') }}" rel="stylesheet">
 
 @stop
 
@@ -51,8 +52,13 @@
                                 <textarea name="message" class="wysihtml5 form-control" rows="9"></textarea>
                             </div>
                         </div>
+                        <div class="form-group">
+                            {!! Form::label('files', 'Скриншоты') !!}
+                            <input type="file" class="form-control file" name="files[]" accept="image/*" multiple>
+                        </div>
                         <hr/>
                 </div>
+
                 <div class="compose-btn pull-right">
                     <input type="submit" value="{{  trans('buttons.send') }}" class="btn  btn-success" >
                 </div>
@@ -69,6 +75,9 @@
     <!--bootstrap-wysihtml5-->
     <script type="text/javascript" src="{{ url('/assets/js/bootstrap-wysihtml5/wysihtml5-0.3.0.js') }}"></script>
     <script type="text/javascript" src="{{ url('/assets/js/bootstrap-wysihtml5/bootstrap-wysihtml5.js') }}"></script>
+
+    <script type="text/javascript" src="{{ url('/assets/js/bootstrap-fileinput-master/js/fileinput.js') }}"></script>
+    <script type="text/javascript" src="{{ url('/assets/js/file-input-init.js') }}"></script>
 
     <script>
         jQuery(document).ready(function(){

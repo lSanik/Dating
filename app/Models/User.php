@@ -38,66 +38,49 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    /**
+     * @var string
+     */
     protected $primaryKey = 'id';
 
-    public function tickets()
-    {
-        return $this->hasMany('App\Models\Ticket', 'froms', 'id');
-    }
 
 
-    //Status
-    public function status()
-    {
-        return $this->belongsTo('App\Models\Status', 'status_id', 'id');
-    }
 
-    public function hasStatus( $status )
-    {
-        echo $status;
-        $this->has_status = $this->getStatus();
-        echo $this->has_status->name;
-
-         if( is_array( $status ) )
-        {
-            foreach( $status as $status ){
-                if( $this->checkUserStatus($status) )
-                {
-                    return true;
-                }
-            }
-        } else {
-            return $this->checkUserStatus($status);
-        }
-
-        return false;
-
-    }
-
-    public function getStatus()
-    {
-        return $this->status()->getResults();
-    }
-
+    /**
+     * @param $need_status
+     * @return bool
+     */
     public function checkUserStatus($need_status)
     {
         return (strtolower($need_status)==strtolower($this->has_status->name)) ? true : false;
     }
 
-    // Social Media Auth
+    /** Social auth */
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function social()
     {
         return $this->hasMany('App\Models\Social', 'user_id');
     }
 
+    /** User roles  */
 
-    // The User model
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function role()
     {
         return $this->belongsTo('App\Models\Role', 'role_id', 'id');
     }
 
-    //User role
+    /**
+     * Check user role
+     *
+     * @param $roles
+     * @return bool
+     */
     public function hasRole($roles)
     {
         $this->have_role = $this->getUserRole();
@@ -117,11 +100,18 @@ class User extends Authenticatable
         return false;
     }
 
+    /**
+     * @return mixed
+     */
     private function getUserRole()
     {
         return $this->role()->getResults();
     }
 
+    /**
+     * @param $need_role
+     * @return bool
+     */
     private function checkIfUserHasRole($need_role)
     {
         return (strtolower($need_role)==strtolower($this->have_role->name)) ? true : false;
@@ -129,29 +119,106 @@ class User extends Authenticatable
     /** End roles */
 
     /** Cities */
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
     public function city()
     {
         return $this->hasOne('App\Models\City','id');
     }
-
     /** End cities */
 
     /** Presents for partner */
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function presents()
     {
         return $this->hasMany('App\Models\Presents', 'partner_id', 'id');
     }
 
     /** Profile */
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
     public function profile()
     {
         return $this->hasOne('App\Models\Profile', 'user_id', 'id');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
     public function passport()
     {
         return $this->hasOne('App\Models\Passport', 'user_id', 'id');
+    }
+
+    /** Tickets Relations */
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function tickets()
+    {
+        return $this->hasMany('App\Models\Ticket', 'froms', 'id');
+    }
+
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function status()
+    {
+        return $this->belongsTo('App\Models\Status', 'status_id', 'id');
+    }
+
+    /**
+     *
+     * Ticket Message check status
+     *
+     * @param $status
+     * @return bool
+     */
+    public function hasStatus( $status )
+    {
+        echo $status;
+        $this->has_status = $this->getStatus();
+        echo $this->has_status->name;
+
+        if( is_array( $status ) )
+        {
+            foreach( $status as $status ){
+                if( $this->checkUserStatus($status) )
+                {
+                    return true;
+                }
+            }
+        } else {
+            return $this->checkUserStatus($status);
+        }
+
+        return false;
+
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getStatus()
+    {
+        return $this->status()->getResults();
+    }
+
+    /** Chat messages */
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function chatMessages()
+    {
+        return $this->hasMany('App\Models\ChatMessages', 'user_id');
     }
 
 }

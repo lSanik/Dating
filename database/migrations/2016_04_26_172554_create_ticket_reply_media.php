@@ -14,8 +14,8 @@ class CreateTicketReplyMedia extends Migration
     {
         Schema::create('t_reply_media', function(Blueprint $table){
             $table->increments('id');
-            $table->integer('reply_id');
-            $table->foreign('reply_id')->references('id')->on('ticket_reply')->onDelete('CASCADE');
+            $table->integer('reply_id')->unsigned();
+            $table->foreign('reply_id')->references('id')->on('ticket_reply')->onDelete("CASCADE");
             $table->string('value');
         });
     }

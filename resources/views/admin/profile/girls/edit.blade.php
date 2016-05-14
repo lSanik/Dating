@@ -39,6 +39,7 @@
                 @if( Auth::user()->hasRole('Owner') || Auth::user()->hasRole('Moder') )
                     <li role="presentation"><a href="#status" aria-controls="status" role="tab" data-toggle="tab">Статус</a></li>
                 @endif
+
             </ul>
             {!! Form::open(['url' => '#', 'class' => 'form', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
                 <!-- Tab panes -->
@@ -174,10 +175,16 @@
                             </div>
                         </div>
                     </div>
+                    <!-- Photoalbums -->
                     <div role="tabpanel" class="tab-pane" id="photoalbums">
                         <div class="row">
                             <div class="col-md-6 col-md-offset-3">
-                                @todo вывод альбомов и кнопка добавить альбом
+                                <div class="row">
+                                    <button type="button" class="btn btn-success pull-right" style="margin: 10px"><i class="fa fa-plus"></i>&nbsp;Добавить</button>
+                                </div>
+                                <div class="row">
+                                    @todo вывод альбомов
+                                </div>
                             </div>
                         </div>
                     </div>

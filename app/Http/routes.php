@@ -11,8 +11,6 @@
 |
 */
 
-
-
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -24,41 +22,57 @@
 |
 */
 
-
-Route::group(['middleware' => 'web'], function () {
-
-    Route::get('/social/redirect/{provider}',[
-        'as'     => 'social.redirect',
-        'uses'   => 'Auth\AuthController@getSocialRedirect'
-    ]);
-
-    Route::get('/social/handle/{provider}',[
-        'as'    => 'social.handle',
-        'uses'  => 'Auth\AuthController@getSocialHandle'
-    ]);
-
-});
-
-Route::group(['prefix' => LaravelLocalization::setLocale(),
-              'middleware' => [ 'localeSessionRedirect', 'localizationRedirect' ]
-], function()
-{
-    /** ADD ALL LOCALIZED ROUTES INSIDE THIS GROUP **/
-    Route::get('/', function()
-    {
-        return view('home');
-    });
-
-    Route::get('/blog/{id}', 'Admin\BlogController@show');
-
-});
-
+/**
+ *  Client Routes
+ */
 Route::group([  'prefix' => LaravelLocalization::setLocale(),
-                'middleware' => ['localeSessionRedirect', 'localizationRedirect']
+                'middleware' => ['web'],
+], function(){
+    Route::get('/','HomeController@index');
+
+    Route::get('blog', 'BlogController@all');
+    Route::get('blog/{id}', 'BlogController@post');
+});
+
+/** Chat APIs */
+
+Route::group([  'middleware' => ['web', 'auth', 'roles'],
+                'roles' => ['Male', 'Female']
 ], function(){
 
+    Route::get('api/chat-rooms', ['uses' => 'ChatRoomsController@getAll']);
+    Route::post('api/chat-rooms', ['uses' => 'ChatRoomsController@create']);
+
+    Route::get('api/messages/{chatRoom}', ['uses' => 'ChatMessagesController@getByChatRoom']);
+    Route::post('api/messages/{chatRoom}', ['uses' => 'ChatMessagesController@createInChatRoom']);
+
+    Route::get('api/messages/{lastMessage}/{chatRoom}', ['uses' => 'ChatMessagesController@getUpdates']);
 });
 
+/** Support Routes */
+Route::group(['middleware' => 'web'], function () {
+    Route::auth();
+
+    Route::get('/social/redirect/{provider}', [
+        'as' => 'social.redirect',
+        'uses' => 'Auth\AuthController@getSocialRedirect'
+    ]);
+
+    Route::get('/social/handle/{provider}', [
+        'as' => 'social.handle',
+        'uses' => 'Auth\AuthController@getSocialHandle'
+    ]);
+
+    /** Users */
+    Route::post('/user/create/', 'UsersController@register');
+
+    /** Access to States and Cities from different places of code */
+    Route::post('/get/states/', 'StatesController@statesByCountry');
+    Route::post('/get/cities/', 'CityController@getCityByState');
+});
+
+
+/** Admin route group */
 Route::group([  'prefix' => LaravelLocalization::setLocale().'/admin',
                 'middleware' => ['web', 'auth', 'roles' ],
                 'roles' => ['Owner', 'Moder', 'Partner']
@@ -72,6 +86,7 @@ Route::group([  'prefix' => LaravelLocalization::setLocale().'/admin',
     Route::get('profile', 'Admin\AdminController@profile'); //end
 
     Route::post('profile', 'Admin\AdminController@profile_update');
+
     /** Start Blog Routing */
     Route::get('blog', 'Admin\BlogController@index');
     Route::get('blog/new', 'Admin\BlogController@create');
@@ -119,8 +134,6 @@ Route::group([  'prefix' => LaravelLocalization::setLocale().'/admin',
     Route::post('partner/edit/{id}', 'Admin\PartnerController@update');
     /** End partners profile routing */
 
-
-
     /** Start Moderator Profile routing */
     Route::get('moderators', 'Admin\ModeratorController@index');
     Route::get('moderator/new', 'Admin\ModeratorController@create');
@@ -161,7 +174,6 @@ Route::group([  'prefix' => LaravelLocalization::setLocale().'/admin',
     Route::post('gifts/save_present_translation', ['as' => 'save_present_translation', 'uses' => 'Admin\GiftsController@save_present_translation']);
     /** End gifts */
 
-
     /** Ticket System Routes */
     Route::get('support', 'Admin\TicketController@index');
     Route::get('support/new', 'Admin\TicketController@newTicket');
@@ -187,48 +199,3 @@ Route::group([  'prefix' => LaravelLocalization::setLocale().'/admin',
 });
 
 
-
-Route::group(['middleware' => ['web']], function () {
-    Route::get('/','HomeController@index');
-
-    /** Global blog */
-    Route::get('/blog/{id}', 'Admin\BlogController@show');
-
-    /** Users */
-    Route::post('/user/create/', 'UsersController@register');
-
-    /** Access to States and Cities from different places of code */
-    Route::post('/get/states/', 'StatesController@statesByCountry');
-    Route::post('/get/cities/', 'CityController@getCityByState');
-
-/*
-    Route::get('allAlbums', 'AlbumController@index');
-    Route::get('/albums', 'AlbumController@getList' );
-    Route::get('/create_album', 'AlbumController@getForm');
-    Route::post('/create_album', ['as' => 'create_album', 'uses' => 'AlbumController@postCreate']);
-    Route::get('/delete_album/{id}', ['as' => 'delete_album', 'uses' => 'AlbumController@getDelete']);
-
-    // upload image route for MediumInsert plugin
-    Route::any('upload', 'PostsController@upload');
-// resource routes for posts
-    Route::resource('posts', 'PostsController');
-
-    Route::get('/album/{id}', ['as' => 'show_album', 'uses' => 'AlbumController@getAlbum']);
-
-    Route::get('/addimage/{id}', array('as' => 'add_image','uses' => 'ImagesController@getForm'));
-    Route::post('/addimage', array('as' => 'add_image_to_album','uses' => 'ImagesController@postAdd'));
-    Route::get('/deleteimage/{id}', array('as' => 'delete_image','uses' => 'ImagesController@getDelete'));
-*/
-});
-
-Route::group(['middleware' => 'web'], function () {
-    Route::auth();
-
-    Route::get('/home', 'HomeController@index');
-});
-
-Route::group(['middleware' => 'web'], function () {
-    Route::auth();
-
-    Route::get('/home', 'HomeController@index');
-});

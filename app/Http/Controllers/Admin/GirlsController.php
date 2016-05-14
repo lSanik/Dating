@@ -23,6 +23,8 @@ use Illuminate\Support\Facades\Auth;
 
 
 //@todo refactor this shit
+//@todo check email before add
+
 class GirlsController extends Controller
 {
 

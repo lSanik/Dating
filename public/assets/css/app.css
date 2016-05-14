@@ -1,0 +1,166 @@
+body{
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+header nav{
+    color: white;
+    font-weight: bold !important;
+    font-family: Arial, Tahoma, Verdana !important;
+    font-size: 13px !important;
+}
+
+#header{
+    padding-top: 20px;
+}
+
+#slider{
+    color: white;
+}
+
+
+#header a{
+    text-align: center;
+}
+
+#logo_img{
+    width: 100%;
+}
+
+#header .login-buttons {
+    margin-top: 23px;
+}
+.home-text{
+    text-align: justify;
+    padding: 10px;
+}
+/** Slider */
+.short_search_wrapper{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 5px;
+    color: white;
+    background-color: #0A9BC5;
+}
+
+.search-form{
+    padding: 10px;
+    background-color: #0296C0;
+}
+
+.form-header{
+    margin: 5px;
+}
+/** Girls Carousel */
+
+.item{
+    min-height: 390px;
+    height: 390px;
+    max-height: 390px;
+}
+
+.owl {
+    margin-bottom: 15px;
+}
+.owl-item {
+    border: 1px solid #ccc;
+}
+
+.girl-action img{
+    padding: 0 !important;
+}
+
+.g__info{
+    padding: 0 0 15px 0;
+}
+
+
+
+footer{
+    color: white;
+}
+
+footer .fa{
+    font-size: 30px;
+}
+/** Backgrounds */
+.header-bg{
+    background: #0076A3 url('../img/patterns/blue_pattern.gif');
+}
+
+.content-bg{
+    background: url('../img/patterns/gray_pattern.gif');
+    background-size: auto;
+}
+
+.map-bg{
+    background: url('../img/patterns/map-bg.png') no-repeat center center;
+    background-size: contain;
+}
+
+.footer-bg{
+    background: #171717 url('../img/patterns/black_pattern.gif');
+}
+
+#panes{
+    margin-bottom: 20px;
+}
+
+#menu__f .nav{
+    text-align: right;
+}
+
+#menu__f .nav > li > a {
+    color: #EC155A;
+}
+
+#menu__f .nav > li > a:hover,
+#menu__f .nav > li > a:focus{
+    color: #ec6c9a;
+    background: transparent;
+}
+
+/** Custom buttons */
+.btn-pink{
+    color: #fff;
+    background-color: #EC155A;
+    border-color: #ec2860;
+}
+
+
+
+
+/** Responsive */
+@media (min-width: 1021px){
+    #panes{
+        -webkit-column-count: 3; /* Chrome, Safari, Opera */
+        -moz-column-count: 3; /* Firefox */
+        column-count: 3;
+    }
+}
+@media (min-width: 768px) and (max-width: 1020px){
+    #panes{
+        -webkit-column-count: 2; /* Chrome, Safari, Opera */
+        -moz-column-count: 2; /* Firefox */
+        column-count: 2;
+    }
+}
+
+@media (max-width: 767px){
+    #header .login-buttons{ display: none }
+
+    #panes{
+        -webkit-column-count: 2; /* Chrome, Safari, Opera */
+        -moz-column-count: 2; /* Firefox */
+        column-count: 2;
+    }
+}
+
+@media (max-width: 500px){
+    #panes{
+        -webkit-column-count: 1; /* Chrome, Safari, Opera */
+        -moz-column-count: 1; /* Firefox */
+        column-count: 1;
+    }
+}
+
