@@ -59,5 +59,13 @@ return [
     'Taoism'            => 'Taoism'      ,
 
 
+    /** Menu */
+
+    'my'        => 'My Profile',
+    'photo'     => 'My Photos',
+    'video'     => 'My Video',
+    'smiles'    => 'Smiles',
+    'gifts'     => 'My Gifts'
+
 
 ];

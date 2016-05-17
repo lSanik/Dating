@@ -23,7 +23,7 @@
 */
 
 /**
- *  Client Routes
+ *  Free Routes
  */
 Route::group([  'prefix' => LaravelLocalization::setLocale(),
                 'middleware' => ['web'],
@@ -34,10 +34,30 @@ Route::group([  'prefix' => LaravelLocalization::setLocale(),
     Route::get('blog/{id}', 'BlogController@post');
 });
 
-/** Chat APIs */
 
+Route::group([  'prefix'        => LaravelLocalization::setLocale(),
+                'middleware'    => ['web', 'auth', 'roles'],
+                'roles'         => ['Alien', 'Male', 'Female']
+], function(){
+    Route::get('search', 'SearchController@index');
+    Route::get('antiscram', 'PagesController@antiscram');
+
+    /** Users profile */
+    Route::get('profile/{id}', 'UsersController@edit');
+    Route::get('profile/{id}/photo', 'UsersController@profilePhoto');
+    Route::get('profile/{id}/video', 'UsersController@profileVideo');
+    Route::get('profile/{id}/mail', 'UsersController@profileMail');
+    Route::get('profile/{id}/smiles', 'UsersController@profileSmiles');
+    Route::get('profile/{id}/gifts', 'UsersController@profileGifts');
+    Route::get('profile/{id}/finance', 'UsersController@finance');
+
+
+});
+
+
+/** Chat APIs */
 Route::group([  'middleware' => ['web', 'auth', 'roles'],
-                'roles' => ['Male', 'Female']
+    'roles' => ['Male', 'Female']
 ], function(){
 
     Route::get('api/chat-rooms', ['uses' => 'ChatRoomsController@getAll']);
