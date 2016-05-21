@@ -17,7 +17,13 @@ class Passport extends Model
 
     protected $dates = ['date'];
 
-    public function user(){
+    public function user()
+    {
         return $this->belongsTo('App\Models\User');
+    }
+
+    public function photos()
+    {
+        return $this->hasMany('App\Models\PassportPhotos');
     }
 }
