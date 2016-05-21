@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateStaticPagesTable extends Migration
+class CreatePagesMediaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,10 +12,11 @@ class CreateStaticPagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('pages', function(Blueprint $table){
+        Schema::create('pages_media', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('slug');
-            $table->string('image');
+            $table->integer('pages_id')->unsigned();
+            $table->foreign('pages_id')->references('id')->on('pages')->onDelete("CASCADE")->onUpdate("CASCADE");
+            $table->string('media');
             $table->timestamps();
         });
     }
@@ -27,6 +28,6 @@ class CreateStaticPagesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('pages');
+        Schema::drop('pages_media');
     }
 }

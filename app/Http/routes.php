@@ -51,7 +51,7 @@ Route::group([  'prefix'        => LaravelLocalization::setLocale(),
     Route::get('profile/{id}/gifts', 'UsersController@profileGifts');
     Route::get('profile/{id}/finance', 'UsersController@finance');
 
-
+    Route::get('{slug}', 'PagesController@show');
 });
 
 
@@ -220,17 +220,18 @@ Route::group([  'prefix' => LaravelLocalization::setLocale().'/admin',
     Route::get('pages', 'Admin\PagesController@index');
     Route::get('pages/add', 'Admin\PagesController@create');
     Route::get('pages/edit/{id}', 'Admin\PagesController@edit');
-    Route::get('pages/drop/{id}', 'Admin\PagesController@drop');
+    Route::get('pages/drop/{id}', 'Admin\PagesController@destroy');
 
     Route::post('pages/add', 'Admin\PagesController@store');
-    Route::post('pages/edit/{$id}', 'Admin\PagesController@update');
+    Route::post('pages/edit/{id}', 'Admin\PagesController@update');
+    Route::post('pages/dropFile', 'Admin\PagesController@dropFile');
     /** End pages */
 
     /** Horoscope */
     Route::get('horoscope', 'Admin\HoroscopeController@index');
     Route::get('horoscope/add', 'Admin\HoroscopeController@create');
     Route::get('horoscope/edit/{id}', 'Admin\HoroscopeController@edit');
-    Route::get('horoscope/drop/{id}', 'Admin\HoroscopeController@drop');
+    Route::get('horoscope/drop/{id}', 'Admin\HoroscopeController@destroy');
 
     Route::post('horoscope/add', 'Admin\HoroscopeController@store');
     Route::post('horoscope/edit/{id}', 'Admin\HoroscopeController@update');

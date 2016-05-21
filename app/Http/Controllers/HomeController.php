@@ -9,15 +9,7 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-
-    }
+    
 
     /**
      * Show the application dashboard.
@@ -26,20 +18,39 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $girls = User::select(['id', 'first_name', 'avatar'])
-                        ->where('role_id', '=', 5)
-                        ->where('status_id', '=', 1)
-                        ->get();
-        
-        $topHotGirls = User::select(['id', 'first_name', 'avatar'])
-                            ->where('role_id', '=', 5)
-                            ->where('status_id', '=', 1)
-                            ->where('home', '=', 1)
-                            ->get();
-        
+
+        if( !\Auth::user() || \Auth::user()->hasRole('Male') || \Auth::user()->hasRole('Alien') ){
+            $users = $this->getUsers(5);
+            $topHot = $this->getHotUsers(5);
+        } else {
+            $users = $this->getUsers(4);
+            $topHot = $this->getHotUsers(4);
+        }
+
         return view('client.home')->with([
-            'girls'         => $girls,
-            'topHotGirls'   => $topHotGirls
+            'users'    => $users,
+            'topHot'   => $topHot,
+
         ]);
     }
+
+
+    private function getUsers($roleId)
+    {
+        return User::select(['id', 'first_name', 'avatar'])
+            ->where('role_id', '=', $roleId)
+            ->where('status_id', '=', 1)
+            ->get();
+    }
+
+    private function getHotUsers($roleId)
+    {
+        return User::select(['id', 'first_name', 'avatar'])
+            ->where('role_id', '=', $roleId)
+            ->where('status_id', '=', 1)
+            ->where('home', '=', 1)
+            ->get();
+    }
+
+
 }

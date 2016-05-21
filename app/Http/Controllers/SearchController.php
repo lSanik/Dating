@@ -18,6 +18,7 @@ class SearchController extends Controller
     {
         $this->users = $user->paginate(20);
         $this->profile = new Profile();
+        parent::__construct();
     }
 
     public function index()

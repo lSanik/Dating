@@ -93,7 +93,7 @@
                     <span>Страницы </span></a>
                 <ul class="child-list">
                     <li><a href="{{ url(App::getLocale().'/admin/pages') }}">Все страницы</a></li>
-                    <li><a href="{{ url(App::getLocale().'/admin/page/new') }}">Добавить страницу</a></li>
+                    <li><a href="{{ url(App::getLocale().'/admin/pages/add') }}">Добавить страницу</a></li>
                 </ul>
             </li>
             <li class=""><a href="{{ url(App::getLocale().'/admin/horoscope') }}"><i class="fa fa-codiepie"></i>

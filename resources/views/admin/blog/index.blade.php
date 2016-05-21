@@ -22,28 +22,26 @@
                         </tr>
                     </thead>
                     <tbody>
-                    <? //dd($translation); ?>
-                        @foreach($posts as $post)
-                        <?
+                    <?php
                         $post_title=null;
                         $post_lang=null;
                         $post_lang_icon='<div class="lang_icons">';
-
-                        ?>
+                    ?>
+                    @foreach($posts as $post)
                             @foreach($translation as $tr )
                                 @if ($post->id == $tr->post_id)
                                     @if($tr->title!=null)
-                                    <?
+                                    <?php
                                         $post_lang_icon.='<img style="padding: 0px 5px 0px 0px; display: inline-block;" src="/assets/img/flags/'.$tr->locale.'.png">';
                                     ?>
                                     @else
-                                        <?
+                                        <?php
                                         $post_lang_icon.='<img style="padding: 0px 5px 0px 0px; display: inline-block;opacity:0.3;" src="/assets/img/flags/'.$tr->locale.'.png">';
                                         ?>
                                     @endif
                                 @endif
                             @endforeach
-                        <? $post_lang_icon.="</div>" ?>
+                        <?php $post_lang_icon.="</div>" ?>
                             <tr>
                                 <td>{{ str_limit($post->title, 64) }}</td>
                                 <td>{!! str_limit($post->body, 128) !!}</td>

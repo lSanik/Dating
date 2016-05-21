@@ -14,7 +14,15 @@
             </div>
             <div class="col-md-3 col-sm-6"> Col - 2 </div>
             <div class="col-md-3 col-sm-6"> Col - 3 </div>
-            <div class="col-md-3 col-sm-6"> Col - 4 </div>
+            <div class="col-md-3 col-sm-6">
+                <div id="menu__f">
+                    <ul class="nav">
+                        @foreach($pages as $page)
+                            <li><a href="{{ $page->slug }}">{{ $page->title }}</a></li>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
         </div>
         <hr style="color: #ccc">
         <div class="row text-center">
