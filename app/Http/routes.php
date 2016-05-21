@@ -216,6 +216,26 @@ Route::group([  'prefix' => LaravelLocalization::setLocale().'/admin',
     Route::post('finance/{id}','Admin\FinanceController@saveData');
     /* End finance */
 
+    /** Pages */
+    Route::get('pages', 'Admin\PagesController@index');
+    Route::get('pages/add', 'Admin\PagesController@create');
+    Route::get('pages/edit/{id}', 'Admin\PagesController@edit');
+    Route::get('pages/drop/{id}', 'Admin\PagesController@drop');
+
+    Route::post('pages/add', 'Admin\PagesController@store');
+    Route::post('pages/edit/{$id}', 'Admin\PagesController@update');
+    /** End pages */
+
+    /** Horoscope */
+    Route::get('horoscope', 'Admin\HoroscopeController@index');
+    Route::get('horoscope/add', 'Admin\HoroscopeController@create');
+    Route::get('horoscope/edit/{id}', 'Admin\HoroscopeController@edit');
+    Route::get('horoscope/drop/{id}', 'Admin\HoroscopeController@drop');
+
+    Route::post('horoscope/add', 'Admin\HoroscopeController@store');
+    Route::post('horoscope/edit/{id}', 'Admin\HoroscopeController@update');
+    /** End horoscope */
+
 });
 
 

@@ -52,6 +52,7 @@ class User extends Authenticatable
     {
         return Cache::has('user-is-online-' . $this->id);
     }
+    
 
     /**
      * @param $need_status

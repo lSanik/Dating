@@ -58,6 +58,21 @@ return [
     'Shinto'            => 'Shinto'      ,
     'Taoism'            => 'Taoism'      ,
 
+    /** Menu */
 
+    'my'        => 'My Profile',
+    'photo'     => 'My Photos',
+    'video'     => 'My Video',
+    'smiles'    => 'Smiles',
+    'gifts'     => 'My Gifts',
+
+    /** Form */
+
+    'first_name'    => 'Имя',
+    'last_name'     => 'Фамилия',
+    'email'         => 'E-mail адрес',
+    'gender'        => 'Пол',
+    'password'      => 'Пароль',
+    'password_confirmation' => 'Повторите пароль'
 
 ];

@@ -65,7 +65,16 @@ return [
     'photo'     => 'My Photos',
     'video'     => 'My Video',
     'smiles'    => 'Smiles',
-    'gifts'     => 'My Gifts'
+    'gifts'     => 'My Gifts',
+
+     /** Form */
+
+    'first_name'    => 'First Name',
+    'last_name'     => 'Last Name',
+    'email'         => 'E-mail address',
+    'gender'        => 'Gender',
+    'password'      => 'Password',
+    'password_confirmation' => 'Confirm password'
 
 
 ];

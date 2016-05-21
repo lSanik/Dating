@@ -104,18 +104,30 @@
                         <form action="/register" method="post" class="form"/>
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <div class="form-group col-md-6">
+                                <label for="first_name">{{ trans('profile.first_name') }}</label>
                                 <input type="text" name="first_name" class="form-control" placeholder="First Name" required>
                             </div>
                             <div class="form-group col-md-6">
+                                <label for="last_name">{{ trans('profile.last_name') }}</label>
                                 <input type="text" name="last_name" class="form-control" placeholder="Last Name" required>
                             </div>
-                            <div class="form-group col-md-12">
+                            <div class="form-group col-md-6">
+                                <label for="email">{{ trans('profile.email') }}</label>
                                 <input type="email" name="email" class="form-control" placeholder="E-mail address" required>
                             </div>
                             <div class="form-group col-md-6">
+                                <label for="gender">{{ trans('profile.gender') }}</label>
+                                <select name="gender" class="form-control">
+                                    <option value="4">{{ trans('profile.male') }}</option>
+                                    <option value="5">{{ trans('profile.female') }}</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="password">{{ trans('profile.password') }}</label>
                                 <input type="password" class="form-control" name="password" placeholder="Desired password" required>
                             </div>
                             <div class="form-group col-md-6">
+                                <label for="password_confirmation">{{ trans('profile.password_confirmation') }}</label>
                                 <input type="password" class="form-control" name="password_confirmation" placeholder="Confirm password" required>
                             </div>
                             <div class="form-group small col-md-12">

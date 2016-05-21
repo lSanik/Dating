@@ -154,6 +154,7 @@ return [
         Collective\Html\HtmlServiceProvider::class,
 
 
+
         /*
          * Application Service Providers...
          */
@@ -173,6 +174,12 @@ return [
          */
 
         Laravel\Socialite\SocialiteServiceProvider::class,
+
+        /*
+         * Users online
+         */
+
+        //Kim\Activity\ActivityServiceProvider::class,
     ],
 
     /*
@@ -224,6 +231,7 @@ return [
         'Str'       => Illuminate\Support\Str::class,
         'LaravelLocalization'   => Mcamara\LaravelLocalization\Facades\LaravelLocalization::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+       // 'Activity'  => Kim\Activity\ActivityFacade::class
     ],
 
 ];

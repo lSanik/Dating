@@ -53,4 +53,11 @@ class Session extends Model
         ]);
     }
 
+    public function isUserOnline($id, $query)
+    {
+        if( $query->where('user_id', '=', $id) )
+            return true;
+        else
+            return flase;
+    }
 }

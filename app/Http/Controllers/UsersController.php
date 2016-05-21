@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Kim\Activity\Activity;
 use App\Models\User;
 use App\Models\Profile;
 use Doctrine\Common\Annotations\Annotation\Required;
@@ -29,6 +30,7 @@ class UsersController extends Controller
      */
     public function show($id)
     {
+
         return view('client.profile.show')->with([
 
         ]);
@@ -42,7 +44,7 @@ class UsersController extends Controller
      */
     public function edit(int $id)
     {
-
+        
         return view('client.profile.profile')->with([
             'user' => $this->user->find($id),
 

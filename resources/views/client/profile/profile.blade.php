@@ -12,6 +12,9 @@
                 </div>
             </div>
 
+        @if($user->isOnline())
+            user is online!!
+        @endif
     </div>
 @stop
 

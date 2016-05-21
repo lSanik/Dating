@@ -12,7 +12,7 @@
 
 
                 <div class="owl online">
-                    @foreach($girls as $g)
+                    @foreach($users as $g)
                         <div class="item">
                             <div class="row text-center" id="photo">
                                 <img src="{{ url('/uploads/girls/avatars/'.$g->avatar) }}"/>
@@ -42,11 +42,12 @@
                 </div>
 
             </div>
+            @if(!empty($topHot))
             <div class="row">
                 <header class="text-center"> <h2>Top Hot Girls</h2> </header>
 
                 <div class="owl top-hot">
-                    @foreach($topHotGirls as $g)
+                    @foreach($topHot as $g)
                         <div class="item">
                             <div class="row text-center" id="photo">
                                 <img src="{{ url('/uploads/girls/avatars/'.$g->avatar) }}"/>
@@ -74,8 +75,8 @@
                         </div>
                     @endforeach
                 </div>
-
             </div>
+                @endif
         </div>
     </div>
 </div>
