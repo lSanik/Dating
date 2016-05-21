@@ -61,6 +61,7 @@ class AuthController extends Controller
             'last_name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|confirmed|min:6',
+            'checkTerms' => 'required'
         ]);
     }
 
@@ -77,7 +78,7 @@ class AuthController extends Controller
             'last_name'  => $data['last_name'],
             'email'      => $data['email'],
             'password'   => bcrypt($data['password']),
-            'role_id'    => $data['role_id'] ? $data['role_id'] : 6,
+            'role_id'    => 6,
         ]);
     }
     /** @todo Sender  */

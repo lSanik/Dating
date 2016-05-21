@@ -21,64 +21,118 @@ class UsersController extends Controller
         $this->profile = $profile;
     }
 
-    public function register(Request $request)
-    {
-        $this->validate($request, [
-            'first_name'    => 'required|max:128',
-            'second_name'   => 'required|max:128',
-            'birthday'      => 'required|date_format:dd/mm/Y',
-            'email'         => 'required',
-            'phone'         => 'required',
-            'password'      => 'required'
-        ]);
-
-        $this->user->email      = $request->input('email');
-        $this->user->phone      = $request->input('phone');
-        $this->user->first_name = $request->input('first_name');
-        $this->user->last_name  = $request->input('second_name');
-        $this->user->password   = bcrypt($request->input('password'));
-        $this->user->avatar     = $request->input('avatar');
-        $this->user->status_id  = 1;
-        $this->user->role_id    = 4;
-        $this->user->city_id    = $request->input('city');
-        $this->user->state_id   = $request->input('state');
-        $this->user->country_id = $request->input('country');
-
-        $this->user->save();
-
-        $this->profile->user_id = $this->user->id;
-        $this->profile->gender  = 'male';
-        $this->profile->save();
-
-        Auth::login($this->user);
-        
-        return redirect('home');
-    }
-
-     /**
+    /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        //
+        return view('client.profile.show')->with([
+
+        ]);
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Show the form for editing the profile.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(int $id)
     {
-        //
+
+        return view('client.profile.profile')->with([
+            'user' => $this->user->find($id),
+
+        ]);
     }
 
     /**
-     * Update the specified resource in storage.
+     * Show the users photo albums and editing actions
+     *
+     * @param int $id
+     * @return mixed
+     */
+    public function profilePhoto(int $id)
+    {
+
+        return view('client.profile.photos')->with([
+
+        ]);
+    }
+
+    /**
+     * Show the users videos and editing actions
+     *
+     * @param int $id
+     * @return mixed
+     */
+    public function profileVideo(int $id)
+    {
+
+        return view('client.profile.video')->with([
+
+        ]);
+    }
+
+    /**
+     * Show users income messages
+     *
+     * @param int $id
+     * @return mixed
+     */
+    public function profileMail(int $id)
+    {
+        return view('client.profile.mail')->with([
+
+        ]);
+    }
+
+
+    /**
+     * Show users income smiles
+     *
+     * @param int $id
+     * @return mixed
+     */
+    public function profileSmiles(int $id)
+    {
+        return view('client.profile.smiles')->with([
+
+        ]);
+    }
+
+    /**
+     * Show users income gifts
+     *
+     * @param int $id
+     * @return mixed1
+     */
+    public function profileGifts($id)
+    {
+        return view('client.profile.gifts')->with([
+
+        ]);
+    }
+
+    /**
+     * Show users finance statistic
+     *
+     * @param int $id
+     * @return mixed
+     */
+    public function profileFinance($id)
+    {
+        return view('client.profile.finance')->with([
+
+        ]);
+    }
+
+
+    /**
+     * Update the user profile in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
@@ -89,14 +143,4 @@ class UsersController extends Controller
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

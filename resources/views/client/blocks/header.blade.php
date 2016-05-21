@@ -14,12 +14,17 @@
                 @if(!Auth::user())
                     <!--Login buttons-->
                         <div class="col-md-2 col-md-offset-8 col-sm-3 col-sm-offset-5">
-                             <a href="#" class="btn btn-default" id="button-login"><i class="fa fa-user"></i> {{ trans('buttons.login') }} </a>
+                             <button type="button" class="btn btn-default" id="button-login" data-toggle="modal" data-target="#loginModal"><i class="fa fa-user"></i> {{ trans('buttons.login') }} </button>
                         </div>
                         <div class="col-md-2 col-sm-3">
-                            <a href="#" class="btn btn-default" id="button-register"><i class="fa fa-users"></i> {{ trans('buttons.signup') }} </a>
+                            <button class="btn btn-default" id="button-register" data-toggle="modal" data-target="#registerModal"><i class="fa fa-users"></i> {{ trans('buttons.signup') }} </button>
                         </div>
                     <!--end login buttons-->
+                @else
+                    <div class="col-md-12">
+                        <a href="/profile/{{ Auth::user()->id }}" class="btn btn-default pull-right"><i class="fa fa-user"></i> PROFILE</a>
+                        <a href="/logout" class="btn btn-default pull-right"><i class="fa fa-sign-out"></i> LOG OUT</a>
+                    </div>
                 @endif
             </div>
         </div><!--end row-->
