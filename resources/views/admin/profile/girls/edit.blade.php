@@ -5,7 +5,7 @@
     <link href="{{ url('/assets/css/fileinput.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ url('assets/css/datepicker.css') }}">
 @stop
-<!-- todo DatePicker на дату выдачи паспорта и дату рождения  -->
+
 @section('content')
     <section class="panel">
         <header class="panel-heading">

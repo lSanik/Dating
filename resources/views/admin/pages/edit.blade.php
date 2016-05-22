@@ -33,7 +33,7 @@
             <div class="col-md-9">
                 <div class="form-group col-md-12">
                     <label for="title">{{ trans('pages.title') }}</label>
-                    {!! Form::input('text', 'title', $trans[0]->title, ['class' => 'form-control']) !!}
+                    {!! Form::input('text', 'title', null, ['class' => 'form-control']) !!}
                 </div>
                 <div class="form-group col-md-8">
                     <label for="slug">{{ trans('pages.slug') }}</label>
@@ -52,7 +52,7 @@
                 </div>
                 <div class="col-md-12 form-group">
                     <label for="body">{{ trans('pages.body') }}</label>
-                    <textarea name="body" class="summernote">{{$trans[0]->body}}</textarea>
+                    <textarea name="body" class="summernote"></textarea>
                 </div>
             </div>
             <div class="col-md-3">
@@ -80,12 +80,10 @@
         </div>
     </section>
     <div class="hidden">
-        @foreach( Config::get('app.locales') as $locale )
-            <div id="{{ $locale }}">
-                @foreach($trans as $t)
-                    <div class="title">{{ $t->title }}</div>
-                    <div class="body">{{ $t->body }}</div>
-                @endforeach
+        @foreach( $trans as $t )
+            <div id="{{ $t->locale }}">
+                <div class="title">{{ $t->title }}</div>
+                <div class="body">{{ $t->body }}</div>
             </div>
         @endforeach
     </div>
@@ -98,8 +96,37 @@
     <script type="text/javascript" src="{{ url('/assets/js/file-input-init.js') }}"></script>
 
     <script>
+        $(function(){
+            /** Append data */
+
+            var locale = $('select[name="locale"]').val()
+
+            var id = '#'+locale;
+            var title = $(id + ' .title').text();
+            var body = $(id + ' .body').text();
+
+
+            $('input[name="title"]').val( title );
+            $('textarea[name="body"]').val( body );
+        });
+
         $(document).ready(function(){
 
+
+            $('select[name="locale"]').change(function(){
+                var locale = $(this).val();
+                var id = '#'+locale;
+                var title = $(id + ' .title').text();
+                var body = $(id + ' .body').text();
+
+
+                $('input[name="title"]').empty().val( title );
+                $('textarea[name="body"]').empty().val( body );
+                $('.note-editable').empty().append( body );
+
+            });
+
+            /** Init editors and forms */
             $('.summernote').summernote({
                 toolbar: [
                     // [groupName, [list of button]]
@@ -119,12 +146,10 @@
 
             });
 
-
             $("#image").fileinput();
             $("#files").fileinput();
 
-            //@todo remove image from disk
-
+            /** Remove files */
             $('input[name="image"]').change(function(){
                $("#preview").remove();
             });
@@ -144,7 +169,8 @@
                         alert("Ошибка удаления фала");
                     }
                 });
-            })
+            });
+
         });
 
     </script>

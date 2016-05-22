@@ -30,6 +30,9 @@ Route::group([  'prefix' => LaravelLocalization::setLocale(),
 ], function(){
     Route::get('/','HomeController@index');
 
+    Route::get('contacts', 'ContactsController@show');
+    Route::post('contacts/message', 'ContactsController@sendMessage');
+
     Route::get('blog', 'BlogController@all');
     Route::get('blog/{id}', 'BlogController@post');
 });
@@ -39,6 +42,7 @@ Route::group([  'prefix'        => LaravelLocalization::setLocale(),
                 'middleware'    => ['web', 'auth', 'roles'],
                 'roles'         => ['Alien', 'Male', 'Female']
 ], function(){
+
     Route::get('search', 'SearchController@index');
     Route::get('antiscram', 'PagesController@antiscram');
 

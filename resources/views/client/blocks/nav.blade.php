@@ -16,6 +16,8 @@
                 <li><a href="/{{ App::getLocale() }}/blog">{{trans('nav.blog')}}</a></li>
                 <li><a href="/{{ App::getLocale() }}/pricing">{{trans('nav.pricing')}}</a></li>
                 <li><a href="/{{ App::getLocale() }}/search">{{trans('nav.search')}}</a></li>
+                <li><a href="/{{ App::getLocale() }}/contacts">{{trans('nav.contacts')}}</a></li>
+
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="http://facebook.com" target="_blank"><i class="fa fa-facebook"></i></a></li>

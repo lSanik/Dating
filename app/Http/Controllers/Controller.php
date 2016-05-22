@@ -36,6 +36,16 @@ class Controller extends BaseController
         return \App\Models\Ticket::unreadCount();
     }
 
+    public static function getContactMessages()
+    {
+        return \App\Models\ContactMessages::unread();
+    }
+
+    public static function getContactUnread()
+    {
+        return \App\Models\ContactMessages::unreadCount();
+    }
+
     /**
      * @param $file string
      *

@@ -5,5 +5,6 @@ return [
     'about'     => 'About',
     'blog'      => 'Blog',
     'pricing'   => 'Pricing',
-    'search'    => 'Search'
+    'search'    => 'Search',
+    'contacts'  => 'Contacts'
 ];

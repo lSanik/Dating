@@ -7,7 +7,7 @@ class States extends Seeder
 
     /**
      * Run the database seeds.
-     * @todo seeders
+     * 
      * @return void
      */
     public function run()

@@ -28,6 +28,8 @@ class PagesController extends Controller
         view()->share('heading', trans('pages.pages'));
         view()->share('new_ticket_messages', parent::getUnreadMessages());
         view()->share('unread_ticket_count', parent::getUnreadMessagesCount());
+        view()->share('unread_contact_count', parent::getContactUnread());
+        view()->share('unread_contact_message', parent::getContactMessages());
     }
 
     /**
@@ -145,7 +147,7 @@ class PagesController extends Controller
         $page               = Pages::find($id);
         $pages_media        = PagesMedia::where('pages_id', '=', $id)->get();
         $page_translation   = PageTranslation::where('pages_id', '=', $id)->get();
-
+        
         return view('admin.pages.edit')->with([
             'page'  => $page,
             'trans' => $page_translation,
@@ -176,7 +178,9 @@ class PagesController extends Controller
             return redirect()->back()->withErrors($v->errors());
         }
 
-        $t = PageTranslation::where('locale', '=', $request->input('locale'))->get();
+        $t = PageTranslation::where('locale', '=', $request->input('locale'))
+            ->where('pages_id', '=', $id)
+            ->get();
 
         $trans = PageTranslation::find($t[0]->id);
         $trans->title = $request->title;
