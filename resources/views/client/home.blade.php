@@ -34,7 +34,7 @@
                             <div class="row text-center g__info">
                                 <div class="col-md-6">{{ $g->first_name }}</div>
                                 <div class="col-md-6"><b>ID </b>: {{ $g->id }} </div>
-                                <div class="col-md-6"> <button class="btn btn-small btn-primary">{{ trans('buttons.profile') }}</button></div>
+                                <div class="col-md-6"> <a href="{{ url('/'.App::getLocale().'/profile/show/'.$g->id) }}" class="btn btn-small btn-primary">{{ trans('buttons.profile') }}</a></div>
                                 <div class="col-md-6"> <button class="btn btn-small btn-success"> Online </button></div>
                             </div>
                         </div>
@@ -69,7 +69,7 @@
                             <div class="row text-center g__info">
                                 <div class="col-md-6">{{ $g->first_name }}</div>
                                 <div class="col-md-6"><b>ID </b>: {{ $g->id }} </div>
-                                <div class="col-md-6"> <button class="btn btn-small btn-primary">{{ trans('buttons.profile') }}</button></div>
+                                <div class="col-md-6"> <a href="{{ url('/'.App::getLocale().'/profile/show/'.$g->id) }}" class="btn btn-small btn-primary">{{ trans('buttons.profile') }}</a></div>
                                 <div class="col-md-6"> <button class="btn btn-small btn-success"> Online </button></div>
                             </div>
                         </div>

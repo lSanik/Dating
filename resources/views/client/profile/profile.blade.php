@@ -11,15 +11,23 @@
                     @yield('profileContent')
                 </div>
             </div>
-
-        @if($user->isOnline())
-            user is online!!
-        @endif
     </div>
 @stop
 
 @section('styles')
-
+    <style>
+        #profileFields{
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+        header{
+            font-weight: bold;
+            font-size: 20px;
+        }
+        .info{
+            margin: 5px;
+        }
+    </style>
 @stop
 
 @section('scripts')

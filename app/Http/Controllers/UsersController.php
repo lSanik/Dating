@@ -20,19 +20,29 @@ class UsersController extends Controller
     {
         $this->user = $user;
         $this->profile = $profile;
+        parent::__construct();
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
+        $user = \DB::table('users')
+            ->select(
+                'users.id',
+                'users.first_name',
+                'users.last_name',
+                'users.email',
+                'users.avatar',
+                'profile.*',
+                'countries.name as country',
+                'cities.name as city')
+            ->join('profile', 'users.id', '=', 'profile.user_id')
+            ->join('countries', 'users.country_id', '=', 'countries.id')
+            ->join('cities', 'users.city_id', '=', 'cities.id')
+            ->where('users.id', '=', $id)
+            ->get();
 
         return view('client.profile.show')->with([
-
+            'user' => $user,
         ]);
     }
 
@@ -44,6 +54,7 @@ class UsersController extends Controller
      */
     public function edit(int $id)
     {
+
         
         return view('client.profile.profile')->with([
             'user' => $this->user->find($id),

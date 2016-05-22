@@ -35,6 +35,7 @@ class AuthController extends Controller
     protected $redirectTo = '/';
     protected $auth;
     private $social_user;
+    protected $redirectAfterLogout = '/';
     // @todo check user status
     /**
      * Create a new authentication controller instance.

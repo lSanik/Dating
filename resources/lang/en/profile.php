@@ -74,7 +74,22 @@ return [
     'email'         => 'E-mail address',
     'gender'        => 'Gender',
     'password'      => 'Password',
-    'password_confirmation' => 'Confirm password'
+    'password_confirmation' => 'Confirm password',
 
+    /** Profile */
+    'age'       => 'Age',
+    'birthday'  => 'Birthday',
+    'country'   => 'Country',
+    'city'      => 'City',
+    'horoscope' => 'Horoscope',
+    'height'    => 'Height',
+    'weight'    => 'Weight',
+    'hair'      => 'Hair',
+    'eyes'      => 'Eyes',
+    'education' => 'Aducation',
+    'religion'  => 'Religion',
+    'kids'      => 'Kids',
+    'smoke'     => 'Smoke',
+    'drink'     => 'Drink'
 
 ];

@@ -22,6 +22,28 @@
 |
 */
 
+/** Support Routes */
+Route::group(['middleware' => 'web'], function () {
+    Route::auth();
+
+    Route::get('/social/redirect/{provider}', [
+        'as' => 'social.redirect',
+        'uses' => 'Auth\AuthController@getSocialRedirect'
+    ]);
+
+    Route::get('/social/handle/{provider}', [
+        'as' => 'social.handle',
+        'uses' => 'Auth\AuthController@getSocialHandle'
+    ]);
+
+    /** Users */
+    Route::post('/user/create/', 'UsersController@register');
+
+    /** Access to States and Cities from different places of code */
+    Route::post('/get/states/', 'StatesController@statesByCountry');
+    Route::post('/get/cities/', 'CityController@getCityByState');
+});
+
 /**
  *  Free Routes
  */
@@ -48,6 +70,7 @@ Route::group([  'prefix'        => LaravelLocalization::setLocale(),
 
     /** Users profile */
     Route::get('profile/{id}', 'UsersController@edit');
+    Route::get('profile/show/{id}', 'UsersController@show');
     Route::get('profile/{id}/photo', 'UsersController@profilePhoto');
     Route::get('profile/{id}/video', 'UsersController@profileVideo');
     Route::get('profile/{id}/mail', 'UsersController@profileMail');
@@ -73,27 +96,6 @@ Route::group([  'middleware' => ['web', 'auth', 'roles'],
     Route::get('api/messages/{lastMessage}/{chatRoom}', ['uses' => 'ChatMessagesController@getUpdates']);
 });
 
-/** Support Routes */
-Route::group(['middleware' => 'web'], function () {
-    Route::auth();
-
-    Route::get('/social/redirect/{provider}', [
-        'as' => 'social.redirect',
-        'uses' => 'Auth\AuthController@getSocialRedirect'
-    ]);
-
-    Route::get('/social/handle/{provider}', [
-        'as' => 'social.handle',
-        'uses' => 'Auth\AuthController@getSocialHandle'
-    ]);
-
-    /** Users */
-    Route::post('/user/create/', 'UsersController@register');
-
-    /** Access to States and Cities from different places of code */
-    Route::post('/get/states/', 'StatesController@statesByCountry');
-    Route::post('/get/cities/', 'CityController@getCityByState');
-});
 
 
 /** Admin route group */

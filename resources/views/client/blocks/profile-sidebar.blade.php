@@ -8,7 +8,7 @@
     <li><a href="/users/online/">{{ trans('users.online') }}</a></li>
     @if( Auth::user()->hasRole('Male'))
         <li><a href="/antiscram">{{ trans('profile.antiscram') }}</a></li>
-        <li><a href="/profile/{{ Auth::user()->id }}/finance">{{ trans('profile.finance') }} }}</a></li>
+        <li><a href="/profile/{{ Auth::user()->id }}/finance">{{ trans('profile.finance') }}    </a></li>
     @endif
     @if( Auth::user()->hasRole('Female') )
         <li><a href="/profile/{{ Auth::user()->id }}/gifts">{{ trans('profile.gifts') }}</a></li>
