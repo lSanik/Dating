@@ -2,5 +2,5 @@
 
 return [
     'search'    => 'Search',
-    'filter'    => 'Who are you looking for?'
+    'filter'    => 'Who are you looking for?',
 ];

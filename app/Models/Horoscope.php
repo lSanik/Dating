@@ -9,5 +9,4 @@ class Horoscope extends Model
     protected $table = 'horoscope';
 
     private $timestamps = false;
-    
 }

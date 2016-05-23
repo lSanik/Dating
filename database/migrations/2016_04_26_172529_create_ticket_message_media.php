@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateTicketMessageMedia extends Migration
 {
@@ -12,10 +12,10 @@ class CreateTicketMessageMedia extends Migration
      */
     public function up()
     {
-        Schema::create('t_message_media', function(Blueprint $table){
+        Schema::create('t_message_media', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('message_id')->unsigned();
-            $table->foreign('message_id')->references('id')->on('ticket_messages')->onDelete("CASCADE");
+            $table->foreign('message_id')->references('id')->on('ticket_messages')->onDelete('CASCADE');
             $table->string('name');
         });
     }

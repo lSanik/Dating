@@ -9,7 +9,7 @@ class City extends Model
     protected $table = 'cities';
 
     protected $fillable = [
-        'city', 'country_id'
+        'city', 'country_id',
     ];
 
     public function Countries()
@@ -19,6 +19,6 @@ class City extends Model
 
     public function User()
     {
-        return $this->belongsTo('App\Models\User','city_id');
+        return $this->belongsTo('App\Models\User', 'city_id');
     }
 }

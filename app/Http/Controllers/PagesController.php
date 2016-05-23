@@ -2,9 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
-use App\Http\Requests;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\DB;
 
@@ -19,7 +16,7 @@ class PagesController extends Controller
             ->get();
 
         return view('client.page')->with([
-            'page'  => $page
+            'page'  => $page,
         ]);
     }
 }

@@ -6,10 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class ProfileMedia extends Model
 {
-    protected  $table = 'profile_media';
+    protected $table = 'profile_media';
 
     protected $fillable = [
-        'user_id', 'media_key', 'media_value'
+        'user_id', 'media_key', 'media_value',
     ];
 
     public function profile()

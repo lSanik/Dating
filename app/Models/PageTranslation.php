@@ -9,7 +9,7 @@ class PageTranslation extends Model
     protected $table = 'pages_translations';
 
     protected $fillable = [
-        'title', 'body', 'locale'
+        'title', 'body', 'locale',
     ];
 
     public function page()

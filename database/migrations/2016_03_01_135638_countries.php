@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class Countries extends Migration
 {
@@ -12,7 +12,7 @@ class Countries extends Migration
      */
     public function up()
     {
-        Schema::create('countries', function(Blueprint $table){
+        Schema::create('countries', function (Blueprint $table) {
             $table->increments('id');
             $table->string('sortname', 2);
             $table->string('name', 256);

@@ -4,24 +4,23 @@ namespace App\Http\Controllers;
 
 use App\Models\Album;
 use Illuminate\Http\Request;
-
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\File;
 
 class AlbumController extends Controller
 {
     public function index()
     {
         $albums = Album::with('Photos')->get();
+
         return view('albums.index')->with('albums', $albums);
     }
 
     public function getAlbum($id)
     {
         $album = Album::with('Photos')->findOrFail($id);
+
         return view('albums.album')->with('album', $album);
     }
 
@@ -33,13 +32,13 @@ class AlbumController extends Controller
     public function postCreate(Request $request)
     {
         $rules = [
-            'name' => 'required',
-            'cover_image' => 'required|image'
+            'name'        => 'required',
+            'cover_image' => 'required|image',
         ];
 
         $validator = Validator::make($request->all(), $rules);
 
-        if($validator->fails()){
+        if ($validator->fails()) {
             return Redirect::route('create_albums_form')
                 ->withErrors($validator)
                 ->withInput();
@@ -50,20 +49,18 @@ class AlbumController extends Controller
         $desination_path = '/albums/';
 
         $extension = $file->getClientOriginalExtension();
-        $filename = $random_name. " _cover" .$extension;
+        $filename = $random_name.' _cover'.$extension;
 
         $uploadSuccess = $request->file('cover_image')
             ->move($desination_path, $filename);
 
         $album = Album::create([
-            'name' => $request->input('name'),
+            'name'        => $request->input('name'),
             'description' => $request->input('description'),
-            'cover_image' => $filename
+            'cover_image' => $filename,
         ]);
 
         return Redirect::route('show_album', ['id' => $album->id]);
-
-
     }
 
     public function getDelete($id)
@@ -74,8 +71,9 @@ class AlbumController extends Controller
         return Redirect::route('albums');
     }
 
-    private function rus2translit($string) {
-        $converter = array(
+    private function rus2translit($string)
+    {
+        $converter = [
             'а' => 'a',   'б' => 'b',   'в' => 'v',
             'г' => 'g',   'д' => 'd',   'е' => 'e',
             'ё' => 'e',   'ж' => 'zh',  'з' => 'z',
@@ -99,7 +97,8 @@ class AlbumController extends Controller
             'Ч' => 'Ch',  'Ш' => 'Sh',  'Щ' => 'Sch',
             'Ь' => '\'',  'Ы' => 'Y',   'Ъ' => '\'',
             'Э' => 'E',   'Ю' => 'Yu',  'Я' => 'Ya',
-        );
+        ];
+
         return strtr($string, $converter);
     }
 }

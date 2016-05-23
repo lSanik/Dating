@@ -6,17 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Country extends Model
 {
-
     protected $table = 'countries';
 
     protected $fillable = [
-        'id', 'sortname', 'name'
+        'id', 'sortname', 'name',
     ];
-
 
     protected function states()
     {
         $this->hasMany('State');
     }
-
 }

@@ -2,15 +2,13 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Models\Country;
+use App\Http\Controllers\Controller;
 use App\Models\Social;
 use App\Models\User;
+use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Laravel\Socialite\Facades\Socialite;
 use Validator;
-use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\ThrottlesLogins;
-use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
-use Illuminate\Contracts\Auth\Guard;
 
 class AuthController extends Controller
 {
@@ -37,6 +35,7 @@ class AuthController extends Controller
     private $social_user;
     protected $redirectAfterLogout = '/';
     // @todo check user status
+
     /**
      * Create a new authentication controller instance.
      *
@@ -44,32 +43,33 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest', ['except' =>
-                                        ['logout','resendEmail', 'activateAccount']
+        $this->middleware('guest', ['except' => ['logout', 'resendEmail', 'activateAccount'],
                                 ]);
     }
 
     /**
-      * Get a validator for an incoming registration request.
+     * Get a validator for an incoming registration request.
      *
-     * @param  array  $data
+     * @param array $data
+     *
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
     {
         return Validator::make($data, [
             'first_name' => 'required|max:255',
-            'last_name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|confirmed|min:6',
-            'checkTerms' => 'required'
+            'last_name'  => 'required|max:255',
+            'email'      => 'required|email|max:255|unique:users',
+            'password'   => 'required|confirmed|min:6',
+            'checkTerms' => 'required',
         ]);
     }
 
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array  $data
+     * @param array $data
+     *
      * @return User
      */
     protected function create(array $data)
@@ -82,16 +82,17 @@ class AuthController extends Controller
             'role_id'    => $data['gender'],
         ]);
     }
+
     /** @todo Sender  */
     public function sendEmail(User $user)
     {
         $data = [
-            'name' => $user->first_name. " " . $user->last_name,
-            'code' => $user->activation_code
+            'name' => $user->first_name.' '.$user->last_name,
+            'code' => $user->activation_code,
         ];
 
-        \Mail::queue('emails.activateAccount', $data, function($message) use ($user){
-            $message->subject( \Lang::get('auth.pleaseActivate') );
+        \Mail::queue('emails.activateAccount', $data, function ($message) use ($user) {
+            $message->subject(\Lang::get('auth.pleaseActivate'));
             $message->to($user->email);
         });
     }
@@ -99,76 +100,74 @@ class AuthController extends Controller
     public function resendEmail()
     {
         $user = \Auth::user();
-        if( $user->resent >= 3 )
-        {
+        if ($user->resent >= 3) {
             return view('auth.tooManyEmails')->with('email', $user->email);
         } else {
             $user->resent = $user->resent + 1;
             $user->save();
             $this->sendEmail($user);
+
             return view('auth.activateAccount')->with('email', $user->email);
         }
     }
+
     //@todo Activation
     public function activateAccount($code, User $user)
     {
+        if ($user->accountIsActive($code)) {
+            \Session::flash('message', \Lang::get('auth.successActivated'));
 
-        if( $user->accountIsActive($code) )
-        {
-            \Session::flash('message', \Lang::get('auth.successActivated') );
             return redirect('/');
         }
-
     }
 
-    public function getSocialRedirect( $provider )
+    public function getSocialRedirect($provider)
     {
+        $providerKey = \Config::get('services.'.$provider);
 
-        $providerKey = \Config::get('services.' . $provider );
-
-        if( empty($providerKey) )
+        if (empty($providerKey)) {
             return view('pages.status')->with('error', 'No such provider');
+        }
 
-        return Socialite::driver( $provider )->redirect();
-
+        return Socialite::driver($provider)->redirect();
     }
 
     /**
      * @param $provider
      */
-    public function getSocialHandle( $provider )
+    public function getSocialHandle($provider)
     {
-        $user = Socialite::driver( $provider )->user();
+        $user = Socialite::driver($provider)->user();
 
         $user_check = Social::where('provider', '=', $provider)->where('social_id', '=', $user->getId())->first();
         $user_check_email = User::where('email', '=', $user->getEmail())->first();
 
-        if( $user_check || $user_check_email ) {
+        if ($user_check || $user_check_email) {
             \Auth::loginUsingId($user_check->user_id);
+
             return redirect('/home');
         } else {
-
             $name = explode(' ', $user->getName());
-            $password = substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 15);
+            $password = substr(str_shuffle('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'), 0, 15);
             $email = $user->getEmail();
 
-            if( $provider == 'twitter' ){
+            if ($provider == 'twitter') {
                 $role_id = 6;
-                $email = $user->getName()."@example.com";
+                $email = $user->getName().'@example.com';
             } else {
-                if( $user->user['gender'] == 'male'){
+                if ($user->user['gender'] == 'male') {
                     $role_id = 4;
-                } elseif( $user->user['gender'] == 'female') {
+                } elseif ($user->user['gender'] == 'female') {
                     $role_id = 5;
                 }
             }
 
             $usr = new User();
             $usr->first_name = $name[0];
-            $usr->last_name  = $name[1];
-            $usr->email      = $email;
-            $usr->password   = bcrypt($password);
-            $usr->role_id    = $role_id;
+            $usr->last_name = $name[1];
+            $usr->email = $email;
+            $usr->password = bcrypt($password);
+            $usr->role_id = $role_id;
             $usr->save();
 
             $social = new Social();
@@ -178,10 +177,8 @@ class AuthController extends Controller
             $usr->social()->save($social);
 
             \Auth::loginUsingId($usr->id);
+
             return redirect('/home');
         }
-
-
     }
-
 }

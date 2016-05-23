@@ -53,5 +53,4 @@ return [
         'redirect'      => env('TWITTER_REDIRECT_URI'),
     ],
 
-
 ];

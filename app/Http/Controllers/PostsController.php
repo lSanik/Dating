@@ -3,13 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
-use Illuminate\Support\Facades\Response;
 use Illuminate\Http\Request;
-
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Validator;
-use Symfony\Component\VarDumper\Caster\ResourceCaster;
 
 class PostsController extends Controller
 {
@@ -23,8 +19,9 @@ class PostsController extends Controller
     public function index()
     {
         $posts = $this->post->all();
+
         return view('blog.posts')->with([
-            'posts' => $posts
+            'posts' => $posts,
         ]);
     }
 
@@ -37,31 +34,31 @@ class PostsController extends Controller
     {
         $rules = [
             'title' => 'required',
-            'body'  => 'required'
+            'body'  => 'required',
         ];
 
         $validator = Validator::make($request->all(), $rules);
 
-        if( $validator->passes() )
-        {
+        if ($validator->passes()) {
             $this->post->create($request->all());
+
             return Response::json(['success' => true, 'errors' => '', 'message' => 'Post created successfully']);
         }
-        return Response::json(array('success' => false, 'errors' => $validator, 'message' => 'All fields are required.'));
 
+        return Response::json(['success' => false, 'errors' => $validator, 'message' => 'All fields are required.']);
     }
 
     public function show($id)
     {
         return view('blog.show')->with([
-            'post' => $this->post->findOrFail($id)
+            'post' => $this->post->findOrFail($id),
         ]);
     }
-
 
     public function destroy($id)
     {
         $this->post->find($id)->delete();
+
         return redirect('blog');
     }
 
@@ -70,22 +67,18 @@ class PostsController extends Controller
         $file = $request->file('file');
         $input = ['image' => $file];
         $rules = [
-          'image' => 'image'
+          'image' => 'image',
         ];
 
         $validator = Validator::make($input, $rules);
-        if($validator->fails())
-        {
+        if ($validator->fails()) {
             return Response::json(['success' => false, 'errors' => $validator->getMessageBag()->toArray()]);
         }
 
-        $fileName = time() . '-' . $file->getClientOriginalName();
-        $destination = public_path() . '/uploads/';
+        $fileName = time().'-'.$file->getClientOriginalName();
+        $destination = public_path().'/uploads/';
         $file->move($destination, $fileName);
 
-        echo url('/uploads/'. $fileName);
+        echo url('/uploads/'.$fileName);
     }
-
-
-
 }

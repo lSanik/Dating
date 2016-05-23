@@ -50,15 +50,12 @@ class Ticket extends Model
 
     private static function getStatus()
     {
-        if( \Auth::user()->hasRole('Owner') || \Auth::user()->hasRole('Moder') )
-        {
+        if (\Auth::user()->hasRole('Owner') || \Auth::user()->hasRole('Moder')) {
             return 0;
         }
 
-        if( \Auth::user()->hasRole('Partner') )
-        {
+        if (\Auth::user()->hasRole('Partner')) {
             return 1;
         }
     }
-
 }

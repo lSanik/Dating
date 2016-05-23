@@ -11,5 +11,5 @@ return [
     'image'     => 'Primary image',
     'files'     => 'Files to upload',
     'submit'    => 'Save Page',
-    'updated'   => 'Page updated'
+    'updated'   => 'Page updated',
 ];

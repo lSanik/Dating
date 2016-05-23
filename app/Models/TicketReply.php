@@ -9,7 +9,7 @@ class TicketReply extends Model
     protected $table = 'ticket_reply';
 
     protected $fillable = [
-        'message_id', 'reply', 'r_uid'
+        'message_id', 'reply', 'r_uid',
     ];
 
     public function ticketMessage()

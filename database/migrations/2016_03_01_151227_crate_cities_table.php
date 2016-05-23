@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CrateCitiesTable extends Migration
 {
@@ -19,7 +19,6 @@ class CrateCitiesTable extends Migration
             $table->integer('state_id')->unsigned();
 
             $table->foreign('state_id')->references('id')->on('states')->onDelete('CASCADE');
-
 
             $table->timestamps();
         });

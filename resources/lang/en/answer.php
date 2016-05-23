@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'yes'   => 'Yes',
+    'yes'       => 'Yes',
     'no'        => 'No',
-    'nomatter'  => 'No matter'
+    'nomatter'  => 'No matter',
 ];

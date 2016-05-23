@@ -9,7 +9,6 @@ class Why extends Model
     protected $table = 'custom_comment';
 
     protected $fillable = [
-        'uid', 'meta_key', 'meta_value'
+        'uid', 'meta_key', 'meta_value',
     ];
-    
 }

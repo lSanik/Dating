@@ -7,7 +7,7 @@ return [
     'male'      => 'Мужской',
     'female'    => 'Женский',
 
-    /** Eyes */
+    /* Eyes */
 
     'Amber'     => 'Amber',
     'Blue'      => 'Blue',
@@ -16,49 +16,49 @@ return [
     'Green'     => 'Green',
     'Hazel'     => 'Hazel',
 
-    /**  Hair */
-    'Black hair'                        => 'Black hair'                   ,
-    'Natural black hair'                => 'Natural black hair'           ,
-    'Deepest brunette hair'             => 'Deepest brunette hair'        ,
-    'Dark brown hair'                   => 'Dark brown hair'              ,
-    'Medium brown hair'                 => 'Medium brown hair'            ,
-    'Lightest brown hair'               => 'Lightest brown hair'          ,
-    'Chestnut brown hair'               => 'Chestnut brown hair'          ,
-    'Light chestnut brown hair'         => 'Light chestnut brown hair'    ,
-    'Auburn brown hair'                 => 'Auburn brown hair'            ,
-    'Auburn hair'                       => 'Auburn hair'                  ,
-    'Copper hair'                       => 'Copper hair'                  ,
-    'Red hair'                          => 'Red hair'                     ,
-    'Titian hair'                       => 'Titian hair'                  ,
-    'Strawberry blond hair'             => 'Strawberry blond hair'        ,
-    'Light blonde hair'                 => 'Light blonde hair'            ,
-    'Dark blond hair'                   => 'Dark blond hair'              ,
-    'Golden blond hair'                 => 'Golden blond hair'            ,
-    'Medium blond hair'                 => 'Medium blond hair'            ,
-    'Gray hair'                         => 'Gray hair'                    ,
-    'White hair'                        => 'White hair'                   ,
+    /*  Hair */
+    'Black hair'                        => 'Black hair',
+    'Natural black hair'                => 'Natural black hair',
+    'Deepest brunette hair'             => 'Deepest brunette hair',
+    'Dark brown hair'                   => 'Dark brown hair',
+    'Medium brown hair'                 => 'Medium brown hair',
+    'Lightest brown hair'               => 'Lightest brown hair',
+    'Chestnut brown hair'               => 'Chestnut brown hair',
+    'Light chestnut brown hair'         => 'Light chestnut brown hair',
+    'Auburn brown hair'                 => 'Auburn brown hair',
+    'Auburn hair'                       => 'Auburn hair',
+    'Copper hair'                       => 'Copper hair',
+    'Red hair'                          => 'Red hair',
+    'Titian hair'                       => 'Titian hair',
+    'Strawberry blond hair'             => 'Strawberry blond hair',
+    'Light blonde hair'                 => 'Light blonde hair',
+    'Dark blond hair'                   => 'Dark blond hair',
+    'Golden blond hair'                 => 'Golden blond hair',
+    'Medium blond hair'                 => 'Medium blond hair',
+    'Gray hair'                         => 'Gray hair',
+    'White hair'                        => 'White hair',
     'White hair caused by albinism'     => 'White hair caused by albinism',
 
-    /** Education */
+    /* Education */
 
-    'School'        => 'School'  ,
+    'School'        => 'School',
     'Bachelor'      => 'Bachelor',
-    'Master'        => 'Master'  ,
-    'Pd.D'          => 'Pd.D'    ,
+    'Master'        => 'Master',
+    'Pd.D'          => 'Pd.D',
 
-    /** Religion */
+    /* Religion */
 
     'Christianity'      => 'Christianity',
-    'Gnosticism'        => 'Gnosticism'  ,
-    'Islam'             => 'Islam'       ,
-    'Judaism'           => 'Judaism'     ,
-    'Catholicism'       => 'Catholicism' ,
-    'Buddhism'          => 'Buddhism'    ,
-    'Hinduism'          => 'Hinduism'    ,
-    'Shinto'            => 'Shinto'      ,
-    'Taoism'            => 'Taoism'      ,
+    'Gnosticism'        => 'Gnosticism',
+    'Islam'             => 'Islam',
+    'Judaism'           => 'Judaism',
+    'Catholicism'       => 'Catholicism',
+    'Buddhism'          => 'Buddhism',
+    'Hinduism'          => 'Hinduism',
+    'Shinto'            => 'Shinto',
+    'Taoism'            => 'Taoism',
 
-    /** Menu */
+    /* Menu */
 
     'my'        => 'My Profile',
     'photo'     => 'My Photos',
@@ -66,13 +66,13 @@ return [
     'smiles'    => 'Smiles',
     'gifts'     => 'My Gifts',
 
-    /** Form */
+    /* Form */
 
-    'first_name'    => 'Имя',
-    'last_name'     => 'Фамилия',
-    'email'         => 'E-mail адрес',
-    'gender'        => 'Пол',
-    'password'      => 'Пароль',
-    'password_confirmation' => 'Повторите пароль'
+    'first_name'            => 'Имя',
+    'last_name'             => 'Фамилия',
+    'email'                 => 'E-mail адрес',
+    'gender'                => 'Пол',
+    'password'              => 'Пароль',
+    'password_confirmation' => 'Повторите пароль',
 
 ];

@@ -9,7 +9,7 @@ class Status extends Model
     protected $table = 'status';
 
     protected $fillable = [
-        'name', 'desription'
+        'name', 'desription',
     ];
 
     public function users()
