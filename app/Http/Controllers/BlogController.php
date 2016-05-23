@@ -2,14 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
-use App\Http\Requests;
 use App\Models\Post;
 
 class BlogController extends Controller
 {
-
     /**
      * @return mixed
      */
@@ -22,20 +18,21 @@ class BlogController extends Controller
             ->paginate(10);
 
         return view('client.blog.all')->with([
-            'posts' => $posts
+            'posts' => $posts,
         ]);
     }
 
     /**
      * @param $id
+     *
      * @return mixed
      */
     public function post($id)
     {
         $post = Post::findOrFail($id);
-        
+
         return view('client.blog.post')->with([
-            'post' => $post
+            'post' => $post,
         ]);
     }
 }

@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateServiecesPriceTable extends Migration
 {
@@ -16,7 +16,7 @@ class CreateServiecesPriceTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->float('price');
-            $table->enum('term', ['once','minute', 'hour', 'week', 'month', 'year']);
+            $table->enum('term', ['once', 'minute', 'hour', 'week', 'month', 'year']);
             $table->timestamps();
         });
     }

@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CrateTicketMessagesTable extends Migration
 {
@@ -12,7 +12,7 @@ class CrateTicketMessagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('ticket_messages', function(Blueprint $table){
+        Schema::create('ticket_messages', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('from')->unsigned();
             $table->tinyInteger('status');
@@ -22,7 +22,7 @@ class CrateTicketMessagesTable extends Migration
 
             $table->timestamps();
 
-            $table->foreign('from')->references('id')->on('users')->onDelete("CASCADE");
+            $table->foreign('from')->references('id')->on('users')->onDelete('CASCADE');
             $table->foreign('subjects')->references('id')->on('ticket_subjects');
 
         });

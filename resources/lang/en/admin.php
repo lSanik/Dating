@@ -4,5 +4,4 @@ return [
     'dashboard' => 'Dashboard',
     'profiles'  => 'Profiles',
 
-
 ];

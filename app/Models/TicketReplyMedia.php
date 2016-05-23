@@ -9,7 +9,7 @@ class TicketReplyMedia extends Model
     protected $table = 't_reply_media';
 
     protected $fillable = [
-        'message_id', 'value'
+        'message_id', 'value',
     ];
 
     public function reply()

@@ -3,16 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Passport extends Model
 {
-
-
     protected $table = 'passport';
 
     protected $fillable = [
-        'passno', 'date', 'cover'
+        'passno', 'date', 'cover',
     ];
 
     protected $dates = ['date'];

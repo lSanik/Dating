@@ -9,7 +9,7 @@ class Pages extends Model
     protected $table = 'pages';
 
     protected $fillable = [
-        'slug', 'image'
+        'slug', 'image',
     ];
 
     public function media()

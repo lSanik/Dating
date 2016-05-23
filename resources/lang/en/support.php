@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: Oleh Hrebeniuk
  * Date: 07.03.2016
- * Time: 11:31
+ * Time: 11:31.
  */
 
 return [
@@ -18,5 +18,5 @@ return [
     'blocked_mess'          => 'Заблокировать письмо, если вы допустили ошибку',
     'gift'                  => 'Доставка подарка',
     'call'                  => 'Звонки',
-    'other'                 => 'Другое'
+    'other'                 => 'Другое',
 ];

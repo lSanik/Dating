@@ -2,17 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
-use App\Http\Requests;
 use App\Models\Profile;
 use App\Models\User;
+use Illuminate\Http\Request;
 
 class SearchController extends Controller
 {
     private $users;
     private $profile;
-
 
     public function __construct(User $user, Profile $profile)
     {
@@ -23,24 +20,22 @@ class SearchController extends Controller
 
     public function index()
     {
-
         $selects = (object) [
-            'eye' => $this->profile->getEnum('eye'),
-            'hair' => $this->profile->getEnum('hair'),
+            'eye'       => $this->profile->getEnum('eye'),
+            'hair'      => $this->profile->getEnum('hair'),
             'education' => $this->profile->getEnum('education'),
-            'kids' => $this->profile->getEnum('kids'),
-            'want_k' => $this->profile->getEnum('want_kids'),
-            'family' => $this->profile->getEnum('family'),
-            'religion' => $this->profile->getEnum('religion'),
-            'smoke' => $this->profile->getEnum('smoke'),
-            'drink' => $this->profile->getEnum('drink'),
+            'kids'      => $this->profile->getEnum('kids'),
+            'want_k'    => $this->profile->getEnum('want_kids'),
+            'family'    => $this->profile->getEnum('family'),
+            'religion'  => $this->profile->getEnum('religion'),
+            'smoke'     => $this->profile->getEnum('smoke'),
+            'drink'     => $this->profile->getEnum('drink'),
         ];
 
         return view('client.search')->with([
-            'selects' => $selects
+            'selects' => $selects,
         ]);
     }
-
 
     public function searchResults(Request $request)
     {
@@ -48,5 +43,4 @@ class SearchController extends Controller
 
         ]);
     }
-
 }

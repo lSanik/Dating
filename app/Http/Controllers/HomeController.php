@@ -2,15 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests;
-use App\Models\Profile;
 use App\Models\User;
-use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    
-
     /**
      * Show the application dashboard.
      *
@@ -18,8 +13,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-
-        if( !\Auth::user() || \Auth::user()->hasRole('Male') || \Auth::user()->hasRole('Alien') ){
+        if (!\Auth::user() || \Auth::user()->hasRole('Male') || \Auth::user()->hasRole('Alien')) {
             $users = $this->getUsers(5);
             $topHot = $this->getHotUsers(5);
         } else {
@@ -33,7 +27,6 @@ class HomeController extends Controller
 
         ]);
     }
-
 
     private function getUsers($roleId)
     {
@@ -51,6 +44,4 @@ class HomeController extends Controller
             ->where('home', '=', 1)
             ->get();
     }
-
-
 }

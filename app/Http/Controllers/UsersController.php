@@ -2,14 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Kim\Activity\Activity;
-use App\Models\User;
 use App\Models\Profile;
-use Doctrine\Common\Annotations\Annotation\Required;
+use App\Models\User;
 use Illuminate\Http\Request;
-
-use App\Http\Requests;
-use Illuminate\Support\Facades\Auth;
 
 class UsersController extends Controller
 {
@@ -49,13 +44,12 @@ class UsersController extends Controller
     /**
      * Show the form for editing the profile.
      *
-     * @param  int $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit(int $id)
     {
-
-        
         return view('client.profile.profile')->with([
             'user' => $this->user->find($id),
 
@@ -63,37 +57,38 @@ class UsersController extends Controller
     }
 
     /**
-     * Show the users photo albums and editing actions
+     * Show the users photo albums and editing actions.
      *
      * @param int $id
+     *
      * @return mixed
      */
     public function profilePhoto(int $id)
     {
-
         return view('client.profile.photos')->with([
 
         ]);
     }
 
     /**
-     * Show the users videos and editing actions
+     * Show the users videos and editing actions.
      *
      * @param int $id
+     *
      * @return mixed
      */
     public function profileVideo(int $id)
     {
-
         return view('client.profile.video')->with([
 
         ]);
     }
 
     /**
-     * Show users income messages
+     * Show users income messages.
      *
      * @param int $id
+     *
      * @return mixed
      */
     public function profileMail(int $id)
@@ -103,11 +98,11 @@ class UsersController extends Controller
         ]);
     }
 
-
     /**
-     * Show users income smiles
+     * Show users income smiles.
      *
      * @param int $id
+     *
      * @return mixed
      */
     public function profileSmiles(int $id)
@@ -118,9 +113,10 @@ class UsersController extends Controller
     }
 
     /**
-     * Show users income gifts
+     * Show users income gifts.
      *
      * @param int $id
+     *
      * @return mixed1
      */
     public function profileGifts($id)
@@ -131,9 +127,10 @@ class UsersController extends Controller
     }
 
     /**
-     * Show users finance statistic
+     * Show users finance statistic.
      *
      * @param int $id
+     *
      * @return mixed
      */
     public function profileFinance($id)
@@ -143,17 +140,16 @@ class UsersController extends Controller
         ]);
     }
 
-
     /**
      * Update the user profile in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int                      $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
         //
     }
-
 }

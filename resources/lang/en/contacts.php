@@ -18,5 +18,5 @@ Lorem ipsum dolor sit amet, has an nullam sadipscing ullamcorper, nisl graeci mi
     'office_email'  => 'info@dating.com',
     'office_phone'  => '(+1) 07123456789',
 
-    'success'   => 'Message sent successfully'
+    'success'   => 'Message sent successfully',
 ];

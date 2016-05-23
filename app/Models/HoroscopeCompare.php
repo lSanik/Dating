@@ -9,5 +9,4 @@ class HoroscopeCompare extends Model
     protected $table = 'horoscope_compare';
 
     private $timestamps = false;
-    
 }

@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class UsersPhoneUpdate extends Migration
 {
@@ -12,11 +12,11 @@ class UsersPhoneUpdate extends Migration
      */
     public function up()
     {
-        Schema::table('users', function(Blueprint $table){
+        Schema::table('users', function (Blueprint $table) {
             $table->dropColumn('phone');
         });
 
-        Schema::table('users', function(Blueprint $table){
+        Schema::table('users', function (Blueprint $table) {
             $table->string('phone')->nullable();
         });
     }
@@ -28,6 +28,5 @@ class UsersPhoneUpdate extends Migration
      */
     public function down()
     {
-
     }
 }

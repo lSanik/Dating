@@ -3,9 +3,8 @@
  * Created by PhpStorm.
  * User: Oleh Hrebeniuk
  * Date: 25.04.2016
- * Time: 10:33
+ * Time: 10:33.
  */
-
 
 return [
     'active'        => 'Активная',

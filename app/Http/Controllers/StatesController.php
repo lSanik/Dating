@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
-use App\Http\Requests;
 use App\Models\State;
+use Illuminate\Http\Request;
 
 class StatesController extends Controller
 {
@@ -18,6 +16,6 @@ class StatesController extends Controller
 
     public function statesByCountry(Request $request)
     {
-        return $this->states->where( 'country_id', '=', $request->input('id') )->get();
+        return $this->states->where('country_id', '=', $request->input('id'))->get();
     }
 }

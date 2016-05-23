@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateTableWhy extends Migration
 {
@@ -12,7 +12,7 @@ class CreateTableWhy extends Migration
      */
     public function up()
     {
-        Schema::create('custom_comment', function(Blueprint $table){
+        Schema::create('custom_comment', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('uid');
             $table->string('meta_key');

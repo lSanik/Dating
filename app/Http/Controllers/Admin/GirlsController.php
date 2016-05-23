@@ -2,32 +2,25 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Carbon\Carbon;
-use Illuminate\Http\Request;
-
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
-use App\Models\Ticket;
+use App\Models\City;
+use App\Models\Country;
 use App\Models\Passport;
 use App\Models\Profile;
 use App\Models\ProfileMedia;
-use App\Models\User;
-use App\Models\Status;
-use App\Models\Why;
-
-use App\Models\Country;
 use App\Models\State;
-use App\Models\City;
+use App\Models\Status;
+use App\Models\User;
+use App\Models\Why;
+use Carbon\Carbon;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
 
 //@todo refactor this shit
 //@todo check email before add
 
 class GirlsController extends Controller
 {
-
     private $user;
     private $profile;
     private $passport;
@@ -52,17 +45,17 @@ class GirlsController extends Controller
      */
     public function index()
     {
-        if( Auth::user()->hasRole('Owner') || Auth::user()->hasRole('Moder'))
+        if (Auth::user()->hasRole('Owner') || Auth::user()->hasRole('Moder')) {
             $girls = User::where('role_id', '=', '5')->get();
-        else
-            if( Auth::user()->hasRole('Partner') )
-                $girls = User::where('role_id', '=', '5')
+        } elseif (Auth::user()->hasRole('Partner')) {
+            $girls = User::where('role_id', '=', '5')
                                 ->where('partner_id', '=', Auth::user()->id)
                                 ->get();
+        }
 
         return view('admin.profile.girls.index')->with([
             'heading' => 'Все девушки',
-            'girls' => $girls,
+            'girls'   => $girls,
         ]);
     }
 
@@ -83,14 +76,14 @@ class GirlsController extends Controller
             'family'    => $this->profile->getEnum('family'),
             'religion'  => $this->profile->getEnum('religion'),
             'smoke'     => $this->profile->getEnum('smoke'),
-            'drink'     => $this->profile->getEnum('drink')
+            'drink'     => $this->profile->getEnum('drink'),
         ];
 
         $countries = Country::all();
 
         return view('admin.profile.girls.create')->with([
-            'heading' => 'Добавить девушку',
-            'selects' => $selects,
+            'heading'   => 'Добавить девушку',
+            'selects'   => $selects,
             'countries' => $countries,
         ]);
     }
@@ -98,7 +91,8 @@ class GirlsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -123,30 +117,27 @@ class GirlsController extends Controller
         //dd($request->input());
 
         //Проверка паспорта в базе
-        $check = $this->passport->where('passno', 'like', str_replace(" ","", $request->input('passno')))->first();
+        $check = $this->passport->where('passno', 'like', str_replace(' ', '', $request->input('passno')))->first();
 
-        if( !$check )
-        {
+        if (!$check) {
+            if ($this->age($request->input('birthday')) < 18) {
+                \Session::flash('flash_error', 'Девушка младше 18');
 
-           if( $this->age( $request->input('birthday') ) < 18 )
-           {
-               \Session::flash('flash_error', 'Девушка младше 18');
-               return redirect(\App::getLocale().'/admin/girl/new');
-           }
+                return redirect(\App::getLocale().'/admin/girl/new');
+            }
 
-            $user_avatar    = 'empty_girl.png';
+            $user_avatar = 'empty_girl.png';
 
-            if( $request->file('avatar') )
-            {
+            if ($request->file('avatar')) {
                 $file = $request->file('avatar');
-                $user_avatar = time() . '-' . $file->getClientOriginalName();
-                $destination = public_path() . '/uploads/girls/avatars';
+                $user_avatar = time().'-'.$file->getClientOriginalName();
+                $destination = public_path().'/uploads/girls/avatars';
                 $file->move($destination, $user_avatar);
             }
 
             foreach ($request->allFiles()['pass_photo'] as $file) {
-                $pass = time(). '-' . $file->getClientOriginalName();
-                $destination = public_path() . '/uploads/girls/passports';
+                $pass = time().'-'.$file->getClientOriginalName();
+                $destination = public_path().'/uploads/girls/passports';
                 $file->move($destination, $pass);
                 array_push($this->passport_photos, $pass);
             }
@@ -156,88 +147,82 @@ class GirlsController extends Controller
              *
              */
 
-            $this->user->avatar         = $user_avatar;
-            $this->user->first_name     = $request->input('first_name');
-            $this->user->last_name      = $request->input('second_name');
-            $this->user->email          = $request->input('email');
-            $this->user->phone          = $request->input('phone');
-            $this->user->password       = bcrypt( $request->input('password') );
+            $this->user->avatar = $user_avatar;
+            $this->user->first_name = $request->input('first_name');
+            $this->user->last_name = $request->input('second_name');
+            $this->user->email = $request->input('email');
+            $this->user->phone = $request->input('phone');
+            $this->user->password = bcrypt($request->input('password'));
 
-            $this->user->country_id     = $request->input('county');
-            $this->user->state_id       = $request->input('state');
-            $this->user->city_id        = $request->input('city');
+            $this->user->country_id = $request->input('county');
+            $this->user->state_id = $request->input('state');
+            $this->user->city_id = $request->input('city');
 
-
-
-            $this->user->partner_id     = Auth::user()->id;
+            $this->user->partner_id = Auth::user()->id;
 
             $gender = $request->input('gender');
 
-            /** Проверка пола учасника */
-            if( $gender == 'female'){
-                $this->user->role_id    = 5;
-                $this->user->status_id  = 5;
+            /* Проверка пола учасника */
+            if ($gender == 'female') {
+                $this->user->role_id = 5;
+                $this->user->status_id = 5;
             } else {
-                $this->user->role_id    = 4;
-                $this->user->status_id  = 1;
+                $this->user->role_id = 4;
+                $this->user->status_id = 1;
             }
 
             $this->user->save();
 
-            /**
+            /*
              *  Add girl passport
              */
 
-
-            $this->passport->user_id    = $this->user->id;
-            $this->passport->passno     = str_replace(" ", "", $request->input('passno'));
-            $this->passport->date       = Carbon::createFromFormat('d/m/Y', $request->input('pass_date'));
+            $this->passport->user_id = $this->user->id;
+            $this->passport->passno = str_replace(' ', '', $request->input('passno'));
+            $this->passport->date = Carbon::createFromFormat('d/m/Y', $request->input('pass_date'));
             $this->passport->save();
 
-
-             /**
+             /*
              * Create girl profile
              */
 
-            $this->profile->user_id     = $this->user->id;
-            $this->profile->birthday    = Carbon::createFromFormat('d/m/Y',$request->input('birthday'));
-            $this->profile->height      = $request->input('height');
-            $this->profile->weight      = $request->input('weight');
+            $this->profile->user_id = $this->user->id;
+            $this->profile->birthday = Carbon::createFromFormat('d/m/Y', $request->input('birthday'));
+            $this->profile->height = $request->input('height');
+            $this->profile->weight = $request->input('weight');
 
-            $this->profile->about       = $request->input('about');
-            $this->profile->looking     = $request->input('looking');
+            $this->profile->about = $request->input('about');
+            $this->profile->looking = $request->input('looking');
             $this->profile->l_age_start = $request->input('l_age_start');
-            $this->profile->l_age_stop  = $request->input('l_age_stop');
+            $this->profile->l_age_stop = $request->input('l_age_stop');
 
-            /** Enums */
+            /* Enums */
 
-            $this->profile->gender      = $request->input('gender');
-            $this->profile->eye         = $request->input('eye');
-            $this->profile->hair        = $request->input('hair');
-            $this->profile->education   = $request->input('education');
-            $this->profile->kids        = $request->input('kids');
-            $this->profile->want_kids   = $request->input('want_k');
-            $this->profile->religion    = $request->input('religion');
-            $this->profile->smoke       = $request->input('smoke');
-            $this->profile->drink       = $request->input('drink');
-            $this->profile->occupation  = $request->input('occupation');
+            $this->profile->gender = $request->input('gender');
+            $this->profile->eye = $request->input('eye');
+            $this->profile->hair = $request->input('hair');
+            $this->profile->education = $request->input('education');
+            $this->profile->kids = $request->input('kids');
+            $this->profile->want_kids = $request->input('want_k');
+            $this->profile->religion = $request->input('religion');
+            $this->profile->smoke = $request->input('smoke');
+            $this->profile->drink = $request->input('drink');
+            $this->profile->occupation = $request->input('occupation');
 
             $this->profile->save();
 
-            /** Passport multi add photos */
-            foreach ($this->passport_photos as $p )
-            {
+            /* Passport multi add photos */
+            foreach ($this->passport_photos as $p) {
                 $media = new ProfileMedia();
-                $media->media_key   = 'passport';
+                $media->media_key = 'passport';
                 $media->media_value = $p;
                 $this->profile->media()->save($media);
             }
 
             //@todo Загрузка 5 фотографий вкладка.
-
         }
 
-         \Session::flash('flash_success', 'Девушка успешно добавлена');
+        \Session::flash('flash_success', 'Девушка успешно добавлена');
 
         return redirect('/admin/girls');
     }
@@ -245,7 +230,8 @@ class GirlsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -256,7 +242,8 @@ class GirlsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -273,45 +260,47 @@ class GirlsController extends Controller
             'family'    => $this->profile->getEnum('family'),
             'religion'  => $this->profile->getEnum('religion'),
             'smoke'     => $this->profile->getEnum('smoke'),
-            'drink'     => $this->profile->getEnum('drink')
+            'drink'     => $this->profile->getEnum('drink'),
         ];
 
-        $countries  = Country::all();
-        $states     = State::all();
+        $countries = Country::all();
+        $states = State::all();
 
-        $statuses   = Status::all();
+        $statuses = Status::all();
 
         $why = Why::where('uid', '=', $id)->select(['meta_key', 'meta_value'])->get();
 
         return view('admin.profile.girls.edit')->with([
-            'heading' => 'Редактировать профиль',
-            'user' => $user,
-            'selects' => $selects,
+            'heading'   => 'Редактировать профиль',
+            'user'      => $user,
+            'selects'   => $selects,
             'countries' => $countries,
-            'states' => $states,
-            'statuses' => $statuses,
-            'why' => $why
+            'states'    => $states,
+            'statuses'  => $statuses,
+            'why'       => $why,
         ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int                      $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
         //@todo Update профиля девушки
 
-        dd( $request->input());
+        dd($request->input());
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
@@ -325,20 +314,20 @@ class GirlsController extends Controller
 
         $girls = []; //without -> role moder -> error -> undefined variable girls on line 335
 
-        if( Auth::user()->hasRole('Owner') || Auth::user()->hasRole('Moder') )
+        if (Auth::user()->hasRole('Owner') || Auth::user()->hasRole('Moder')) {
             $girls = User::where('role_id', '=', '5')
                             ->where('status_id', '=', $s->id)
                             ->get();
-        else
-            if( Auth::user()->hasRole('Partner') )
-                $girls = User::where('role_id', '=', '5')
+        } elseif (Auth::user()->hasRole('Partner')) {
+            $girls = User::where('role_id', '=', '5')
                     ->where('partner_id', '=', Auth::user()->id)
                     ->where('status_id', '=', $s->id)
                     ->get();
+        }
 
         return view('admin.profile.girls.status')->with([
             'heading' => 'Девушки по статусу анкеты '.$status,
-            'girls' => $girls
+            'girls'   => $girls,
         ]);
     }
 
@@ -347,55 +336,50 @@ class GirlsController extends Controller
         $girl = User::find($request->input('user_id'));
         $girl->status_id = $request->input('id');
 
-        if( !empty($request->input('why') ) ){
-
+        if (!empty($request->input('why'))) {
             $why = Why::where('uid', '=', $request->input('user_id'))->
                         where('meta_key', 'like', '%status_comment%')->get();
 
-            if( empty($why[0]) ){
-
+            if (empty($why[0])) {
                 $why = new Why();
                 $why->uid = $request->input('user_id');
                 $why->meta_key = 'status_comment';
                 $why->meta_value = $request->input('why');
                 $why->save();
-
             } else {
                 Why::where('uid', '=', $request->input('user_id'))
                      ->where('meta_key', 'like', '%status_comment%')
                      ->update(['meta_value' => $request->input('why')]);
             }
-
         }
 
         $girl->save();
     }
 
     /**
-     * Check existence of passport in database
+     * Check existence of passport in database.
      *
      * firstly for ajax request
      *
      * @param Request $request
+     *
      * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
      */
     public function check(Request $request)
     {
-        $passp = $this->passport->where('passno', 'like', str_replace(" ","", $request->input('passno')))->first();
+        $passp = $this->passport->where('passno', 'like', str_replace(' ', '', $request->input('passno')))->first();
 
-        if( $passp )
+        if ($passp) {
             return response('<span class="bg-danger">Такой номер пасспорта существует в базе</span>', 200);
-        else
+        } else {
             return response('<span class="bg-success">Номер паспорта в базе не обнаружен</span>', 200);
+        }
     }
 
-
-
-    private function age( $bithday )
+    private function age($bithday)
     {
-        $age = Carbon::now()->diffInYears( Carbon::createFromFormat('d/m/Y', $bithday) );
+        $age = Carbon::now()->diffInYears(Carbon::createFromFormat('d/m/Y', $bithday));
 
         return $age;
     }
-
 }

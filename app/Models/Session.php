@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
@@ -48,16 +49,17 @@ class Session extends Model
 
     public function updateCurrentUser($query)
     {
-        return $query->where('id', Session::getId())->update([
-            'user_id' => ! empty(Auth::user()) ? Auth::id() : null
+        return $query->where('id', self::getId())->update([
+            'user_id' => !empty(Auth::user()) ? Auth::id() : null,
         ]);
     }
 
     public function isUserOnline($id, $query)
     {
-        if( $query->where('user_id', '=', $id) )
+        if ($query->where('user_id', '=', $id)) {
             return true;
-        else
+        } else {
             return flase;
+        }
     }
 }

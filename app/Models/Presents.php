@@ -10,7 +10,7 @@ class Presents extends Model
     protected $table = 'presents';
 
     protected $fillable = [
-        'partner_id', 'image', 'price'
+        'partner_id', 'image', 'price',
     ];
 
     public function partner()
@@ -18,12 +18,13 @@ class Presents extends Model
         return $this->hasOne('App\Models\User', 'id', 'partner_id');
     }
 
-    public function lang( string $lang )
+    public function lang(string $lang)
     {
-        if( $lang == null )
+        if ($lang == null) {
             $lang = App::getLocale();
+        }
 
-        return $this->hasMany('App\Models\PresentsTranslation')->where('locale' , '=', $lang);
+        return $this->hasMany('App\Models\PresentsTranslation')->where('locale', '=', $lang);
     }
 
     public function translation()
@@ -31,7 +32,7 @@ class Presents extends Model
         return $this->hasMany('App\Models\PresentsTranslation', 'id', 'present_id');
     }
 
-    public function forUser( int $user_id, string $locale )
+    public function forUser(int $user_id, string $locale)
     {
         //SELECT
         //
@@ -54,8 +55,8 @@ class Presents extends Model
         $query = DB::table('presents')
             ->join('presents_translations', 'presents.id', '=', 'presents_translations.present_id')
             ->select('presents.id', 'presents.image', 'presents.price', 'presents_translations.title', 'presents_translations.description')
-            ->where('presents.partner_id', \Auth::user()->id )
-            ->where('presents_translations.locale', \App::getLocale() )
+            ->where('presents.partner_id', \Auth::user()->id)
+            ->where('presents_translations.locale', \App::getLocale())
             ->get();
 
         return $query;

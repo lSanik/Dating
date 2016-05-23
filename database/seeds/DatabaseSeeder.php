@@ -11,11 +11,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-
         $this->call(Role::class);
         $this->call(UserTableSeeder::class);
         $this->call(StatusTableSeeder::class);
-
 
       /*  $this->call(CountrySeederNew::class);
         $this->call(States::class);
@@ -25,7 +23,5 @@ class DatabaseSeeder extends Seeder
         $this->call(ServicePriceSeeder::class);
 
         //@todo seeder for cities2.sql
-
-
     }
 }

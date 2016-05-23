@@ -23,7 +23,4 @@ class ChatRoom extends Model
     {
         return $this->hasMany('App\Models\ChatMessages', 'chat_id');
     }
-
-
-
 }
