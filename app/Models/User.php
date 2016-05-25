@@ -46,13 +46,28 @@ class User extends Authenticatable
 
 
     /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function messagesFrom()
+    {
+        return $this->hasMany('App\Models\Messages', 'from_user', 'id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function messagesTo()
+    {
+        return $this->hasMany('App\Models\Messages', 'to_user', 'id');
+    }
+
+    /**
      * @return mixed
      */
     public function isOnline()
     {
         return Cache::has('user-is-online-' . $this->id);
     }
-    
 
     /**
      * @param $need_status

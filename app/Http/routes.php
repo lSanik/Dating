@@ -57,6 +57,11 @@ Route::group([  'prefix' => LaravelLocalization::setLocale(),
 
     Route::get('blog', 'BlogController@all');
     Route::get('blog/{id}', 'BlogController@post');
+
+    Route::get('search', 'SearchController@index');
+    Route::get('antiscram', 'PagesController@antiscram');
+
+    Route::get('/{slug}', 'PagesController@show');
 });
 
 
@@ -65,8 +70,7 @@ Route::group([  'prefix'        => LaravelLocalization::setLocale(),
                 'roles'         => ['Alien', 'Male', 'Female']
 ], function(){
 
-    Route::get('search', 'SearchController@index');
-    Route::get('antiscram', 'PagesController@antiscram');
+
 
     /** Users profile */
     Route::get('profile/{id}', 'UsersController@edit');
@@ -78,7 +82,7 @@ Route::group([  'prefix'        => LaravelLocalization::setLocale(),
     Route::get('profile/{id}/gifts', 'UsersController@profileGifts');
     Route::get('profile/{id}/finance', 'UsersController@finance');
 
-    Route::get('{slug}', 'PagesController@show');
+
 });
 
 
@@ -96,6 +100,14 @@ Route::group([  'middleware' => ['web', 'auth', 'roles'],
     Route::get('api/messages/{lastMessage}/{chatRoom}', ['uses' => 'ChatMessagesController@getUpdates']);
 });
 
+Route::group([  'prefix' => LaravelLocalization::setLocale(),
+                'middleware' => ['web', 'auth', 'roles'],
+                'roles' => ['Male', 'Female']
+], function(){
+
+    Route::get('profile/{id}/message', 'MessagesController@index');
+
+});
 
 
 /** Admin route group */

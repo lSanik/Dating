@@ -27,7 +27,7 @@ class UsersController extends Controller
     {
         $user = \DB::table('users')
             ->select(
-                'users.id',
+                'users.id as uid',
                 'users.first_name',
                 'users.last_name',
                 'users.email',

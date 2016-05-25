@@ -12,8 +12,6 @@ class ServicesPrice extends Model
         'name', 'price', 'term'
     ];
 
-
-
     public static function getTerms()
     {
         $type = DB::select(DB::raw('SHOW COLUMNS FROM services_price WHERE Field = "term"'))[0]->Type;

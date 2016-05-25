@@ -7,7 +7,7 @@
             <div class="user_data col-md-6">
                 <div class="row">
                     <div class="name">
-                        <header>{{ $u->first_name }} | ID: {{ $u->id }}</header>
+                        <header>{{ $u->first_name }} | ID: {{ $u->uid }}</header>
                     </div>
                 </div>
                 <div class="row info">
@@ -57,7 +57,7 @@
                             <a href="#chat"><img src="/assets/img/interface.png" alt="Chat now" title="Chat now!"></a>
                         </div>
                         <div class="col-md-4 col-sm-4 col-xs-4 col-lg-4">
-                            <a href="#message"><img src="/assets/img/note.png" alt="Leave a message" title="Leave a message"></a>
+                            <a href="{{ url('/'. App::getLocale() . '/profile/'. $u->uid . '/message') }}"><img src="/assets/img/note.png" alt="Leave a message" title="Leave a message"></a>
                         </div>
                     </div>
                 </div>
