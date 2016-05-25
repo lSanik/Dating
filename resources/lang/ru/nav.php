@@ -5,5 +5,5 @@ return [
     'about'     => 'О нас',
     'blog'      => 'Блог',
     'pricing'   => 'Тарифы',
-    'search'    => 'Поиск'
+    'search'    => 'Поиск',
 ];

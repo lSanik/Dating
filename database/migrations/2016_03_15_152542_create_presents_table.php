@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreatePresentsTable extends Migration
 {
@@ -20,7 +20,6 @@ class CreatePresentsTable extends Migration
             $table->double('price');
             $table->timestamps();
         });
-
     }
 
     /**

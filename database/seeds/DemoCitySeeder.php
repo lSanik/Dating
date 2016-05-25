@@ -18,6 +18,6 @@ class DemoCitySeeder extends Seeder
             [2, 'DemoCity', 1],
         ];
 
-        DB::table('cities')->insert( $cities );
+        DB::table('cities')->insert($cities);
     }
 }

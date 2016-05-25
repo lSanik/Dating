@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Ticket;
-use App\Models\User;
-use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use App\Models\Presents;
 use App\Models\PresentsTranslation;
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
+use App\Models\User;
+use Illuminate\Http\Request;
 
 class GiftsController extends Controller
 {
@@ -61,37 +59,35 @@ class GiftsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-
         $this->validate($request, [
             'image' => 'required',
-            'price' => 'required'
+            'price' => 'required',
         ]);
 
-        if( $request->file('image') )
-        {
-            $present_file = time() . '-' . $request->file('image')->getClientOriginalName();
-            $destination  = public_path() . '/uploads/presents/';
-            $request->file('image')->move( $destination, $present_file );
+        if ($request->file('image')) {
+            $present_file = time().'-'.$request->file('image')->getClientOriginalName();
+            $destination = public_path().'/uploads/presents/';
+            $request->file('image')->move($destination, $present_file);
 
             $this->present->image = $present_file;
         }
 
-        $this->present->price = (double) $request->input('price');
+        $this->present->price = (float) $request->input('price');
         $this->present->partner_id = \Auth::user()->id;
         $this->present->save();
 
-        foreach( \Config::get('app.locales') as $locale )
-        {
+        foreach (\Config::get('app.locales') as $locale) {
             $this->pt->insert([
-                'present_id' => $this->present->id,
-                'locale'     => $locale,
-                'title'      => $request->input('title_'.$locale),
-                'description'=> $request->input('description'.$locale),
+                'present_id'  => $this->present->id,
+                'locale'      => $locale,
+                'title'       => $request->input('title_'.$locale),
+                'description' => $request->input('description'.$locale),
             ]);
         }
 
@@ -103,7 +99,8 @@ class GiftsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -114,50 +111,47 @@ class GiftsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-
         $present = $this->present->where('id', '=', $id)->first();
         $present_locale = $this->pt->where('present_id', '=', $id)
                                     ->select(['locale', 'title', 'description'])
                                     ->get();
 
-
         return view('admin.presents.edit')->with([
             'heading' => 'Редактировать подарок',
             'present' => $present,
-            'loc'  => $present_locale,
+            'loc'     => $present_locale,
 
         ]);
     }
 
-
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int                      $id
+     *
      * @return \Illuminate\Http\Response
      */
-
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'price' => 'required'
+            'price' => 'required',
         ]);
 
-        if( $request->file('image') )
-        {
-            $present_file = time() . '-' . $request->file('image')->getClientOriginalName();
-            $destination  = public_path() . '/uploads/presents/';
-            $request->file('image')->move( $destination, $present_file );
+        if ($request->file('image')) {
+            $present_file = time().'-'.$request->file('image')->getClientOriginalName();
+            $destination = public_path().'/uploads/presents/';
+            $request->file('image')->move($destination, $present_file);
 
             $oldFile = $this->present->select('image')->first($id);
 
-            $this->removeOldImage( $destination.$oldFile->image );
+            $this->removeOldImage($destination.$oldFile->image);
         }
 
         $present = $this->present->find($id);
@@ -165,8 +159,7 @@ class GiftsController extends Controller
         $present->price = $request->input('price');
         $present->save();
 
-        foreach( \Config::get('app.locales') as $locale )
-        {
+        foreach (\Config::get('app.locales') as $locale) {
             $this->pt->where('present_id', '=', $id)
                      ->where('locale', '=', $locale)
                      ->update([
@@ -180,30 +173,24 @@ class GiftsController extends Controller
         return redirect(\App::getLocale().'/admin/gifts');
     }
 
-    private function removeOldImage( $path )
+    private function removeOldImage($path)
     {
-        if( file_exists($path) ){
-
-            if( unlink( $path ) )
-            {
+        if (file_exists($path)) {
+            if (unlink($path)) {
                 return true;
-
             } else {
-
                 return false;
             }
-
         } else {
             return true;
         }
-
     }
-
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function drop($id)
@@ -211,6 +198,7 @@ class GiftsController extends Controller
         $this->present->delete($id);
 
         \Session::flash('flash_success', 'Подарок удален');
+
         return redirect('/admin/gifts/');
     }
 }

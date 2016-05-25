@@ -9,7 +9,7 @@ class PresentsTranslation extends Model
     protected $table = 'presents_translations';
 
     protected $fillable = [
-        'present_id', 'locale', 'title', 'description'
+        'present_id', 'locale', 'title', 'description',
     ];
 
     public function present()

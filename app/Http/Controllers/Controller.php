@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Foundation\Bus\DispatchesJobs;
-use Illuminate\Routing\Controller as BaseController;
-use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Foundation\Bus\DispatchesJobs;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\DB;
 
@@ -18,7 +18,7 @@ class Controller extends BaseController
      */
     public function __construct()
     {
-        $pages = DB::table('pages')->select('pages.id', 'slug','title')
+        $pages = DB::table('pages')->select('pages.id', 'slug', 'title')
             ->join('pages_translations', 'pages.id', '=', 'pages_translations.pages_id')
             ->where('pages_translations.locale', '=', App::getLocale())
             ->get();
@@ -49,16 +49,14 @@ class Controller extends BaseController
     /**
      * @param $file string
      *
-     * @return boolean
+     * @return bool
      */
     public function removeFile($file)
     {
-        if( is_file($file) )
+        if (is_file($file)) {
             return unlink($file);
-        else
+        } else {
             return;
+        }
     }
-
-
-
 }

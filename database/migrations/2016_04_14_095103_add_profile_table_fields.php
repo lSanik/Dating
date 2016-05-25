@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class AddProfileTableFields extends Migration
 {
@@ -12,7 +12,7 @@ class AddProfileTableFields extends Migration
      */
     public function up()
     {
-        Schema::table('profile', function(Blueprint $table){
+        Schema::table('profile', function (Blueprint $table) {
             $table->increments('id');
             $table->text('about');
             $table->text('looking');
@@ -28,7 +28,7 @@ class AddProfileTableFields extends Migration
      */
     public function down()
     {
-        Schema::table('profile', function(Blueprint $table){
+        Schema::table('profile', function (Blueprint $table) {
             $table->dropColumn('id');
             $table->dropColumn('about');
             $table->dropColumn('looking');

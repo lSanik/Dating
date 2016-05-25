@@ -14,5 +14,4 @@ class TicketSubjects extends Model
     {
         return $this->belongsTo('App\Models\Ticket');
     }
-
 }

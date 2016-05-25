@@ -2,15 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\ServicesPrice;
 use App\Http\Controllers\Controller;
+use App\Models\ServicesPrice;
 use Illuminate\Http\Request;
-
-use App\Http\Requests;
 
 class FinanceController extends Controller
 {
-    
     public function __construct()
     {
         $this->middleware('auth');
@@ -36,7 +33,7 @@ class FinanceController extends Controller
         $plans = ServicesPrice::all();
 
         return view('admin.finance.control')->with([
-            'plans' => $plans
+            'plans' => $plans,
         ]);
     }
 
@@ -47,6 +44,7 @@ class FinanceController extends Controller
         $fin->save();
 
         \Session::flash('flash_success', 'Обновлено');
+
         return redirect('/'.\App::getLocale().'/admin/finance/control');
     }
 
@@ -54,6 +52,7 @@ class FinanceController extends Controller
     {
         return view('admin.finance.stat');
     }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -67,7 +66,8 @@ class FinanceController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -78,7 +78,8 @@ class FinanceController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -89,7 +90,8 @@ class FinanceController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -100,8 +102,9 @@ class FinanceController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int                      $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -112,7 +115,8 @@ class FinanceController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

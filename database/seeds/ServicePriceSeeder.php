@@ -25,7 +25,7 @@ class ServicePriceSeeder extends Seeder
             ['name' => 'fle',           'price' => '10', 'term' => 'once'],
             ['name' => 'horoscope',     'price' => '1', 'term' => 'once'],
             ['name' => 'month',         'price' => '100', 'term' => 'month'],
-            ['name' => 'girl_blog',     'price' => '0.2', 'term' => 'once']
+            ['name' => 'girl_blog',     'price' => '0.2', 'term' => 'once'],
         ];
 
         DB::table('services_price')->insert($services);

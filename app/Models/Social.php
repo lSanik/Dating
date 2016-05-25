@@ -10,7 +10,7 @@ class Social extends Model
     protected $table = 'socials_login';
 
     protected $fillable = [
-        'provider', 'social_id'
+        'provider', 'social_id',
     ];
 
     public function user()
@@ -31,7 +31,7 @@ class Social extends Model
     public function scopeUpdateCurrent($query)
     {
         return $query->where('id', Session::getId())->update([
-            'user_id' => !empty( Auth::user() ) ? Auth::id() : null
+            'user_id' => !empty(Auth::user()) ? Auth::id() : null,
         ]);
     }
 }

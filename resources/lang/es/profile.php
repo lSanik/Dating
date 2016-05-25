@@ -3,9 +3,8 @@
  * Created by PhpStorm.
  * User: Oleh Hrebeniuk
  * Date: 14.04.2016
- * Time: 12:25
+ * Time: 12:25.
  */
-
 
 return [
     'yes'       => 'Да',
@@ -14,7 +13,7 @@ return [
     'male'      => 'Мужской',
     'female'    => 'Женский',
 
-    /** Eyes */
+    /* Eyes */
 
     'Amber'     => '',
     'Blue'      => '',
@@ -23,7 +22,7 @@ return [
     'Green'     => '',
     'Hazel'     => '',
 
-    /**  Hair */
+    /*  Hair */
     'Black hair'                        => '',
     'Natural black hair'                => '',
     'Deepest brunette hair'             => '',
@@ -46,14 +45,14 @@ return [
     'White hair'                        => '',
     'White hair caused by albinism'     => '',
 
-    /** Education */
+    /* Education */
 
     'School'        => '',
     'Bachelor'      => '',
     'Master'        => '',
     'Pd.D'          => '',
 
-    /** Religion */
+    /* Religion */
 
     'Christianity'      => '',
     'Gnosticism'        => '',
@@ -64,7 +63,5 @@ return [
     'Hinduism'          => '',
     'Shinto'            => '',
     'Taoism'            => '',
-
-    
 
 ];

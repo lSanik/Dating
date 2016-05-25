@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateTicketReplyMessages extends Migration
 {
@@ -20,9 +20,9 @@ class CreateTicketReplyMessages extends Migration
             $table->timestamps();
         });
 
-        Schema::table('ticket_reply', function(Blueprint $table){
-            $table->foreign('message_id')->references('id')->on('ticket_messages')->onDelete("CASCADE");
-            $table->foreign('r_uid')->references('id')->on('users')->onDelete("CASCADE");
+        Schema::table('ticket_reply', function (Blueprint $table) {
+            $table->foreign('message_id')->references('id')->on('ticket_messages')->onDelete('CASCADE');
+            $table->foreign('r_uid')->references('id')->on('users')->onDelete('CASCADE');
         });
     }
 
