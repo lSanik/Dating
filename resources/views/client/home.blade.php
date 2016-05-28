@@ -8,8 +8,13 @@
     <div class="row map-bg">
         <div class="container">
             <div class="row">
-                <header class="text-center"> <h2>Girls</h2> </header>
-
+                <header class="text-center">
+                    @if(!Auth::user() || Auth::user()->hasRole('male'))
+                        <h2>{{ trans('pages.girls') }}</h2>
+                    @else
+                        <h2>{{ trans('pages.mans') }}</h2>
+                    @endif
+                </header>
 
                 <div class="owl online">
                     @foreach($users as $g)
@@ -35,48 +40,54 @@
                                 <div class="col-md-6">{{ $g->first_name }}</div>
                                 <div class="col-md-6"><b>ID </b>: {{ $g->id }} </div>
                                 <div class="col-md-6"> <a href="{{ url('/'.App::getLocale().'/profile/show/'.$g->id) }}" class="btn btn-small btn-primary">{{ trans('buttons.profile') }}</a></div>
-                                <div class="col-md-6"> <button class="btn btn-small btn-success"> Online </button></div>
+                                <div class="col-md-6">
+                                    @if($g->isOnline())
+                                        <button class="btn btn-small btn-success"> Online </button>
+                                    @endif
+                                </div>
                             </div>
                         </div>
                     @endforeach
                 </div>
 
             </div>
-            @if(!empty($topHot))
-            <div class="row">
-                <header class="text-center"> <h2>Top Hot Girls</h2> </header>
+            @if( !Auth::user() || Auth::user()->hasRole('male') || Auth::user()->hasRole('alien'))
+                @if(!empty($topHot))
+                    <div class="row">
+                        <header class="text-center"> <h2>Top Hot Girls</h2> </header>
 
-                <div class="owl top-hot">
-                    @foreach($topHot as $g)
-                        <div class="item">
-                            <div class="row text-center" id="photo">
-                                <img src="{{ url('/uploads/girls/avatars/'.$g->avatar) }}"/>
-                            </div>
-                            <hr/>
-                            <div class="row girl-action">
-                                <div class="col-md-4 col-sm-4 col-xs-4 col-lg-4">
-                                    <img src="/assets/img/video.png" alt="Webcam online" title="Webcam online">
-                                </div>
-                                <div class="col-md-4 col-sm-4 col-xs-4 col-lg-4">
-                                    <a href="#chat"><img src="/assets/img/interface.png" alt="Chat now" title="Chat now!"></a>
-                                </div>
-                                <div class="col-md-4 col-sm-4 col-xs-4 col-lg-4">
-                                    <a href="#message"><img src="/assets/img/note.png" alt="Leave a message" title="Leave a message"></a>
-                                </div>
-                            </div>
-                            <hr/>
+                        <div class="owl top-hot">
+                            @foreach($topHot as $g)
+                                <div class="item">
+                                    <div class="row text-center" id="photo">
+                                        <img src="{{ url('/uploads/girls/avatars/'.$g->avatar) }}"/>
+                                    </div>
+                                    <hr/>
+                                    <div class="row girl-action">
+                                        <div class="col-md-4 col-sm-4 col-xs-4 col-lg-4">
+                                            <img src="/assets/img/video.png" alt="Webcam online" title="Webcam online">
+                                        </div>
+                                        <div class="col-md-4 col-sm-4 col-xs-4 col-lg-4">
+                                            <a href="#chat"><img src="/assets/img/interface.png" alt="Chat now" title="Chat now!"></a>
+                                        </div>
+                                        <div class="col-md-4 col-sm-4 col-xs-4 col-lg-4">
+                                            <a href="#message"><img src="/assets/img/note.png" alt="Leave a message" title="Leave a message"></a>
+                                        </div>
+                                    </div>
+                                    <hr/>
 
-                            <div class="row text-center g__info">
-                                <div class="col-md-6">{{ $g->first_name }}</div>
-                                <div class="col-md-6"><b>ID </b>: {{ $g->id }} </div>
-                                <div class="col-md-6"> <a href="{{ url('/'.App::getLocale().'/profile/show/'.$g->id) }}" class="btn btn-small btn-primary">{{ trans('buttons.profile') }}</a></div>
-                                <div class="col-md-6"> <button class="btn btn-small btn-success"> Online </button></div>
-                            </div>
+                                    <div class="row text-center g__info">
+                                        <div class="col-md-6">{{ $g->first_name }}</div>
+                                        <div class="col-md-6"><b>ID </b>: {{ $g->id }} </div>
+                                        <div class="col-md-6"> <a href="{{ url('/'.App::getLocale().'/profile/show/'.$g->id) }}" class="btn btn-small btn-primary">{{ trans('buttons.profile') }}</a></div>
+                                        <div class="col-md-6"> <button class="btn btn-small btn-success"> Online </button></div>
+                                    </div>
+                                </div>
+                            @endforeach
                         </div>
-                    @endforeach
-                </div>
-            </div>
+                    </div>
                 @endif
+            @endif
         </div>
     </div>
 </div>

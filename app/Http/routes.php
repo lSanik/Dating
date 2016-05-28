@@ -42,6 +42,7 @@ Route::group(['middleware' => 'web'], function () {
     /** Access to States and Cities from different places of code */
     Route::post('/get/states/', 'StatesController@statesByCountry');
     Route::post('/get/cities/', 'CityController@getCityByState');
+
 });
 
 /**
@@ -57,6 +58,10 @@ Route::group([  'prefix' => LaravelLocalization::setLocale(),
 
     Route::get('blog', 'BlogController@all');
     Route::get('blog/{id}', 'BlogController@post');
+
+    /** Pages */
+    Route::get('{slug}', 'PagesController@show');
+    Route::get('profile/show/{id}', 'UsersController@show');
 });
 
 
@@ -70,7 +75,6 @@ Route::group([  'prefix'        => LaravelLocalization::setLocale(),
 
     /** Users profile */
     Route::get('profile/{id}', 'UsersController@edit');
-    Route::get('profile/show/{id}', 'UsersController@show');
     Route::get('profile/{id}/photo', 'UsersController@profilePhoto');
     Route::get('profile/{id}/video', 'UsersController@profileVideo');
     Route::get('profile/{id}/mail', 'UsersController@profileMail');
@@ -78,7 +82,6 @@ Route::group([  'prefix'        => LaravelLocalization::setLocale(),
     Route::get('profile/{id}/gifts', 'UsersController@profileGifts');
     Route::get('profile/{id}/finance', 'UsersController@finance');
 
-    Route::get('{slug}', 'PagesController@show');
 });
 
 

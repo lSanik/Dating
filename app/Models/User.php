@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Cache;
 
 class User extends Authenticatable
 {
+    use \HighIdeas\UsersOnline\Traits\UsersOnlineTrait;
+
     protected $table = 'users';
     /**
      * The attributes that are mass assignable.
@@ -242,5 +244,14 @@ class User extends Authenticatable
     public function chatMessages()
     {
         return $this->hasMany('App\Models\ChatMessages', 'user_id');
+    }
+
+    /** User finance */
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function finance()
+    {
+        return $this->hasMany('App\Models\Finance');
     }
 }

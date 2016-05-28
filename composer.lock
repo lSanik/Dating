@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "628f64e69582efdad3f869c55d724fe6",
-    "content-hash": "de554e86c2b3b106771aec70043c7331",
+    "hash": "d5195c67547f9d2691a4e694a6388afc",
+    "content-hash": "bcdcc3a2f9833417e2c398568cd90256",
     "packages": [
         {
             "name": "barryvdh/laravel-debugbar",
@@ -933,6 +933,52 @@
                 "uri"
             ],
             "time": "2016-04-13 19:56:01"
+        },
+        {
+            "name": "highideas/laravel-users-online",
+            "version": "1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/highideas/laravel-users-online.git",
+                "reference": "4ce7be93a493feac05904ecc6f3338a34d0b64d2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/highideas/laravel-users-online/zipball/4ce7be93a493feac05904ecc6f3338a34d0b64d2",
+                "reference": "4ce7be93a493feac05904ecc6f3338a34d0b64d2",
+                "shasum": ""
+            },
+            "require-dev": {
+                "illuminate/auth": "^5.2",
+                "illuminate/cache": "^5.2",
+                "illuminate/database": "^5.2",
+                "illuminate/session": "^5.2",
+                "illuminate/support": "^5.2",
+                "orchestra/testbench": "~3.0",
+                "phpunit/phpunit": "^5.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "HighIdeas\\UsersOnline\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Gabriel Goncalves",
+                    "email": "gabrielll_07@hotmail.com"
+                }
+            ],
+            "description": "This package will provide a online users management, like session break, assume identity and others fixtures.",
+            "keywords": [
+                "Users",
+                "laravel"
+            ],
+            "time": "2016-04-19 02:36:02"
         },
         {
             "name": "jakub-onderka/php-console-color",
