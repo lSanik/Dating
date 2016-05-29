@@ -8,7 +8,6 @@ class Expenses extends Model
 {
     protected $table = 'expanses';
 
-
     public function whoPay()
     {
         return $this->belongsTo('App\Models\Users', 'user_id');

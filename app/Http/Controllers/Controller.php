@@ -46,7 +46,6 @@ class Controller extends BaseController
         return \App\Models\ContacMessages::unreadCount();
     }
 
-
     public function robot($message)
     {
         $email_pattern = '/[^@\s]*@[^@\s]*\.[^@\s]*/';
@@ -55,7 +54,7 @@ class Controller extends BaseController
         $phone_pattern = [
             '!(\b\+?[0-9()\[\]./ -]{7,17}\b|\b\+?[0-9()\[\]./ -]{7,17}\s+(extension|x|#|-|code|ext)\s+[0-9]{1,6})!i',
         ];
-        
+
         //@todo - Добавить нежелательные слова в сообщениях
         $words_pattern = [
 
@@ -66,7 +65,7 @@ class Controller extends BaseController
         $message = preg_replace($email_pattern, $replace, $message);
         $message = preg_replace($links_pattern, $replace, $message);
 
-        foreach ($phone_pattern as $p){
+        foreach ($phone_pattern as $p) {
             $message = preg_replace($p, $replace, $message);
         }
 

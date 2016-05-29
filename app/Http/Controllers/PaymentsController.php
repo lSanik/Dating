@@ -2,14 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
-use App\Http\Requests;
 use App\Models\ServicesPrice;
+use Illuminate\Http\Request;
 
 class PaymentsController extends Controller
 {
-
     /**
      * @return mixed
      */
@@ -18,7 +15,7 @@ class PaymentsController extends Controller
         $prices = ServicesPrice::all();
 
         return view('client.payment.payment')->with([
-            'prices' => $prices
+            'prices' => $prices,
         ]);
     }
 
@@ -27,9 +24,8 @@ class PaymentsController extends Controller
      */
     public function checkOut(Request $request)
     {
-
         return view('client.payment.checkout')->with([
-            
+
         ]);
     }
 }

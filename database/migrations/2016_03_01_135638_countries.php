@@ -17,7 +17,6 @@ class Countries extends Migration
             $table->string('sortname', 2);
             $table->string('name', 256);
             $table->timestamps();
-
         });
     }
 

@@ -1,18 +1,18 @@
 <?php
 
 return [
-    'payments'  => 'Pricing',
-    'message'   => 'Message',
-    'chat'      => 'Chat',
-    'video'     => 'Video',
+    'payments'    => 'Pricing',
+    'message'     => 'Message',
+    'chat'        => 'Chat',
+    'video'       => 'Video',
     'photo_album' => 'Photos',
     'girl_video'  => 'Video',
-    'call'      => 'Call',
-    'flp'       => 'Open phone',
-    'fle'       => 'Open email',
-    'horoscope' => 'Horoscope',
-    'month'     => 'Month',
-    'girl_blog' => 'Girl wall',
+    'call'        => 'Call',
+    'flp'         => 'Open phone',
+    'fle'         => 'Open email',
+    'horoscope'   => 'Horoscope',
+    'month'       => 'Month',
+    'girl_blog'   => 'Girl wall',
 
     'once'   => 'Once at time when use',
     'minute' => 'For a one minute',
@@ -22,5 +22,5 @@ return [
 
     'addCost' => 'I want add funds to my account',
 
-    'notice' => 'When you send message...'
+    'notice' => 'When you send message...',
 ];
