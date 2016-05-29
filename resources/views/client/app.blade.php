@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{{ url('/assets/css/app.css') }}">
     <link rel="stylesheet" href="{{ url('assets/css/font-awesome.css') }}">
 
+
     @yield('styles')
 </head>
 <body>
@@ -152,11 +153,14 @@
     <!-- include script -->
     <script src="https://code.jquery.com/jquery-1.12.3.min.js"   integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ="   crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
     <!-- .include.script -->
     @yield('scripts')
     <!-- Scripts area -->
     <script>
         $(document).ready(function(){
+
+
             /*$.each($('#navbar').find('li'), function() {
                 $(this).toggleClass('active',
                         window.location.pathname.indexOf($(this).find('a').attr('href')) > -1);

@@ -4,5 +4,5 @@ return [
     'send'   => 'Send',
     'login'  => 'Log In',
     'signup' => 'Signup',
-
+    'profile'=> 'Profile'
 ];

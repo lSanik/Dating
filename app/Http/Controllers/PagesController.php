@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use HighIdeas\UsersOnline\Middleware\UsersOnline;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\DB;
+use App\Models\User;
 
 class PagesController extends Controller
 {
@@ -15,8 +17,14 @@ class PagesController extends Controller
             ->where('pages_translations.locale', '=', App::getLocale())
             ->get();
 
+        if( \Auth::user() || \Auth::user()->hasRole('male') )
+            $users = User::where('role_id', '=', 5)->get();
+        else
+            $users = User::where('role_id', '=', 4)->get();
+
         return view('client.page')->with([
             'page'  => $page,
+            'users' => $users,
         ]);
     }
 }

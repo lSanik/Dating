@@ -38,12 +38,12 @@ class Controller extends BaseController
 
     public static function getContactMessages()
     {
-        return \App\Models\ContactMessages::unread();
+        return \App\Models\ContacMessages::unread();
     }
 
     public static function getContactUnread()
     {
-        return \App\Models\ContactMessages::unreadCount();
+        return \App\Models\ContacMessages::unreadCount();
     }
 
     /**

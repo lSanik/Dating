@@ -1,3 +1,4 @@
+
 <?php
 
 /*
@@ -59,9 +60,20 @@ Route::group([  'prefix' => LaravelLocalization::setLocale(),
     Route::get('blog', 'BlogController@all');
     Route::get('blog/{id}', 'BlogController@post');
 
+    Route::get('search', 'SearchController@index');
+    Route::post('search', 'SearchController@search');
+
+    Route::get('users/online', 'UsersController@online');
+
+    Route::get('profile/show/{id}', 'UsersController@show');
+    Route::get('profile/{id}/message', 'MessagesController@index');
+
+    /** Payments */
+    Route::get('pricing', 'PaymentsController@addBalance');
+    Route::get('payments/checkout', 'PaymentsController@checkOut'); //@todo payments gateway
+
     /** Pages */
     Route::get('{slug}', 'PagesController@show');
-    Route::get('profile/show/{id}', 'UsersController@show');
 });
 
 
@@ -69,9 +81,9 @@ Route::group([  'prefix'        => LaravelLocalization::setLocale(),
                 'middleware'    => ['web', 'auth', 'roles'],
                 'roles'         => ['Alien', 'Male', 'Female']
 ], function(){
-
-    Route::get('search', 'SearchController@index');
     Route::get('antiscram', 'PagesController@antiscram');
+
+    Route::get('/message/{to}', 'MessagesController@index');
 
     /** Users profile */
     Route::get('profile/{id}', 'UsersController@edit');
@@ -80,7 +92,7 @@ Route::group([  'prefix'        => LaravelLocalization::setLocale(),
     Route::get('profile/{id}/mail', 'UsersController@profileMail');
     Route::get('profile/{id}/smiles', 'UsersController@profileSmiles');
     Route::get('profile/{id}/gifts', 'UsersController@profileGifts');
-    Route::get('profile/{id}/finance', 'UsersController@finance');
+    Route::get('profile/{id}/finance', 'UsersController@profileFinance');
 
 });
 

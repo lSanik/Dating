@@ -11,13 +11,11 @@ use Illuminate\Support\Facades\Validator;
 
 class MessagesController extends Controller
 {
+
     private $cost;
-    private $message;
 
-    public function __construct(Messages $messages)
+    public function __construct()
     {
-        $this->message = $messages;
-
         parent::__construct();
     }
 
@@ -25,6 +23,11 @@ class MessagesController extends Controller
 
         $from = \Auth::user();
         $to = User::select('id', 'first_name')->where('id', '=', $id)->get();
+
+        if( \Auth::user()->hasRole('male') ){
+            
+        }
+
 
         return view('client.profile.messages')->with([
 
@@ -44,7 +47,9 @@ class MessagesController extends Controller
         {
             return redirect()->back()->withErrors($v->errors());
         }
+
+
         
-        
+
     }
 }

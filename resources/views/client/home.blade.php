@@ -1,6 +1,8 @@
 @extends('client.app')
 
-
+@section('styles')
+    <link rel="stylesheet" href="{{ url('/assets/css/owl.carousel.css') }}">
+@stop
 
 @section('content')
     @include('client.blocks.slider')
@@ -17,36 +19,8 @@
                 </header>
 
                 <div class="owl online">
-                    @foreach($users as $g)
-                        <div class="item">
-                            <div class="row text-center" id="photo">
-                                <img src="{{ url('/uploads/girls/avatars/'.$g->avatar) }}"/>
-                            </div>
-                            <hr/>
-                            <div class="row girl-action">
-                                <div class="col-md-4 col-sm-4 col-xs-4 col-lg-4">
-                                    <img src="/assets/img/video.png" alt="Webcam online" title="Webcam online">
-                                </div>
-                                <div class="col-md-4 col-sm-4 col-xs-4 col-lg-4">
-                                    <a href="#chat"><img src="/assets/img/interface.png" alt="Chat now" title="Chat now!"></a>
-                                </div>
-                                <div class="col-md-4 col-sm-4 col-xs-4 col-lg-4">
-                                    <a href="#message"><img src="/assets/img/note.png" alt="Leave a message" title="Leave a message"></a>
-                                </div>
-                            </div>
-                            <hr/>
-
-                            <div class="row text-center g__info">
-                                <div class="col-md-6">{{ $g->first_name }}</div>
-                                <div class="col-md-6"><b>ID </b>: {{ $g->id }} </div>
-                                <div class="col-md-6"> <a href="{{ url('/'.App::getLocale().'/profile/show/'.$g->id) }}" class="btn btn-small btn-primary">{{ trans('buttons.profile') }}</a></div>
-                                <div class="col-md-6">
-                                    @if($g->isOnline())
-                                        <button class="btn btn-small btn-success"> Online </button>
-                                    @endif
-                                </div>
-                            </div>
-                        </div>
+                    @foreach($users as $u)
+                        @include('client.blocks.user-item')
                     @endforeach
                 </div>
 
@@ -57,32 +31,8 @@
                         <header class="text-center"> <h2>Top Hot Girls</h2> </header>
 
                         <div class="owl top-hot">
-                            @foreach($topHot as $g)
-                                <div class="item">
-                                    <div class="row text-center" id="photo">
-                                        <img src="{{ url('/uploads/girls/avatars/'.$g->avatar) }}"/>
-                                    </div>
-                                    <hr/>
-                                    <div class="row girl-action">
-                                        <div class="col-md-4 col-sm-4 col-xs-4 col-lg-4">
-                                            <img src="/assets/img/video.png" alt="Webcam online" title="Webcam online">
-                                        </div>
-                                        <div class="col-md-4 col-sm-4 col-xs-4 col-lg-4">
-                                            <a href="#chat"><img src="/assets/img/interface.png" alt="Chat now" title="Chat now!"></a>
-                                        </div>
-                                        <div class="col-md-4 col-sm-4 col-xs-4 col-lg-4">
-                                            <a href="#message"><img src="/assets/img/note.png" alt="Leave a message" title="Leave a message"></a>
-                                        </div>
-                                    </div>
-                                    <hr/>
-
-                                    <div class="row text-center g__info">
-                                        <div class="col-md-6">{{ $g->first_name }}</div>
-                                        <div class="col-md-6"><b>ID </b>: {{ $g->id }} </div>
-                                        <div class="col-md-6"> <a href="{{ url('/'.App::getLocale().'/profile/show/'.$g->id) }}" class="btn btn-small btn-primary">{{ trans('buttons.profile') }}</a></div>
-                                        <div class="col-md-6"> <button class="btn btn-small btn-success"> Online </button></div>
-                                    </div>
-                                </div>
+                            @foreach($topHot as $u)
+                                @include('client.blocks.user-item')
                             @endforeach
                         </div>
                     </div>
@@ -107,14 +57,10 @@
 </div>
 @endsection
 
-@section('styles')
-
-    <link rel="stylesheet" href="{{ url('/assets/css/owl.carousel.css') }}">
-@endsection
-
 @section('scripts')
     <script src="{{ url('/assets/js/owl.carousel.min.js') }}"></script>
     <script>
+
         $('.online').owlCarousel({
             loop:true,
             margin:10,
@@ -133,6 +79,7 @@
                 }
             }
         });
+
 
         $('.top-hot').owlCarousel({
             loop:true,

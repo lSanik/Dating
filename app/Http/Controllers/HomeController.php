@@ -28,6 +28,7 @@ class HomeController extends Controller
         ]);
     }
 
+
     private function getUsers($roleId)
     {
         return User::select(['id', 'first_name', 'avatar'])

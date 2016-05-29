@@ -7,7 +7,7 @@
                     Serious dating with Sweet date <br/>
                     Your perfect match is just a click away
                 </div>
-                <form action="#" method="POST" class="form-search form-inline">
+                {!! Form::open(['url' => 'search', 'method' => 'POST', 'class' => 'form-search form-inline']) !!}
                     <div class="text-right">
                         <div class="form-group">
                             <label for="I">I am a</label>
@@ -19,7 +19,7 @@
 
                         <div class="form-group">
                             <label for="I">Looking for a</label>
-                            <select name="I" class="form-control">
+                            <select name="looking" class="form-control">
                                 <option value="1"> Man </option>
                                 <option value="2" selected> Woman </option>
                             </select>
@@ -45,7 +45,7 @@
                             </button>
                         </div>
                     </div>
-                </form>
+                {!! Form::close() !!}
             </div>
         </div>
     </div>

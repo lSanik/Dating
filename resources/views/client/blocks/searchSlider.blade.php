@@ -1,6 +1,6 @@
 <div class="header-bg">
     <div class="container">
-        <form action="#" method="POST" class="form-search form-inline">
+        {!! Form::open(['url' => '#', 'method' => 'POST', 'class' => 'form-search form-inline']) !!}
         <div class="short_search_wrapper bg-default col-md-3">
                 <div class="search-form">
                     <div class="form-header">
@@ -19,7 +19,7 @@
 
                             <div class="form-group">
                                 <label for="I">Looking for a</label>
-                                <select name="I" class="form-control">
+                                <select name="looking" class="form-control">
                                     <option value="1"> Man </option>
                                     <option value="2" selected> Woman </option>
                                 </select>
@@ -38,10 +38,7 @@
                                     @endfor
                                 </select>
                             </div>
-
-
                         </div>
-
                 </div>
             </div>
 
@@ -60,12 +57,79 @@
                             </select>
                         </div>
 
-                        {{ print_r(get_object_vars($selects)) }}
-
-                        @foreach($selects as $s)
-
-                        @endforeach
                         <div class="form-group">
+                            <label for="eyes">{{ trans('profile.eyes') }}</label>
+                            <select name="eyes" class="form-control">
+                                @foreach($selects['eye'] as $eye)
+                                    <option value="{{ $eye }}">{{ trans('profile.'.$eye) }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="hair">{{ trans('profile.hair') }}</label>
+                            <select name="hair" class="form-control">
+                                @foreach($selects['hair'] as $hair)
+                                    <option value="{{ $hair }}">{{ trans('profile.'.$hair) }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="hair">{{ trans('profile.kids') }}</label>
+                            <select name="kids" class="form-control">
+                                @foreach($selects['kids'] as $kids)
+                                    <option value="{{ $kids }}">{{ trans('profile.'.$kids) }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="want_k">{{ trans('profile.want_k') }}</label>
+                            <select name="want_k" class="form-control">
+                                @foreach($selects['want_k'] as $want_k)
+                                    <option value="{{ $want_k }}">{{ trans('profile.'.$want_k) }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="family">{{ trans('profile.family') }}</label>
+                            <select name="family" class="form-control">
+                                @foreach($selects['family'] as $family)
+                                    <option value="{{ $family }}">{{ trans('profile.'.$family) }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="religion">{{ trans('profile.religion') }}</label>
+                            <select name="religion" class="form-control">
+                                @foreach($selects['religion'] as $religion)
+                                    <option value="{{ $religion }}">{{ trans('profile.'.$religion) }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="smoke">{{ trans('profile.smoke') }}</label>
+                            <select name="smoke" class="form-control">
+                                @foreach($selects['smoke'] as $smoke)
+                                    <option value="{{ $smoke }}">{{ trans('profile.'.$smoke) }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="drink">{{ trans('profile.drink') }}</label>
+                            <select name="drink" class="form-control">
+                                @foreach($selects['drink'] as $drink)
+                                    <option value="{{ $drink }}">{{ trans('profile.'.$drink) }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="form-group text-center">
                             <button type="submit" class="btn btn-pink">
                                 <i class="fa fa-search"></i> Search
                             </button>
@@ -73,6 +137,6 @@
                     </div>
                 </div>
             </div>
-        </form>
+        {!! Form::close() !!}
     </div>
 </div>
