@@ -92,6 +92,6 @@ return [
     'drink'     => 'Drink',
 
     'antiscram' => 'Anti-Scam Policy',
-    'finance'   => 'Finance'
+    'finance'   => 'Finance',
 
 ];

@@ -58,17 +58,16 @@ class UsersController extends Controller
 
     public function online()
     {
-        if(\Auth::user()->hasRole('male')){
+        if (\Auth::user()->hasRole('male')) {
             $users = User::where('role_id', '=', 5)->paginate(20);
-        } else{
+        } else {
             $users = User::where('role_id', '=', 4)->paginate(20);
         }
 
         return view('client.profile.users')->with([
-           'users' => $users
+           'users' => $users,
         ]);
     }
-
 
     /**
      * Show the users photo albums and editing actions.
@@ -166,5 +165,4 @@ class UsersController extends Controller
     {
         //
     }
-
 }

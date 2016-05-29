@@ -24,7 +24,6 @@ class CrateTicketMessagesTable extends Migration
 
             $table->foreign('from')->references('id')->on('users')->onDelete('CASCADE');
             $table->foreign('subjects')->references('id')->on('ticket_subjects');
-
         });
     }
 

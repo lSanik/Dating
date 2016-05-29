@@ -247,6 +247,7 @@ class User extends Authenticatable
     }
 
     /** User finance */
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */

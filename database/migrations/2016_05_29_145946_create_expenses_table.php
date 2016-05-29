@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateExpensesTable extends Migration
 {
@@ -18,14 +18,14 @@ class CreateExpensesTable extends Migration
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users')
-                ->onDelete("CASCADE")
-                ->onUpdate("CASCADE");
+                ->onDelete('CASCADE')
+                ->onUpdate('CASCADE');
             $table->integer('girl_id')->unsigned();
             $table->foreign('girl_id')
                 ->references('id')
                 ->on('users')
-                ->onDelete("CASCADE")
-                ->onUpdate("CASCADE");
+                ->onDelete('CASCADE')
+                ->onUpdate('CASCADE');
             $table->double('expense');
             $table->timestamps();
         });

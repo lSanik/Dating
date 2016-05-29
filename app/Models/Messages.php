@@ -23,5 +23,4 @@ class Messages extends Model
     {
         return $this->belongsTo('App\Models\User', 'to_user', 'id');
     }
-
 }

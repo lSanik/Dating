@@ -13,5 +13,5 @@ return [
     'submit'    => 'Save Page',
     'updated'   => 'Page updated',
     'girls'     => 'Girls Online',
-    'mans'      => 'Mans Online'
+    'mans'      => 'Mans Online',
 ];

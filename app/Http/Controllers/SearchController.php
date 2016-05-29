@@ -32,7 +32,7 @@ class SearchController extends Controller
             'drink'     => $this->profile->getEnum('drink'),
         ];
 
-        if(\Auth::user() && \Auth::user()->hasRole('female')){
+        if (\Auth::user() && \Auth::user()->hasRole('female')) {
             $users = User::where('role_id', '=', '4')->paginate(10);
         } else {
             $users = User::where('role_id', '=', '5')->paginate(10);
@@ -40,7 +40,7 @@ class SearchController extends Controller
 
         return view('client.search')->with([
             'selects'   => $selects,
-            'users'     => $users
+            'users'     => $users,
         ]);
     }
 

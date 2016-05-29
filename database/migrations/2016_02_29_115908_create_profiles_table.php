@@ -13,7 +13,6 @@ class CreateProfilesTable extends Migration
     public function up()
     {
         Schema::create('profile', function (Blueprint $table) {
-
             $table->integer('user_id')->unsigned();
 
             $table->foreign('user_id')->references('id')->on('users');
