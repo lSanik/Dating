@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateFinancesTable extends Migration
 {
@@ -18,8 +18,8 @@ class CreateFinancesTable extends Migration
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users')
-                ->onDelete("CASCADE")
-                ->onUpdate("CASCADE");
+                ->onDelete('CASCADE')
+                ->onUpdate('CASCADE');
             $table->decimal('amount');
             $table->timestamps();
         });
