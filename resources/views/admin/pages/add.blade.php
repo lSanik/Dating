@@ -42,7 +42,7 @@
                         {!! Form::input('text', 'slug', null, ['class' => 'form-control']) !!}
                     </div>
                     <div class="form-group col-md-4">
-                        <label for="lang">{{ trans('pages.language') }}</label>
+                        <label for="locale">{{ trans('pages.language') }}</label>
                         <select name="locale" class="form-control">
                             @foreach( Config::get('app.locales') as $locale )
 

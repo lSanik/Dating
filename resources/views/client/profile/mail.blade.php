@@ -10,11 +10,6 @@
                 </a>
             </li>
             <li role="presentation">
-                <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">
-                    {{ trans('mail.outcome') }}
-                </a>
-            </li>
-            <li role="presentation">
                 <a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">
                     {{ trans('mail.admin') }}
                 </a>
@@ -29,11 +24,33 @@
         <!-- Tab panes -->
         <div class="tab-content" style="background-color: white">
             <div role="tabpanel" class="tab-pane active" id="home">
-                <div class="row">
-
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>{{ trans('mail.who') }}</th>
+                                <th>{{ trans('mail.message') }}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($dialogs as $d)
+                                <tr>
+                                    <td>{{ $d->id }}</td>
+                                    <td>
+                                        <a href="{{ url('/'.App::getLocale().'/profile/'.$d->uid.'/message/') }}">
+                                            <img src="{{ url('/uploads/girls/avatars/'.$d->avatar) }}" width="32">
+                                            {{ $d->first_name }}
+                                        </a>
+                                    </td>
+                                    <td>{{ substr($d->message, 0, 30) }}</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                <div class="text-center">
+                    {{ $dialogs->links() }}
                 </div>
             </div>
-            <div role="tabpanel" class="tab-pane" id="profile">...</div>
             <div role="tabpanel" class="tab-pane" id="messages">...</div>
             <div role="tabpanel" class="tab-pane" id="settings">...</div>
         </div>

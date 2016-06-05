@@ -1,9 +1,10 @@
 <?php
 
 return [
-    'mail'  => 'Mail',
-    'income' => 'Inbox messages',
-    'outcome' => 'Sended messages',
-    'admin' => 'Messages from admin',
-    'black' => 'Messages from blacklist'
+    'mail'      => 'Mail',
+    'income'    => 'Dialogs',
+    'admin'     => 'Messages from admin',
+    'black'     => 'Messages from blacklist',
+    'who'       => 'From ',
+    'message'   => 'Message'
 ];

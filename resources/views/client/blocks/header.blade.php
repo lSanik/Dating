@@ -25,7 +25,7 @@
                         @if(Auth::user()->hasRole('Admin') || Auth::user()->hasRole('Moder') || Auth::user()->hasRole('Partner'))
                             <a href="{{ url('/'.App::getLocale().'/admin/dashboard') }}" class="btn btn-default pull-right"> <i class="fa fa-user"></i> ADMIN</a>
                         @else
-                            <a href="/profile/{{ Auth::user()->id }}" class="btn btn-default pull-right"><i class="fa fa-user"></i> PROFILE</a>
+                            <a href="/profile/show/{{ Auth::user()->id }}" class="btn btn-default pull-right"><i class="fa fa-user"></i> PROFILE</a>
                         @endif
                         <a href="/logout" class="btn btn-default pull-right"><i class="fa fa-sign-out"></i> LOG OUT</a>
                     </div>

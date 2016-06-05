@@ -46,6 +46,16 @@ Route::group(['middleware' => 'web'], function () {
 
 });
 
+Route::group([ 'prefix' => LaravelLocalization::setLocale(),
+    'middleware' => ['web', 'auth', 'roles'],
+    'roles' => ['Male', 'Female']
+], function(){
+
+    Route::get('chat', 'ChatRoomsController@index');
+    Route::post('message', 'ChatMessagesController@save');
+});
+
+
 /**
  *  Free Routes
  */
@@ -66,7 +76,6 @@ Route::group([  'prefix' => LaravelLocalization::setLocale(),
     Route::get('users/online', 'UsersController@online');
 
     Route::get('profile/show/{id}', 'UsersController@show');
-    Route::get('profile/{id}/message', 'MessagesController@index');
 
     /** Payments */
     Route::get('pricing', 'PaymentsController@addBalance');
@@ -83,8 +92,6 @@ Route::group([  'prefix'        => LaravelLocalization::setLocale(),
 ], function(){
     Route::get('antiscram', 'PagesController@antiscram');
 
-    Route::get('/message/{to}', 'MessagesController@index');
-
     /** Users profile */
     Route::get('profile/{id}', 'UsersController@edit');
     Route::get('profile/{id}/photo', 'UsersController@profilePhoto');
@@ -93,24 +100,11 @@ Route::group([  'prefix'        => LaravelLocalization::setLocale(),
     Route::get('profile/{id}/smiles', 'UsersController@profileSmiles');
     Route::get('profile/{id}/gifts', 'UsersController@profileGifts');
     Route::get('profile/{id}/finance', 'UsersController@profileFinance');
+    Route::get('profile/{id}/message', 'MessagesController@index');
+
+    Route::post('profile/{id}/message', 'MessagesController@send');
 
 });
-
-
-/** Chat APIs */
-Route::group([  'middleware' => ['web', 'auth', 'roles'],
-    'roles' => ['Male', 'Female']
-], function(){
-
-    Route::get('api/chat-rooms', ['uses' => 'ChatRoomsController@getAll']);
-    Route::post('api/chat-rooms', ['uses' => 'ChatRoomsController@create']);
-
-    Route::get('api/messages/{chatRoom}', ['uses' => 'ChatMessagesController@getByChatRoom']);
-    Route::post('api/messages/{chatRoom}', ['uses' => 'ChatMessagesController@createInChatRoom']);
-
-    Route::get('api/messages/{lastMessage}/{chatRoom}', ['uses' => 'ChatMessagesController@getUpdates']);
-});
-
 
 
 /** Admin route group */
@@ -252,7 +246,6 @@ Route::group([  'prefix' => LaravelLocalization::setLocale().'/admin',
     Route::get('horoscope', 'Admin\HoroscopeController@index');
     Route::get('horoscope/add', 'Admin\HoroscopeController@create');
     Route::get('horoscope/edit/{id}', 'Admin\HoroscopeController@edit');
-    Route::get('horoscope/drop/{id}', 'Admin\HoroscopeController@destroy');
 
     Route::post('horoscope/add', 'Admin\HoroscopeController@store');
     Route::post('horoscope/edit/{id}', 'Admin\HoroscopeController@update');

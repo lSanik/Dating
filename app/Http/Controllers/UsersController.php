@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Messages;
 use App\Models\Profile;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -107,8 +108,15 @@ class UsersController extends Controller
      */
     public function profileMail(int $id)
     {
-        return view('client.profile.mail')->with([
+        $dialogs = \DB::table('messages')
+            ->select('messages.id', 'messages.message', 'users.id as uid', 'users.first_name', 'users.avatar')
+            ->join('users', 'users.id', '=', 'messages.from_user')
+            ->where('to_user', '=', $id)
+            ->paginate(30);
 
+
+        return view('client.profile.mail')->with([
+            'dialogs' => $dialogs
         ]);
     }
 
