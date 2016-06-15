@@ -2,6 +2,11 @@
 
 @section('profileContent')
     <div class="row">
+        @if(empty($user))
+            <div class="alert-block alert-danger" style="padding: 20px;">
+                <a href="{{ url('/'. App::getLocale() . '/profile/'.$id) }}">{{ trans('profile.empty') }}</a>
+            </div>
+        @endif
         @foreach($user as $u)
             <div class="avatar col-md-4"><img src="{{ url('/uploads/girls/avatars/'.$u->avatar) }}" width="100%"/></div>
             <div class="user_data col-md-6">

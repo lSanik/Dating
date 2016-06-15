@@ -15,7 +15,8 @@
         "phpspec/phpspec": "~2.0",
         "way/generators": "~3.0",
         "guzzlehttp/guzzle": "~5.3|~6.0",
-        "highideas/laravel-users-online": "^1.0"
+        "highideas/laravel-users-online": "^1.0",
+        "predis/predis": "^1.1"
 
     },
     "require-dev": {

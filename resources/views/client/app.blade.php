@@ -9,6 +9,11 @@
     <link rel="stylesheet" href="{{ url('/assets/css/app.css') }}">
     <link rel="stylesheet" href="{{ url('assets/css/font-awesome.css') }}">
 
+    <style>
+        .warning{
+            padding: 20px;
+        }
+    </style>
 
     @yield('styles')
 </head>

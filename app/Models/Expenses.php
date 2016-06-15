@@ -1,12 +1,12 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
 class Expenses extends Model
 {
-    protected $table = 'expanses';
+    protected $table = 'expenses';
 
     public function whoPay()
     {

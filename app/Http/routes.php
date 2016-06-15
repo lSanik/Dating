@@ -103,6 +103,7 @@ Route::group([  'prefix'        => LaravelLocalization::setLocale(),
     Route::get('profile/{id}/message', 'MessagesController@index');
 
     Route::post('profile/{id}/message', 'MessagesController@send');
+    Route::post('profile/update/{id}', 'UsersController@update');
 
 });
 
@@ -254,3 +255,4 @@ Route::group([  'prefix' => LaravelLocalization::setLocale().'/admin',
 });
 
 
+Route::post('sendmessage', 'ChatController@sendMessage');

@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Country;
 use App\Models\Messages;
 use App\Models\Profile;
+use App\Models\State;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -39,6 +41,7 @@ class UsersController extends Controller
 
         return view('client.profile.show')->with([
             'user' => $user,
+            'id'   => $id
         ]);
     }
 
@@ -51,8 +54,26 @@ class UsersController extends Controller
      */
     public function edit(int $id)
     {
-        return view('client.profile.profile')->with([
-            'user' => $this->user->find($id),
+        $selects = [
+            'gender'    => $this->profile->getEnum('gender'),
+            'eye'       => $this->profile->getEnum('eye'),
+            'hair'      => $this->profile->getEnum('hair'),
+            'education' => $this->profile->getEnum('education'),
+            'kids'      => $this->profile->getEnum('kids'),
+            'want_k'    => $this->profile->getEnum('want_kids'),
+            'family'    => $this->profile->getEnum('family'),
+            'religion'  => $this->profile->getEnum('religion'),
+            'smoke'     => $this->profile->getEnum('smoke'),
+            'drink'     => $this->profile->getEnum('drink'),
+        ];
+
+
+        return view('client.profile.edit')->with([
+            'user'      => $this->user->find($id),
+            'selects'   => $selects,
+            'countries' => Country::all(),
+            'states'    => State::all(),
+            'id'        => $id,
 
         ]);
     }
@@ -107,15 +128,21 @@ class UsersController extends Controller
      */
     public function profileMail(int $id)
     {
-        $dialogs = \DB::table('messages')
-            ->select('messages.id', 'messages.message', 'users.id as uid', 'users.first_name', 'users.avatar')
-            ->join('users', 'users.id', '=', 'messages.from_user')
-            ->where('to_user', '=', $id)
+        $from = \DB::table('messages')
+            ->select('messages.id as mid', 'messages.message', 'users.id as uid', 'users.first_name', 'users.avatar')
+            ->join('users', 'users.id', '=', 'messages.to_user')
+            ->where('messages.from_user', '=', \Auth::user()->id)
             ->paginate(30);
 
+        $to = \DB::table('messages')
+            ->select('messages.id as mid', 'messages.message', 'users.id as uid', 'users.first_name', 'users.avatar')
+            ->join('users', 'users.id', '=', 'messages.from_user')
+            ->where('messages.to_user', '=', \Auth::user()->id)
+            ->paginate(30);
 
         return view('client.profile.mail')->with([
-            'dialogs' => $dialogs
+            'from'   =>  $from,
+            'to'    => $to
         ]);
     }
 
@@ -171,6 +198,41 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'avatar' => 'required',
+            'first_name' => 'required',
+            'second_name'  => 'required',
+            'email'      => 'required',
+            'password'   => 'required',
+        ]);
+
+        if( empty(Profile::where('user_id', '=', $id)->get()->items) ){
+
+            $profile = new Profile();
+            $profile->user_id   = $id;
+            $profile->gender    = $request->input('gender');
+            $profile->bithday   = $request->input('birthday');
+            $profile->height    = $request->input('height');
+            $profile->weighht   = $request->input('weight');
+            $profile->eye       = $request->input('eye');
+            $profile->heir      = $request->input('hair');
+            $profile->education = $request->input('education');
+            $profile->kids      = $request->input('kids');
+            $profile->want_kids = $request->input('want_kids');
+            $profile->family    = $request->input('family');
+            $profile->religion  = $request->input('religion');
+            $profile->smoke     = $request->input('smoke');
+            $profile->drink     = $request->input('drink');
+            $profile->occupation= $request->input('occupation');
+            $profile->about     = $request->input('about');
+            $profile->looking   = $request->input('looking');
+            $profile->l_age_start   = $request->input('l_age_start');
+            $profile->l_age_stop    = $request->input('l_age_stop');
+            
+
+        } else {
+
+        }
+
     }
 }
