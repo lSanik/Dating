@@ -7,11 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Session extends Model
 {
-    protected $hidden = ['payload'];
-
     public $table = 'session';
-
     public $timestamps = false;
+    protected $hidden = ['payload'];
 
     public function user()
     {

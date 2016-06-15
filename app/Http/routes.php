@@ -1,3 +1,4 @@
+
 <?php
 
 /*
@@ -27,27 +28,38 @@ Route::group(['middleware' => 'web'], function () {
     Route::auth();
 
     Route::get('/social/redirect/{provider}', [
-        'as'   => 'social.redirect',
-        'uses' => 'Auth\AuthController@getSocialRedirect',
+        'as' => 'social.redirect',
+        'uses' => 'Auth\AuthController@getSocialRedirect'
     ]);
 
     Route::get('/social/handle/{provider}', [
-        'as'   => 'social.handle',
-        'uses' => 'Auth\AuthController@getSocialHandle',
+        'as' => 'social.handle',
+        'uses' => 'Auth\AuthController@getSocialHandle'
     ]);
 
-    /* Users */
+    /** Users */
     Route::post('/user/create/', 'UsersController@register');
 
-    /* Access to States and Cities from different places of code */
+    /** Access to States and Cities from different places of code */
     Route::post('/get/states/', 'StatesController@statesByCountry');
     Route::post('/get/cities/', 'CityController@getCityByState');
+
 });
 
-/*
+Route::group(['prefix' => LaravelLocalization::setLocale(),
+    'middleware' => ['web', 'auth', 'roles'],
+    'roles' => ['Male', 'Female']
+], function () {
+
+    Route::get('chat', 'ChatRoomsController@index');
+    Route::post('message', 'ChatMessagesController@save');
+});
+
+
+/**
  *  Free Routes
  */
-Route::group(['prefix'       => LaravelLocalization::setLocale(),
+Route::group(['prefix' => LaravelLocalization::setLocale(),
                 'middleware' => ['web'],
 ], function () {
     Route::get('/', 'HomeController@index');
@@ -57,47 +69,48 @@ Route::group(['prefix'       => LaravelLocalization::setLocale(),
 
     Route::get('blog', 'BlogController@all');
     Route::get('blog/{id}', 'BlogController@post');
-});
-
-Route::group(['prefix'          => LaravelLocalization::setLocale(),
-                'middleware'    => ['web', 'auth', 'roles'],
-                'roles'         => ['Alien', 'Male', 'Female'],
-], function () {
 
     Route::get('search', 'SearchController@index');
+    Route::post('search', 'SearchController@search');
+
+    Route::get('users/online', 'UsersController@online');
+
+    Route::get('profile/show/{id}', 'UsersController@show');
+
+    /** Payments */
+    Route::get('pricing', 'PaymentsController@addBalance');
+    Route::get('payments/checkout', 'PaymentsController@checkOut'); //@todo payments gateway
+
+    /** Pages */
+    Route::get('{slug}', 'PagesController@show');
+});
+
+
+Route::group(['prefix' => LaravelLocalization::setLocale(),
+    'middleware' => ['web', 'auth', 'roles'],
+    'roles' => ['Alien', 'Male', 'Female']
+], function () {
     Route::get('antiscram', 'PagesController@antiscram');
 
-    /* Users profile */
+    /** Users profile */
     Route::get('profile/{id}', 'UsersController@edit');
-    Route::get('profile/show/{id}', 'UsersController@show');
     Route::get('profile/{id}/photo', 'UsersController@profilePhoto');
     Route::get('profile/{id}/video', 'UsersController@profileVideo');
     Route::get('profile/{id}/mail', 'UsersController@profileMail');
     Route::get('profile/{id}/smiles', 'UsersController@profileSmiles');
     Route::get('profile/{id}/gifts', 'UsersController@profileGifts');
-    Route::get('profile/{id}/finance', 'UsersController@finance');
+    Route::get('profile/{id}/finance', 'UsersController@profileFinance');
+    Route::get('profile/{id}/message', 'MessagesController@index');
 
-    Route::get('{slug}', 'PagesController@show');
+    Route::post('profile/{id}/message', 'MessagesController@send');
+
 });
 
-/* Chat APIs */
-Route::group(['middleware' => ['web', 'auth', 'roles'],
-    'roles'                => ['Male', 'Female'],
-], function () {
 
-    Route::get('api/chat-rooms', ['uses' => 'ChatRoomsController@getAll']);
-    Route::post('api/chat-rooms', ['uses' => 'ChatRoomsController@create']);
-
-    Route::get('api/messages/{chatRoom}', ['uses' => 'ChatMessagesController@getByChatRoom']);
-    Route::post('api/messages/{chatRoom}', ['uses' => 'ChatMessagesController@createInChatRoom']);
-
-    Route::get('api/messages/{lastMessage}/{chatRoom}', ['uses' => 'ChatMessagesController@getUpdates']);
-});
-
-/* Admin route group */
-Route::group(['prefix'       => LaravelLocalization::setLocale().'/admin',
-                'middleware' => ['web', 'auth', 'roles'],
-                'roles'      => ['Owner', 'Moder', 'Partner'],
+/** Admin route group */
+Route::group(['prefix' => LaravelLocalization::setLocale() . '/admin',
+    'middleware' => ['web', 'auth', 'roles'],
+    'roles' => ['Owner', 'Moder', 'Partner']
 ], function () {
 
     Route::get('/', function () {
@@ -109,7 +122,7 @@ Route::group(['prefix'       => LaravelLocalization::setLocale().'/admin',
 
     Route::post('profile', 'Admin\AdminController@profile_update');
 
-    /* Start Blog Routing */
+    /** Start Blog Routing */
     Route::get('blog', 'Admin\BlogController@index');
     Route::get('blog/new', 'Admin\BlogController@create');
 
@@ -119,9 +132,10 @@ Route::group(['prefix'       => LaravelLocalization::setLocale().'/admin',
     Route::post('blog/new', 'Admin\BlogController@store');
     Route::post('blog/update', 'Admin\BlogController@update');
 
-    /* Stop Blog Routing */
+    /** Stop Blog Routing */
 
-    /* Start Partners Profile routing */
+
+    /** Start Partners Profile routing */
     Route::get('partners', 'Admin\PartnerController@index');
     Route::get('partner/new', 'Admin\PartnerController@create');
     Route::get('partner/show/{id}', 'Admin\PartnerController@show');
@@ -130,9 +144,9 @@ Route::group(['prefix'       => LaravelLocalization::setLocale().'/admin',
 
     Route::post('partner/store', 'Admin\PartnerController@store');
     Route::post('partner/edit/{id}', 'Admin\PartnerController@update');
-    /* End partners profile routing */
+    /** End partners profile routing */
 
-    /* Start Moderator Profile routing */
+    /** Start Moderator Profile routing */
     Route::get('moderators', 'Admin\ModeratorController@index');
     Route::get('moderator/new', 'Admin\ModeratorController@create');
     Route::get('moderator/show/{id}', 'Admin\ModeratorController@show');
@@ -141,9 +155,9 @@ Route::group(['prefix'       => LaravelLocalization::setLocale().'/admin',
 
     Route::post('moderator/store', 'Admin\ModeratorController@store');
     Route::post('moderator/edit/{id}', 'Admin\ModeratorController@update');
-    /* End Moderator Profile routing */
+    /** End Moderator Profile routing */
 
-    /* Start Partners Profile routing */
+    /** Start Partners Profile routing */
     Route::get('partners', 'Admin\PartnerController@index');
     Route::get('partner/new', 'Admin\PartnerController@create');
     Route::get('partner/show/{id}', 'Admin\PartnerController@show');
@@ -152,9 +166,9 @@ Route::group(['prefix'       => LaravelLocalization::setLocale().'/admin',
 
     Route::post('partner/store', 'Admin\PartnerController@store');
     Route::post('partner/edit/{id}', 'Admin\PartnerController@update');
-    /* End partners profile routing */
+    /** End partners profile routing */
 
-    /* Start Moderator Profile routing */
+    /** Start Moderator Profile routing */
     Route::get('moderators', 'Admin\ModeratorController@index');
     Route::get('moderator/new', 'Admin\ModeratorController@create');
     Route::get('moderator/show/{id}', 'Admin\ModeratorController@show');
@@ -163,9 +177,9 @@ Route::group(['prefix'       => LaravelLocalization::setLocale().'/admin',
 
     Route::post('moderator/store', 'Admin\ModeratorController@store');
     Route::post('moderator/edit/{id}', 'Admin\ModeratorController@update');
-    /* End Moderator Profile routing */
+    /** End Moderator Profile routing */
 
-    /* Start Girls Profile routing */
+    /** Start Girls Profile routing */
     Route::get('girls', 'Admin\GirlsController@index'); //All
     Route::get('girl/new', 'Admin\GirlsController@create'); //Add new
 
@@ -176,11 +190,12 @@ Route::group(['prefix'       => LaravelLocalization::setLocale().'/admin',
 
     Route::post('girl/check', ['as' => 'check_pass', 'uses' => 'Admin\GirlsController@check']); // Check passport at DB
     Route::post('girl/store', 'Admin\GirlsController@store'); //Store new to db
-    Route::post('girl/edit/{id}', 'Admin\GirlsController@update'); // Update db
+    Route::post('girl/edit/{id}', 'Admin\GirlsController@update');// Update db
     Route::post('girl/changeStatus', 'Admin\GirlsController@changeStatus'); //change girlStatus from edit profile page
-    /* End Girls Profile routing */
+    /** End Girls Profile routing */
 
-    /* Start Gifts  */
+
+    /** Start Gifts  */
     Route::get('gifts/', 'Admin\GiftsController@index');
     Route::get('gifts/new', 'Admin\GiftsController@create');
     Route::get('gifts/edit/{id}', 'Admin\GiftsController@edit');
@@ -191,9 +206,9 @@ Route::group(['prefix'       => LaravelLocalization::setLocale().'/admin',
 
     Route::post('gifts/check_lang', ['as' => 'check_lang', 'uses' => 'Admin\GiftsController@check_language']);
     Route::post('gifts/save_present_translation', ['as' => 'save_present_translation', 'uses' => 'Admin\GiftsController@save_present_translation']);
-    /* End gifts */
+    /** End gifts */
 
-    /* Ticket System Routes */
+    /** Ticket System Routes */
     Route::get('support', 'Admin\TicketController@index');
     Route::get('support/new', 'Admin\TicketController@newTicket');
     Route::get('support/show/{ticket_id}', 'Admin\TicketController@show'); // show one ticket
@@ -205,9 +220,9 @@ Route::group(['prefix'       => LaravelLocalization::setLocale().'/admin',
     Route::post('support/show/{ticket_id}', 'Admin\TicketController@answer');
     Route::post('support/close/{ticket_id}', 'Admin\TicketController@close');
     Route::post('support/{ticket_id}', 'Admin\TicketController@answer'); //add new answer to ticket
-    /* End ticket System Routes */
+    /** End ticket System Routes */
 
-    /* Finance */
+    /** Finance */
     Route::get('finance', 'Admin\FinanceController@index');
     Route::get('finance/control', 'Admin\FinanceController@control');
     Route::get('finance/stat', 'Admin\FinanceController@stat');
@@ -215,7 +230,7 @@ Route::group(['prefix'       => LaravelLocalization::setLocale().'/admin',
     Route::post('finance/{id}', 'Admin\FinanceController@saveData');
     /* End finance */
 
-    /* Pages */
+    /** Pages */
     Route::get('pages', 'Admin\PagesController@index');
     Route::get('pages/add', 'Admin\PagesController@create');
     Route::get('pages/edit/{id}', 'Admin\PagesController@edit');
@@ -224,16 +239,17 @@ Route::group(['prefix'       => LaravelLocalization::setLocale().'/admin',
     Route::post('pages/add', 'Admin\PagesController@store');
     Route::post('pages/edit/{id}', 'Admin\PagesController@update');
     Route::post('pages/dropFile', 'Admin\PagesController@dropFile');
-    /* End pages */
+    /** End pages */
 
-    /* Horoscope */
+    /** Horoscope */
     Route::get('horoscope', 'Admin\HoroscopeController@index');
     Route::get('horoscope/add', 'Admin\HoroscopeController@create');
     Route::get('horoscope/edit/{id}', 'Admin\HoroscopeController@edit');
-    Route::get('horoscope/drop/{id}', 'Admin\HoroscopeController@destroy');
 
     Route::post('horoscope/add', 'Admin\HoroscopeController@store');
     Route::post('horoscope/edit/{id}', 'Admin\HoroscopeController@update');
-    /* End horoscope */
+    /** End horoscope */
 
 });
+
+

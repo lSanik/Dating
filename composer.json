@@ -14,7 +14,8 @@
         "laravel/socialite": "~2.0",
         "phpspec/phpspec": "~2.0",
         "way/generators": "~3.0",
-        "guzzlehttp/guzzle": "~5.3|~6.0"
+        "guzzlehttp/guzzle": "~5.3|~6.0",
+        "highideas/laravel-users-online": "^1.0"
 
     },
     "require-dev": {

@@ -91,4 +91,7 @@ return [
     'smoke'     => 'Smoke',
     'drink'     => 'Drink',
 
+    'antiscram' => 'Anti-Scam Policy',
+    'finance' => 'Finance',
+
 ];

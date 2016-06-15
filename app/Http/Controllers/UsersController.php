@@ -22,7 +22,7 @@ class UsersController extends Controller
     {
         $user = \DB::table('users')
             ->select(
-                'users.id',
+                'users.id as uid',
                 'users.first_name',
                 'users.last_name',
                 'users.email',
@@ -53,6 +53,19 @@ class UsersController extends Controller
         return view('client.profile.profile')->with([
             'user' => $this->user->find($id),
 
+        ]);
+    }
+
+    public function online()
+    {
+        if (\Auth::user()->hasRole('male')) {
+            $users = User::where('role_id', '=', 5)->paginate(20);
+        } else {
+            $users = User::where('role_id', '=', 4)->paginate(20);
+        }
+
+        return view('client.profile.users')->with([
+            'users' => $users,
         ]);
     }
 
@@ -93,8 +106,15 @@ class UsersController extends Controller
      */
     public function profileMail(int $id)
     {
-        return view('client.profile.mail')->with([
+        $dialogs = \DB::table('messages')
+            ->select('messages.id', 'messages.message', 'users.id as uid', 'users.first_name', 'users.avatar')
+            ->join('users', 'users.id', '=', 'messages.from_user')
+            ->where('to_user', '=', $id)
+            ->paginate(30);
 
+
+        return view('client.profile.mail')->with([
+            'dialogs' => $dialogs
         ]);
     }
 

@@ -23,8 +23,11 @@ class Controller extends BaseController
             ->where('pages_translations.locale', '=', App::getLocale())
             ->get();
 
-        view()->share('pages', $pages);
+        view()->share('pages', $pages); //pages links at all front
+        
     }
+
+    /** Admin tickets */
 
     public static function getUnreadMessages()
     {
@@ -36,19 +39,49 @@ class Controller extends BaseController
         return \App\Models\Ticket::unreadCount();
     }
 
+    /** Contact form */
+
     public static function getContactMessages()
     {
-        return \App\Models\ContactMessages::unread();
+        return \App\Models\ContacMessages::unread();
     }
 
     public static function getContactUnread()
     {
-        return \App\Models\ContactMessages::unreadCount();
+        return \App\Models\ContacMessages::unreadCount();
     }
 
     /**
-     * @param $file string
+     * Remove email address, phone number, links from message
      *
+     * @param $message string
+     * @return mixed string
+     */
+    public function robot($message)
+    {
+        $email_pattern = '/[^@\s]*@[^@\s]*\.[^@\s]*/';
+        $links_pattern = '/[a-zA-Z]*[:\/\/]*[A-Za-z0-9\-_]+\.+[A-Za-z0-9\.\/%&=\?\-_]+/i';
+
+        $phone_pattern = [
+            '!(\b\+?[0-9()\[\]./ -]{7,17}\b|\b\+?[0-9()\[\]./ -]{7,17}\s+(extension|x|#|-|code|ext)\s+[0-9]{1,6})!i',
+        ];
+
+        $replace = ' [removed] ';
+
+        $message = preg_replace($email_pattern, $replace, $message);
+        $message = preg_replace($links_pattern, $replace, $message);
+
+        foreach ($phone_pattern as $p) {
+            $message = preg_replace($p, $replace, $message);
+        }
+
+        return $message;
+    }
+
+    /**
+     * Remove file from storage
+     *
+     * @param $file string
      * @return bool
      */
     public function removeFile($file)
@@ -58,5 +91,22 @@ class Controller extends BaseController
         } else {
             return;
         }
+    }
+
+    /**
+     * Get users money
+     */
+    public function getMoney()
+    {
+        if (\Auth::user() && \Auth::user()->hasRole('male')) {
+            return \App\Models\Finance::where('user_id', '=', \Auth::user()->id)->get();
+        } else
+            return;
+    }
+
+    /** Get horoscope */
+    public function getHoroscope()
+    {
+        //todo get
     }
 }

@@ -179,7 +179,8 @@ return [
          * Users online
          */
 
-        //Kim\Activity\ActivityServiceProvider::class,
+        HighIdeas\UsersOnline\UsersOnlineServiceProvider::class,
+        HighIdeas\UsersOnline\Providers\UsersOnlineEventServiceProvider::class,
     ],
 
     /*

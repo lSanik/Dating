@@ -32,8 +32,8 @@ class AuthController extends Controller
      */
     protected $redirectTo = '/';
     protected $auth;
-    private $social_user;
     protected $redirectAfterLogout = '/';
+    private $social_user;
     // @todo check user status
 
     /**
@@ -45,56 +45,6 @@ class AuthController extends Controller
     {
         $this->middleware('guest', ['except' => ['logout', 'resendEmail', 'activateAccount'],
                                 ]);
-    }
-
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param array $data
-     *
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'first_name' => 'required|max:255',
-            'last_name'  => 'required|max:255',
-            'email'      => 'required|email|max:255|unique:users',
-            'password'   => 'required|confirmed|min:6',
-            'checkTerms' => 'required',
-        ]);
-    }
-
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param array $data
-     *
-     * @return User
-     */
-    protected function create(array $data)
-    {
-        return User::create([
-            'first_name' => $data['first_name'],
-            'last_name'  => $data['last_name'],
-            'email'      => $data['email'],
-            'password'   => bcrypt($data['password']),
-            'role_id'    => $data['gender'],
-        ]);
-    }
-
-    /** @todo Sender  */
-    public function sendEmail(User $user)
-    {
-        $data = [
-            'name' => $user->first_name.' '.$user->last_name,
-            'code' => $user->activation_code,
-        ];
-
-        \Mail::queue('emails.activateAccount', $data, function ($message) use ($user) {
-            $message->subject(\Lang::get('auth.pleaseActivate'));
-            $message->to($user->email);
-        });
     }
 
     public function resendEmail()
@@ -111,7 +61,20 @@ class AuthController extends Controller
         }
     }
 
-    //@todo Activation
+    /** @todo Sender  */
+    public function sendEmail(User $user)
+    {
+        $data = [
+            'name' => $user->first_name.' '.$user->last_name,
+            'code' => $user->activation_code,
+        ];
+
+        \Mail::queue('emails.activateAccount', $data, function ($message) use ($user) {
+            $message->subject(\Lang::get('auth.pleaseActivate'));
+            $message->to($user->email);
+        });
+    }
+
     public function activateAccount($code, User $user)
     {
         if ($user->accountIsActive($code)) {
@@ -131,6 +94,8 @@ class AuthController extends Controller
 
         return Socialite::driver($provider)->redirect();
     }
+
+    //@todo Activation
 
     /**
      * @param $provider
@@ -180,5 +145,41 @@ class AuthController extends Controller
 
             return redirect('/home');
         }
+    }
+
+    /**
+     * Get a validator for an incoming registration request.
+     *
+     * @param array $data
+     *
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'first_name' => 'required|max:255',
+            'last_name' => 'required|max:255',
+            'email' => 'required|email|max:255|unique:users',
+            'password' => 'required|confirmed|min:6',
+            'checkTerms' => 'required',
+        ]);
+    }
+
+    /**
+     * Create a new user instance after a valid registration.
+     *
+     * @param array $data
+     *
+     * @return User
+     */
+    protected function create(array $data)
+    {
+        return User::create([
+            'first_name' => $data['first_name'],
+            'last_name' => $data['last_name'],
+            'email' => $data['email'],
+            'password' => bcrypt($data['password']),
+            'role_id' => $data['gender'],
+        ]);
     }
 }

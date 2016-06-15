@@ -12,7 +12,7 @@ class HomeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    { 
         if (!\Auth::user() || \Auth::user()->hasRole('Male') || \Auth::user()->hasRole('Alien')) {
             $users = $this->getUsers(5);
             $topHot = $this->getHotUsers(5);

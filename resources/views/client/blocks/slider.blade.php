@@ -4,10 +4,10 @@
         <div class="short_search_wrapper bg-default col-md-3">
             <div class="search-form">
                 <div class="form-header">
-                    Serious dating with Sweet date <br/>
-                    Your perfect match is just a click away
+                    <center>Serious dating with Sweet date</center>
+                    <hr/>
                 </div>
-                <form action="#" method="POST" class="form-search form-inline">
+                {!! Form::open(['url' => 'search', 'method' => 'POST', 'class' => 'form-search form-inline']) !!}
                     <div class="text-right">
                         <div class="form-group">
                             <label for="I">I am a</label>
@@ -19,7 +19,7 @@
 
                         <div class="form-group">
                             <label for="I">Looking for a</label>
-                            <select name="I" class="form-control">
+                            <select name="looking" class="form-control">
                                 <option value="1"> Man </option>
                                 <option value="2" selected> Woman </option>
                             </select>
@@ -38,14 +38,14 @@
                                 @endfor
                             </select>
                         </div>
-
+                        <br/><a href="/search">Advanced Search</a>
                         <div class="form-group">
                             <button type="submit" class="btn btn-pink">
                                 <i class="fa fa-search"></i> Search
                             </button>
                         </div>
                     </div>
-                </form>
+                {!! Form::close() !!}
             </div>
         </div>
     </div>

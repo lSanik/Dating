@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\City;
 use App\Models\Country;
 use App\Models\Passport;
 use App\Models\Profile;
@@ -227,6 +226,13 @@ class GirlsController extends Controller
         return redirect('/admin/girls');
     }
 
+    private function age($bithday)
+    {
+        $age = Carbon::now()->diffInYears(Carbon::createFromFormat('d/m/Y', $bithday));
+
+        return $age;
+    }
+
     /**
      * Display the specified resource.
      *
@@ -374,12 +380,5 @@ class GirlsController extends Controller
         } else {
             return response('<span class="bg-success">Номер паспорта в базе не обнаружен</span>', 200);
         }
-    }
-
-    private function age($bithday)
-    {
-        $age = Carbon::now()->diffInYears(Carbon::createFromFormat('d/m/Y', $bithday));
-
-        return $age;
     }
 }

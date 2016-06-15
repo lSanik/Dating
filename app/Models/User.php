@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Cache;
 
 class User extends Authenticatable
 {
+    use \HighIdeas\UsersOnline\Traits\UsersOnlineTrait;
+
     protected $table = 'users';
     /**
      * The attributes that are mass assignable.
@@ -42,24 +44,28 @@ class User extends Authenticatable
     protected $primaryKey = 'id';
 
     /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function messagesFrom()
+    {
+        return $this->hasMany('App\Models\Messages', 'from_user', 'id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function messagesTo()
+    {
+        return $this->hasMany('App\Models\Messages', 'to_user', 'id');
+    }
+
+    /**
      * @return mixed
      */
     public function isOnline()
     {
-        return Cache::has('user-is-online-'.$this->id);
+        return Cache::has('user-is-online-' . $this->id);
     }
-
-    /**
-     * @param $need_status
-     *
-     * @return bool
-     */
-    public function checkUserStatus($need_status)
-    {
-        return (strtolower($need_status) == strtolower($this->has_status->name)) ? true : false;
-    }
-
-    /** Social auth */
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
@@ -69,15 +75,7 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\Social', 'user_id');
     }
 
-    /** User roles  */
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function role()
-    {
-        return $this->belongsTo('App\Models\Role', 'role_id', 'id');
-    }
+    /** Social auth */
 
     /**
      * Check user role.
@@ -106,12 +104,22 @@ class User extends Authenticatable
         return false;
     }
 
+    /** User roles  */
+
     /**
      * @return mixed
      */
     private function getUserRole()
     {
         return $this->role()->getResults();
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function role()
+    {
+        return $this->belongsTo('App\Models\Role', 'role_id', 'id');
     }
 
     /**
@@ -124,10 +132,6 @@ class User extends Authenticatable
         return (strtolower($need_role) == strtolower($this->have_role->name)) ? true : false;
     }
 
-    /** End roles */
-
-    /** Cities */
-
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
@@ -136,9 +140,9 @@ class User extends Authenticatable
         return $this->hasOne('App\Models\City', 'id');
     }
 
-    /** End cities */
+    /** End roles */
 
-    /** Presents for partner */
+    /** Cities */
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
@@ -148,7 +152,9 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\Presents', 'partner_id', 'id');
     }
 
-    /** Profile */
+    /** End cities */
+
+    /** Presents for partner */
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
@@ -158,6 +164,8 @@ class User extends Authenticatable
         return $this->hasOne('App\Models\Profile', 'user_id', 'id');
     }
 
+    /** Profile */
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
@@ -165,8 +173,6 @@ class User extends Authenticatable
     {
         return $this->hasOne('App\Models\Passport', 'user_id', 'id');
     }
-
-    /** Tickets Relations */
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
@@ -176,13 +182,7 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\Ticket', 'froms', 'id');
     }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function status()
-    {
-        return $this->belongsTo('App\Models\Status', 'status_id', 'id');
-    }
+    /** Tickets Relations */
 
     /**
      * Ticket Message check status.
@@ -218,6 +218,24 @@ class User extends Authenticatable
         return $this->status()->getResults();
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function status()
+    {
+        return $this->belongsTo('App\Models\Status', 'status_id', 'id');
+    }
+
+    /**
+     * @param $need_status
+     *
+     * @return bool
+     */
+    public function checkUserStatus($need_status)
+    {
+        return (strtolower($need_status) == strtolower($this->has_status->name)) ? true : false;
+    }
+
     /** Chat messages */
 
     /**
@@ -226,5 +244,25 @@ class User extends Authenticatable
     public function chatMessages()
     {
         return $this->hasMany('App\Models\ChatMessages', 'user_id');
+    }
+
+    /** User finance */
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function finance()
+    {
+        return $this->hasMany('App\Models\Finance');
+    }
+
+    public function userPay()
+    {
+        return $this->hasMany('App\Models\Expenses', 'user_id');
+    }
+
+    public function girlHave()
+    {
+        return $this->hasMany('App\Models\Expenses', 'girl_id');
     }
 }

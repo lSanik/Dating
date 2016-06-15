@@ -6,7 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Horoscope extends Model
 {
-    protected $table = 'horoscope';
+    public $timestamps = False;
+    protected $table = 'hcompare';
 
-    private $timestamps = false;
+    public function trans()
+    {
+        return $this->hasMany(HoroscopeTranslate::class);
+    }
 }

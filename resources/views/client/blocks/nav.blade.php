@@ -23,26 +23,7 @@
                 <li><a href="http://facebook.com" target="_blank"><i class="fa fa-facebook"></i></a></li>
                 <li><a href="http://google.com" target="_blank"><i class="fa fa-google"></i></a></li>
                 <li><a href="http://twitter.com" target="_blank"><i class="fa fa-twitter"></i></a></li>
-                <li class="dropdown">
-                    <a href="javascript:;" data-toggle="dropdown" class="dropdown-toggle" aria-expanded="false">
-                        <img src="{{ url('/assets/img/flags/'.App::getLocale().'.png') }}" alt="{{App::getLocale()}}">
-                        <span>{{ trans( 'langs.'.App::getLocale() ) }}</span>
-                        <b class=" fa fa-angle-down"></b>
-                    </a>
-                    <ul role="menu" class="dropdown-menu language-switch">
-                        @foreach( Config::get('app.locales') as $locale )
-                            @if( $locale != App::getLocale() )
-                                <li>
-                                    <a tabindex="-1" href="/{{ $locale }}/{{ substr(Route::getCurrentRoute()->getPath(), 3) }}">
-                                        <img src="{{ url('/assets/img/flags/'.$locale.'.png') }}" alt="{{$locale}}">
-                                        <span> {{ trans('langs.'.$locale) }} </span>
-                                    </a>
-                                </li>
-                            @endif
-                        @endforeach
 
-                    </ul>
-                </li>
             </ul>
         </div>
     </div>

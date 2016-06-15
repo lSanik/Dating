@@ -12,4 +12,6 @@ return [
     'files'     => 'Files to upload',
     'submit'    => 'Save Page',
     'updated'   => 'Page updated',
+    'girls' => 'Girls Online',
+    'mans' => 'Mans Online',
 ];

@@ -4,48 +4,65 @@
 
 @section('content')
     @include('client.blocks.slider')
-<div class="container-fluid content-bg">
+    <div class="content-bg">
     <div class="row map-bg">
         <div class="container">
             <div class="row">
-                <header class="text-center"> <h2>Girls</h2> </header>
+                <div class="col-md-6 girl__title"><h2>Girls Online</h2></div>
+                <div class="col-md-6 navi">
 
-
-                <div class="owl online">
-                    @foreach($users as $g)
-                        <div class="item">
-                            <div class="row text-center" id="photo">
-                                <img src="{{ url('/uploads/girls/avatars/'.$g->avatar) }}"/>
-                            </div>
-                            <hr/>
-                            <div class="row girl-action">
-                                <div class="col-md-4 col-sm-4 col-xs-4 col-lg-4">
-                                    <img src="/assets/img/video.png" alt="Webcam online" title="Webcam online">
-                                </div>
-                                <div class="col-md-4 col-sm-4 col-xs-4 col-lg-4">
-                                    <a href="#chat"><img src="/assets/img/interface.png" alt="Chat now" title="Chat now!"></a>
-                                </div>
-                                <div class="col-md-4 col-sm-4 col-xs-4 col-lg-4">
-                                    <a href="#message"><img src="/assets/img/note.png" alt="Leave a message" title="Leave a message"></a>
-                                </div>
-                            </div>
-                            <hr/>
-
-                            <div class="row text-center g__info">
-                                <div class="col-md-6">{{ $g->first_name }}</div>
-                                <div class="col-md-6"><b>ID </b>: {{ $g->id }} </div>
-                                <div class="col-md-6"> <a href="{{ url('/'.App::getLocale().'/profile/show/'.$g->id) }}" class="btn btn-small btn-primary">{{ trans('buttons.profile') }}</a></div>
-                                <div class="col-md-6"> <button class="btn btn-small btn-success"> Online </button></div>
-                            </div>
-                        </div>
-                    @endforeach
                 </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="owl online">
+                        @foreach($users as $g)
+                            <div class="item">
+                                <div class="row text-center" id="photo">
+                                    <img src="{{ url('/uploads/girls/avatars/'.$g->avatar) }}"/>
+                                </div>
+                                <hr/>
+                                <div class="row girl-action">
+                                    <div class="col-md-4 col-sm-4 col-xs-4 col-lg-4">
+                                        <img src="/assets/img/video.png" alt="Webcam online" title="Webcam online">
+                                    </div>
+                                    <div class="col-md-4 col-sm-4 col-xs-4 col-lg-4">
+                                        <a href="#chat"><img src="/assets/img/interface.png" alt="Chat now"
+                                                             title="Chat now!"></a>
+                                    </div>
+                                    <div class="col-md-4 col-sm-4 col-xs-4 col-lg-4">
+                                        <a href="#message"><img src="/assets/img/note.png" alt="Leave a message"
+                                                                title="Leave a message"></a>
+                                    </div>
+                                </div>
+                                <hr/>
 
+                                <div class="text-center g__info">
+                                    <div class="col-md-6"><a class="girl__name"
+                                                             href="{{ url('/'.App::getLocale().'/profile/show/'.$g->id) }}">{{ $g->first_name }}</a><span>{{ $g->first_name }}</span>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <button class="btn btn-small btn-success"> Online</button>
+                                    </div>
+                                    <div class="col-md-6"><b>ID </b>: {{ $g->id }} </div>
+                                    <div class="col-md-6"><a
+                                                href="{{ url('/'.App::getLocale().'/profile/show/'.$g->id) }}"
+                                                class="btn btn-small btn-primary">{{ trans('buttons.profile') }}</a>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
             </div>
             @if(!empty($topHot))
-            <div class="row">
-                <header class="text-center"> <h2>Top Hot Girls</h2> </header>
+                <div class="row">
+                    <div class="col-md-6 girl__title"><h2>Top Hot Girls</h2></div>
+                    <div class="col-md-6 navi">
 
+                    </div>
+            </div>
+            <div class="row">
                 <div class="owl top-hot">
                     @foreach($topHot as $g)
                         <div class="item">
@@ -104,40 +121,73 @@
 @section('scripts')
     <script src="{{ url('/assets/js/owl.carousel.min.js') }}"></script>
     <script>
+        if ($(window).width() <= '768') {
         $('.online').owlCarousel({
             loop:true,
-            margin:10,
-            nav:false,
+            margin: 5,
+            nav: true,
+            navText: [
+                "<i class='fa fa-chevron-left' aria-hidden='true'></i>",
+                "<i class='fa fa-chevron-right' aria-hidden='true'></i>"
+            ],
             autoplay: false,
             autoplayTimeout: 2500,
             responsive:{
                 0:{
-                    items:1
+                    items: 3
                 },
                 600:{
                     items:3
                 },
                 1000:{
-                    items:5
+                    items: 4
                 }
             }
         });
+        } else if ($(window).width() >= '768') {
+            $('.online').owlCarousel({
+                loop: true,
+                margin: 50,
+                nav: true,
+                navText: [
+                    "<i class='fa fa-chevron-left' aria-hidden='true'></i>",
+                    "<i class='fa fa-chevron-right' aria-hidden='true'></i>"
+                ],
+                autoplay: false,
+                autoplayTimeout: 2500,
+                responsive: {
+                    0: {
+                        items: 3
+                    },
+                    600: {
+                        items: 3
+                    },
+                    1000: {
+                        items: 4
+                    }
+                }
+            });
+        }    
 
         $('.top-hot').owlCarousel({
             loop:true,
-            margin:10,
-            nav:false,
+            margin: 50,
+            nav: true,
+            navText: [
+                "<i class='fa fa-chevron-left' aria-hidden='true'></i>",
+                "<i class='fa fa-chevron-right' aria-hidden='true'></i>"
+            ],
             autoplay: true,
             autoplayTimeout: 3500,
             responsive:{
                 0:{
-                    items:1
+                    items: 3
                 },
                 600:{
                     items:3
                 },
                 1000:{
-                    items:5
+                    items: 4
                 }
             }
         });

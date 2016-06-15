@@ -20,7 +20,7 @@ class SearchController extends Controller
 
     public function index()
     {
-        $selects = (object) [
+        $selects = [
             'eye'       => $this->profile->getEnum('eye'),
             'hair'      => $this->profile->getEnum('hair'),
             'education' => $this->profile->getEnum('education'),
@@ -32,15 +32,20 @@ class SearchController extends Controller
             'drink'     => $this->profile->getEnum('drink'),
         ];
 
+        if (\Auth::user() && \Auth::user()->hasRole('female')) {
+            $users = User::where('role_id', '=', '4')->paginate(10);
+        } else {
+            $users = User::where('role_id', '=', '5')->paginate(10);
+        }
+
         return view('client.search')->with([
             'selects' => $selects,
+            'users' => $users,
         ]);
     }
 
-    public function searchResults(Request $request)
+    public function search(Request $request)
     {
-        return view('client.search')->with([
-
-        ]);
+        dump($request->input());
     }
 }

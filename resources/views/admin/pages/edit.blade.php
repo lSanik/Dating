@@ -99,7 +99,7 @@
         $(function(){
             /** Append data */
 
-            var locale = $('select[name="locale"]').val()
+            var locale = $('select[name="locale"]').val();
 
             var id = '#'+locale;
             var title = $(id + ' .title').text();
