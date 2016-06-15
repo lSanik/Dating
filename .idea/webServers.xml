@@ -3,10 +3,11 @@
   <component name="WebServers">
     <option name="servers">
       <webServer id="445ffe5d-bccf-4625-bc51-b6b656a23f7c" name="Dating" url="http://dating.seoport.com.ua">
-        <fileTransfer host="176.114.1.10" port="21" rootFolder="/www/dating.seoport.com.ua" password="dfd8dfc8dfc1dfc8dfdcdfccdfd3dfc6df91dfccdfc2dfcf" username="seoport">
+        <fileTransfer host="176.114.1.10" port="21" rootFolder="/www/datingdesign.seoport.com.ua" password="dfd8dfc8dfc1dfc8dfdcdfccdfd3dfc6df91dfccdfc2dfcf" username="seoport">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" />
           </advancedOptions>
+          <option name="port" value="21" />
         </fileTransfer>
       </webServer>
     </option>
