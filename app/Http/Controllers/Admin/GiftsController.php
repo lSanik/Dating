@@ -87,7 +87,7 @@ class GiftsController extends Controller
                 'present_id'  => $this->present->id,
                 'locale'      => $locale,
                 'title'       => $request->input('title_'.$locale),
-                'description' => $request->input('description'.$locale),
+                'description' => $request->input('description_'.$locale),
             ]);
         }
 
@@ -144,6 +144,8 @@ class GiftsController extends Controller
             'price' => 'required',
         ]);
 
+        $present = $this->present->find($id);
+
         if ($request->file('image')) {
             $present_file = time().'-'.$request->file('image')->getClientOriginalName();
             $destination = public_path().'/uploads/presents/';
@@ -151,11 +153,11 @@ class GiftsController extends Controller
 
             $oldFile = $this->present->select('image')->first($id);
 
-            $this->removeOldImage($destination.$oldFile->image);
+            $this->removeFile($destination.$oldFile->image);
+
+            $present->image = $present_file;
         }
 
-        $present = $this->present->find($id);
-        $present->image = $present_file;
         $present->price = $request->input('price');
         $present->save();
 
@@ -173,18 +175,6 @@ class GiftsController extends Controller
         return redirect(\App::getLocale().'/admin/gifts');
     }
 
-    private function removeOldImage($path)
-    {
-        if (file_exists($path)) {
-            if (unlink($path)) {
-                return true;
-            } else {
-                return false;
-            }
-        } else {
-            return true;
-        }
-    }
 
     /**
      * Remove the specified resource from storage.
