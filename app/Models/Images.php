@@ -7,11 +7,10 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Images extends Model
 {
-    use SoftDeletes;
 
-    protected $table = 'images';
+    protected $table = 'album_images';
 
-    protected $fillable = ['image'];
+    protected $fillable = ['album_id', 'image'];
 
     public function album()
     {

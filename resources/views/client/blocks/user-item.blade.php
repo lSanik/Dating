@@ -1,11 +1,17 @@
 <div class="item">
     <div class="row text-center photo">
-        <img src="{{ url('/uploads/girls/avatars/'.$u->avatar) }}"/>
+        @if(file_exists(public_path()."/uploads/girls/avatars/".$u->avatar))
+            <img src="{{ url('/uploads/girls/avatars/'.$u->avatar) }}" width="200px" height="250px"/>
+        @elseif(file_exists(public_path()."/uploads/".$u->avatar))
+            <img src="{{ url('/uploads/'.$u->avatar) }}" width="200px" height="250px"/>
+        @endif
     </div>
     <hr/>
     <div class="row girl-action">
         <div class="col-md-4 col-sm-4 col-xs-4 col-lg-4">
-            <img src="/assets/img/video.png" alt="Webcam online" title="Webcam online">
+            @if($u->webcam !== 0)
+                <img src="/assets/img/video.png" alt="Webcam online" title="Webcam online">
+            @endif
         </div>
         <div class="col-md-4 col-sm-4 col-xs-4 col-lg-4">
             <a href="#chat"><img src="/assets/img/interface.png" alt="Chat now" title="Chat now!"></a>

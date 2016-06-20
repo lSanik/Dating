@@ -27,6 +27,7 @@ class User extends Authenticatable
         'state_id',
         'country_id',
         'avatar',
+        'webcam'
     ];
 
     /**
@@ -264,5 +265,16 @@ class User extends Authenticatable
     public function girlHave()
     {
         return $this->hasMany('App\Models\Expenses', 'girl_id');
+    }
+
+    /** Smiles */
+    public function toSmile()
+    {
+        return $this->hasMany('App\Models\Smiles', 'to');
+    }
+
+    public function fromSmile()
+    {
+        return $this->hasMany('App\Models\Smiles', 'from');
     }
 }

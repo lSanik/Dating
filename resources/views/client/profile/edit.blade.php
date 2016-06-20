@@ -4,6 +4,7 @@
     <link href="{{ url('/assets/css/bootstrap-reset.css') }}" rel="stylesheet">
     <link href="{{ url('/assets/css/fileinput.css') }}" rel="stylesheet">
     <link href="{{ url('assets/css/datepicker.css') }}" rel="stylesheet">
+
 @stop
 
 @section('profileContent')
@@ -23,7 +24,7 @@
             {!! Form::open(['url' => '/profile/update/'.$id, 'class' => 'form', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
 
                         <div class="col-md-6">
-                            <h3> Основная информация профиля </h3>
+                            <h3> {{ trans('profile.primary') }}</h3>
                             <div class="form-group">
                                 {!! Form::label('avatar', trans('profile.avatar')) !!}<br/>
                                 <img width="373rem" src="{{ !empty($user->avatar) ? url('/uploads/girls/avatars/'. $user->avatar ) : '' }}" id="preview-avatar">
@@ -216,17 +217,16 @@
             get_cities($id);
         }
 
-        $(window).on('load', function(){
+        jQuery(window).on('load', function(){
 
             get_states( $('select[name="county"]').val() );
 
         });
 
         $(function() {
+            $('.default-date-picker').datepicker();
 
             $('button.status').click(function(){
-
-
 
                 $.ajax({
                     type: 'POST',
@@ -293,10 +293,10 @@
             });
         });
 
-        $(window).on('load', function(){
+        jQuery(window).on('load', function(){
 
             var city_id = $('input[name="city_id"]').val();
 
-        })
+        });
     </script>
 @stop

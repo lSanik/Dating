@@ -13,7 +13,7 @@
                 @endforeach
             </div>
             <div class="col-md-4">
-                @include('client.blocks.users-online')
+
             </div>
         </div>
     </div>

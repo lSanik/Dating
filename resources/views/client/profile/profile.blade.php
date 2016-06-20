@@ -1,8 +1,8 @@
 @extends('client.app')
 
 @section('content')
-    <div class="container-fluid content-bg">
-        <div class="row map-bg">
+    <div class="container-fluid">
+
             <div class="col-md-12">
                 <div class="col-md-2 col-sm-2" id="profileMenu">
                     @if(Auth::user())
@@ -13,7 +13,6 @@
                     @yield('profileContent')
                 </div>
             </div>
-        </div>
     </div>
 @stop
 

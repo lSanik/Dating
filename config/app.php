@@ -182,6 +182,8 @@ return [
         HighIdeas\UsersOnline\UsersOnlineServiceProvider::class,
         HighIdeas\UsersOnline\Providers\UsersOnlineEventServiceProvider::class,
 
+
+
     ],
 
     /*

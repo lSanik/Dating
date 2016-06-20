@@ -46,52 +46,12 @@ Route::group(['middleware' => 'web'], function () {
 
 });
 
-Route::group([ 'prefix' => LaravelLocalization::setLocale(),
-    'middleware' => ['web', 'auth', 'roles'],
-    'roles' => ['Male', 'Female']
-], function(){
-
-    Route::get('chat', 'ChatRoomsController@index');
-    Route::post('message', 'ChatMessagesController@save');
-});
-
-
-/**
- *  Free Routes
- */
-Route::group([  'prefix' => LaravelLocalization::setLocale(),
-                'middleware' => ['web'],
-], function(){
-    Route::get('/','HomeController@index');
-
-    Route::get('contacts', 'ContactsController@show');
-    Route::post('contacts/message', 'ContactsController@sendMessage');
-
-    Route::get('blog', 'BlogController@all');
-    Route::get('blog/{id}', 'BlogController@post');
-
-    Route::get('search', 'SearchController@index');
-    Route::post('search', 'SearchController@search');
-
-    Route::get('users/online', 'UsersController@online');
-
-    Route::get('profile/show/{id}', 'UsersController@show');
-
-    /** Payments */
-    Route::get('pricing', 'PaymentsController@addBalance');
-    Route::get('payments/checkout', 'PaymentsController@checkOut'); //@todo payments gateway
-
-    /** Pages */
-    Route::get('{slug}', 'PagesController@show');
-});
-
 
 Route::group([  'prefix'        => LaravelLocalization::setLocale(),
                 'middleware'    => ['web', 'auth', 'roles'],
                 'roles'         => ['Alien', 'Male', 'Female']
 ], function(){
-    Route::get('antiscram', 'PagesController@antiscram');
-
+    Route::get('chat', 'ChatController@index');
     /** Users profile */
     Route::get('profile/{id}', 'UsersController@edit');
     Route::get('profile/{id}/photo', 'UsersController@profilePhoto');
@@ -102,9 +62,19 @@ Route::group([  'prefix'        => LaravelLocalization::setLocale(),
     Route::get('profile/{id}/finance', 'UsersController@profileFinance');
     Route::get('profile/{id}/message', 'MessagesController@index');
 
+    Route::get('profile/{id}/album/add', 'AlbumController@create');
+    Route::get('profile/{id}/gallery/{aid}', 'AlbumController@show');
+
+    Route::post('profile/{id}/album/add', 'AlbumController@make');
+    //todo edit album
+
     Route::post('profile/{id}/message', 'MessagesController@send');
     Route::post('profile/update/{id}', 'UsersController@update');
 
+    Route::post('remove/album', 'AlbumController@drop');
+    Route::post('remove/image', 'AlbumController@dropImage');
+
+    Route::post('wink', 'SmilesController@sendSmile');
 });
 
 
@@ -254,5 +224,35 @@ Route::group([  'prefix' => LaravelLocalization::setLocale().'/admin',
 
 });
 
+
+
+/**
+ *  Free Routes
+ */
+Route::group([  'prefix' => LaravelLocalization::setLocale(),
+    'middleware' => ['web'],
+], function(){
+    Route::get('/','HomeController@index');
+
+    Route::get('contacts', 'ContactsController@show');
+    Route::post('contacts/message', 'ContactsController@sendMessage');
+
+    Route::get('blog', 'BlogController@all');
+    Route::get('blog/{id}', 'BlogController@post');
+
+    Route::get('search', 'SearchController@index');
+    Route::post('search', 'SearchController@search');
+
+    Route::get('users/online', 'UsersController@online');
+
+    Route::get('profile/show/{id}', 'UsersController@show');
+
+    /** Payments */
+    Route::get('pricing', 'PaymentsController@addBalance');
+    Route::get('payments/checkout', 'PaymentsController@checkOut'); //@todo payments gateway
+
+    /** Pages */
+    Route::get('{slug}', 'PagesController@show');
+});
 
 Route::post('sendmessage', 'ChatController@sendMessage');

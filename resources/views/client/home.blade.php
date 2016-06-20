@@ -20,7 +20,9 @@
 
                 <div class="owl online">
                     @foreach($users as $u)
-                        @include('client.blocks.user-item')
+                        @if($u->isOnline())
+                            @include('client.blocks.user-item')
+                        @endif
                     @endforeach
                 </div>
 

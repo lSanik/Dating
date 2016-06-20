@@ -24,21 +24,12 @@ class HomeController extends Controller
         return view('client.home')->with([
             'users'    => $users,
             'topHot'   => $topHot,
-
         ]);
     }
-
-    private function getUsers($roleId)
-    {
-        return User::select(['id', 'first_name', 'avatar'])
-            ->where('role_id', '=', $roleId)
-            ->where('status_id', '=', 1)
-            ->get();
-    }
-
+    
     private function getHotUsers($roleId)
     {
-        return User::select(['id', 'first_name', 'avatar'])
+        return User::select(['id', 'first_name', 'avatar', 'webcam'])
             ->where('role_id', '=', $roleId)
             ->where('status_id', '=', 1)
             ->where('home', '=', 1)

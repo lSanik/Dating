@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\PostTranslation;
 
 class BlogController extends Controller
 {
@@ -29,7 +30,12 @@ class BlogController extends Controller
      */
     public function post($id)
     {
-        $post = Post::findOrFail($id);
+        $post = \DB::table('posts')
+            ->select('posts.id', 'cover_image', 'title', 'body')
+            ->join('post_translation', 'posts.id', '=', 'post_translation.post_id')
+            ->where('locale', '=', \App::getLocale())
+            ->where('posts.id', '=', $id)
+            ->get();
 
         return view('client.blog.post')->with([
             'post' => $post,

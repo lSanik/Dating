@@ -94,5 +94,8 @@ return [
     'antiscram' => 'Anti-Scam Policy',
     'finance'   => 'Finance',
 
-    'empty'     => 'Please fill your profile data'
+    'empty'     => 'Please fill your profile data',
+
+    /** Smiles */
+    'smile'     => 'You have wink from ',
 ];

@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Album;
 use App\Models\Country;
 use App\Models\Messages;
 use App\Models\Profile;
+use App\Models\Session;
+use App\Models\Smiles;
 use App\Models\State;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -30,18 +33,22 @@ class UsersController extends Controller
                 'users.last_name',
                 'users.email',
                 'users.avatar',
+                'users.webcam',
                 'profile.*',
                 'countries.name as country',
                 'cities.name as city')
-            ->join('profile', 'users.id', '=', 'profile.user_id')
+            ->join('profile', 'profile.user_id', '=', 'users.id')
             ->join('countries', 'users.country_id', '=', 'countries.id')
             ->join('cities', 'users.city_id', '=', 'cities.id')
             ->where('users.id', '=', $id)
             ->get();
 
+        $albus = Album::where('user_id', '=', $id)->get();
+
         return view('client.profile.show')->with([
-            'user' => $user,
-            'id'   => $id
+            'user'      => $user,
+            'albums'    => $albus,
+            'id'        => $id
         ]);
     }
 
@@ -54,28 +61,30 @@ class UsersController extends Controller
      */
     public function edit(int $id)
     {
-        $selects = [
-            'gender'    => $this->profile->getEnum('gender'),
-            'eye'       => $this->profile->getEnum('eye'),
-            'hair'      => $this->profile->getEnum('hair'),
-            'education' => $this->profile->getEnum('education'),
-            'kids'      => $this->profile->getEnum('kids'),
-            'want_k'    => $this->profile->getEnum('want_kids'),
-            'family'    => $this->profile->getEnum('family'),
-            'religion'  => $this->profile->getEnum('religion'),
-            'smoke'     => $this->profile->getEnum('smoke'),
-            'drink'     => $this->profile->getEnum('drink'),
-        ];
+        if(\Auth::user()->id == $id){
+            $selects = [
+                'gender'    => $this->profile->getEnum('gender'),
+                'eye'       => $this->profile->getEnum('eye'),
+                'hair'      => $this->profile->getEnum('hair'),
+                'education' => $this->profile->getEnum('education'),
+                'kids'      => $this->profile->getEnum('kids'),
+                'want_k'    => $this->profile->getEnum('want_kids'),
+                'family'    => $this->profile->getEnum('family'),
+                'religion'  => $this->profile->getEnum('religion'),
+                'smoke'     => $this->profile->getEnum('smoke'),
+                'drink'     => $this->profile->getEnum('drink'),
+            ];
 
 
-        return view('client.profile.edit')->with([
-            'user'      => $this->user->find($id),
-            'selects'   => $selects,
-            'countries' => Country::all(),
-            'states'    => State::all(),
-            'id'        => $id,
-
-        ]);
+            return view('client.profile.edit')->with([
+                'user'      => $this->user->find($id),
+                'selects'   => $selects,
+                'countries' => Country::all(),
+                'states'    => State::all(),
+                'id'        => $id,
+            ]);
+        } else
+            return redirect('/'.\App::getLocale().'/profile/show/'.$id);
     }
 
     public function online()
@@ -100,8 +109,11 @@ class UsersController extends Controller
      */
     public function profilePhoto(int $id)
     {
-        return view('client.profile.photos')->with([
+        $albums = Album::where('user_id', '=', $id)->get();
 
+        return view('client.profile.photos')->with([
+            'albums' => $albums,
+            'id' => $id,
         ]);
     }
 
@@ -155,8 +167,14 @@ class UsersController extends Controller
      */
     public function profileSmiles(int $id)
     {
-        return view('client.profile.smiles')->with([
+        $smiles = \DB::table('smiles')
+            ->select('users.id', 'users.first_name')
+            ->join('users', 'users.id', '=', 'smiles.from')
+            ->where('smiles.to', '=', $id)
+            ->get();
 
+        return view('client.profile.smiles')->with([
+            'smiles' => $smiles
         ]);
     }
 
@@ -203,19 +221,40 @@ class UsersController extends Controller
             'first_name' => 'required',
             'second_name'  => 'required',
             'email'      => 'required',
-            'password'   => 'required',
         ]);
+
+        dump($request->input());
+
+        $user = User::find($id);
+
+        if ( $request->file('avatar') ) {
+            $user->avatar = $this->upload($request->file('avatar'));
+        }
+
+        $user->first_name = $request->input('first_name');
+        $user->last_name  = $request->input('second_name');
+        $user->email      = $request->input('email');
+
+        if(!empty($request->input('password')))
+            $user->password   = bcrypt( $request->input('password'));
+
+        $user->phone      = $request->input('phone');
+        $user->country_id = $request->input('county');
+        $user->state_id   = $request->input('state');
+        $user->city_id    = $request->input('city');
+
+        $user->save();
 
         if( empty(Profile::where('user_id', '=', $id)->get()->items) ){
 
             $profile = new Profile();
             $profile->user_id   = $id;
             $profile->gender    = $request->input('gender');
-            $profile->bithday   = $request->input('birthday');
+            $profile->birthday   = new \DateTime($request->input('birthday'));  //check age
             $profile->height    = $request->input('height');
-            $profile->weighht   = $request->input('weight');
+            $profile->weight   = $request->input('weight');
             $profile->eye       = $request->input('eye');
-            $profile->heir      = $request->input('hair');
+            $profile->hair      = $request->input('hair');
             $profile->education = $request->input('education');
             $profile->kids      = $request->input('kids');
             $profile->want_kids = $request->input('want_kids');
@@ -228,11 +267,33 @@ class UsersController extends Controller
             $profile->looking   = $request->input('looking');
             $profile->l_age_start   = $request->input('l_age_start');
             $profile->l_age_stop    = $request->input('l_age_stop');
-            
+            $profile->save();
 
+            return redirect('/'.\App::getLocale().'/profile/show/'.$id);
         } else {
 
-        }
+            $profile = Profile::find($id);
+            $profile->user_id   = $id;
+            $profile->gender    = $request->input('gender');
+            $profile->birthday  = new \DateTime($request->input('birthday'));  //check age
+            $profile->height    = $request->input('height');
+            $profile->weight    = $request->input('weight');
+            $profile->eye       = $request->input('eye');
+            $profile->hair      = $request->input('hair');
+            $profile->education = $request->input('education');
+            $profile->kids      = $request->input('kids');
+            $profile->want_kids = $request->input('want_kids');
+            $profile->family    = $request->input('family');
+            $profile->religion  = $request->input('religion');
+            $profile->smoke     = $request->input('smoke');
+            $profile->drink     = $request->input('drink');
+            $profile->occupation = $request->input('occupation');
+            $profile->about     = $request->input('about');
+            $profile->looking   = $request->input('looking');
+            $profile->l_age_start = $request->input('l_age_start');
+            $profile->l_age_stop = $request->input('l_age_stop');
+            $profile->save();
 
+        }
     }
 }

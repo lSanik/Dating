@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width"/>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title> </title>
 
     <link rel="stylesheet" href="{{ url('/assets/css/bootstrap.css') }}">
@@ -13,6 +14,7 @@
         .warning{
             padding: 20px;
         }
+        .fileinput-upload-button { display: none}
     </style>
 
     @yield('styles')

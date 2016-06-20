@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Album;
+use App\Models\Images;
+use Faker\Provider\Image;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Redirect;
@@ -10,95 +12,90 @@ use Illuminate\Support\Facades\Validator;
 
 class AlbumController extends Controller
 {
-    public function index()
-    {
-        $albums = Album::with('Photos')->get();
 
-        return view('albums.index')->with('albums', $albums);
+
+    public function show($id, $aid)
+    {
+        $photos = Images::where('album_id', '=', $aid)->get();
+
+        return view('client.profile.albums.show')->with([
+            'photos' => $photos,
+            'id'     => $id
+        ]);
     }
 
-    public function getAlbum($id)
+    /**
+     * Create new album
+     *
+     * @param int $id
+     * @return mixed
+     */
+    public function create(int $id)
     {
-        $album = Album::with('Photos')->findOrFail($id);
-
-        return view('albums.album')->with('album', $album);
+        return view('client.profile.albums.create');
     }
 
-    public function getForm()
+    /**
+     * Create and store new album with photos
+     *
+     * @param Request $request
+     * @param $id
+     * @return Redirect
+     */
+    public function make(Request $request, $id)
     {
-        return view('albums.createAlbum');
-    }
+        /**
+         * Make new Album
+         */
+        $album = new Album();
+        $album->name          = $request->input('name');
+        $album->cover_image   = $this->upload($request->file('cover_image'));
+        $album->user_id       = $id;
+        $album->save();
 
-    public function postCreate(Request $request)
-    {
-        $rules = [
-            'name'        => 'required',
-            'cover_image' => 'required|image',
-        ];
+        /**
+         * Load photos
+         */
 
-        $validator = Validator::make($request->all(), $rules);
-
-        if ($validator->fails()) {
-            return Redirect::route('create_albums_form')
-                ->withErrors($validator)
-                ->withInput();
+        foreach ($request->allFiles()['files'] as $file) {
+            $image = new Images();
+            $image->album_id = $album->id;
+            $image->image = $this->upload($file);
+            $image->save();
         }
 
-        $file = $request->file('cover_image');
-        $random_name = str_random(16);
-        $desination_path = '/albums/';
-
-        $extension = $file->getClientOriginalExtension();
-        $filename = $random_name.' _cover'.$extension;
-
-        $uploadSuccess = $request->file('cover_image')
-            ->move($desination_path, $filename);
-
-        $album = Album::create([
-            'name'        => $request->input('name'),
-            'description' => $request->input('description'),
-            'cover_image' => $filename,
-        ]);
-
-        return Redirect::route('show_album', ['id' => $album->id]);
+        return redirect('/'.\App::getLocale().'/profile/'.$id.'/photo');
     }
 
-    public function getDelete($id)
+    /**
+     * Drop photo
+     *
+     * @param Request $request
+     * @return 
+     */
+    public function dropImage(Request $request)
     {
-        $album = Album::findOrFail($id);
-        $album->delete();
+        $image = Images::find($request->input('id'));
+        $this->removeFile('/uploads/'.$image->image);
 
-        return Redirect::route('albums');
+        Images::destroy($request->input('id'));
+        return response('success', 200);
     }
 
-    private function rus2translit($string)
+    /**
+     * Drop album & files
+     *
+     * @param Request $request
+     * @return mixed
+     */
+    public function drop(Request $request)
     {
-        $converter = [
-            'а' => 'a',   'б' => 'b',   'в' => 'v',
-            'г' => 'g',   'д' => 'd',   'е' => 'e',
-            'ё' => 'e',   'ж' => 'zh',  'з' => 'z',
-            'и' => 'i',   'й' => 'y',   'к' => 'k',
-            'л' => 'l',   'м' => 'm',   'н' => 'n',
-            'о' => 'o',   'п' => 'p',   'р' => 'r',
-            'с' => 's',   'т' => 't',   'у' => 'u',
-            'ф' => 'f',   'х' => 'h',   'ц' => 'c',
-            'ч' => 'ch',  'ш' => 'sh',  'щ' => 'sch',
-            'ь' => '\'',  'ы' => 'y',   'ъ' => '\'',
-            'э' => 'e',   'ю' => 'yu',  'я' => 'ya',
+        $images = Images::where('album_id', '=', $request->input('id'));
+        foreach ($images as $i){
+            $this->removeFile('/uploads/'.$i->image);
+        }
 
-            'А' => 'A',   'Б' => 'B',   'В' => 'V',
-            'Г' => 'G',   'Д' => 'D',   'Е' => 'E',
-            'Ё' => 'E',   'Ж' => 'Zh',  'З' => 'Z',
-            'И' => 'I',   'Й' => 'Y',   'К' => 'K',
-            'Л' => 'L',   'М' => 'M',   'Н' => 'N',
-            'О' => 'O',   'П' => 'P',   'Р' => 'R',
-            'С' => 'S',   'Т' => 'T',   'У' => 'U',
-            'Ф' => 'F',   'Х' => 'H',   'Ц' => 'C',
-            'Ч' => 'Ch',  'Ш' => 'Sh',  'Щ' => 'Sch',
-            'Ь' => '\'',  'Ы' => 'Y',   'Ъ' => '\'',
-            'Э' => 'E',   'Ю' => 'Yu',  'Я' => 'Ya',
-        ];
-
-        return strtr($string, $converter);
+        Album::destroy($request->input('id'));
+        return response('success', 200);
     }
 }

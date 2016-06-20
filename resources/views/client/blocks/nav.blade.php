@@ -20,9 +20,6 @@
 
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="http://facebook.com" target="_blank"><i class="fa fa-facebook"></i></a></li>
-                <li><a href="http://google.com" target="_blank"><i class="fa fa-google"></i></a></li>
-                <li><a href="http://twitter.com" target="_blank"><i class="fa fa-twitter"></i></a></li>
                 <li class="dropdown">
                     <a href="javascript:;" data-toggle="dropdown" class="dropdown-toggle" aria-expanded="false">
                         <img src="{{ url('/assets/img/flags/'.App::getLocale().'.png') }}" alt="{{App::getLocale()}}">
@@ -43,6 +40,9 @@
 
                     </ul>
                 </li>
+                <li><a href="http://facebook.com" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                <li><a href="http://google.com" target="_blank"><i class="fa fa-google"></i></a></li>
+                <li><a href="http://twitter.com" target="_blank"><i class="fa fa-twitter"></i></a></li>
             </ul>
         </div>
     </div>
