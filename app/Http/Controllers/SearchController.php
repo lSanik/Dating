@@ -20,7 +20,31 @@ class SearchController extends Controller
 
     public function index()
     {
-        $selects = [
+        return view('client.search')->with([
+            'selects'   => $this->getSelects(),
+            'users'     => $this->getUsers($this->getRole()),
+        ]);
+    }
+
+    public function search(Request $request)
+    {
+        dump($request->input());
+
+        $users = User::where('role_id', '=', $this->getRole())
+            ->where('status_id', '=', 1)
+            ->paginate(20);
+
+        //todo Search
+
+        return view('client.search')->with([
+            'users' => $users,
+            'selects' => $this->getSelects()
+        ]);
+    }
+
+    private function getSelects()
+    {
+        return [
             'eye'       => $this->profile->getEnum('eye'),
             'hair'      => $this->profile->getEnum('hair'),
             'education' => $this->profile->getEnum('education'),
@@ -31,21 +55,5 @@ class SearchController extends Controller
             'smoke'     => $this->profile->getEnum('smoke'),
             'drink'     => $this->profile->getEnum('drink'),
         ];
-
-        if (\Auth::user() && \Auth::user()->hasRole('female')) {
-            $users = User::where('role_id', '=', '4')->paginate(10);
-        } else {
-            $users = User::where('role_id', '=', '5')->paginate(10);
-        }
-
-        return view('client.search')->with([
-            'selects'   => $selects,
-            'users'     => $users,
-        ]);
-    }
-
-    public function search(Request $request)
-    {
-        dump($request->input());
     }
 }

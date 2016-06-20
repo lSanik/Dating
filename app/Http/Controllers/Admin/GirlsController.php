@@ -291,9 +291,36 @@ class GirlsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //@todo Update профиля девушки
+        //@todo Refactor this shit (Single responsibility) lol
 
-        dd($request->input());
+        $user = User::find($id);
+        $profile = Profile::where('user_id', '=', $id)->first();
+
+        $user->first_name = $request->input('first_name');
+        $user->last_name  = $request->input('second_name');
+        $user->password   = bcrypt($request->input('password'));
+        $user->country_id = $request->input('country');
+        $user->state_id   = $request->input('state');
+        $user->city_id    = $request->input('city');
+        $user->save();
+
+        $profile->gender = $request->input('gender');
+        $profile->height = $request->input('height');
+        $profile->weight = $request->input('weight');
+        $profile->eye    = $request->input('eye');
+        $profile->hair   = $request->input('hair');
+        $profile->education = $request->input('education');
+        $profile->kids      = $request->input('kids');
+        $profile->want_kids = $request->input('want_kids');
+        $profile->family    = $request->input('family');
+        $profile->religion  = $request->input('religion');
+        $profile->smoke     = $request->input('smoke');
+        $profile->drink     = $request->input('drink');
+        $profile->occupation = $request->input('occupation');
+        $profile->save();
+
+        \Session::flash('flash_success', trans('flash.success_girl_update'));
+        return redirect()->back();
     }
 
     /**

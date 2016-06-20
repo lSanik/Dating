@@ -48,14 +48,14 @@
                         <h4> {{ trans('search.filter') }} </h4>
                     </div>
                     <div class="form-search">
-                        <div class="form-group">
+                        <!-- div class="form-group">
                             <label for="lan">{{ trans('users.online') }} </label>
                             <select name="lan" class="form-control">
                                 <option value="0">{{ trans('answer.yes') }}</option>
                                 <option value="1">{{ trans('answer.no') }}</option>
                                 <option value="2">{{ trans('answer.nomatter') }}</option>
                             </select>
-                        </div>
+                        </div -->
 
                         <div class="form-group">
                             <label for="eyes">{{ trans('profile.eyes') }}</label>

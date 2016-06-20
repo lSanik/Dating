@@ -147,7 +147,20 @@ class Controller extends BaseController
         return User::select(['id', 'first_name', 'avatar', 'webcam'])
             ->where('role_id', '=', $roleId)
             ->where('status_id', '=', 1)
-            ->get();
+            ->paginate(20);
+    }
+
+    /**
+     * Support method for db requests on users
+     *
+     * @return int
+     */
+    public function getRole()
+    {
+        if( \Auth::user()->hasRole('female') )
+            return 4;
+        else
+            return 5;
     }
 
     /**
