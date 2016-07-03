@@ -145,7 +145,7 @@ class AuthController extends Controller
         if ($user_check || $user_check_email) {
             \Auth::loginUsingId($user_check->user_id);
 
-            return redirect('/home');
+            return redirect('/');
         } else {
             $name = explode(' ', $user->getName());
             $password = substr(str_shuffle('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'), 0, 15);
@@ -153,7 +153,7 @@ class AuthController extends Controller
 
             if ($provider == 'twitter') {
                 $role_id = 6;
-                $email = $user->getName().'@example.com';
+                $email = $user->getName().'@twitter.com';
             } else {
                 if ($user->user['gender'] == 'male') {
                     $role_id = 4;
@@ -178,7 +178,7 @@ class AuthController extends Controller
 
             \Auth::loginUsingId($usr->id);
 
-            return redirect('/home');
+            return redirect('/');
         }
     }
 }

@@ -1,14 +1,13 @@
 @extends('client.profile.profile')
 
 @section('profileContent')
-    @include('client.blocks.flash-warning')
     <div class="col-md-8">
         <div class="messages">
             @foreach($messages as $m)
                 <div class="message">
-                    <div class="photo"><img src="/uploads/girls/avatars/{{ $m->ava }}'}}"></div>
-                    <div class="name"><a href="">{{ $m->name }}</a></div>
-                    <div class="text-left">{{ $m->message }} {{ $m->time }}</div>
+                    <div class="photo"><img src=""></div>
+                    <div class="name"><a href="">From name</a></div>
+                    <div class="text-left">{{ $m->message }}</div>
                 </div>
             @endforeach
         </div>

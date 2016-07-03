@@ -1,48 +1,130 @@
 @extends('client.app')
 
-@section('styles')
-    <link rel="stylesheet" href="{{ url('/assets/css/owl.carousel.css') }}">
-@stop
+
 
 @section('content')
     @include('client.blocks.slider')
-<div class="container-fluid content-bg">
-    <div class="row map-bg">
-        <div class="container">
+<div class="content-bg">
+    <div class="row">
             <div class="row">
-                <header class="text-center">
-                    @if(!Auth::user() || Auth::user()->hasRole('male'))
-                        <h2>{{ trans('pages.girls') }}</h2>
-                    @else
-                        <h2>{{ trans('pages.mans') }}</h2>
-                    @endif
-                </header>
-
-                <div class="owl online">
-                    @foreach($users as $u)
-                        @if($u->isOnline())
-                            @include('client.blocks.user-item')
-                        @endif
-                    @endforeach
-                </div>
-
-            </div>
-            @if( !Auth::user() || Auth::user()->hasRole('male') || Auth::user()->hasRole('alien'))
-                @if(!empty($topHot))
-                    <div class="row">
-                        <header class="text-center"> <h2>Top Hot Girls</h2> </header>
-
-                        <div class="owl top-hot">
-                            @foreach($topHot as $u)
-                                @include('client.blocks.user-item')
-                            @endforeach
-                        </div>
+                <div class="container">
+                    <div class="col-md-6 girl__title">
+                        <h2>
+                            @if(Auth::user() && Auth::user()->hasRole('female'))
+                                Mans
+                            @else
+                                Girls
+                            @endif
+                            Online
+                        </h2>
                     </div>
-                @endif
+                </div>
+            </div>
+	        <div class="">
+                <div class="container">
+	                <div class="owl online">
+	                    @foreach($users as $u)
+                            @if($u->isOnline())
+                                @include('client.blocks.user-item')
+                            @endif
+	                    @endforeach
+	                </div>
+	            </div>
+	        </div>
+            @if(!empty($topHot))
+            <div class="row lightpink">
+                <div class="container">
+                    <div class="col-md-6 girl__title"><h2>Top Hot Girls</h2></div>
+                </div>
+            </div>
+            </div>
+            <div class="row lightpink">
+                <div class="container">
+                    <div class="owl online">
+                        @foreach($topHot as $u)
+                            @include('client.blocks.user-item')
+                        @endforeach
+                    </div>
+                </div>
+            </div>
             @endif
+    </div>
+<!-- Bottom circle -->
+    <div class="container">
+        <div class="col-md-12 round_title">
+            <h3>WE GRUARANTEE YOU'LL FIND THE ONE</h3>
+            <p>Why Should You Trust Us?</p>
         </div>
     </div>
-</div>
+    <div class="container">
+        <div class="col-md-12">
+            <div class="col-md-3 col-sm-6">
+                <div class="round_item_out">
+                    <div class="round_item">
+                        <div class="in_round">
+                            <div class="icon">
+                                <i class="fa fa-camera"></i>
+                            </div>
+                            <p class="vision_text">some text</p>
+                            <p class="hidden_text">
+                            <span>Title</span>
+                                hidden some text
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="round_item_out">
+                    <div class="round_item">
+                        <div class="in_round">
+                            <div class="icon">
+                                <i class="fa fa-camera"></i>
+                            </div>
+                            <p class="vision_text">some text</p>
+                            <p class="hidden_text">
+                            <span>Title</span>
+                                hidden some text
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="round_item_out">
+                    <div class="round_item">
+                        <div class="in_round">
+                            <div class="icon">
+                                <i class="fa fa-camera"></i>
+                            </div>
+                            <p class="vision_text">some text</p>
+                            <p class="hidden_text">
+                            <span>Title</span>
+                                hidden some text
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="round_item_out">
+                    <div class="round_item">
+                        <div class="in_round">
+                            <div class="icon">
+                                <i class="fa fa-camera"></i>
+                            </div>
+                            <p class="vision_text">some text</p>
+                            <p class="hidden_text">
+                            <span>Title</span>
+                                hidden some text
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 <div class="container home-text">
     <header class="text-center"><h1> Top Rated Hot Girls </h1></header>
     <div id="panes">
@@ -59,45 +141,81 @@
 </div>
 @endsection
 
+@section('styles')
+
+    <link rel="stylesheet" href="{{ url('/assets/css/owl.carousel.css') }}">
+@endsection
+
 @section('scripts')
     <script src="{{ url('/assets/js/owl.carousel.min.js') }}"></script>
     <script>
-
+    if ($(window).width() <= '768'){
         $('.online').owlCarousel({
             loop:true,
-            margin:10,
-            nav:false,
+            margin: 5,
+            nav:true,
+            navText: [
+              "<img src='/public/uploads/next.svg'>",
+              "<img src='/public/uploads/next.svg'>"
+            ],
             autoplay: false,
             autoplayTimeout: 2500,
             responsive:{
                 0:{
-                    items:1
+                    items:3
                 },
                 600:{
                     items:3
                 },
                 1000:{
-                    items:5
+                    items:4
                 }
             }
         });
-
+        } else if ($(window).width() >= '768'){
+             $('.online').owlCarousel({
+                loop:true,
+                margin: 50,
+                nav:true,
+                navText: [
+                  "<img src='/public/uploads/next.svg'>",
+                  "<img src='/public/uploads/next.svg'>"
+                ],
+                autoplay: false,
+                autoplayTimeout: 2500,
+                responsive:{
+                    0:{
+                        items:3
+                    },
+                    600:{
+                        items:3
+                    },
+                    1000:{
+                        items:4
+                    }
+                }
+            });
+        }    
 
         $('.top-hot').owlCarousel({
             loop:true,
-            margin:10,
-            nav:false,
+            margin:50,
+            nav:true,
+            navText: [
+              "<img src='/public/uploads/next.svg'>",
+              "<img src='/public/uploads/next.svg'>"
+            ],
             autoplay: true,
             autoplayTimeout: 3500,
             responsive:{
                 0:{
-                    items:1
+                    items:3
                 },
                 600:{
                     items:3
                 },
                 1000:{
-                    items:5
+                    items:4
                 }
             }
         });

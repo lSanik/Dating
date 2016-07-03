@@ -4,8 +4,7 @@
         <div class="short_search_wrapper bg-default col-md-3">
             <div class="search-form">
                 <div class="form-header">
-                    Serious dating with Sweet date <br/>
-                    Your perfect match is just a click away
+                    <center>FIND YOUR TRUE LOVE</center><hr/>
                 </div>
                 {!! Form::open(['url' => 'search', 'method' => 'POST', 'class' => 'form-search form-inline']) !!}
                     <div class="text-right">
@@ -38,11 +37,11 @@
                                 @endfor
                             </select>
                         </div>
-
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-pink">
-                                <i class="fa fa-search"></i> Search
+                        <div class="form-group buttons_adv">
+                            <button type="submit" class="btn btn-white">
+                                <i class="fa fa-search"></i> Find a person
                             </button>
+                            <a href="/search">Advanced Search</a>
                         </div>
                     </div>
                 {!! Form::close() !!}

@@ -157,7 +157,7 @@ class Controller extends BaseController
      */
     public function getRole()
     {
-        if( \Auth::user()->hasRole('female') )
+        if( \Auth::user() && \Auth::user()->hasRole('female') )
             return 4;
         else
             return 5;

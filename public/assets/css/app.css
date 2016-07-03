@@ -23,8 +23,9 @@ header nav{
     text-align: center;
 }
 
-#logo_img{
-    width: 100%;
+#logo_img {
+    width: 100px;
+    margin-bottom: 15px;
 }
 
 #header .login-buttons {
@@ -77,8 +78,8 @@ header nav{
     padding: 0 !important;
 }
 
-.g__info{
-    padding: 0 0 15px 0;
+.g__info {
+    padding: 0;
 }
 
 
@@ -91,8 +92,9 @@ footer .fa{
     font-size: 30px;
 }
 /** Backgrounds */
-.header-bg{
-    background: #0076A3 url('../img/patterns/blue_pattern.gif');
+.header-bg {
+    background: url('/public/uploads/main_img.jpeg');
+    background-repeat: no-repeat;
 }
 
 .content-bg{

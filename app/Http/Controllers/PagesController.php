@@ -19,6 +19,7 @@ class PagesController extends Controller
 
         return view('client.page')->with([
             'page'  => $page,
+            'users' => $this->getUsers(5)
         ]);
     }
 }

@@ -6,37 +6,23 @@
             <div class="col-md-10 col-md-offset-1" id="chat_container">
                 <div class="col-md-12">
                     <div class="col-md-2 bordered" id="users_online">
-                        @foreach($users as $u)
-                            @if($u->isOnline())
-                                <a href="#{{ $u->id }}">
-                                    <div class="user">
-                                        <div class="photo">
-                                            @if(file_exists(public_path()."/uploads/girls/avatars/".$u->avatar))
-                                                <img src="{{ url('/uploads/girls/avatars/'.$u->avatar) }}" width="50%"/>
-                                            @elseif(file_exists(public_path()."/uploads/".$u->avatar))
-                                                <img src="{{ url('/uploads/'.$u->avatar) }}" width="50%"/>
-                                            @endif
-                                        </div>
-                                        <div class="name">
-                                            {{ $u->first_name }}
-                                        </div>
-                                    </div>
-                                </a>
-                            @endif
-                        @endforeach
+
                     </div>
                     <div class="col-md-8" id="center">
-                        <div id="chat_header">
-                            <div class="pull-left">
-                                {{ trans('chat.chat') }}
-                            </div>
-                            <div class="pull-right">
-                                <a href="#" id="start_chat"> Start </a> / <a href="#" id="stop_chat"> Stop </a> | ballance | <div id="time"> 00:00:00 </div>
-                            </div>
-                        </div>
                         <div class="col-md-12 bordered" id="chat_messages_area">
+                            <div id="chat_header">
+                                <div class="pull-left">
+                                    {{ trans('chat.chat') }}
+                                </div>
+                                <div class="pull-right">
+                                    chat start / stop | ballance | time
+                                </div>
+                            </div>
                             <div id="messages">
-
+                                <div class="__item_from"><img width="32px"/>Message 1</div>
+                                <div class="__item_to"><img width="32px"/>Message 2</div>
+                                <div> Lorem Ipsum - це текст-"риба", що використовується в друкарстві та дизайні. Lorem Ipsum є, фактично, стандартною "рибою" аж з XVI сторіччя, коли невідомий друкар взяв шрифтову гранку та склав на ній підбірку зразків шрифтів. "Риба" не тільки успішно пережила п'ять століть, але й прижилася в електронному верстуванні, залишаючись по суті незмінною. Вона популяризувалась в 60-их роках минулого сторіччя завдяки виданню зразків шрифтів Letraset, які містили уривки з Lorem Ipsum, і вдруге - нещодавно завдяки програмам комп'ютерного верстування на кшталт Aldus Pagemaker, які використовували різні версії Lorem Ipsum.</div>
+                                <div> Lorem Ipsum - це текст-"риба", що використовується в друкарстві та дизайні. Lorem Ipsum є, фактично, стандартною "рибою" аж з XVI сторіччя, коли невідомий друкар взяв шрифтову гранку та склав на ній підбірку зразків шрифтів. "Риба" не тільки успішно пережила п'ять століть, але й прижилася в електронному верстуванні, залишаючись по суті незмінною. Вона популяризувалась в 60-их роках минулого сторіччя завдяки виданню зразків шрифтів Letraset, які містили уривки з Lorem Ipsum, і вдруге - нещодавно завдяки програмам комп'ютерного верстування на кшталт Aldus Pagemaker, які використовували різні версії Lorem Ipsum.</div>
                             </div>
                         </div>
                         <div class="col-md-6 text-center bordered" id="chat_send_form">
@@ -51,12 +37,7 @@
                     </div>
                     <div class="col-md-2">
                         <div id="user" class="bordered">
-                            @if(file_exists(public_path()."/uploads/girls/avatars/".$user->avatar))
-                                <img src="{{ url('/uploads/girls/avatars/'.$user->avatar) }}" width="100%"/>
-                            @elseif(file_exists(public_path()."/uploads/".$user->avatar))
-                                <img src="{{ url('/uploads/'.$user->avatar) }}" width="100%"/>
-                            @endif
-                            <h3 class="text-center">{{ $user->first_name }}</h3>
+                            PHOTO
                         </div>
                         <div id="contacts" class="bordered">
                             ACTIVE CONTACTS
@@ -75,7 +56,6 @@
 
         #users_online{
             height: 55vh;
-            overflow-y: auto;
         }
 
         #chat_container{
@@ -85,7 +65,7 @@
         #chat_messages_area{
             height: 55vh;
             background: white;
-            overflow-y: auto;
+
         }
 
         #chat_header{
@@ -102,21 +82,8 @@
             margin: 15px;
         }
 
-        #time {
-            float: right;
-        }
-
-        .photo{
-            float: left;
-        }
-
     </style>
 @stop
 @section('script')
-    <script>
-        $('form').submit(function(e){
-            e.preventDefault();
 
-        });
-    </script>
 @stop
