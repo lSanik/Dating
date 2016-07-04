@@ -3,6 +3,3 @@
 @section('profileContent')
 
 @stop
-/*
-    dsadsa
-*/
