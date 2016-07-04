@@ -218,7 +218,7 @@ return [
         'Password'              => Illuminate\Support\Facades\Password::class,
         'Queue'                 => Illuminate\Support\Facades\Queue::class,
         'Redirect'              => Illuminate\Support\Facades\Redirect::class,
-        'LRedis'                 => Illuminate\Support\Facades\Redis::class,
+        'LRedis'                => Illuminate\Support\Facades\Redis::class,
         'Request'               => Illuminate\Support\Facades\Request::class,
         'Response'              => Illuminate\Support\Facades\Response::class,
         'Route'                 => Illuminate\Support\Facades\Route::class,
@@ -235,7 +235,6 @@ return [
         'Str'                   => Illuminate\Support\Str::class,
         'LaravelLocalization'   => Mcamara\LaravelLocalization\Facades\LaravelLocalization::class,
         'Socialite'             => Laravel\Socialite\Facades\Socialite::class,
-       // 'Activity'  => Kim\Activity\ActivityFacade::class
     ),
 
 ];

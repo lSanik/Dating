@@ -2,11 +2,12 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="445ffe5d-bccf-4625-bc51-b6b656a23f7c" name="Dating" url="http://dating.seoport.com.ua">
-        <fileTransfer host="176.114.1.10" port="21" rootFolder="/www/dating.seoport.com.ua" password="dfd8dfc8dfc1dfc8dfdcdfccdfd3dfc6df91dfccdfc2dfcf" username="seoport">
+      <webServer id="dea42432-9ef4-4db1-80f2-59c1fe73db3f" name="gmc" url="http://getmarriedclub.com">
+        <fileTransfer host="176.114.3.89" port="21" rootFolder="/www/getmarriedclub.com" password="dff3dff9dfc3dffcdfe1dff0dfc9dfe7" username="sanik">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" />
           </advancedOptions>
+          <option name="port" value="21" />
         </fileTransfer>
       </webServer>
     </option>

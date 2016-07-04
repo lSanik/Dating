@@ -22,11 +22,14 @@
 | kernel and includes session state, CSRF protection, and more.
 |
 */
+Route::get('socket', 'socketController@index');
+Route::post('sendmessage', 'socketController@sendMessage');
+Route::get('writemessage', 'socketController@writemessage');
 
 /** Support Routes */
 Route::group(['middleware' => 'web'], function () {
     Route::auth();
-
+    
     Route::get('/social/redirect/{provider}', [
         'as' => 'social.redirect',
         'uses' => 'Auth\AuthController@getSocialRedirect'
@@ -73,6 +76,11 @@ Route::group([  'prefix'        => LaravelLocalization::setLocale(),
 
     Route::post('remove/album', 'AlbumController@drop');
     Route::post('remove/image', 'AlbumController@dropImage');
+
+    /** Videos */
+    Route::get('profile/{id}/video/add', 'VideoController@create');
+
+
 
     Route::post('wink', 'SmilesController@sendSmile');
 });
