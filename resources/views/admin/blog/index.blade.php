@@ -22,39 +22,47 @@
                         </tr>
                     </thead>
                     <tbody>
-                    <?php
-                        $post_title=null;
-                        $post_lang=null;
-                        $post_lang_icon='<div class="lang_icons">';
-                    ?>
-                    @foreach($posts as $post)
-                            @foreach($translation as $tr )
-                                @if ($post->id == $tr->post_id)
-                                    @if($tr->title!=null)
-                                    <?php
-                                        $post_lang_icon.='<img style="padding: 0px 5px 0px 0px; display: inline-block;" src="/assets/img/flags/'.$tr->locale.'.png">';
-                                    ?>
-                                    @else
-                                        <?php
-                                        $post_lang_icon.='<img style="padding: 0px 5px 0px 0px; display: inline-block;opacity:0.3;" src="/assets/img/flags/'.$tr->locale.'.png">';
-                                        ?>
+                        @foreach($posts as $post)
+                            <?php
+                            $post_title=null;
+                            $post_body=null;
+                            $post_lang_icon='<div class="lang_icons">';
+                            ?>
+                            @foreach(\Config::get('app.locales') as $locals)
+                                <?php
+                                $flag_empty=false;
+                                ?>
+                                @foreach($translation as $trans)
+                                    @if ($post->id == $trans->post_id)
+                                        @if($trans["locale"] == $locals)
+                                            @if($trans->title!=null)
+                                                <?php
+                                                $flag_empty=true;
+                                                $post_title=$trans->title;
+                                                $post_body=$trans->body;
+                                                $post_lang_icon.='<img style="padding: 0px 5px 0px 0px; display: inline-block;" src="/assets/img/flags/'.$trans->locale.'.png">';
+                                                ?>
+                                            @endif
+                                        @endif
                                     @endif
+                                @endforeach
+                                @if($flag_empty==false)
+                                    <?php
+                                    $post_lang_icon.='<img style="padding: 0px 5px 0px 0px; display: inline-block;opacity:0.3;" src="/assets/img/flags/'.$locals.'.png">';
+                                    ?>
                                 @endif
                             @endforeach
                         <?php $post_lang_icon.="</div>" ?>
-                            <tr>
-                                <td>{{ str_limit($post->title, 64) }}</td>
-                                <td>{!! str_limit($post->body, 128) !!}</td>
-                                <td>{!! $post_lang_icon !!}
-
-                                </td>
-                                <td class="hidden-xs">
-                                    <a href="{{ url('/blog/'. $post->id ) }}" class="btn btn-success btn-xs" target="_blank"><i class="fa fa-eye"></i> Посмотреть</a>
-                                    <a href="{{ url('/admin/blog/edit/'.$post->id ) }}" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i>Редактировать</a>
-                                    <a href="{{ url('/admin/blog/drop/'.$post->id) }}" class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i>Удалить</a>
-                                </td>
-                            </tr>
-
+                        <tr>
+                            <td>{{ str_limit($post_title, 64) }}</td>
+                            <td>{{ str_limit(strip_tags($post_body), 128) }}</td>                              </td>
+                            <td>{!! $post_lang_icon !!}</td>
+                            <td class="hidden-xs">
+                                <a href="{{ url('/blog/'. $post->id ) }}" class="btn btn-success btn-xs" target="_blank"><i class="fa fa-eye"></i> Посмотреть</a>
+                                <a href="{{ url('/admin/blog/edit/'.$post->id ) }}" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i>Редактировать</a>
+                                <a href="{{ url('/admin/blog/drop/'.$post->id) }}" class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i>Удалить</a>
+                            </td>
+                        </tr>
                         @endforeach
                     </tbody>
                 </table>

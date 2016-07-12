@@ -53,7 +53,7 @@
                                 @foreach( Config::get('app.locales') as $locale )
                                     @if( $locale != App::getLocale() )
                                         <li>
-                                            <a tabindex="-1" href="/{{ $locale }}/{{ substr(Route::getCurrentRoute()->getPath(), 3) }}">
+                                            <a tabindex="-1" href="/{{ str_replace("//","/",$locale.'/'.str_replace(Config::get('app.locales'),'', Request::path())) }}">
                                                 <img src="{{ url('/assets/img/flags/'.$locale.'.png') }}" alt="{{$locale}}">
                                                 <span> {{ trans('langs.'.$locale) }} </span>
                                             </a>

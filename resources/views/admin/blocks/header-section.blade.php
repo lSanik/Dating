@@ -185,7 +185,7 @@
                     <ul role="menu" class="dropdown-menu language-switch">
                         @foreach( Config::get('app.locales') as $locale )
                             @if( $locale != App::getLocale() )
-                                <li><a tabindex="-1" href="/{{ $locale }}/{{ substr(Route::getCurrentRoute()->getPath(), 3) }}"><span> {{ trans('langs.'.$locale) }} </span><img src="{{ url('/assets/img/flags/'.$locale.'.png') }}" alt="{{$locale}}"></a></li>
+                                <li><a tabindex="-1" href="/{{ str_replace("//","/",$locale.'/'.str_replace(Config::get('app.locales'),'', Request::path())) }}"><span> {{ trans('langs.'.$locale) }} </span><img src="{{ url('/assets/img/flags/'.$locale.'.png') }}" alt="{{$locale}}"></a></li>
                             @endif
                         @endforeach
 

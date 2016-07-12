@@ -1,519 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f97d365f-706e-4370-9ac2-0bbdb847f7b2" name="Default" comment="full sync 04.07.16">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.htpasswd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/img/interface.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/girls/avatars/1462879970-СѓРЅС‹Р»С‹Р№ РєРѕС‚.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/girls/avatars/1462880055-Р·Р°РІР°РЅС‚Р°Р¶РµРЅРЅСЏ.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/girls/avatars/1462880210-РЈРЅС‹Р»С‹Р№-РєРѕС‚.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/girls/avatars/1462880895-Р·Р°РІР°РЅС‚Р°Р¶РµРЅРЅСЏ.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/girls/avatars/1462881255-РїР°РЅРґР°-8.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/girls/avatars/1462881314-РїР°РЅРґР°-8.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/girls/avatars/1462881375-РїР°РЅРґР°-8.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/girls/avatars/1462881518-РїР°РЅРґР°-8.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/girls/avatars/1462881614-РїР°РЅРґР°-8.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/girls/avatars/1462882076-РїР°РЅРґР°-8.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/girls/avatars/1462882160-РїР°РЅРґР°-8.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/girls/avatars/1462882235-РїР°РЅРґР°-8.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/girls/avatars/1462882378-РїР°РЅРґР°-8.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/girls/avatars/1462882687-РїР°РЅРґР°-8.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/girls/passports/1462879970-СѓРЅС‹Р»С‹Р№ РєРѕС‚.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/girls/passports/1462880055-Р·Р°РІР°РЅС‚Р°Р¶РµРЅРЅСЏ.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/girls/passports/1462880210-РЈРЅС‹Р»С‹Р№-РєРѕС‚.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/girls/passports/1462881255-РїР°РЅРґР°-8.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/girls/passports/1462881314-РїР°РЅРґР°-8.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/girls/passports/1462881375-РїР°РЅРґР°-8.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/girls/passports/1462881518-РїР°РЅРґР°-8.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/girls/passports/1462881614-РїР°РЅРґР°-8.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/girls/passports/1462882076-РїР°РЅРґР°-8.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/girls/passports/1462882160-РїР°РЅРґР°-8.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/girls/passports/1462882235-РїР°РЅРґР°-8.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/girls/passports/1462882378-РїР°РЅРґР°-8.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/girls/passports/1462882687-РїР°РЅРґР°-8.jpg" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.env.example" afterPath="$PROJECT_DIR$/.env.example" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitattributes" afterPath="$PROJECT_DIR$/.gitattributes" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.htaccess" afterPath="$PROJECT_DIR$/.htaccess" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/Dating.iml" afterPath="$PROJECT_DIR$/.idea/Dating.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/deployment.xml" afterPath="$PROJECT_DIR$/.idea/deployment.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/webServers.xml" afterPath="$PROJECT_DIR$/.idea/webServers.xml" />
+    <list default="true" id="f97d365f-706e-4370-9ac2-0bbdb847f7b2" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.test_patterns" afterPath="$PROJECT_DIR$/.test_patterns" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Console/Commands/Inspire.php" afterPath="$PROJECT_DIR$/app/Console/Commands/Inspire.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Console/Kernel.php" afterPath="$PROJECT_DIR$/app/Console/Kernel.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Events/Event.php" afterPath="$PROJECT_DIR$/app/Events/Event.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Exceptions/Handler.php" afterPath="$PROJECT_DIR$/app/Exceptions/Handler.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/AdminController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/AdminController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/BlogController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/BlogController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/FinanceController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/FinanceController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/GiftsController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/GiftsController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/GirlsController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/GirlsController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/HoroscopeController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/HoroscopeController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/ModeratorController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/ModeratorController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/PagesController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/PagesController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/PartnerController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/PartnerController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/TicketController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/TicketController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/AlbumController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/AlbumController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/PasswordController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/PasswordController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/BlogController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/BlogController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/ChatController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/ChatController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/CityController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/CityController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/ContactsController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/ContactsController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/ImagesController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/ImagesController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/MessagesController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/MessagesController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/PaymentsController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/PaymentsController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/PostsController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/PostsController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/SearchController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/SearchController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/SmilesController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/SmilesController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/StatesController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/StatesController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/UsersController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/UsersController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Kernel.php" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Middleware/Authenticate.php" afterPath="$PROJECT_DIR$/app/Http/Middleware/Authenticate.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Middleware/CheckRole.php" afterPath="$PROJECT_DIR$/app/Http/Middleware/CheckRole.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Middleware/EncryptCookies.php" afterPath="$PROJECT_DIR$/app/Http/Middleware/EncryptCookies.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Middleware/LogLastUserActivity.php" afterPath="$PROJECT_DIR$/app/Http/Middleware/LogLastUserActivity.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Middleware/RedirectIfAuthenticated.php" afterPath="$PROJECT_DIR$/app/Http/Middleware/RedirectIfAuthenticated.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Middleware/VerifyCsrfToken.php" afterPath="$PROJECT_DIR$/app/Http/Middleware/VerifyCsrfToken.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Requests/Request.php" afterPath="$PROJECT_DIR$/app/Http/Requests/Request.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/routes.php" afterPath="$PROJECT_DIR$/app/Http/routes.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Jobs/Job.php" afterPath="$PROJECT_DIR$/app/Jobs/Job.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Listeners/LogSuccessfulLogin.php" afterPath="$PROJECT_DIR$/app/Listeners/LogSuccessfulLogin.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Models/Album.php" afterPath="$PROJECT_DIR$/app/Models/Album.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Models/ChatMessages.php" afterPath="$PROJECT_DIR$/app/Models/ChatMessages.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Models/ChatRoom.php" afterPath="$PROJECT_DIR$/app/Models/ChatRoom.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Models/City.php" afterPath="$PROJECT_DIR$/app/Models/City.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Models/ContacMessages.php" afterPath="$PROJECT_DIR$/app/Models/ContacMessages.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Models/Country.php" afterPath="$PROJECT_DIR$/app/Models/Country.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Models/Expenses.php" afterPath="$PROJECT_DIR$/app/Models/Expenses.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Models/Finance.php" afterPath="$PROJECT_DIR$/app/Models/Finance.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Models/Gifts.php" afterPath="$PROJECT_DIR$/app/Models/Gifts.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Models/Horoscope.php" afterPath="$PROJECT_DIR$/app/Models/Horoscope.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Models/HoroscopeTranslate.php" afterPath="$PROJECT_DIR$/app/Models/HoroscopeTranslate.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Models/Images.php" afterPath="$PROJECT_DIR$/app/Models/Images.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Models/Messages.php" afterPath="$PROJECT_DIR$/app/Models/Messages.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Models/Online.php" afterPath="$PROJECT_DIR$/app/Models/Online.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Models/PageTranslation.php" afterPath="$PROJECT_DIR$/app/Models/PageTranslation.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Models/Pages.php" afterPath="$PROJECT_DIR$/app/Models/Pages.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Models/PagesMedia.php" afterPath="$PROJECT_DIR$/app/Models/PagesMedia.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Models/Passport.php" afterPath="$PROJECT_DIR$/app/Models/Passport.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Models/Post.php" afterPath="$PROJECT_DIR$/app/Models/Post.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Models/PostTranslation.php" afterPath="$PROJECT_DIR$/app/Models/PostTranslation.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Models/Presents.php" afterPath="$PROJECT_DIR$/app/Models/Presents.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Models/PresentsTranslation.php" afterPath="$PROJECT_DIR$/app/Models/PresentsTranslation.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Models/Profile.php" afterPath="$PROJECT_DIR$/app/Models/Profile.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Models/ProfileMedia.php" afterPath="$PROJECT_DIR$/app/Models/ProfileMedia.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Models/Role.php" afterPath="$PROJECT_DIR$/app/Models/Role.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Models/ServicesPrice.php" afterPath="$PROJECT_DIR$/app/Models/ServicesPrice.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Models/Session.php" afterPath="$PROJECT_DIR$/app/Models/Session.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Models/Smiles.php" afterPath="$PROJECT_DIR$/app/Models/Smiles.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Models/Social.php" afterPath="$PROJECT_DIR$/app/Models/Social.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Models/State.php" afterPath="$PROJECT_DIR$/app/Models/State.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Models/Status.php" afterPath="$PROJECT_DIR$/app/Models/Status.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Models/Ticket.php" afterPath="$PROJECT_DIR$/app/Models/Ticket.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Models/TicketReply.php" afterPath="$PROJECT_DIR$/app/Models/TicketReply.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Models/TicketReplyMedia.php" afterPath="$PROJECT_DIR$/app/Models/TicketReplyMedia.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Models/TicketSubjects.php" afterPath="$PROJECT_DIR$/app/Models/TicketSubjects.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Models/TiketMessageMedia.php" afterPath="$PROJECT_DIR$/app/Models/TiketMessageMedia.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Models/User.php" afterPath="$PROJECT_DIR$/app/Models/User.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Models/Why.php" afterPath="$PROJECT_DIR$/app/Models/Why.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" afterPath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" afterPath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Providers/EventServiceProvider.php" afterPath="$PROJECT_DIR$/app/Providers/EventServiceProvider.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" afterPath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/artisan" afterPath="$PROJECT_DIR$/artisan" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bootstrap/app.php" afterPath="$PROJECT_DIR$/bootstrap/app.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bootstrap/autoload.php" afterPath="$PROJECT_DIR$/bootstrap/autoload.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bootstrap/cache/.gitignore" afterPath="$PROJECT_DIR$/bootstrap/cache/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/composer.json" afterPath="$PROJECT_DIR$/composer.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/composer.lock" afterPath="$PROJECT_DIR$/composer.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/app.php" afterPath="$PROJECT_DIR$/config/app.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/auth.php" afterPath="$PROJECT_DIR$/config/auth.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/broadcasting.php" afterPath="$PROJECT_DIR$/config/broadcasting.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/cache.php" afterPath="$PROJECT_DIR$/config/cache.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/compile.php" afterPath="$PROJECT_DIR$/config/compile.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/database.php" afterPath="$PROJECT_DIR$/config/database.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/debugbar.php" afterPath="$PROJECT_DIR$/config/debugbar.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/enum.php" afterPath="$PROJECT_DIR$/config/enum.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/filesystems.php" afterPath="$PROJECT_DIR$/config/filesystems.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/laravellocalization.php" afterPath="$PROJECT_DIR$/config/laravellocalization.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/mail.php" afterPath="$PROJECT_DIR$/config/mail.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/queue.php" afterPath="$PROJECT_DIR$/config/queue.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/services.php" afterPath="$PROJECT_DIR$/config/services.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/session.php" afterPath="$PROJECT_DIR$/config/session.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/view.php" afterPath="$PROJECT_DIR$/config/view.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/.gitignore" afterPath="$PROJECT_DIR$/database/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/factories/ModelFactory.php" afterPath="$PROJECT_DIR$/database/factories/ModelFactory.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_100000_create_password_resets_table.php" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_100000_create_password_resets_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2016_02_19_143634_create_roles_table.php" afterPath="$PROJECT_DIR$/database/migrations/2016_02_19_143634_create_roles_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2016_02_21_182300_create_posts_table.php" afterPath="$PROJECT_DIR$/database/migrations/2016_02_21_182300_create_posts_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2016_02_22_075533_create_sessions_table.php" afterPath="$PROJECT_DIR$/database/migrations/2016_02_22_075533_create_sessions_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2016_02_29_115908_create_profiles_table.php" afterPath="$PROJECT_DIR$/database/migrations/2016_02_29_115908_create_profiles_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2016_02_29_120158_create_passport_table.php" afterPath="$PROJECT_DIR$/database/migrations/2016_02_29_120158_create_passport_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2016_03_01_082231_posts_translation.php" afterPath="$PROJECT_DIR$/database/migrations/2016_03_01_082231_posts_translation.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2016_03_01_135638_countries.php" afterPath="$PROJECT_DIR$/database/migrations/2016_03_01_135638_countries.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2016_03_01_141222_create_states.php" afterPath="$PROJECT_DIR$/database/migrations/2016_03_01_141222_create_states.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2016_03_01_151227_crate_cities_table.php" afterPath="$PROJECT_DIR$/database/migrations/2016_03_01_151227_crate_cities_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2016_03_02_100729_create_status_table.php" afterPath="$PROJECT_DIR$/database/migrations/2016_03_02_100729_create_status_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2016_03_09_104846_create_socials_table.php" afterPath="$PROJECT_DIR$/database/migrations/2016_03_09_104846_create_socials_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2016_03_15_152542_create_presents_table.php" afterPath="$PROJECT_DIR$/database/migrations/2016_03_15_152542_create_presents_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2016_03_15_152844_create_presents_translations_table.php" afterPath="$PROJECT_DIR$/database/migrations/2016_03_15_152844_create_presents_translations_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2016_04_01_153956_create_ticket_support_subjects.php" afterPath="$PROJECT_DIR$/database/migrations/2016_04_01_153956_create_ticket_support_subjects.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2016_04_01_154602_crate_ticket_messages_table.php" afterPath="$PROJECT_DIR$/database/migrations/2016_04_01_154602_crate_ticket_messages_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2016_04_05_145132_create_ticket_reply_messages.php" afterPath="$PROJECT_DIR$/database/migrations/2016_04_05_145132_create_ticket_reply_messages.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2016_04_06_152207_create_servieces_price_table.php" afterPath="$PROJECT_DIR$/database/migrations/2016_04_06_152207_create_servieces_price_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2016_04_13_111210_users_phone_update.php" afterPath="$PROJECT_DIR$/database/migrations/2016_04_13_111210_users_phone_update.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2016_04_14_095103_add_profile_table_fields.php" afterPath="$PROJECT_DIR$/database/migrations/2016_04_14_095103_add_profile_table_fields.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2016_04_19_113757_create_profile_media_table.php" afterPath="$PROJECT_DIR$/database/migrations/2016_04_19_113757_create_profile_media_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2016_04_25_171418_create_table_why.php" afterPath="$PROJECT_DIR$/database/migrations/2016_04_25_171418_create_table_why.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2016_04_26_172529_create_ticket_message_media.php" afterPath="$PROJECT_DIR$/database/migrations/2016_04_26_172529_create_ticket_message_media.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2016_04_26_172554_create_ticket_reply_media.php" afterPath="$PROJECT_DIR$/database/migrations/2016_04_26_172554_create_ticket_reply_media.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2016_05_08_190607_create_chat_rooms.php" afterPath="$PROJECT_DIR$/database/migrations/2016_05_08_190607_create_chat_rooms.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2016_05_08_190635_create_chat_messages_table.php" afterPath="$PROJECT_DIR$/database/migrations/2016_05_08_190635_create_chat_messages_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2016_05_10_135539_add_on_home_check.php" afterPath="$PROJECT_DIR$/database/migrations/2016_05_10_135539_add_on_home_check.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2016_05_10_144853_album.php" afterPath="$PROJECT_DIR$/database/migrations/2016_05_10_144853_album.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2016_05_10_144955_create_album_images.php" afterPath="$PROJECT_DIR$/database/migrations/2016_05_10_144955_create_album_images.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2016_05_10_161726_add_user_on_home.php" afterPath="$PROJECT_DIR$/database/migrations/2016_05_10_161726_add_user_on_home.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2016_05_21_192236_create_static_pages_table.php" afterPath="$PROJECT_DIR$/database/migrations/2016_05_21_192236_create_static_pages_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2016_05_21_195143_create_pages_media_table.php" afterPath="$PROJECT_DIR$/database/migrations/2016_05_21_195143_create_pages_media_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2016_05_21_201119_create_page_translations_table.php" afterPath="$PROJECT_DIR$/database/migrations/2016_05_21_201119_create_page_translations_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2016_05_22_174044_create_contac_messages_table.php" afterPath="$PROJECT_DIR$/database/migrations/2016_05_22_174044_create_contac_messages_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2016_05_23_235148_create_messages_table.php" afterPath="$PROJECT_DIR$/database/migrations/2016_05_23_235148_create_messages_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2016_05_28_192315_create_finances_table.php" afterPath="$PROJECT_DIR$/database/migrations/2016_05_28_192315_create_finances_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2016_05_29_145946_create_expenses_table.php" afterPath="$PROJECT_DIR$/database/migrations/2016_05_29_145946_create_expenses_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2016_06_05_200835_h_dates.php" afterPath="$PROJECT_DIR$/database/migrations/2016_06_05_200835_h_dates.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2016_06_05_213614_HoroscopeCompare.php" afterPath="$PROJECT_DIR$/database/migrations/2016_06_05_213614_HoroscopeCompare.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2016_06_05_214008_create_horoscope_translate_table.php" afterPath="$PROJECT_DIR$/database/migrations/2016_06_05_214008_create_horoscope_translate_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2016_06_20_165446_user_add_webcam.php" afterPath="$PROJECT_DIR$/database/migrations/2016_06_20_165446_user_add_webcam.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2016_06_20_214845_create_smiles_table.php" afterPath="$PROJECT_DIR$/database/migrations/2016_06_20_214845_create_smiles_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2016_06_21_013932_create_gifts_table.php" afterPath="$PROJECT_DIR$/database/migrations/2016_06_21_013932_create_gifts_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/seeds/CitiesSeeder.php" afterPath="$PROJECT_DIR$/database/seeds/CitiesSeeder.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/seeds/CountrySeeder.php" afterPath="$PROJECT_DIR$/database/seeds/CountrySeeder.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/seeds/CountrySeederNew.php" afterPath="$PROJECT_DIR$/database/seeds/CountrySeederNew.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/seeds/DemoCitySeeder.php" afterPath="$PROJECT_DIR$/database/seeds/DemoCitySeeder.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/seeds/HoroscopeSeeder.php" afterPath="$PROJECT_DIR$/database/seeds/HoroscopeSeeder.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/seeds/Role.php" afterPath="$PROJECT_DIR$/database/seeds/Role.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/seeds/ServicePriceSeeder.php" afterPath="$PROJECT_DIR$/database/seeds/ServicePriceSeeder.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/seeds/States.php" afterPath="$PROJECT_DIR$/database/seeds/States.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/seeds/StatusTableSeeder.php" afterPath="$PROJECT_DIR$/database/seeds/StatusTableSeeder.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/seeds/TicketSubjects.php" afterPath="$PROJECT_DIR$/database/seeds/TicketSubjects.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/seeds/UserTableSeeder.php" afterPath="$PROJECT_DIR$/database/seeds/UserTableSeeder.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/seeds/sql/cities.sql" afterPath="$PROJECT_DIR$/database/seeds/sql/cities.sql" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gulpfile.js" afterPath="$PROJECT_DIR$/gulpfile.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/phpunit.xml" afterPath="$PROJECT_DIR$/phpunit.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/.htaccess" afterPath="$PROJECT_DIR$/public/.htaccess" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/css/app.css" afterPath="$PROJECT_DIR$/public/assets/css/app.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/css/bootstrap-fileupload.min.css" afterPath="$PROJECT_DIR$/public/assets/css/bootstrap-fileupload.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/css/bootstrap-reset.css" afterPath="$PROJECT_DIR$/public/assets/css/bootstrap-reset.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/css/bootstrap-theme.css" afterPath="$PROJECT_DIR$/public/assets/css/bootstrap-theme.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/css/bootstrap-theme.min.css" afterPath="$PROJECT_DIR$/public/assets/css/bootstrap-theme.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/css/bootstrap-touchspin.css" afterPath="$PROJECT_DIR$/public/assets/css/bootstrap-touchspin.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/css/bootstrap.css" afterPath="$PROJECT_DIR$/public/assets/css/bootstrap.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/css/bootstrap.min.css" afterPath="$PROJECT_DIR$/public/assets/css/bootstrap.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/css/datepicker.css" afterPath="$PROJECT_DIR$/public/assets/css/datepicker.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/css/default-theme.css" afterPath="$PROJECT_DIR$/public/assets/css/default-theme.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/css/dropzone.css" afterPath="$PROJECT_DIR$/public/assets/css/dropzone.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/css/fileinput.css" afterPath="$PROJECT_DIR$/public/assets/css/fileinput.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/css/font-awesome.css" afterPath="$PROJECT_DIR$/public/assets/css/font-awesome.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/css/icomoon-weather.css" afterPath="$PROJECT_DIR$/public/assets/css/icomoon-weather.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/css/jquery-ui-1.10.3.css" afterPath="$PROJECT_DIR$/public/assets/css/jquery-ui-1.10.3.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/css/jquery-ui.css" afterPath="$PROJECT_DIR$/public/assets/css/jquery-ui.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/css/owl.carousel.css" afterPath="$PROJECT_DIR$/public/assets/css/owl.carousel.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/css/select2-bootstrap.css" afterPath="$PROJECT_DIR$/public/assets/css/select2-bootstrap.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/css/simple-line-icons.css" afterPath="$PROJECT_DIR$/public/assets/css/simple-line-icons.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/css/style-responsive.css" afterPath="$PROJECT_DIR$/public/assets/css/style-responsive.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/css/style.css" afterPath="$PROJECT_DIR$/public/assets/css/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/fonts/Simple-Line-Icons.dev.svg" afterPath="$PROJECT_DIR$/public/assets/fonts/Simple-Line-Icons.dev.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/fonts/Simple-Line-Icons.svg" afterPath="$PROJECT_DIR$/public/assets/fonts/Simple-Line-Icons.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/fonts/fontawesome-webfont.svg" afterPath="$PROJECT_DIR$/public/assets/fonts/fontawesome-webfont.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/fonts/glyphicons-halflings-regular.svg" afterPath="$PROJECT_DIR$/public/assets/fonts/glyphicons-halflings-regular.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/fonts/icomoon-weather-demo/Read Me.txt" afterPath="$PROJECT_DIR$/public/assets/fonts/icomoon-weather-demo/Read Me.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/fonts/icomoon-weather-demo/demo-files/demo.css" afterPath="$PROJECT_DIR$/public/assets/fonts/icomoon-weather-demo/demo-files/demo.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/fonts/icomoon-weather-demo/demo-files/demo.js" afterPath="$PROJECT_DIR$/public/assets/fonts/icomoon-weather-demo/demo-files/demo.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/fonts/icomoon-weather-demo/demo.html" afterPath="$PROJECT_DIR$/public/assets/fonts/icomoon-weather-demo/demo.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/fonts/icomoon-weather-demo/fonts/icomoon.svg" afterPath="$PROJECT_DIR$/public/assets/fonts/icomoon-weather-demo/fonts/icomoon.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/fonts/icomoon-weather-demo/selection.json" afterPath="$PROJECT_DIR$/public/assets/fonts/icomoon-weather-demo/selection.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/fonts/icomoon-weather-demo/style.css" afterPath="$PROJECT_DIR$/public/assets/fonts/icomoon-weather-demo/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/fonts/icomoon.svg" afterPath="$PROJECT_DIR$/public/assets/fonts/icomoon.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/angular.min.js" afterPath="$PROJECT_DIR$/public/assets/js/angular.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrap-datepicker.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrap-datepicker.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrap-datepicker/css/datepicker.css" afterPath="$PROJECT_DIR$/public/assets/js/bootstrap-datepicker/css/datepicker.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrap-datepicker/js/bootstrap-datepicker-prev.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrap-datepicker/js/bootstrap-datepicker-prev.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrap-datepicker/js/bootstrap-datepicker.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrap-datepicker/js/bootstrap-datepicker.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrap-datepicker/less/datepicker.less" afterPath="$PROJECT_DIR$/public/assets/js/bootstrap-datepicker/less/datepicker.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/.travis.yml" afterPath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/.travis.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/LICENSE" afterPath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/LICENSE" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/README.md" afterPath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/bower.json" afterPath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/bower.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/build/build.css" afterPath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/build/build.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/build/build.less" afterPath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/build/build.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/build/build_standalone.css" afterPath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/build/build_standalone.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/build/build_standalone.less" afterPath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/build/build_standalone.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/css/datetimepicker-pp.css" afterPath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/css/datetimepicker-pp.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/css/datetimepicker.css" afterPath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/css/datetimepicker.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.bg.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.bg.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.ca.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.ca.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.cs.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.cs.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.da.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.da.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.de.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.de.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.el.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.el.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.es.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.es.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.fi.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.fi.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.fr.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.fr.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.he.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.he.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.hr.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.hr.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.hu.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.hu.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.id.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.id.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.is.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.is.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.it.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.it.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.ja.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.ja.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.kr.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.kr.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.lt.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.lt.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.lv.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.lv.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.ms.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.ms.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.nb.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.nb.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.nl.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.nl.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.pl.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.pl.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.pt-BR.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.pt-BR.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.pt.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.pt.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.ro.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.ro.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.rs-latin.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.rs-latin.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.rs.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.rs.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.ru.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.ru.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.sk.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.sk.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.sl.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.sl.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.sv.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.sv.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.sw.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.sw.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.th.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.th.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.tr.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.tr.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.ua.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.ua.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.uk.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.uk.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-TW.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-TW.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/less/datetimepicker.css" afterPath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/less/datetimepicker.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/less/datetimepicker.less" afterPath="$PROJECT_DIR$/public/assets/js/bootstrap-datetimepicker/less/datetimepicker.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrap-fileinput-master/.gitignore" afterPath="$PROJECT_DIR$/public/assets/js/bootstrap-fileinput-master/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrap-fileinput-master/CHANGE.md" afterPath="$PROJECT_DIR$/public/assets/js/bootstrap-fileinput-master/CHANGE.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrap-fileinput-master/LICENSE.md" afterPath="$PROJECT_DIR$/public/assets/js/bootstrap-fileinput-master/LICENSE.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrap-fileinput-master/README.md" afterPath="$PROJECT_DIR$/public/assets/js/bootstrap-fileinput-master/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrap-fileinput-master/bower.json" afterPath="$PROJECT_DIR$/public/assets/js/bootstrap-fileinput-master/bower.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrap-fileinput-master/composer.json" afterPath="$PROJECT_DIR$/public/assets/js/bootstrap-fileinput-master/composer.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrap-fileinput-master/css/fileinput.css" afterPath="$PROJECT_DIR$/public/assets/js/bootstrap-fileinput-master/css/fileinput.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrap-fileinput-master/css/fileinput.min.css" afterPath="$PROJECT_DIR$/public/assets/js/bootstrap-fileinput-master/css/fileinput.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrap-fileinput-master/js/fileinput.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrap-fileinput-master/js/fileinput.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrap-fileinput-master/js/fileinput.min.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrap-fileinput-master/js/fileinput.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrap-fileinput-master/nuget/Package.nuspec" afterPath="$PROJECT_DIR$/public/assets/js/bootstrap-fileinput-master/nuget/Package.nuspec" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrap-fileinput-master/nuget/build.bat" afterPath="$PROJECT_DIR$/public/assets/js/bootstrap-fileinput-master/nuget/build.bat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrap-wysihtml5/bootstrap-wysihtml5.css" afterPath="$PROJECT_DIR$/public/assets/js/bootstrap-wysihtml5/bootstrap-wysihtml5.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrap-wysihtml5/bootstrap-wysihtml5.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrap-wysihtml5/bootstrap-wysihtml5.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrap-wysihtml5/wysihtml5-0.3.0.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrap-wysihtml5/wysihtml5-0.3.0.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrap-wysihtml5/wysiwyg-color.css" afterPath="$PROJECT_DIR$/public/assets/js/bootstrap-wysihtml5/wysiwyg-color.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrap.min.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrap.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/dropzone.js" afterPath="$PROJECT_DIR$/public/assets/js/dropzone.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/file-input-init.js" afterPath="$PROJECT_DIR$/public/assets/js/file-input-init.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/html5shiv.js" afterPath="$PROJECT_DIR$/public/assets/js/html5shiv.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/jquery-1.11.1.min.js" afterPath="$PROJECT_DIR$/public/assets/js/jquery-1.11.1.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/jquery-ui.min.js" afterPath="$PROJECT_DIR$/public/assets/js/jquery-ui.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/jquery-ui_jquery-ui-1.10.1.custom.min.js" afterPath="$PROJECT_DIR$/public/assets/js/jquery-ui_jquery-ui-1.10.1.custom.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/jquery.nicescroll.js" afterPath="$PROJECT_DIR$/public/assets/js/jquery.nicescroll.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/modernizr.min.js" afterPath="$PROJECT_DIR$/public/assets/js/modernizr.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/owl.carousel.min.js" afterPath="$PROJECT_DIR$/public/assets/js/owl.carousel.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/regions.js" afterPath="$PROJECT_DIR$/public/assets/js/regions.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/respond.min.js" afterPath="$PROJECT_DIR$/public/assets/js/respond.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/scripts.js" afterPath="$PROJECT_DIR$/public/assets/js/scripts.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/spinner-init.js" afterPath="$PROJECT_DIR$/public/assets/js/spinner-init.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/touchspin.js" afterPath="$PROJECT_DIR$/public/assets/js/touchspin.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/vendor/summernote/.gitignore" afterPath="$PROJECT_DIR$/public/assets/vendor/summernote/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/vendor/summernote/.jshintignore" afterPath="$PROJECT_DIR$/public/assets/vendor/summernote/.jshintignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/vendor/summernote/.jshintrc" afterPath="$PROJECT_DIR$/public/assets/vendor/summernote/.jshintrc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/vendor/summernote/.travis.yml" afterPath="$PROJECT_DIR$/public/assets/vendor/summernote/.travis.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/vendor/summernote/dist/summernote-bs2.css" afterPath="$PROJECT_DIR$/public/assets/vendor/summernote/dist/summernote-bs2.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/vendor/summernote/dist/summernote-bs3.css" afterPath="$PROJECT_DIR$/public/assets/vendor/summernote/dist/summernote-bs3.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/vendor/summernote/dist/summernote.js" afterPath="$PROJECT_DIR$/public/assets/vendor/summernote/dist/summernote.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/vendor/summernote/dist/summernote.min.js" afterPath="$PROJECT_DIR$/public/assets/vendor/summernote/dist/summernote.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/vendor/summernote/less/elements.css" afterPath="$PROJECT_DIR$/public/assets/vendor/summernote/less/elements.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/vendor/summernote/less/elements.less" afterPath="$PROJECT_DIR$/public/assets/vendor/summernote/less/elements.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/vendor/summernote/less/summernote.css" afterPath="$PROJECT_DIR$/public/assets/vendor/summernote/less/summernote.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/vendor/summernote/less/summernote.less" afterPath="$PROJECT_DIR$/public/assets/vendor/summernote/less/summernote.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/index.php" afterPath="$PROJECT_DIR$/public/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/robots.txt" afterPath="$PROJECT_DIR$/public/robots.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/web.config" afterPath="$PROJECT_DIR$/public/web.config" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/readme.md" afterPath="$PROJECT_DIR$/readme.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/sass/app.scss" afterPath="$PROJECT_DIR$/resources/assets/sass/app.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/lang/de/auth.php" afterPath="$PROJECT_DIR$/resources/lang/de/auth.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/lang/de/finance_plans.php" afterPath="$PROJECT_DIR$/resources/lang/de/finance_plans.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/lang/de/langs.php" afterPath="$PROJECT_DIR$/resources/lang/de/langs.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/lang/de/localiztion_test.php" afterPath="$PROJECT_DIR$/resources/lang/de/localiztion_test.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/lang/de/pagination.php" afterPath="$PROJECT_DIR$/resources/lang/de/pagination.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/lang/de/passwords.php" afterPath="$PROJECT_DIR$/resources/lang/de/passwords.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/lang/de/profile.php" afterPath="$PROJECT_DIR$/resources/lang/de/profile.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/lang/de/validation.php" afterPath="$PROJECT_DIR$/resources/lang/de/validation.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/lang/en/admin.php" afterPath="$PROJECT_DIR$/resources/lang/en/admin.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/lang/en/answer.php" afterPath="$PROJECT_DIR$/resources/lang/en/answer.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/lang/en/auth.php" afterPath="$PROJECT_DIR$/resources/lang/en/auth.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/lang/en/buttons.php" afterPath="$PROJECT_DIR$/resources/lang/en/buttons.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/lang/en/contacts.php" afterPath="$PROJECT_DIR$/resources/lang/en/contacts.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/lang/en/finance_plans.php" afterPath="$PROJECT_DIR$/resources/lang/en/finance_plans.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/lang/en/home.php" afterPath="$PROJECT_DIR$/resources/lang/en/home.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/lang/en/horoscope.php" afterPath="$PROJECT_DIR$/resources/lang/en/horoscope.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/lang/en/langs.php" afterPath="$PROJECT_DIR$/resources/lang/en/langs.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/lang/en/mail.php" afterPath="$PROJECT_DIR$/resources/lang/en/mail.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/lang/en/nav.php" afterPath="$PROJECT_DIR$/resources/lang/en/nav.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/lang/en/pages.php" afterPath="$PROJECT_DIR$/resources/lang/en/pages.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/lang/en/pagination.php" afterPath="$PROJECT_DIR$/resources/lang/en/pagination.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/lang/en/passwords.php" afterPath="$PROJECT_DIR$/resources/lang/en/passwords.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/lang/en/payments.php" afterPath="$PROJECT_DIR$/resources/lang/en/payments.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/lang/en/profile.php" afterPath="$PROJECT_DIR$/resources/lang/en/profile.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/lang/en/register.php" afterPath="$PROJECT_DIR$/resources/lang/en/register.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/lang/en/search.php" afterPath="$PROJECT_DIR$/resources/lang/en/search.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/lang/en/support.php" afterPath="$PROJECT_DIR$/resources/lang/en/support.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/lang/en/users.php" afterPath="$PROJECT_DIR$/resources/lang/en/users.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/lang/en/validation.php" afterPath="$PROJECT_DIR$/resources/lang/en/validation.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/lang/es/auth.php" afterPath="$PROJECT_DIR$/resources/lang/es/auth.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/lang/es/finance_plans.php" afterPath="$PROJECT_DIR$/resources/lang/es/finance_plans.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/lang/es/langs.php" afterPath="$PROJECT_DIR$/resources/lang/es/langs.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/lang/es/localiztion_test.php" afterPath="$PROJECT_DIR$/resources/lang/es/localiztion_test.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/lang/es/pagination.php" afterPath="$PROJECT_DIR$/resources/lang/es/pagination.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/lang/es/passwords.php" afterPath="$PROJECT_DIR$/resources/lang/es/passwords.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/lang/es/profile.php" afterPath="$PROJECT_DIR$/resources/lang/es/profile.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/lang/es/validation.php" afterPath="$PROJECT_DIR$/resources/lang/es/validation.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/lang/fr/auth.php" afterPath="$PROJECT_DIR$/resources/lang/fr/auth.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/lang/fr/finance_plans.php" afterPath="$PROJECT_DIR$/resources/lang/fr/finance_plans.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/lang/fr/langs.php" afterPath="$PROJECT_DIR$/resources/lang/fr/langs.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/lang/fr/localiztion_test.php" afterPath="$PROJECT_DIR$/resources/lang/fr/localiztion_test.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/lang/fr/pagination.php" afterPath="$PROJECT_DIR$/resources/lang/fr/pagination.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/lang/fr/passwords.php" afterPath="$PROJECT_DIR$/resources/lang/fr/passwords.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/lang/fr/profile.php" afterPath="$PROJECT_DIR$/resources/lang/fr/profile.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/lang/fr/validation.php" afterPath="$PROJECT_DIR$/resources/lang/fr/validation.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/lang/ru/admin.php" afterPath="$PROJECT_DIR$/resources/lang/ru/admin.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/lang/ru/auth.php" afterPath="$PROJECT_DIR$/resources/lang/ru/auth.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/lang/ru/buttons.php" afterPath="$PROJECT_DIR$/resources/lang/ru/buttons.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/lang/ru/finance/plans.php" afterPath="$PROJECT_DIR$/resources/lang/ru/finance/plans.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/lang/ru/finance_plans.php" afterPath="$PROJECT_DIR$/resources/lang/ru/finance_plans.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/lang/ru/finance_plans_text.php" afterPath="$PROJECT_DIR$/resources/lang/ru/finance_plans_text.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/lang/ru/home.php" afterPath="$PROJECT_DIR$/resources/lang/ru/home.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/lang/ru/langs.php" afterPath="$PROJECT_DIR$/resources/lang/ru/langs.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/lang/ru/localiztion_test.php" afterPath="$PROJECT_DIR$/resources/lang/ru/localiztion_test.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/lang/ru/nav.php" afterPath="$PROJECT_DIR$/resources/lang/ru/nav.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/lang/ru/pagination.php" afterPath="$PROJECT_DIR$/resources/lang/ru/pagination.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/lang/ru/passwords.php" afterPath="$PROJECT_DIR$/resources/lang/ru/passwords.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/lang/ru/payments.php" afterPath="$PROJECT_DIR$/resources/lang/ru/payments.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/lang/ru/plans.php" afterPath="$PROJECT_DIR$/resources/lang/ru/plans.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/lang/ru/profile.php" afterPath="$PROJECT_DIR$/resources/lang/ru/profile.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/lang/ru/register.php" afterPath="$PROJECT_DIR$/resources/lang/ru/register.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/lang/ru/status.php" afterPath="$PROJECT_DIR$/resources/lang/ru/status.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/lang/ru/support.php" afterPath="$PROJECT_DIR$/resources/lang/ru/support.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/lang/ru/validation.php" afterPath="$PROJECT_DIR$/resources/lang/ru/validation.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/lang/sp/auth.php" afterPath="$PROJECT_DIR$/resources/lang/sp/auth.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/lang/sp/pagination.php" afterPath="$PROJECT_DIR$/resources/lang/sp/pagination.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/lang/sp/passwords.php" afterPath="$PROJECT_DIR$/resources/lang/sp/passwords.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/lang/sp/validation.php" afterPath="$PROJECT_DIR$/resources/lang/sp/validation.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/blocks/flash-error.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/blocks/flash-error.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/blocks/flash-success.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/blocks/flash-success.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/blocks/header-section.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/blocks/header-section.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/blocks/sidebar-left.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/blocks/sidebar-left.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/blog/create.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/blog/create.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/blog/edit.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/blog/edit.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/blog/index.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/blog/index.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/contacts/unread.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/contacts/unread.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/dashboard.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/dashboard.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/finance/control.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/finance/control.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/finance/index.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/finance/index.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/finance/stat.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/finance/stat.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/horoscope.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/horoscope.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/horoscope/add.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/horoscope/add.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/horoscope/edit.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/horoscope/edit.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/layout.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/layout.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/pages/add.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/pages/add.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/pages/edit.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/pages/edit.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/pages/pages.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/pages/pages.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/presents/create.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/presents/create.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/presents/edit.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/presents/edit.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/presents/index.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/presents/index.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/profile.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/profile.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/profile/create.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/profile/create.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/profile/girls/create.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/profile/girls/create.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/profile/girls/edit.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/profile/girls/edit.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/profile/girls/index.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/profile/girls/index.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/profile/girls/status.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/profile/girls/status.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/profile/index.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/profile/index.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/profile/moderator/create.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/profile/moderator/create.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/profile/moderator/edit.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/profile/moderator/edit.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/profile/moderator/index.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/profile/moderator/index.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/profile/moderator/show.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/profile/moderator/show.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/profile/partners/create.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/profile/partners/create.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/profile/partners/edit.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/profile/partners/edit.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/profile/partners/index.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/profile/partners/index.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/profile/partners/show.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/profile/partners/show.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/ticket/all.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/ticket/all.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/ticket/aside.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/ticket/aside.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/ticket/new.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/ticket/new.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/ticket/show.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/ticket/show.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/albums/addimage.blade.php" afterPath="$PROJECT_DIR$/resources/views/albums/addimage.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/albums/album.blade.php" afterPath="$PROJECT_DIR$/resources/views/albums/album.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/albums/createAlbum.blade.php" afterPath="$PROJECT_DIR$/resources/views/albums/createAlbum.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/albums/index.blade.php" afterPath="$PROJECT_DIR$/resources/views/albums/index.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/auth/add_new_profile.blade.php" afterPath="$PROJECT_DIR$/resources/views/auth/add_new_profile.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/auth/emails/password.blade.php" afterPath="$PROJECT_DIR$/resources/views/auth/emails/password.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/auth/passwords/email.blade.php" afterPath="$PROJECT_DIR$/resources/views/auth/passwords/email.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/auth/passwords/reset.blade.php" afterPath="$PROJECT_DIR$/resources/views/auth/passwords/reset.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/auth/register.blade.php" afterPath="$PROJECT_DIR$/resources/views/auth/register.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/client/app.blade.php" afterPath="$PROJECT_DIR$/resources/views/client/app.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/client/blocks/flash-warning.blade.php" afterPath="$PROJECT_DIR$/resources/views/client/blocks/flash-warning.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/client/blocks/footer.blade.php" afterPath="$PROJECT_DIR$/resources/views/client/blocks/footer.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/client/blocks/header.blade.php" afterPath="$PROJECT_DIR$/resources/views/client/blocks/header.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/client/blocks/nav.blade.php" afterPath="$PROJECT_DIR$/resources/views/client/blocks/nav.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/client/blocks/payment.blade.php" afterPath="$PROJECT_DIR$/resources/views/client/blocks/payment.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/client/blocks/profile-sidebar.blade.php" afterPath="$PROJECT_DIR$/resources/views/client/blocks/profile-sidebar.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/client/blocks/searchSlider.blade.php" afterPath="$PROJECT_DIR$/resources/views/client/blocks/searchSlider.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/client/blocks/slider.blade.php" afterPath="$PROJECT_DIR$/resources/views/client/blocks/slider.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/client/blocks/user-item.blade.php" afterPath="$PROJECT_DIR$/resources/views/client/blocks/user-item.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/client/blog.blade.php" afterPath="$PROJECT_DIR$/resources/views/client/blog.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/client/blog/all.blade.php" afterPath="$PROJECT_DIR$/resources/views/client/blog/all.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/client/chat.blade.php" afterPath="$PROJECT_DIR$/resources/views/client/chat.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/client/contacts.blade.php" afterPath="$PROJECT_DIR$/resources/views/client/contacts.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/client/home.blade.php" afterPath="$PROJECT_DIR$/resources/views/client/home.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/client/payment/checkout.blade.php" afterPath="$PROJECT_DIR$/resources/views/client/payment/checkout.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/client/payment/payment.blade.php" afterPath="$PROJECT_DIR$/resources/views/client/payment/payment.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/client/profile/albums/create.blade.php" afterPath="$PROJECT_DIR$/resources/views/client/profile/albums/create.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/client/profile/albums/show.blade.php" afterPath="$PROJECT_DIR$/resources/views/client/profile/albums/show.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/client/profile/edit.blade.php" afterPath="$PROJECT_DIR$/resources/views/client/profile/edit.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/client/profile/finance.blade.php" afterPath="$PROJECT_DIR$/resources/views/client/profile/finance.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/client/profile/gifts.blade.php" afterPath="$PROJECT_DIR$/resources/views/client/profile/gifts.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/client/profile/mail.blade.php" afterPath="$PROJECT_DIR$/resources/views/client/profile/mail.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/client/profile/messages.blade.php" afterPath="$PROJECT_DIR$/resources/views/client/profile/messages.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/client/profile/photos.blade.php" afterPath="$PROJECT_DIR$/resources/views/client/profile/photos.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/client/profile/profile.blade.php" afterPath="$PROJECT_DIR$/resources/views/client/profile/profile.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/client/profile/show.blade.php" afterPath="$PROJECT_DIR$/resources/views/client/profile/show.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/client/profile/smiles.blade.php" afterPath="$PROJECT_DIR$/resources/views/client/profile/smiles.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/client/profile/users.blade.php" afterPath="$PROJECT_DIR$/resources/views/client/profile/users.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/client/profile/video.blade.php" afterPath="$PROJECT_DIR$/resources/views/client/profile/video.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/client/search.blade.php" afterPath="$PROJECT_DIR$/resources/views/client/search.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/errors/404.blade.php" afterPath="$PROJECT_DIR$/resources/views/errors/404.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/errors/503.blade.php" afterPath="$PROJECT_DIR$/resources/views/errors/503.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/layouts/editor.blade.php" afterPath="$PROJECT_DIR$/resources/views/layouts/editor.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/layouts/layout.blade.php" afterPath="$PROJECT_DIR$/resources/views/layouts/layout.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/layouts/layout_editor.blade.php" afterPath="$PROJECT_DIR$/resources/views/layouts/layout_editor.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server.php" afterPath="$PROJECT_DIR$/server.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/storage/app/.gitignore" afterPath="$PROJECT_DIR$/storage/app/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/storage/app/public/.gitignore" afterPath="$PROJECT_DIR$/storage/app/public/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/storage/debugbar/.gitignore" afterPath="$PROJECT_DIR$/storage/debugbar/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/storage/framework/.gitignore" afterPath="$PROJECT_DIR$/storage/framework/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/storage/framework/cache/.gitignore" afterPath="$PROJECT_DIR$/storage/framework/cache/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/storage/framework/sessions/.gitignore" afterPath="$PROJECT_DIR$/storage/framework/sessions/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/storage/framework/views/.gitignore" afterPath="$PROJECT_DIR$/storage/framework/views/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/storage/logs/.gitignore" afterPath="$PROJECT_DIR$/storage/logs/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/ExampleTest.php" afterPath="$PROJECT_DIR$/tests/ExampleTest.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/TestCase.php" afterPath="$PROJECT_DIR$/tests/TestCase.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/client/blog/post.blade.php" afterPath="$PROJECT_DIR$/resources/views/client/blog/post.blade.php" />
     </list>
     <ignored path="Dating.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -535,34 +35,13 @@
     <option name="SORT_POSITIONED" value="false" />
     <option name="SHOW_TABLE_DETAILS" value="true" />
     <option name="SHOW_EMPTY_GROUPS" value="false" />
-    <PATH>
-      <PATH_ELEMENT>
-        <option name="myItemId" />
-        <option name="myItemType" value="com.intellij.database.view.DatabaseStructure$Root" />
-      </PATH_ELEMENT>
-      <PATH_ELEMENT>
-        <option name="myItemId" value="MySQL - dating@127.0.0.1" />
-        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
-      </PATH_ELEMENT>
-    </PATH>
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
     <favorites_list name="Dating" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="gifts.blade.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/resources/views/client/profile/gifts.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="5" selection-start-line="4" selection-start-column="5" selection-end-line="4" selection-end-column="5" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -580,16 +59,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/Http/Controllers/ChatRoomsController.php" />
-        <option value="$PROJECT_DIR$/server/index.html" />
-        <option value="$PROJECT_DIR$/public/assets/js/regions.js" />
-        <option value="$PROJECT_DIR$/config/database.php" />
-        <option value="$PROJECT_DIR$/resources/views/client/search.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/client/profile/profile.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/client/blocks/profile-sidebar.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/client/blocks/slider.blade.php" />
-        <option value="$PROJECT_DIR$/public/assets/css/app.css" />
-        <option value="$PROJECT_DIR$/resources/views/client/blocks/header.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/client/blocks/footer.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/PagesController.php" />
         <option value="$PROJECT_DIR$/resources/views/client/page.blade.php" />
@@ -597,7 +66,6 @@
         <option value="$PROJECT_DIR$/resources/views/client/home.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/client/blocks/user-item.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/BlogController.php" />
-        <option value="$PROJECT_DIR$/resources/views/client/blog/post.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/client/profile/mail.blade.php" />
         <option value="$PROJECT_DIR$/config/app.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" />
@@ -614,7 +82,6 @@
         <option value="$PROJECT_DIR$/resources/views/client/profile/albums/show.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/client/profile/photos.blade.php" />
         <option value="$PROJECT_DIR$/database/migrations/2016_06_20_214845_create_smiles_table.php" />
-        <option value="$PROJECT_DIR$/app/Http/routes.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/SmilesController.php" />
         <option value="$PROJECT_DIR$/app/Models/Smiles.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/UsersController.php" />
@@ -631,6 +98,18 @@
         <option value="$PROJECT_DIR$/app/Models/Gifts.php" />
         <option value="$PROJECT_DIR$/database/migrations/2016_06_21_013932_create_gifts_table.php" />
         <option value="$PROJECT_DIR$/resources/views/client/profile/gifts.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/client/blog/post.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/routes.php" />
+        <option value="$PROJECT_DIR$/resources/views/client/blocks/header.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/blocks/header-section.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/pages/add.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/pages/edit.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/blog/create.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/PagesController.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/blog/index.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/blog/edit.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/BlogController.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/blog/create.blade — копия.php" />
       </list>
     </option>
   </component>
@@ -679,8 +158,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -701,13 +178,15 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
     <property name="com.intellij.database.dataSource.DataSourceTemplate" value="MySQL" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Font" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="Console.TableResult.DefaultCopyAction" value="SQL Insert Statements" />
     <property name="SearchEverywhereHistoryKey" value="PresentsTr&#9;null&#9;null&#10;Smiles&#9;FILE&#9;file://E:/Dating/app/Models/Smiles.php&#10;horo&#9;FILE&#9;file://E:/Dating/resources/lang/en/horoscope.php" />
@@ -784,7 +263,11 @@
       <workItem from="1467614743605" duration="817000" />
       <workItem from="1467616092352" duration="593000" />
       <workItem from="1467616772605" duration="1549000" />
-      <workItem from="1467619060824" duration="77000" />
+      <workItem from="1467619060824" duration="2999000" />
+      <workItem from="1467878264315" duration="2103000" />
+      <workItem from="1467895351635" duration="3589000" />
+      <workItem from="1467958832414" duration="15587000" />
+      <workItem from="1468217119230" duration="29823000" />
     </task>
     <task id="LOCAL-00001" summary="Users online / start payments">
       <created>1464538037908</created>
@@ -877,38 +360,55 @@
       <option name="project" value="LOCAL" />
       <updated>1467616506112</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="full sync 04.07.16">
+      <created>1467619801183</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1467619801183</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="96743000" />
+    <option name="totallyTimeSpent" value="150767000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="702" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936507" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20921451" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32809773" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3222749" sideWeight="0.51233184" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15332326" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32749563" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1981982" sideWeight="0.48766816" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32930514" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22960725" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.10574018" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1821366" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2609457" sideWeight="0.48766816" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="92" y="92" width="1182" height="502" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32924694" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32872504" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328594" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
@@ -958,127 +458,12 @@
     <option name="LAST_COMMIT_MESSAGE" value="full sync 04.07.16" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources/views/client/profile/mail.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
-          <caret line="38" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ChatRoomsController.php" />
-    <entry file="file://$PROJECT_DIR$/composer.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="694">
-          <caret line="54" column="10" selection-start-line="54" selection-start-column="10" selection-end-line="54" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/app.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="290">
-          <caret line="236" column="74" selection-start-line="236" selection-start-column="74" selection-end-line="236" selection-end-column="74" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/client/blog/post.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="28" selection-start-line="9" selection-start-column="28" selection-end-line="9" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/client/chat.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="41" column="33" selection-start-line="41" selection-start-column="33" selection-end-line="41" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ChatController.php" />
-    <entry file="dbDummy://dbtable:/fbca2632/80c75bc9-4e3f-40bc-936e-a2d3da01ebf3/dating.posts" />
-    <entry file="dbDummy://dbtable:/fbca2632/80c75bc9-4e3f-40bc-936e-a2d3da01ebf3/dating.post_translation" />
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/BlogController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="40" column="28" selection-start-line="40" selection-start-column="28" selection-end-line="40" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/client/profile/albums.php" />
-    <entry file="file://$PROJECT_DIR$/resources/views/client/profile/edit.blade.php" />
-    <entry file="file://$PROJECT_DIR$/database/migrations/2016_05_10_144955_create_album_images.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="5" column="6" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Models/Album.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="14" column="14" selection-start-line="14" selection-start-column="14" selection-end-line="14" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/profile/girls/create.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="94" column="49" selection-start-line="94" selection-start-column="45" selection-end-line="94" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Models/Images.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="10" column="30" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/client/profile/albums/create.blade.php" />
-    <entry file="file://$PROJECT_DIR$/resources/views/client/blocks/nav.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="697">
-          <caret line="41" column="21" selection-start-line="41" selection-start-column="21" selection-end-line="41" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/fbca2632/80c75bc9-4e3f-40bc-936e-a2d3da01ebf3/dating.album" />
-    <entry file="file://$PROJECT_DIR$/resources/views/client/app.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="57" selection-start-line="5" selection-start-column="57" selection-end-line="5" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/client/profile/albums/show.blade.php" />
-    <entry file="file://$PROJECT_DIR$/database/migrations/2016_06_20_214845_create_smiles_table.php" />
-    <entry file="file://$PROJECT_DIR$/resources/views/client/profile/photos.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="34" column="27" selection-start-line="34" selection-start-column="27" selection-end-line="34" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2016_02_29_115908_create_profiles_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-17">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/fbca2632/80c75bc9-4e3f-40bc-936e-a2d3da01ebf3/dating.album_images" />
-    <entry file="file://$PROJECT_DIR$/app/Models/User.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="121">
-          <caret line="258" column="0" selection-start-line="258" selection-start-column="0" selection-end-line="258" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Models/Smiles.php" />
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/SmilesController.php" />
     <entry file="file://$PROJECT_DIR$/resources/views/client/profile/show.blade.php">
       <provider selected="true" editor-type-id="text-editor">
@@ -1091,13 +476,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="121">
           <caret line="73" column="15" selection-start-line="73" selection-start-column="15" selection-end-line="73" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="80" column="24" selection-start-line="80" selection-start-column="24" selection-end-line="80" selection-end-column="24" />
         </state>
       </provider>
     </entry>
@@ -1145,20 +523,6 @@
     </entry>
     <entry file="dbDummy://dbtable:/fbca2632/80c75bc9-4e3f-40bc-936e-a2d3da01ebf3/dating.users" />
     <entry file="dbDummy://dbtable:/fbca2632/80c75bc9-4e3f-40bc-936e-a2d3da01ebf3/dating.profile" />
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="20" column="44" selection-start-line="20" selection-start-column="44" selection-end-line="20" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Controller.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="430">
-          <caret line="129" column="5" selection-start-line="129" selection-start-column="5" selection-end-line="129" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Models/PresentsTranslation.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -1210,10 +574,241 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/database/seeds/StatusTableSeeder.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/seeds/UserTableSeeder.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="37" column="39" selection-start-line="37" selection-start-column="32" selection-end-line="37" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/client/profile/gifts.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="5" selection-start-line="4" selection-start-column="5" selection-end-line="4" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/socketController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-239">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="12" column="7" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="1" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/AdminController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Controller.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="12" column="6" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Models/Passport.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/client/page.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/client/blog/post.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="34" selection-start-line="5" selection-start-column="34" selection-end-line="5" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/app.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/blocks/header-section.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2682">
+          <caret line="187" column="159" selection-start-line="187" selection-start-column="159" selection-end-line="187" selection-end-column="159" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/client/blocks/header.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="236">
+          <caret line="55" column="91" selection-start-line="55" selection-start-column="91" selection-end-line="55" selection-end-column="91" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/client/blog.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="28" selection-start-line="14" selection-start-column="28" selection-end-line="14" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/BlogController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="268">
+          <caret line="40" column="27" selection-start-line="40" selection-start-column="22" selection-end-line="40" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/blog/create.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1620">
+          <caret line="81" column="45" selection-start-line="81" selection-start-column="45" selection-end-line="81" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/pages/add.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1860">
+          <caret line="102" column="11" selection-start-line="102" selection-start-column="11" selection-end-line="102" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Models/Post.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="524">
+          <caret line="111" column="29" selection-start-line="111" selection-start-column="29" selection-end-line="111" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PostsController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="40">
+          <caret line="29" column="35" selection-start-line="29" selection-start-column="35" selection-end-line="29" selection-end-column="35" />
+          <folding>
+            <element signature="e#40#60#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Models/Pages.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Models/PageTranslation.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/blog/edit.blade — копия.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="233">
+          <caret line="594" column="52" selection-start-line="594" selection-start-column="38" selection-end-line="594" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/PagesController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="109" column="32" selection-start-line="109" selection-start-column="32" selection-end-line="109" selection-end-column="32" />
+          <folding>
+            <element signature="e#46#82#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Models/PostTranslation.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="11" column="16" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/pages/edit.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1160">
+          <caret line="58" column="0" selection-start-line="58" selection-start-column="0" selection-end-line="62" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/blog/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="10" column="58" selection-start-line="10" selection-start-column="58" selection-end-line="10" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/blog/create.blade — копия.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="316">
+          <caret line="638" column="73" selection-start-line="638" selection-start-column="73" selection-end-line="638" selection-end-column="73" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/BlogController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3820">
+          <caret line="191" column="13" selection-start-line="191" selection-start-column="13" selection-end-line="191" selection-end-column="13" />
+          <folding>
+            <element signature="e#46#54#0#PHP" expanded="true" />
+            <marker date="1468327929157" expanded="true" signature="2764:2974" placeholder="//..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/blog/edit.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1700">
+          <caret line="5" column="73" selection-start-line="5" selection-start-column="73" selection-end-line="5" selection-end-column="73" />
           <folding />
         </state>
       </provider>

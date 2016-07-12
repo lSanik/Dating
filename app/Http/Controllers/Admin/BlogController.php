@@ -43,6 +43,7 @@ class BlogController extends Controller
         $posts = $this->post->all();
         $translation = $this->trans->all();
 
+
         return view('admin.blog.index')->with([
             'heading'     => $heading,
             'posts'       => $posts,
@@ -76,18 +77,19 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
+
         $rulse = [
             'title' => 'required',
             'body'  => 'required',
+            'locale' => 'required',
         ];
 
-        $fileName = '';
-
+        $image = '';
+        var_dump($request->file());
         if (!empty($request->file())) {
-            $file = $request->file('cover_image');
+            $file = $request->file('image');
             $fileName = time().'-'.$file->getClientOriginalName();
             $destination = public_path().'/uploads/blog';
-
             $file->move($destination, $fileName);
             $this->post->cover_image = $fileName;
         }
@@ -98,21 +100,14 @@ class BlogController extends Controller
         $body = $request->input('body');
 
         foreach ($locales as $key => $locale) {
-            if (!$title[$locale]) {
-                $title[$locale] = null;
+            if ($locale != $request->input('locale')) {
+                $this->trans->post_id   = $this->post->id;
+                $this->trans->locale    = $request->input('locale');
+                $this->trans->title     = $title;
+                $this->trans->body      = $body;
             }
-            //$this->trans->post_id   = $this->post->id;
-            //$this->trans->locale    = $locale;
-            //$this->trans->title     = $title[$locale];
-            //$this->trans->body      = $body[$locale];
-            $this->trans->insert([
-                'post_id' => $this->post->id,
-                'locale'  => $locale,
-                'title'   => $title[$locale],
-                'body'    => $body[$locale],
-            ]);
         }
-
+        $this->trans->save();
         return redirect('/admin/blog');
     }
 
@@ -143,7 +138,6 @@ class BlogController extends Controller
     {
         $post = $this->post->find($id);
         $trans = $this->post->find($id)->postTrans;
-        //dd($trans);
         $heading_text = '';
         foreach ($trans as $ts) {
             if ($ts->locale == App::getLocale()) {
@@ -170,20 +164,17 @@ class BlogController extends Controller
      */
     public function update(Request $request)
     {
-        //@todo - Добить апдейт записи
         $rulse = [
             'id'    => 'required',
             'title' => 'required',
             'body'  => 'required',
+            'locale' => 'required',
         ];
-
         $fileName = '';
-
         if (!empty($request->file())) {
             $file = $request->file('cover_image');
             $fileName = time().'-'.$file->getClientOriginalName();
             $destination = public_path().'/uploads/blog';
-
             $file->move($destination, $fileName);
             $this->post->cover_image = $fileName;
         }
@@ -192,22 +183,25 @@ class BlogController extends Controller
         $this->post->update();
 
         $locales = Config::get('app.locales');
+        $local = $request->input('locale');
         $title = $request->input('title');
         $body = $request->input('body');
         $id = $request->input('id');
-        foreach ($locales as $key => $locale) {
-            if (!$title[$locale]) {
-                $title[$locale] = 'null';
+            if (!$title) {
+                $title = null;
             }
-            $this->trans->where('post_id', '=', $id)->where('locale', '=', $locale)->update([
-                'title' => $title[$locale],
-                'body'  => $body[$locale],
-            ]);
-        }
-
+        $this->trans::updateOrCreate(
+            [
+                'post_id' => $id,
+                'locale' =>  $local
+            ],
+            [
+                'body' => $body,
+                'title' => $title
+            ]
+        );
         return redirect('/admin/blog');
     }
-
     /**
      * Remove the specified resource from storage.
      *
