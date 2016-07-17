@@ -110,10 +110,18 @@ Route::group([  'prefix' => LaravelLocalization::setLocale().'/admin',
 
     Route::post('blog/new', 'Admin\BlogController@store');
     Route::post('blog/update', 'Admin\BlogController@update');
-
     /** Stop Blog Routing */
 
+    /** Start Mailer sender delivery */
+    Route::get('sender', 'Admin\MessageSenderController@index');
+    Route::get('sender/new/{id}', 'Admin\MessageSenderController@create');
 
+    Route::get('sender/edit/{id}','Admin\MessageSenderController@edit');
+    Route::get('sender/drop/{id}', 'Admin\MessageSenderController@destroy');
+
+    Route::post('sender/new', 'Admin\MessageSenderController@store');
+    Route::post('sender/update', 'Admin\MessageSenderController@update');
+    /** End Mailer sender delivery */
 
     /** Start Partners Profile routing */
     Route::get('partners', 'Admin\PartnerController@index');

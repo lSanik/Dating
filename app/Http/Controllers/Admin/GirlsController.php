@@ -134,14 +134,16 @@ class GirlsController extends Controller
                 $destination = public_path().'/uploads/girls/avatars';
                 $file->move($destination, $user_avatar);
             }
+            var_dump($request->allFiles()['pass_photo']);
 
-            foreach ($request->allFiles()['pass_photo'] as $file) {
-                $pass = time().'-'.$file->getClientOriginalName();
-                $destination = public_path().'/uploads/girls/passports';
-                $file->move($destination, $pass);
-                array_push($this->passport_photos, $pass);
+            if(!$request->allFiles()['pass_photo']){
+                foreach ($request->allFiles()['pass_photo'] as $file) {
+                    $pass = time().'-'.$file->getClientOriginalName();
+                    $destination = public_path().'/uploads/girls/passports';
+                    $file->move($destination, $pass);
+                    array_push($this->passport_photos, $pass);
+                }
             }
-
             /*
              * Create user with role female/male
              *
@@ -212,11 +214,13 @@ class GirlsController extends Controller
             $this->profile->save();
 
             /* Passport multi add photos */
-            foreach ($this->passport_photos as $p) {
-                $media = new ProfileMedia();
-                $media->media_key = 'passport';
-                $media->media_value = $p;
-                $this->profile->media()->save($media);
+            if($this->passport_photos){
+                foreach ($this->passport_photos as $p) {
+                    $media = new ProfileMedia();
+                    $media->media_key = 'passport';
+                    $media->media_value = $p;
+                    $this->profile->media()->save($media);
+                }
             }
 
             //@todo Загрузка 5 фотографий вкладка.

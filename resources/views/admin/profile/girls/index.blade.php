@@ -40,6 +40,7 @@
                             <a class="btn btn-success btn-xs"><i class="fa fa-check"></i></a>
                             <a href="{{ url('admin/girl/edit/'.$girl->id) }}" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
                             <a class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
+                            <a data-toggle="tooltip" data-placement="bottom" data-original-title="Рассылка" href="{{ url('admin/sender/new/'.$girl->id) }}" class="btn btn-primary btn-xs"><i class="fa fa-comment-o"></i></a>
                         </td>
                     </tr>
                 @endforeach
