@@ -36,6 +36,15 @@ class Controller extends BaseController
     {
         return \App\Models\Ticket::unread();
     }
+    public static function getConfig($name=null){
+        return \DB::table('options')->select('value')->where('name','=',$name)->get()[0]->value;
+    }
+
+    public static function setConfig($name=null,$value=null){
+        DB::table('options') ->where('name', $name)
+            ->update(['value' => $value]);
+        return true;
+    }
 
     /**
      * @return mixed

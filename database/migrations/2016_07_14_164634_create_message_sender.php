@@ -20,6 +20,12 @@ class CreateMessageSender extends Migration
                 ->on('users')
                 ->onDelete('CASCADE')
                 ->onUpdate('CASCADE');
+            $table->integer('partner_id')->unsigned();
+            $table->foreign('partner_id')
+                ->references('id')
+                ->on('users')
+                ->onDelete('CASCADE')
+                ->onUpdate('CASCADE');
             $table->integer('status')->unsigned();
             $table->string('title');
             $table->string('body');

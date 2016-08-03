@@ -66,7 +66,7 @@
                     <a href="{{ url(App::getLocale().'/admin/finance') }}"> <i class="fa fa-money"></i>Финансовые отчеты</a>
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-envelope-o"></i> Рассылка </a>
+                    <a href="{{ url(App::getLocale().'/admin/sender') }}"><i class="fa fa-envelope-o"></i> Рассылка </a>
                 </li>
                 <li>
                     <a href="{{ url(App::getLocale().'/admin/gifts') }}"><i class="fa fa-gift"></i> Подарки </a>

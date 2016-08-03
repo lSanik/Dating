@@ -114,13 +114,15 @@ Route::group([  'prefix' => LaravelLocalization::setLocale().'/admin',
 
     /** Start Mailer sender delivery */
     Route::get('sender', 'Admin\MessageSenderController@index');
-    Route::get('sender/new/{id}', 'Admin\MessageSenderController@create');
-
+    Route::get('sender/new/{girl_id}', 'Admin\MessageSenderController@create');
     Route::get('sender/edit/{id}','Admin\MessageSenderController@edit');
     Route::get('sender/drop/{id}', 'Admin\MessageSenderController@destroy');
+    Route::get('sender/send/{id}', 'Admin\MessageSenderController@send');
 
-    Route::post('sender/new', 'Admin\MessageSenderController@store');
+    Route::post('sender', 'Admin\MessageSenderController@index');
+    Route::post('sender/store', 'Admin\MessageSenderController@store');
     Route::post('sender/update', 'Admin\MessageSenderController@update');
+    Route::post('sender/ajax', 'Admin\MessageSenderController@ajax');
     /** End Mailer sender delivery */
 
     /** Start Partners Profile routing */
