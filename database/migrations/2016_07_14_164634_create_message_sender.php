@@ -15,21 +15,25 @@ class CreateMessageSender extends Migration
         Schema::create('message_sender', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('girl_id')->unsigned();
+
             $table->foreign('girl_id')
                 ->references('id')
                 ->on('users')
                 ->onDelete('CASCADE')
                 ->onUpdate('CASCADE');
+
             $table->integer('partner_id')->unsigned();
+
             $table->foreign('partner_id')
                 ->references('id')
                 ->on('users')
                 ->onDelete('CASCADE')
                 ->onUpdate('CASCADE');
+
             $table->integer('status')->unsigned();
             $table->string('title');
             $table->string('body');
-            $table->string('filter_data');
+            $table->string('mans_id');
             $table->timestamps();
         });
     }
