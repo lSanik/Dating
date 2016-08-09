@@ -2,13 +2,16 @@
 
 @section('profileContent')
     <div class="row">
+        <div class="hidden">
+            {{ csrf_field() }}
+        </div>
         @foreach($user as $u)
             <div class="avatar col-md-4 col-xs-6"><img src="{{ url('/uploads/girls/avatars/'.$u->avatar) }}" width="100%"/></div>
             <div id="mobile_ver">
                 <div class="col-md-6 col-xs-6"> 
                     <div class="row info mobile_ver">
                         <div class="name text-right">
-                            <header>{{ $u->first_name }} <span class="prifile_id">| ID: {{ $u->uid }} </span>
+                            <header>{{ $u->first_name }} <span class="prifile_id">| ID: <span id="id">{{ $u->uid }}</span> </span>
                             @if( (Auth::user()) && (Auth::user()->hasRole('Female')) )
                                  <i class="fa fa-check" aria-hidden="true"></i> 
                             @endif
@@ -41,7 +44,7 @@
                         </ul>
                     </div>
                     <div class="col-md-6 col-xs-6">
-                        <ul class="mob_info"">
+                        <ul class="mob_info">
                             <li>{{ trans('profile.horoscope') }}: horoscope (Db err)</li>
                             <li>{{ trans('profile.height') }}: {{ $u->weight }}</li>
                             <li>{{ trans('profile.hair') }}: {{ trans('profile.'.$u->hair) }}</li>
@@ -116,6 +119,12 @@
                             </div>
                         </div>
                     </div>
+                    <!-- todo: fix view -->
+                        <div class="col-md-2">
+                            <button name="horoscope" class="btn btn-success">Show horoscope compability</button>
+                            <button name="flp" class="btn btn-success">○	имя + фамилия + телефон </button>
+                            <button name="fle" class="btn btn-success">○	имя + фамилия + email </button>
+                        </div>
                 </div>
                 <div class="row col-md-12">
                     <div>
@@ -158,4 +167,76 @@
         @endforeach
     </div>
 
+@stop
+
+@section('additional_scripts')
+    <script>
+        var $ = jQuery.noConflict();
+
+        $(document).ready(function(){
+            $('button[name="horoscope"]').click(function(){
+               //todo window with information about "money"
+
+                $.ajax({
+                    type: "POST",
+                    url: '{{ url('/horoscope') }}',
+                    data: {girl_id: parseInt($('#id').html()), _token: $('input[name="_token"]').val()},
+                    success: function( response ) {
+                        $('#serviceModal').modal();
+                    },
+                    error: function( response ) {
+                        $('#serviceModal').modal();
+                    }
+                })
+            });
+
+            $('button[name="flp"]').click(function(){
+                //todo window with information about "money"
+
+                $.ajax({
+                    type: "POST",
+                    url: '{{ url('/flp') }}',
+                    data: {girl_id: parseInt($('#id').html()), _token: $('input[name="_token"]').val()},
+                    success: function( response ) {
+                        $('#serviceModal').modal();
+                        $('#serviceModal').find('.modal-body').append(
+                                "<div>" + response.first_name + "</div>" +
+                                "<div>" + response.last_name + "</div>" +
+                                "<div>" + response.phone + "</div>"
+                        );
+                    },
+                    error: function( response ) {
+                        $('#serviceModal').modal();
+                        $('#serviceModal').find('.modal-body').append(response);
+                    }
+                })
+            });
+
+            $('button[name="fle"]').click(function(){
+                //todo window with information about "money"
+
+                $.ajax({
+                    type: "POST",
+                    url: '{{ url('/fle') }}',
+                    data: {girl_id: parseInt($('#id').html()), _token: $('input[name="_token"]').val()},
+                    success: function( response ) {
+                        $('#serviceModal').modal();
+                        $('#serviceModal').find('.modal-body').append(
+                            "<div>" + response.first_name + "</div>" +
+                            "<div>" + response.last_name + "</div>" +
+                            "<div>" + response.email + "</div>"
+                        );
+                    },
+                    error: function( response ) {
+                        $('#serviceModal').modal();
+                        $('#serviceModal').find('.modal-body').append( response );
+                    }
+                })
+            });
+
+        });
+        /**
+         * todo: funciton for appending data to modal
+         */
+    </script>
 @stop

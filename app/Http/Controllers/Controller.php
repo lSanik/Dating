@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Expenses;
 use App\Models\User;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -36,13 +37,24 @@ class Controller extends BaseController
     {
         return \App\Models\Ticket::unread();
     }
-    public static function getConfig($name=null){
+
+    /**
+     * @param null $name
+     * @return mixed
+     */
+    public static function getConfig($name = null){
         return \DB::table('options')->select('value')->where('name','=',$name)->get()[0]->value;
     }
 
-    public static function setConfig($name=null,$value=null){
+    /**
+     * @param null $name
+     * @param null $value
+     * @return bool
+     */
+    public static function setConfig($name = null, $value = null){
         DB::table('options') ->where('name', $name)
             ->update(['value' => $value]);
+        
         return true;
     }
 
@@ -138,7 +150,7 @@ class Controller extends BaseController
     public function getMoney()
     {
         if(\Auth::user() && \Auth::user()->hasRole('male')){
-            return \App\Models\Finance::where('user_id', '=', \Auth::user()->id)->first();
+            return \App\Models\Finance::where('user_id', '=', \Auth::user()->id)->first()->amount;
         } else
             return;
     }
@@ -150,7 +162,7 @@ class Controller extends BaseController
     }
 
     /** Users */
-
+    //todo: move function to User model
     public function getUsers($roleId)
     {
         return User::select(['id', 'first_name', 'avatar', 'webcam'])
@@ -171,6 +183,8 @@ class Controller extends BaseController
         else
             return 5;
     }
+
+   
 
     /**
      * Transliteration

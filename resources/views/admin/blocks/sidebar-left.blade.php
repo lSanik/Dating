@@ -11,97 +11,97 @@
             <li >
                 <a href="{{ url(App::getLocale().'/admin/dashboard') }}">
                     <i class="fa fa-home"></i>
-                    <span>Управление</span>
+                    <span>{{ trans('admin/sidebar-left.control') }}</span>
                 </a>
             </li>
             @if( Auth::User()->hasRole('Owner') )
             <li class="menu-list">
                 <a href="#"><i class="fa fa fa-money"></i>
-                    <span>Финансы</span></a>
+                    <span>{{ trans('admin/sidebar-left.finance') }}</span></a>
                 <ul class="child-list">
-                    <li><a href="{{ url(App::getLocale().'/admin/finance/stat') }}"> Статистика </a></li>
-                    <li><a href="{{ url(App::getLocale().'/admin/finance/control') }}"> Управление  </a></li>
+                    <li><a href="{{ url(App::getLocale().'/admin/finance/stat') }}">{{ trans('admin/sidebar-left.statistics') }}</a></li>
+                    <li><a href="{{ url(App::getLocale().'/admin/finance/control') }}"> {{ trans('admin/sidebar-left.control') }}</a></li>
                 </ul>
             </li>
             @endif
             <li class="">
-                <h3 class="navigation-title">Профили</h3>
+                <h3 class="navigation-title">{{ trans('admin/sidebar-left.profiles') }}</h3>
             </li>
             @if( Auth::User()->hasRole('Owner') )
             <li class="menu-list">
                 <a href=""><i class="fa fa-user-secret"></i>
-                    <span>Партнеры</span></a>
+                    <span>{{ trans('admin/sidebar-left.partners') }}</span></a>
                 <ul class="child-list">
-                    <li><a href="{{ url(App::getLocale().'/admin/partners/') }}"> Все партнеры </a></li>
-                    <li><a href="{{ url(App::getLocale().'/admin/partner/new') }}"> Добавить партнера </a></li>
-                    <li><a href="{{ url(App::getLocale().'/admin/partner/stat') }}"> Статистика по партнерам </a></li>
+                    <li><a href="{{ url(App::getLocale().'/admin/partners/') }}"> {{ trans('admin/sidebar-left.allPartners') }}</a></li>
+                    <li><a href="{{ url(App::getLocale().'/admin/partner/new') }}"> {{ trans('admin/sidebar-left.addPartner') }}</a></li>
+                    <li><a href="{{ url(App::getLocale().'/admin/partner/stat') }}"> {{ trans('admin/sidebar-left.partnersStatistics') }}</a></li>
                 </ul>
             </li>
             <li class="menu-list">
                 <a href=""><i class="fa fa-user"></i>
-                    <span>Модераторы</span></a>
+                    <span>{{ trans('admin/sidebar-left.moderators') }}</span></a>
                 <ul class="child-list">
-                    <li><a href="{{ url(App::getLocale().'/admin/moderators') }}"> Все модераторы </a></li>
-                    <li><a href="{{ url(App::getLocale().'/admin/moderator/new') }}"> Добавить модератора </a></li>
+                    <li><a href="{{ url(App::getLocale().'/admin/moderators') }}"> {{ trans('admin/sidebar-left.allModerators') }}</a></li>
+                    <li><a href="{{ url(App::getLocale().'/admin/moderator/new') }}"> {{ trans('admin/sidebar-left.addModerator') }}</a></li>
                 </ul>
             </li>
             @endif
             <li class="menu-list">
                 <a href=""><i class="fa fa-female "></i>
-                    <span>Анкеты</span></a>
+                    <span>{{ trans('admin/sidebar-left.profiles') }}</span></a>
                 <ul class="child-list">
 
-                    <li><a href="{{ url(App::getLocale().'/admin/girls') }}"> Все анкеты </a></li>
-                    <li><a href="{{ url(App::getLocale().'/admin/girl/new') }}"> Добавить анкету </a></li>
-                    <li><a href="#" data-toggle="modal" data-target="#check"> Проверить наличие анкеты </a></li>
-                    <li><a href="{{ url(App::getLocale().'/admin/girls/active') }}"> Активные </a></li>
-                    <li><a href="{{ url(App::getLocale().'/admin/girls/deactive') }}"> Приостановленные </a></li>
-                    <li><a href="{{ url(App::getLocale().'/admin/girls/dismiss') }}"> Отклоненные </a></li>
-                    <li><a href="{{ url(App::getLocale().'/admin/girls/deleted') }}"> Удаленные </a></li>
-                    <li><a href="{{ url(App::getLocale().'/admin/girls/moderation') }}"> На модерации </a></li>
+                    <li><a href="{{ url(App::getLocale().'/admin/girls') }}"> {{ trans('admin/sidebar-left.allProfiles') }}</a></li>
+                    <li><a href="{{ url(App::getLocale().'/admin/girl/new') }}"> {{ trans('admin/sidebar-left.addProfile') }}</a></li>
+                    <li><a href="#" data-toggle="modal" data-target="#check"> {{ trans('admin/sidebar-left.checkProfile') }}</a></li>
+                    <li><a href="{{ url(App::getLocale().'/admin/girls/active') }}">{{ trans('admin/sidebar-left.active') }}</a></li>
+                    <li><a href="{{ url(App::getLocale().'/admin/girls/deactive') }}"> {{ trans('admin/sidebar-left.deactive') }}</a></li>
+                    <li><a href="{{ url(App::getLocale().'/admin/girls/dismiss') }}"> {{ trans('admin/sidebar-left.dismiss') }}</a></li>
+                    <li><a href="{{ url(App::getLocale().'/admin/girls/deleted') }}"> {{ trans('admin/sidebar-left.deleted') }}</a></li>
+                    <li><a href="{{ url(App::getLocale().'/admin/girls/moderation') }}"> {{ trans('admin/sidebar-left.moderation') }}</a></li>
                 </ul>
             </li>
             @if( Auth::User()->hasRole('Partner'))
                 <li>
-                    <a href="{{ url(App::getLocale().'/admin/finance') }}"> <i class="fa fa-money"></i>Финансовые отчеты</a>
+                    <a href="{{ url(App::getLocale().'/admin/finance') }}"> <i class="fa fa-money"></i>{{ trans('admin/sidebar-left.financeReports') }}</a>
                 </li>
                 <li>
-                    <a href="{{ url(App::getLocale().'/admin/sender') }}"><i class="fa fa-envelope-o"></i> Рассылка </a>
+                    <a href="{{ url(App::getLocale().'/admin/sender') }}"><i class="fa fa-envelope-o"></i> {{ trans('admin/sidebar-left.sender') }}</a>
                 </li>
                 <li>
-                    <a href="{{ url(App::getLocale().'/admin/gifts') }}"><i class="fa fa-gift"></i> Подарки </a>
+                    <a href="{{ url(App::getLocale().'/admin/gifts') }}"><i class="fa fa-gift"></i>{{ trans('admin/sidebar-left.gifts') }}</a>
                 </li>
                 <li>
-                    <a href="{{ url(App::getLocale().'/admin/messages_from_man') }}"> <i class="fa fa-envelope-o"></i>Сообщения от мужчин </a>
+                    <a href="{{ url(App::getLocale().'/admin/messages_from_man') }}"> <i class="fa fa-envelope-o"></i>{{ trans('admin/sidebar-left.messagesFromMan') }}</a>
                 </li>
             @endif
             <li>
-                <a href="{{ url(App::getLocale().'/admin/support') }}"><i class="fa fa-life-ring"></i> Обратная связь </a>
+                <a href="{{ url(App::getLocale().'/admin/support') }}"><i class="fa fa-life-ring"></i> {{ trans('admin/sidebar-left.support') }}</a>
             </li>
             @if( Auth::User()->hasRole('Owner') )
             <li>
-                <h3 class="navigation-title">Контент</h3>
+                <h3 class="navigation-title">{{ trans('admin/sidebar-left.content') }}</h3>
             </li>
             <li class="menu-list"><a href="javascript:;"><i class="fa fa-paper-plane"></i>
-                    <span>Блог </span></a>
+                    <span>{{ trans('admin/sidebar-left.blog') }}</span></a>
                 <ul class="child-list">
-                    <li><a href="{{ url(App::getLocale().'/admin/blog') }}">Все записи</a></li>
-                    <li><a href="{{ url(App::getLocale().'/admin/blog/new') }}">Создать запись</a></li>
+                    <li><a href="{{ url(App::getLocale().'/admin/blog') }}">{{ trans('admin/sidebar-left.all') }}</a></li>
+                    <li><a href="{{ url(App::getLocale().'/admin/blog/new') }}">{{ trans('admin/sidebar-left.new') }}</a></li>
                 </ul>
             </li>
             <li class="menu-list"><a href="javascript:;"><i class="fa fa-paper-plane"></i>
-                    <span>Страницы </span></a>
+                    <span>{{ trans('admin/sidebar-left.pages') }}</span></a>
                 <ul class="child-list">
-                    <li><a href="{{ url(App::getLocale().'/admin/pages') }}">Все страницы</a></li>
-                    <li><a href="{{ url(App::getLocale().'/admin/pages/add') }}">Добавить страницу</a></li>
+                    <li><a href="{{ url(App::getLocale().'/admin/pages') }}">{{ trans('admin/sidebar-left.allPages') }}</a></li>
+                    <li><a href="{{ url(App::getLocale().'/admin/pages/add') }}">{{ trans('admin/sidebar-left.addPage') }}</a></li>
                 </ul>
             </li>
             <li class=""><a href="{{ url(App::getLocale().'/admin/horoscope') }}"><i class="fa fa-codiepie"></i>
-                    <span>Гороскопы </span></a>
+                    <span>{{ trans('admin/sidebar-left.horoscope') }}</span></a>
             </li>
             @endif()
             <li class=""><a href="{{ url(App::getLocale().'/admin/profile/') }}"><i class="fa fa-user-md"></i>
-                    <span>Профиль </span></a>
+                    <span>{{ trans('admin/sidebar-left.profile') }}</span></a>
             </li>
         </ul>
         <!--sidebar nav end-->

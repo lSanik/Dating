@@ -1,20 +1,28 @@
 <?php
 
 return [
-    'payments'    => 'Pricing',
-    'message'     => 'Message',
-    'chat'        => 'Chat',
-    'video'       => 'Video',
-    'photo_album' => 'Photos',
-    'girl_video'  => 'Video',
-    'call'        => 'Call',
+    'payments'    => 'Тарифы',
+    'message'     => 'Сообщение',
+    'chat'        => 'Чат',
+    'video'       => 'Видео',
+    'photo_album' => 'Фото',
+    'girl_video'  => 'Видео',
+    'call'        => 'Звонок',
     'flp'         => 'Open phone',
     'fle'         => 'Open email',
-    'horoscope'   => 'Horoscope',
-    'month'       => 'Month',
+    'horoscope'   => 'Гороскоп',
+    'month'       => 'Месяц',
     'girl_blog'   => 'Girl wall',
 
-    'once'  => 'Once at time when use',
+    'once'  => 'Единоразово при использовании',
+    'minute' => 'За одну минуту',
+    'week'   => 'За одну неделю',
+
+    'add'   => 'Добавить',
+
+    'addCost' => 'Я хочу внести средства на мой аккаунт',
+
+    'notice' => 'Когда вы выслали сообщение...',
 
 
 ];

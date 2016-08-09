@@ -1,4 +1,5 @@
 /vendor
+/webstat
 /node_modules
 /public/storage
 /public/uploads

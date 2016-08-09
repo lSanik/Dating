@@ -3,7 +3,7 @@
         <div class="row text-center">
             <div class="col-md-3 col-sm-6">
                 <div id="menu__f">
-                    <span>Company</span>
+                    <span>{{trans('nav.company')}}</span>
                     <ul class="nav">
                         <li><a href="/{{ App::getLocale() }}/">{{trans('nav.welcome')}}</a></li>
                         <li><a href="/{{ App::getLocale() }}/about">{{trans('nav.about')}}</a></li>
@@ -15,17 +15,17 @@
             </div>
             <div class="col-md-3 col-sm-6">
                 <div id="menu__f">
-                    <span>About us</span>
+                    <span>{{trans('nav.aboutUs')}}</span>
                 </div>
             </div>
             <div class="col-md-3 col-sm-6">
                 <div id="menu__f">
-                    <span>Dating</span>
+                    <span>{{trans('nav.dating')}}</span>
                 </div>
             </div>
             <div class="col-md-3 col-sm-6">
                 <div id="menu__f">
-                <span>Social</span>
+                <span>{{trans('nav.social')}}</span>
                     <ul class="nav">
                         @foreach($pages as $page)
                             <li><a href="{{ $page->slug }}">{{ $page->title }}</a></li>

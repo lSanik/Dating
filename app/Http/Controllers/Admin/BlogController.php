@@ -85,7 +85,7 @@ class BlogController extends Controller
         ];
 
         $image = '';
-        var_dump($request->file());
+        //var_dump($request->file());
         if (!empty($request->file())) {
             $file = $request->file('image');
             $fileName = time().'-'.$file->getClientOriginalName();

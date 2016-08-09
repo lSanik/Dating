@@ -4,29 +4,30 @@
         <div class="short_search_wrapper bg-default col-md-3">
                 <div class="search-form">
                     <div class="form-header">
-                        <center>Serious dating with Sweet date</center> <hr/>
+                        <center>{{ trans('searchTitle.seriousDatingWithSweetDate') }}</center> <hr/>
                     </div>
 
                         <div class="text-right">
                             <div class="form-group">
-                                <label for="I">I am a</label>
+                                <label for="I">{{ trans('searchTitle.iAmA') }}</label>
                                 <select name="I" class="form-control">
-                                    <option value="1" selected> Man </option>
-                                    <option value="2"> Woman </option>
+                                    <option value="4" selected>{{ trans('searchTitle.man') }}</option>
+                                    <option value="5">{{ trans('searchTitle.woman') }}</option>
                                 </select>
                             </div>
 
                             <div class="form-group">
-                                <label for="I">Looking for a</label>
+                                <label for="I">{{ trans('searchTitle.lookingForA') }}</label>
                                 <select name="looking" class="form-control">
-                                    <option value="1"> Man </option>
-                                    <option value="2" selected> Woman </option>
+                                    <option value="4">{{ trans('searchTitle.man1') }}</option>
+                                    <option value="5" selected>{{ trans('searchTitle.woman1') }}</option>
                                 </select>
                             </div>
 
                             <div class="form-group">
-                                <label for="I">Age</label>
+                                <label for="I">{{ trans('searchTitle.age') }}</label>
                                 <select name="age_start" class="form-control">
+									<!--if ($_POST) -->
                                     @for($i = 18; $i < 60; $i++)
                                         <option value="{{ $i }}">{{ $i }}</option>
                                     @endfor
@@ -49,13 +50,47 @@
                     <div class="form-search">
 	                    <div class="row">
 	                        <div class="col-md-3 form-group">
-	                            <label for="lan">{{ trans('users.online') }} </label>
-	                            <select name="lan" class="form-control">
-	                                <option value="0">{{ trans('answer.yes') }}</option>
-	                                <option value="1">{{ trans('answer.no') }}</option>
-	                                <option value="2">{{ trans('answer.nomatter') }}</option>
-	                            </select>
+	                            <label for="is_online">{{ trans('users.online') }} </label>
+	                            <select name="is_online" class="form-control">
+	                                <option value="0">---</option>
+	                                <option value="1">{{ trans('answer.yes') }}</option>
+								</select>
 	                        </div>
+                            <div class="col-md-3 form-group">
+                                <label for="is_avatar">{{ trans('users.photo') }} </label>
+                                <select name="is_avatar" class="form-control">
+                                    <option value="0">---</option>
+                                    <option value="1">{{ trans('answer.yes') }}</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3 form-group">
+                                {!! Form::label('coutry', trans('profile.country')) !!}
+                                <select name="county" class="form-control">
+                                    <option value="false" selected>---</option>
+                                    @foreach($countries as $country)
+                                        <option value="{{ $country->id }}"> {{ $country->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="col-md-3 form-group">
+                                {!! Form::label('user_state_id', trans('profile.state') ) !!}
+                                <select name="user_state_id" class="form-control">
+                                    <option value="false" selected>---</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3 form-group">
+                                {!! Form::label('education', trans('profile.education')) !!}
+                                {!! Form::select('education', $selects['education'], null,['class' => 'form-control']) !!}
+                            </div>
+                            <div class="col-md-3 form-group">
+                                {!! Form::label('height', trans('profile.height') ) !!}
+                                <input type="number" name="height" class="form-control" value="0" style="width: 75px;float: right;">
+                            </div>
+
+                            <div class="col-md-3 form-group">
+                                {!! Form::label('weight', trans('profile.weight') ) !!}
+                                <input type="number" name="weight" class="form-control" value="0" style="width: 75px;float: right;">
+                            </div>
 
 	                        <div class="col-md-3 form-group">
 	                            <label for="eyes">{{ trans('profile.eyes') }}</label>
@@ -65,7 +100,6 @@
 	                                @endforeach
 	                            </select>
 	                        </div>
-
 	                        <div class="col-md-3 form-group">
 	                            <label for="hair">{{ trans('profile.hair') }}</label>
 	                            <select name="hair" class="form-control">
@@ -74,7 +108,6 @@
 	                                @endforeach
 	                            </select>
 	                        </div>
-
 	                        <div class="col-md-3 form-group">
 	                            <label for="hair">{{ trans('profile.kids') }}</label>
 	                            <select name="kids" class="form-control">
@@ -83,8 +116,6 @@
 	                                @endforeach
 	                            </select>
 	                        </div>
-                        </div>
-						<div class="row">
 	                        <div class="col-md-3 form-group">
 	                            <label for="want_k">{{ trans('profile.want_k') }}</label>
 	                            <select name="want_k" class="form-control">
@@ -93,7 +124,6 @@
 	                                @endforeach
 	                            </select>
 	                        </div>
-
 	                        <div class="col-md-3 form-group">
 	                            <label for="family">{{ trans('profile.family') }}</label>
 	                            <select name="family" class="form-control">
@@ -102,7 +132,6 @@
 	                                @endforeach
 	                            </select>
 	                        </div>
-
 	                        <div class="col-md-3 form-group">
 	                            <label for="religion">{{ trans('profile.religion') }}</label>
 	                            <select name="religion" class="form-control">
@@ -111,7 +140,6 @@
 	                                @endforeach
 	                            </select>
 	                        </div>
-
 	                        <div class="col-md-3 form-group">
 	                            <label for="smoke">{{ trans('profile.smoke') }}</label>
 	                            <select name="smoke" class="form-control">
@@ -120,9 +148,7 @@
 	                                @endforeach
 	                            </select>
 	                        </div>
-	                    </div>
-						<div class="row">
-	                        <div class="col-md-6 form-group">
+	                        <div class="col-md-3 form-group">
 	                            <select name="drink" class="form-control">
 	                                @foreach($selects['drink'] as $drink)
 	                                    <option value="{{ $drink }}">{{ trans('profile.'.$drink) }}</option>
@@ -130,10 +156,11 @@
 	                            </select>
 	                            <label for="drink">{{ trans('profile.drink') }}</label>
 	                        </div>
-
-	                        <div class="col-md-6 col-xs-12 form-group text-center">
+                        </div>
+                        <div class="row">
+	                        <div class="col-md-12 col-xs-12 form-group text-right">
 	                            <button type="submit" class="btn btn-white">
-	                                <i class="fa fa-search"></i> Find a person
+	                                <i class="fa fa-search"></i>{{ trans('profile.findAPerson') }}
 	                            </button>
 	                        </div>
 	                    </div>

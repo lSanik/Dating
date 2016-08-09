@@ -1,11 +1,11 @@
 <?php
 
 return [
-    'yes'       => 'Да',
-    'no'        => 'Нет',
-    'times'     => 'Иногда',
-    'male'      => 'Мужской',
-    'female'    => 'Женский',
+    'yes'       => 'yes',
+    'no'        => 'no',
+    'times'     => 'times',
+    'male'      => 'male',
+    'female'    => 'female',
 
     /* Eyes */
 
@@ -38,6 +38,9 @@ return [
     'Gray hair'                         => 'Gray hair',
     'White hair'                        => 'White hair',
     'White hair caused by albinism'     => 'White hair caused by albinism',
+    'Natural brown hair'                => 'Natural brown hair',
+    'Light brown hair'                  => 'Light brown hair',
+    'Grey hair'                         => 'Grey hair',
 
     /* Education */
 
@@ -90,7 +93,7 @@ return [
     'kids'      => 'Kids',
     'smoke'     => 'Smoke',
     'drink'     => 'Drink',
-
+    '---'       => '---',
     'antiscram' => 'Anti-Scam Policy',
     'finance'   => 'Finance',
 
@@ -98,4 +101,18 @@ return [
 
     /** Smiles */
     'smile'     => 'You have wink from ',
+
+
+    /* Family */
+    'family'    => 'Family',
+    'look'      => 'look',
+
+    /* want _k*/
+    'want_k'    => 'Want kids',
+    'state'     => 'State',
+    'findAPerson'=> 'Find a person',
+    'about'     => 'About',
+    'looking'   => 'Looking',
+    
+
 ];

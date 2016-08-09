@@ -16,7 +16,9 @@ class EventServiceProvider extends ServiceProvider
         'Illuminate\Auth\Events\Login' => [
             'App\Listeners\LogSuccessfulLogin',
         ],
-
+        'Underthecocotree\LaravelChat\Events\UserHasRegistered' => [
+            'Underthecocotree\LaravelChat\Listeners\Email@welcome',
+        ],
     ];
 
     /**

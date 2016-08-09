@@ -10,7 +10,7 @@
             <table class="table table-hovered">
                 <thead>
                     <tr>
-                        <th>{{ trans('horoscope.from') }}</th>
+                        <th>{{ trans('admin/horoscope.from') }}</th>
                         <th>{{ trans('horoscope.to') }}</th>
                         <th>{{ trans('horoscope.actions') }}</th>
                     </tr>

@@ -134,7 +134,7 @@ class GirlsController extends Controller
                 $destination = public_path().'/uploads/girls/avatars';
                 $file->move($destination, $user_avatar);
             }
-            var_dump($request->allFiles()['pass_photo']);
+            //var_dump($request->allFiles()['pass_photo']);
 
             if(!$request->allFiles()['pass_photo']){
                 foreach ($request->allFiles()['pass_photo'] as $file) {

@@ -23,4 +23,13 @@ class ServicesPrice extends Model
 
         return $values;
     }
+
+    /**
+     * @param string $term
+     * @return mixed
+     */
+    public static function getValueByTerm($term)
+    {
+        return \DB::table('services_price')->select('price')->where('name', '=', $term)->first();
+    }
 }

@@ -182,6 +182,10 @@ return [
         HighIdeas\UsersOnline\UsersOnlineServiceProvider::class,
         HighIdeas\UsersOnline\Providers\UsersOnlineEventServiceProvider::class,
 
+        /*
+         * Real-time
+         */
+        Hamedmehryar\Chat\ChatServiceProvider::class,
 
 
     ],

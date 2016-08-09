@@ -115,7 +115,6 @@ class MessageSenderController extends Controller
      */
     public function store(Request $request)
     {
-
         $this->validate($request, [
             'title'    => 'required',
             'textarea' => 'required',
@@ -161,10 +160,6 @@ class MessageSenderController extends Controller
         }
         $find_users = User::select(['users.id','users.first_name','users.last_name','users.nickname','users.avatar','profile.birthday'])
             ->whereHas('profile', function ($query) use ($profile_attrs){
-                $date_array_from=' `birthday` > STR_TO_DATE(YEAR(CURDATE())-'.$profile_attrs["age_from"].', "%Y")';
-                $date_array_to=' `birthday` < STR_TO_DATE(YEAR(CURDATE())-'.$profile_attrs["age_to"].', "%Y")';
-                $date_from_arr=array("0"=>'');
-                $date_to_arr=array("0"=>'');
                 $arr_betwen='`birthday` BETWEEN  STR_TO_DATE(YEAR(CURDATE())-'.$profile_attrs["age_to"].', "%Y") AND STR_TO_DATE(YEAR(CURDATE())-'.($profile_attrs["age_from"]-1).', "%Y")';
                 if($profile_attrs['age_from']!='---'){      $query->whereRaw($arr_betwen );}
                 if($profile_attrs['eye']!= "---"){      $query->where('eye', '=', $profile_attrs['eye']);}
@@ -177,7 +172,6 @@ class MessageSenderController extends Controller
                 if($profile_attrs['smoke']!='---'){     $query->where('smoke', '=', $profile_attrs['smoke']);}
                 if($profile_attrs['drink']!='---'){     $query->where('drink', '=', $profile_attrs['drink']);}
             })
-            ->where('role_id', '=', '4')
             ->where('status_id', '=', '1')
             ->where('country_id', '=', $profile_attrs['county'])
             ->where('state_id', '=', $profile_attrs['user_state_id'])

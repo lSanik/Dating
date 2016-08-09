@@ -11,11 +11,11 @@
                     <div class="col-md-6 girl__title">
                         <h2>
                             @if(Auth::user() && Auth::user()->hasRole('female'))
-                                Mans
+                                {{ trans('home.mans') }}
                             @else
-                                Girls
+                                {{ trans('home.girls') }}
                             @endif
-                            Online
+                            {{ trans('home.online') }}
                         </h2>
                     </div>
                 </div>
@@ -23,27 +23,29 @@
 	        <div class="">
                 <div class="container">
 	                <div class="owl online">
-	                    @foreach($users as $u)
+    	                @foreach($users as $u)
                             @if($u->isOnline())
                                 @include('client.blocks.user-item')
                             @endif
-	                    @endforeach
+    	                @endforeach
 	                </div>
 	            </div>
 	        </div>
             @if(!empty($topHot))
             <div class="row lightpink">
                 <div class="container">
-                    <div class="col-md-6 girl__title"><h2>Top Hot Girls</h2></div>
+                    <div class="col-md-6 girl__title"><h2>{{ trans('home.topHotGirls') }}</h2></div>
                 </div>
             </div>
             </div>
             <div class="row lightpink">
                 <div class="container">
-                    <div class="owl online">
-                        @foreach($topHot as $u)
-                            @include('client.blocks.user-item')
-                        @endforeach
+                    <div class="main_items">
+                        <div class="owl online">
+                            @foreach($topHot as $u)
+                                @include('client.blocks.user-item')
+                            @endforeach
+                        </div>
                     </div>
                 </div>
             </div>
@@ -52,81 +54,18 @@
 <!-- Bottom circle -->
     <div class="container">
         <div class="col-md-12 round_title">
-            <h3>WE GRUARANTEE YOU'LL FIND THE ONE</h3>
-            <p>Why Should You Trust Us?</p>
+            <h3>{{ trans('home.weGruaranteeYoullFindTheOne') }}!</h3>
+            <p>{{ trans('home.whyShouldYouTrustUs') }}?</p>
         </div>
     </div>
     <div class="container">
         <div class="col-md-12">
-            <div class="col-md-3 col-sm-6">
-                <div class="round_item_out">
-                    <div class="round_item">
-                        <div class="in_round">
-                            <div class="icon">
-                                <i class="fa fa-camera"></i>
-                            </div>
-                            <p class="vision_text">some text</p>
-                            <p class="hidden_text">
-                            <span>Title</span>
-                                hidden some text
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="round_item_out">
-                    <div class="round_item">
-                        <div class="in_round">
-                            <div class="icon">
-                                <i class="fa fa-camera"></i>
-                            </div>
-                            <p class="vision_text">some text</p>
-                            <p class="hidden_text">
-                            <span>Title</span>
-                                hidden some text
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="round_item_out">
-                    <div class="round_item">
-                        <div class="in_round">
-                            <div class="icon">
-                                <i class="fa fa-camera"></i>
-                            </div>
-                            <p class="vision_text">some text</p>
-                            <p class="hidden_text">
-                            <span>Title</span>
-                                hidden some text
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="round_item_out">
-                    <div class="round_item">
-                        <div class="in_round">
-                            <div class="icon">
-                                <i class="fa fa-camera"></i>
-                            </div>
-                            <p class="vision_text">some text</p>
-                            <p class="hidden_text">
-                            <span>Title</span>
-                                hidden some text
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        	@include('client.blocks.home-bottom')
         </div>
     </div>
 
 <div class="container home-text">
-    <header class="text-center"><h1> Top Rated Hot Girls </h1></header>
+    <header class="text-center"><h1>{{ trans('home.topRatedHotGirls') }}</h1></header>
     <div id="panes">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer in augue nec felis hendrerit viverra. Maecenas facilisis nulla non fringilla congue. Duis nec ligula tincidunt, porttitor nibh eget, volutpat arcu. Donec ac porta sem. Sed eget cursus sapien, at consequat purus. In et massa mattis, vulputate nibh non, bibendum lorem. Pellentesque gravida sodales quam a sollicitudin. Suspendisse finibus, quam eu malesuada rhoncus, dolor tortor efficitur turpis, vel pulvinar ex erat sed tortor. Nulla nec tellus vel sem tempor lacinia eget vel turpis. Nam libero ex, imperdiet id mi sit amet, viverra maximus ligula. Integer aliquam est sed turpis aliquet, vel mattis enim aliquet. Praesent pellentesque dictum tortor, ut commodo nulla aliquam vel. Aliquam vestibulum tellus auctor urna venenatis luctus. In nunc nisi, lobortis sit amet ante a, fermentum ultricies dui.
 

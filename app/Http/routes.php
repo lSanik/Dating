@@ -50,6 +50,25 @@ Route::group(['middleware' => 'web'], function () {
 });
 
 
+/**
+ * Ajax Handlers
+ * todo: change all data getters from _POST to _GET
+ */
+Route::group([
+    'middleware' => ['web', 'auth', 'roles'],
+    'roles' => ['Male', 'Female'],
+], function(){
+    Route::post('expense', 'ExpenseController@handler');
+    Route::post('horoscope', 'HoroscopeController@handler');
+
+    /**
+     * Contacts
+     */
+    Route::post('flp', 'FLController@getFlp');
+    Route::post('fle', 'FLController@getFle');
+});
+
+
 Route::group([  'prefix'        => LaravelLocalization::setLocale(),
                 'middleware'    => ['web', 'auth', 'roles'],
                 'roles'         => ['Alien', 'Male', 'Female']
@@ -79,8 +98,6 @@ Route::group([  'prefix'        => LaravelLocalization::setLocale(),
 
     /** Videos */
     Route::get('profile/{id}/video/add', 'VideoController@create');
-
-
 
     Route::post('wink', 'SmilesController@sendSmile');
 });

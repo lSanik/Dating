@@ -73,13 +73,13 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="checkLabel"> Проверить анкету по номеру паспорта</h4>
+                    <h4 class="modal-title" id="checkLabel">{{ trans('admin/layout.checkTheProfileByNumberOfPassport') }}</h4>
                 </div>
                 {!! Form::open(['class' => 'form-inline text-center', 'id' => 'checkPass']) !!}
                     <div class="modal-body">
 
                             <div class="form-group">
-                                {!! Form::label('passno', 'Паспорт (серия номер): ') !!}
+                                {!! Form::label('passno', "{{ trans('admin/layout.passportSerNum') }}:") !!}
                                 {!! Form::text('passno', 'SN 123352',['class' => 'form-control', ]) !!}
                             </div>
                             <div class="response" style="display: none">
@@ -88,7 +88,7 @@
 
                     </div>
                     <div class="modal-footer">
-                        {!! Form::submit('Проверить', ['class' => 'btn btn-success']) !!}
+                        {!! Form::submit("{{ trans('admin/layout.check') }}", ['class' => 'btn btn-success']) !!}
                     </div>
                 {!! Form::close() !!}
             </div>

@@ -5,9 +5,10 @@
   },
   "dependencies": {
     "bootstrap-sass": "^3.0.0",
-    "express": "^4.13.4",
+    "express": "^4.14.0",
+    "ioredis": "^2.2.0",
     "laravel-elixir": "^4.0.0",
-    "redis": "^2.6.1",
-    "socket.io": "^1.4.6"
+    "redis": "^2.6.2",
+    "socket.io": "^1.4.8"
   }
 }

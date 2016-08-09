@@ -7,8 +7,8 @@
 
     <link rel="stylesheet" href="{{ url('/assets/css/bootstrap.css') }}">
     <link rel="stylesheet" href="{{ url('/assets/css/app.css') }}">
-    <link rel="stylesheet" href="{{ url('assets/css/font-awesome.css') }}">
-
+    <link rel="stylesheet" href="{{ url('/assets/css/font-awesome.css') }}">
+    <link rel="stylesheet" href="{{ url('/hamedmehryar/laravel-chat/src/chat-assets/smiley.css') }}">
 
     @yield('styles')
     <link rel="stylesheet" href="{{ url('/assets/css/myScript.css') }}">
@@ -225,6 +225,16 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="serviceModal" tabindex="-1" role="dialog" aria-labelledby="serviceModalLable">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- include script -->
     <script src="https://code.jquery.com/jquery-1.12.3.min.js"   integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ="   crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
@@ -249,6 +259,10 @@
                     $('createAccount').removeAttr('disabled');
                 }
             });
+
+            $('#serviceModal').on('hidden.bs.modal', function () {
+                $('#serviceModal .modal-body').empty();
+            })
 
         });
 

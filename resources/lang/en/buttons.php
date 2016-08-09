@@ -5,4 +5,5 @@ return [
     'login'   => 'Log In',
     'signup'  => 'Signup',
     'profile' => 'Profile',
+    'logout'  => 'Log out',
 ];

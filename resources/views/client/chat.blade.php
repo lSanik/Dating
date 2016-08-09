@@ -76,6 +76,7 @@
         #messages{
             position: absolute;
             overflow: auto;
+            height: 50vh;
         }
 
         #messages > div {

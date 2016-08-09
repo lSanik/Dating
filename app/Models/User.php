@@ -2,12 +2,14 @@
 
 namespace App\Models;
 
+use Hamedmehryar\Chat\Traits\Chatable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Cache;
 
 class User extends Authenticatable
 {
     use \HighIdeas\UsersOnline\Traits\UsersOnlineTrait;
+    use Chatable;
 
     protected $table = 'users';
     /**
@@ -276,5 +278,11 @@ class User extends Authenticatable
     public function fromSmile()
     {
         return $this->hasMany('App\Models\Smiles', 'from');
+    }
+
+    /** Partner ID */
+    public static function getPartnerId($girl_id)
+    {
+        return \DB::table('users')->select('partner_id')->where('id', '=', $girl_id)->first()->partner_id;
     }
 }

@@ -4,8 +4,8 @@
     <data-source name="MySQL - dating@127.0.0.1" uuid="80c75bc9-4e3f-40bc-936e-a2d3da01ebf3">
       <secret-storage>master_key</secret-storage>
       <user-name>root</user-name>
-      <schema-pattern>dating.*</schema-pattern>
-      <default-schemas>dating.*</default-schemas>
+      <introspection-scope>dating:*</introspection-scope>
+      <resolve-scope>dating:*</resolve-scope>
     </data-source>
   </component>
 </project>
