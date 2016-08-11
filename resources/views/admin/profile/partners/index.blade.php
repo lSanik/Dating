@@ -8,16 +8,16 @@
     <div class="col-lg-12">
         <section class="panel">
             <header class="panel-heading head-border">
-                Все записи
-                <a href="{{ url('/admin/partner/new') }}" class="btn btn-success btn-sm pull-right"><i class="fa fa-plus"></i> Добавить </a>
+                {{trans('/admin/index.allBlog')}}
+                <a href="{{ url('/admin/partner/new') }}" class="btn btn-success btn-sm pull-right"><i class="fa fa-plus"></i> {{trans('/admin/index.add')}}</a>
             </header>
             <table class="table table-striped custom-table table-hover">
                 <thead>
                 <tr>
-                    <th> <i class="fa fa-bookmark-o"></i>  Имя </th>
-                    <th> <i class="fa fa-file-text"></i> Фамилия </th>
+                    <th> <i class="fa fa-bookmark-o"></i> {{trans('/admin/index.name')}}</th>
+                    <th> <i class="fa fa-file-text"></i> {{trans('/admin/index.surname')}}</th>
                     <th> <i class="fa fa-envelope"></i> Email </th>
-                    <th class="hidden-xs"><i class="fa fa-cogs"></i> Действие </th>
+                    <th class="hidden-xs"><i class="fa fa-cogs"></i> {{trans('/admin/index.action')}}</th>
                 </tr>
                 </thead>
                 <tbody>

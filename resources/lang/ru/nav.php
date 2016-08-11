@@ -6,7 +6,7 @@ return [
     'blog'      => 'Блог',
     'pricing'   => 'Тарифы',
     'search'    => 'Поиск',
-    'contacts'  => 'Contacts',
+    'contacts'  => 'Контакты',
     'social'	=> 'Мы в соц.сетях',
     'company'	=> 'Компания',
     'aboutUs'	=>	'О нас',

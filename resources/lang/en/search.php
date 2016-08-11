@@ -5,4 +5,5 @@ return [
     'filter'    => 'Who are you looking for?',
     '---' => '---',
     'mans' => 'Mans',
+    'girls'	=> 'Girls',
 ];

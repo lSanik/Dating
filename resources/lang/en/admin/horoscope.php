@@ -13,5 +13,14 @@ return [
      'Sagittarius'  => 'Sagittarius',
      'Capricornus'  => 'Capricornus',
      'Aquarius'     => 'Aquarius',
-     'Pisces'       => 'Pisces'
+     'Pisces'       => 'Pisces',
+     'to'           => 'To',
+     'actions'      => 'Actions',
+     'horoscope'    => 'Horoscope',
+     'save'         => 'SAVE',
+     'begin'        => 'Begin',
+     'end'          => 'End',
+     'locale'       => 'Locale',
+     'text'         => 'Text',
+     'edit'         => 'Edit',
 ];

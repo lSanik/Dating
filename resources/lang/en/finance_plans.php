@@ -1,16 +1,16 @@
 <?php
 
 return [
-    'ex_rate'       => 'Курс обмена USD на LC',
-    'message'       => 'Сотимость одного сообщения',
-    'chat'          => 'Текстовыйй чат',
-    'video'         => 'Видеочат',
-    'photo_album'   => 'Просмотр фотоальбома',
-    'girl_video'    => 'Просмотр видео',
-    'call'          => 'Звонок',
-    'flp'           => 'Открыть контакты [Имя + Фамилия + Телефон]',
-    'fle'           => 'Открыть контакты [Имя + Фамилия + Email]',
-    'horoscope'     => 'Посмотреть гороскоп совместимости',
-    'month'         => 'Пакет доступа на месяц',
-    'girl_blog'     => 'Запись девушки',
+    'ex_rate'       => 'Exchange rate USD to LC',
+    'message'       => 'The cost of a single message',
+    'chat'          => 'Text chat',
+    'video'         => 'Video chat',
+    'photo_album'   => 'View album',
+    'girl_video'    => 'View video',
+    'call'          => 'Call',
+    'flp'           => 'Open the contacts [First Name + Last Name + Phone]',
+    'fle'           => 'Open the contacts [First Name + Last Name + Email]',
+    'horoscope'     => 'View horoscope compatibility',
+    'month'         => 'Package access for a month',
+    'girl_blog'     => 'Writing girl',
 ];

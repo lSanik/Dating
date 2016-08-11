@@ -47,6 +47,33 @@
             </div>
         </div>
     </div>
+
+
+    <script>
+        document.cookie="user_key={{session()->getId()}}{{rand(100,999)}}";
+        var chat = new WebSocket('ws://{{$_SERVER['SERVER_NAME']}}:8080');
+        chat.onopen = function (e) {
+            console.log("Connection established!");
+
+        };
+        chat.onmessage = function (e) {
+            console.log('Получены данные: ' + e.data);
+        };
+
+        function send(){
+            var data = 'Data for send: ' + Math.random();
+            chat.send(data);
+            console.log('Sended: ' + data);
+        };
+
+        function send_to(message, to_id){
+            var data = {
+                'to_id'  : to_id,
+                'message': message
+            };
+            chat.send(JSON.stringify(data));
+        };
+    </script>
 @stop
 @section('styles')
     <style>

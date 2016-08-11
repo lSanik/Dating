@@ -12,15 +12,15 @@
             <table class="table table-hovered">
                 <thead>
                 <th>ID</th>
-                <th>Имя/Фамилия</th>
-                <th>Аватар</th>
+                <th>{{trans('/admin/index.name')}}/{{trans('/admin/index.surname')}}</th>
+                <th>{{trans('/admin/index.avatar')}}</th>
                 @if( Auth::user()->hasRole('Owner') )
-                    <th> Партнер </th>
+                    <th>{{trans('/admin/index.partner')}}</th>
                 @endif
-                <th>Онлайн</th>
-                <th>Web камера</th>
-                <th>Последний вход</th>
-                <th><i class="fa fa-cogs"></i> Управление</th>
+                <th>{{trans('/admin/index.online')}}</th>
+                <th>{{trans('/admin/index.webCam')}}</th>
+                <th>{{trans('/admin/index.lastEntrance')}}</th>
+                <th><i class="fa fa-cogs"></i>{{trans('/admin/index.control')}}</th>
                 </thead>
                 <tbody>
                 @foreach($girls as $girl)

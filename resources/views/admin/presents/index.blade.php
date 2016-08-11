@@ -8,7 +8,7 @@
 
     <section class="panel">
         <header class="panel-heading text-right">
-            <a href="{{ url(App::getLocale().'/admin/gifts/new') }}" class="btn btn-success"> Добавить подарок </a>
+            <a href="{{ url(App::getLocale().'/admin/gifts/new') }}" class="btn btn-success"> {{trans('/admin/gifts.addGift')}}</a>
         </header>
         <div class="panel-body">
 
@@ -17,11 +17,11 @@
                     <thead>
                         <tr>
                             <th> #ID </th>
-                            <th> Фото </th>
-                            <th> Название </th>
-                            <th> Описание </th>
-                            <th> Цена </th>
-                            <th> Действие </th>
+                            <th> {{trans('/admin/gifts.photo')}} </th>
+                            <th> {{trans('/admin/gifts.name')}}</th>
+                            <th> {{trans('/admin/gifts.description')}}</th>
+                            <th> {{trans('/admin/gifts.price')}}</th>
+                            <th> {{trans('/admin/gifts.action')}}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -41,7 +41,7 @@
                     </tbody>
                 </table>
             @else
-                <p> Нет подарков! </p>
+                <p> {{trans('/admin/gifts.noGifts')}} </p>
             @endif
         </div>
     </section>

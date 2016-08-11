@@ -79,7 +79,7 @@
                     <div class="modal-body">
 
                             <div class="form-group">
-                                {!! Form::label('passno', "{{ trans('admin/layout.passportSerNum') }}:") !!}
+                                {!! Form::label('passno', trans('admin/layout.passportSerNum')) !!}
                                 {!! Form::text('passno', 'SN 123352',['class' => 'form-control', ]) !!}
                             </div>
                             <div class="response" style="display: none">
@@ -88,7 +88,7 @@
 
                     </div>
                     <div class="modal-footer">
-                        {!! Form::submit("{{ trans('admin/layout.check') }}", ['class' => 'btn btn-success']) !!}
+                        {!! Form::submit(trans('admin/layout.check') , ['class' => 'btn btn-success']) !!}
                     </div>
                 {!! Form::close() !!}
             </div>

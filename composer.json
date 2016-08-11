@@ -17,7 +17,8 @@
         "guzzlehttp/guzzle": "~5.3|~6.0",
         "highideas/laravel-users-online": "^1.0",
         "predis/predis": "^1.1",
-        "hamedmehryar/laravel-chat": "^1.0"
+        "hamedmehryar/laravel-chat": "^1.0",
+        "cboden/ratchet": "^0.3.5"
 
     },
     "require-dev": {

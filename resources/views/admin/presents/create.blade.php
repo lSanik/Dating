@@ -26,13 +26,13 @@
             <div class="col-md-4 col-md-offset-4">
                 {!! Form::open(['url' => 'admin/gifts/store', 'class' => 'form', 'enctype' => 'multipart/form-data']) !!}
                     <div class="form-group">
-                        {!! Form::label('image', 'Фото подарка') !!}
+                        {!! Form::label('image', trans('/admin/gifts.giftPhoto')) !!}
                         <input type="file" class="form-control file" name="image" accept="image/*">
                     </div>
 
                     <div class="col-md-6">
                         <div class="form-group">
-                            {!! Form::label('lang', 'Язык') !!}
+                            {!! Form::label('lang', trans('/admin/gifts.language')) !!}
                             <select name="lang" class="form-control">
                                 @foreach(Config::get('app.locales') as $locale)
                                     @if(App::getLocale() == $locale)
@@ -46,7 +46,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            {!! Form::label('price', 'Цена') !!}
+                            {!! Form::label('price', trans('/admin/gifts.price')) !!}
                             {!! Form::text('price', null, ['class' => 'form-control', 'pattern' => '\-?\d+(\.\d{0,})?']) !!}
                         </div>
                     </div>
@@ -55,11 +55,11 @@
                         <div class="hidden" id="{{ $locale }}">
 
                             <div class="form-group">
-                                {!! Form::label('title'.$locale, 'Название ('.trans('langs.'.$locale).')') !!}
+                                {!! Form::label('title'.$locale, trans('/admin/gifts.name')) !!}
                                 {!! Form::text('title_'.$locale, null, ['class' => 'form-control']) !!}
                             </div>
                             <div class="form-group">
-                                {!! Form::label('description'.$locale, 'Описание ('.trans('langs.'.$locale).')') !!}
+                                {!! Form::label('description'.$locale, trans('/admin/gifts.description')) !!}
                                 {!! Form::text('description_'.$locale, null, ['class' => 'form-control']) !!}
                             </div>
                         </div>
@@ -68,7 +68,7 @@
 
 
                     <div class="form-group text-center">
-                        {!! Form::submit('Сохранить', ['class' => 'btn btn-success']) !!}
+                        {!! Form::submit(trans('/admin/gifts.save'), ['class' => 'btn btn-success']) !!}
                     </div>
                 {!! Form::close() !!}
             </div>

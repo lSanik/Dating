@@ -13,7 +13,7 @@
 
     <section class="panel">
         <header class="panel-heading">
-            Добавить новую анкету
+            {{trans('/admin/index.addNewProfile')}}
         </header>
         <div class="panel-body">
             @if (count($errors) > 0)
@@ -27,29 +27,29 @@
             @endif
             <!-- Nav tabs -->
             <ul class="nav nav-tabs" role="tablist">
-                <li role="presentation" class="active"><a href="#osn" aria-controls="osn" role="tab" data-toggle="tab">Онсновная информация</a></li>
-                <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Данные профиля</a></li>
+                <li role="presentation" class="active"><a href="#osn" aria-controls="osn" role="tab" data-toggle="tab">{{trans('/admin/index.mainInformation')}}</a></li>
+                <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">{{trans('/admin/index.profileInformation')}}</a></li>
             </ul>
             {!! Form::open(['url' => 'admin/girl/store', 'class' => 'form', 'enctype' => 'multipart/form-data']) !!}
                 <!-- Tab panes -->
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane active" id="osn">
                         <div class="col-md-4 col-md-offset-4">
-                            <h3> Основная информация профиля </h3>
+                            <h3> {{trans('/admin/index.summaryProfile')}}</h3>
                             <div class="form-group">
-                                {!! Form::label('avatar', 'Аватар') !!}
+                                {!! Form::label('avatar', trans("/admin/index.avatar")) !!}
                                 <input type="file" class="form-control file" name="avatar" accept="image/*">
                             </div>
                             <div class="form-group">
-                                {!! Form::label('first_name', 'Имя') !!}
-                                {!! Form::text('first_name', null, ['class'=>'form-control', 'placeholder' => 'Name']) !!}
+                                {!! Form::label('first_name', trans('/admin/index.name')) !!}
+                                {!! Form::text('first_name', null, ['class'=>'form-control', 'placeholder' => trans('/admin/index.name')]) !!}
                             </div>
                             <div class="form-group">
-                                {!! Form::label('second_name', 'Фамилия') !!}
-                                {!! Form::text('second_name', null, ['class'=>'form-control', 'placeholder' => 'Surname']) !!}
+                                {!! Form::label('second_name', trans('/admin/index.surname')) !!}
+                                {!! Form::text('second_name', null, ['class'=>'form-control', 'placeholder' => trans('/admin/index.surname')]) !!}
                             </div>
                             <div class="form-group">
-                                {!! Form::label('birthday', 'Дата рождения') !!}
+                                {!! Form::label('birthday', trans('/admin/index.birthday')) !!}
                                 {!! Form::text('birthday', null, ['class' => 'form-control default-date-picker']) !!}
                             </div>
                             <div class="form-group">
@@ -57,63 +57,62 @@
                                 {!! Form::email('email', null, ['class' => 'form-control', 'placeholder' => 'email@email.com', 'required' => 'required']) !!}
                             </div>
                             <div class="form-group">
-                                {!! Form::label('phone', 'Phone') !!}
+                                {!! Form::label('phone', trans('/admin/index.phone')) !!}
                                 {!! Form::text('phone', null, ['class' => 'form-control']) !!}
                             </div>
                             <div class="form-group">
-                                {!! Form::label('password', 'Password') !!}
+                                {!! Form::label('password', trans('/admin/index.password')) !!}
                                 {!! Form::password('password', ['class' => 'form-control', 'required' => 'required']) !!}
                             </div>
                             <div class="form-group">
-                                {!! Form::label('coutry', 'Cтрана') !!}
+                                {!! Form::label('coutry', trans('/admin/index.country')) !!}
 
                                 <select name="county" class="form-control">
                                     @foreach($countries as $country)
-                                        <option value="{{ $country->id }}"> {{ $country->name }}</option>
+                                        <option value="{{ $country->id }}"> {{ trans('country.'.$country->name) }}</option>
                                     @endforeach
                                 </select>
 
                             </div>
                             <div class="form-group">
-                                {!! Form::label('state', 'Штат') !!}
+                                {!! Form::label('state', trans('/admin/index.state')) !!}
                                 <select name="state" class="form-control"></select>
                             </div>
                             <div class="form-group">
-                                {!! Form::label('city', 'Город') !!}
+                                {!! Form::label('city', trans('/admin/index.city')) !!}
                                 <select name="city" class="form-control"></select>
                             </div>
                             <div class="form-group">
-                                {!! Form::label('passno','№ паспорта') !!}
+                                {!! Form::label('passno', trans('/admin/index.passportNumber')) !!}
                                 {!! Form::text('passno', null, ['class' => 'form-control']) !!}
                             </div>
                             <div class="form-group">
-                                {!! Form::label('pass_date', 'Дата выдачи паспорта') !!}
+                                {!! Form::label('pass_date', trans('/admin/index.passportIssuingDate')) !!}
                                 {!! Form::text('pass_date', null, ['class' => 'form-control default-date-picker', 'id' => 'datepicker']) !!}
                             </div>
                             <div class="form-group">
-                                {!! Form::label('pass_photo', 'Фото/Скан паспорта') !!}
-                                <input type="file" class="form-control file" name="pass_photo[]" accept="image/*" multiple>
+                                {!! Form::label('pass_photo', trans('/admin/index.photoAndScan')) !!}
+                                <input type="file" class="form-control file" name="pass_photo[]" accept="image/*" multiple> 
                             </div>
-
                         </div>
                     </div>
                     <div role="tabpanel" class="tab-pane" id="profile">
                         <div class="col-md-4 col-md-offset-4">
-                            <h3> Дополнительная информация профиля </h3>
+                            <h3> {{trans('/admin/index.additionalInformation')}}</h3>
                             <div class="form-group">
-                                {!! Form::label('height', 'Рост') !!}
+                                {!! Form::label('height', trans('/admin/index.height')) !!}
                                 {!! Form::text('height', null, ['class' => 'form-control']) !!}
                             </div>
                             <div class="form-group">
-                                {!! Form::label('weight', 'Вес') !!}
+                                {!! Form::label('weight', trans('/admin/index.weight')) !!}
                                 {!! Form::text('weight', null, ['class' => 'form-control']) !!}
                             </div>
                             <div class="form-group">
-                                {!! Form::label('occupation', 'Род деятельности') !!}
+                                {!! Form::label('occupation', trans('/admin/index.occupation')) !!}
                                 {!! Form::text('occupation', null, ['class' => 'form-control']) !!}
                             </div>
                             <div class="form-group">
-                                {!! Form::label('gender', 'Пол') !!}
+                                {!! Form::label('gender', trans('/admin/index.gender')) !!}
 
                                 <select name="gender" class="form-control">
                                     @foreach($selects['gender'] as $key => $value)
@@ -122,7 +121,7 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                {!! Form::label('eye', 'Цвет глаз') !!}
+                                {!! Form::label('eye', trans('/admin/index.eye')) !!}
                                 <select name="eye" class="form-control">
                                     @foreach($selects['eye'] as $key => $value)
                                         <option value="{{ $key }}"> {{ trans('profile.'.$value) }}</option>
@@ -131,7 +130,7 @@
 
                             </div>
                             <div class="form-group">
-                                {!! Form::label('hair', 'Цвет волос') !!}
+                                {!! Form::label('hair', trans('profile.hair')) !!}
                                 <select name="hair" class="form-control">
                                     @foreach($selects['hair'] as $key => $value)
                                         <option value="{{ $key }}"> {{ trans('profile.'.$value) }}</option>
@@ -140,11 +139,11 @@
 
                             </div>
                             <div class="form-group">
-                                {!! Form::label('education', 'Образование') !!}
+                                {!! Form::label('education', trans('profile.education')) !!}
                                 {!! Form::select('education', $selects['education'], null,['class' => 'form-control']) !!}
                             </div>
                             <div class="form-group">
-                                {!! Form::label('kids', 'Дети') !!}
+                                {!! Form::label('kids', trans('profile.kids')) !!}
                                 <select name="kids" class="form-control">
                                     @foreach($selects['kids'] as $key => $value)
                                         <option value="{{ $key }}"> {{ trans('profile.'.$value) }}</option>
@@ -152,7 +151,7 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                {!! Form::label('want_kids', 'Желание завести детей') !!}
+                                {!! Form::label('want_kids', trans('profile.want_k')) !!}
                                 <select name="want_k" class="form-control">
                                     @foreach($selects['want_k'] as $key => $value)
                                         <option value="{{ $key }}"> {{ trans('profile.'.$value) }}</option>
@@ -160,7 +159,7 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                {!! Form::label('family', 'Семейное положение') !!}
+                                {!! Form::label('family', trans('profile.family')) !!}
                                 <select name="family" class="form-control">
                                     @foreach($selects['family'] as $key => $value)
                                         <option value="{{ $key }}"> {{ trans('profile.'.$value) }}</option>
@@ -169,7 +168,7 @@
 
                             </div>
                             <div class="form-group">
-                                {!! Form::label('religion', 'Вероисповедание') !!}
+                                {!! Form::label('religion', trans('profile.religion')) !!}
                                 <select name="religion" class="form-control">
                                     @foreach($selects['religion'] as $key => $value)
                                         <option value="{{ $key }}"> {{ trans('profile.'.$value) }}</option>
@@ -177,7 +176,7 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                {!! Form::label('smoke', 'Отношение к курению') !!}
+                                {!! Form::label('smoke', trans('profile.smoke')) !!}
                                 <select name="smoke" class="form-control">
                                     @foreach($selects['smoke'] as $key => $value)
                                         <option value="{{ $key }}"> {{ trans('profile.'.$value) }}</option>
@@ -186,7 +185,7 @@
 
                             </div>
                             <div class="form-group">
-                                {!! Form::label('drink', 'Отношение к алкоголюы') !!}
+                                {!! Form::label('drink', trans('profile.drink')) !!}
                                 <select name="drink" class="form-control">
                                     @foreach($selects['drink'] as $key => $value)
                                         <option value="{{ $key }}"> {{ trans('profile.'.$value) }}</option>
@@ -194,26 +193,26 @@
                                 </select>
                             </div>
                             <div class="form-inline">
-                                <header>Ищу (возраст)</header>
+                                <header>{{trans('/admin/index.lookingForA')}}</header>
                                 <div class="col-md-6">
-                                    {!! Form::label('l_age_start', 'От: ') !!}
+                                    {!! Form::label('l_age_start', trans('/admin/index.from')) !!}
                                     {!! Form::number('l_age_start', '18', ['class' => 'form-control']) !!}
                                 </div>
                                 <div class="col-md-6">
-                                    {!! Form::label('l_age_stop', 'До: ') !!}
+                                    {!! Form::label('l_age_stop', trans('/admin/index.to')) !!}
                                     {!! Form::number('l_age_stop', '40', ['class' => 'form-control']) !!}
                                 </div>
                             </div>
                             <div class="form-group">
-                                {!! Form::label('looking', 'О партнере ') !!}
+                                {!! Form::label('looking', trans('/admin/index.aboutAPartner')) !!}
                                 <textarea class="form-control" name="looking"></textarea>
                             </div>
                             <div class="form-group">
-                                {!! Form::label('about', 'О девушке ') !!}
+                                {!! Form::label('about', trans('/admin/index.aboutAGirl')) !!}
                                 <textarea class="form-control" name="about"></textarea>
                             </div>
                             <div class="form-group">
-                                {!! Form::submit('Submit', ['class' => 'btn btn-success']) !!}
+                                {!! Form::submit(trans('/admin/index.submit'), ['class' => 'btn btn-success']) !!}
                             </div>
                         </div>
                     </div>

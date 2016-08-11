@@ -1,0 +1,47 @@
+#underthecocotree-laravel-chat * { margin: 0; padding: 0; box-sizing: border-box; }
+#underthecocotree-laravel-chat #message-container {
+    display: flex;
+    height: 250px;
+}
+#underthecocotree-laravel-chat form { 
+	width: 100%; 
+	border-top: 1px solid #ddd; 
+    background: #fff;
+    display: flex;
+}
+#underthecocotree-laravel-chat form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; outline: 0 none; font-size: 16px;}
+#underthecocotree-laravel-chat form button { font-weight: bold; width: 10%; background: #FFCD33; border: none; padding: 10px; height: 40px; }
+#underthecocotree-laravel-chat #messages { 
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 88.5%;
+    overflow: scroll;
+}
+#underthecocotree-laravel-chat #messages li { padding: .8em 10px; }
+#underthecocotree-laravel-chat #messages li:nth-child(odd) { background: #fff082; }
+#underthecocotree-laravel-chat #status {
+    color: #ccc;
+    background: #fff;
+    padding: .5em;
+    font-size: 14px;
+    display: block;
+}
+#underthecocotree-laravel-chat h1 {
+    border-bottom: 1px solid #eee;
+    margin-bottom: .3em;
+    padding-bottom: .2em;
+    font-weight: normal;
+}
+#underthecocotree-laravel-chat #online-users {
+    border-left: 1px solid #eee;
+    padding-left: .6em;
+    overflow: scroll;
+}
+#underthecocotree-laravel-chat #online-users h2 {
+    font-weight: normal;
+}
+#underthecocotree-laravel-chat #online-users ul {
+    list-style-type: none;
+    margin-top: .5em;
+}

@@ -43,15 +43,15 @@
                     <div class="dropdown-menu dropdown-title">
                         <div class="title-row">
                             <h5 class="title purple">
-                                You have
+                                {{ trans('admin/header-section.youHave') }}
                                 @if( $unread_ticket_count )
                                     {{ $unread_ticket_count }}
                                 @else
                                     0
                                 @endif
-                                Unread Messages
+                                {{ trans('admin/header-section.unreadedMessages') }}
                             </h5>
-                            <a href="/{{ App::getLocale() }}/admin/support" class="btn-success btn-view-all">View all</a>
+                            <a href="/{{ App::getLocale() }}/admin/support" class="btn-success btn-view-all">{{ trans('admin/header-section.viewAll') }}</a>
                         </div>
                         <div class="notification-list mail-list">
 
@@ -72,7 +72,7 @@
                                         <strong>{{ $mess->first_name }} {{ $mess->last_name }}</strong>
                                         <small>{{ $mess->subject }}</small>
                                         <p>
-                                            <small>Тематика: {{ trans('support.'.$mess->name) }}</small>
+                                            <small>{{ trans('admin/header-section.subject') }}: {{ trans('support.'.$mess->name) }}</small>
                                         </p>
                                     </a>
                                 @endforeach
@@ -96,9 +96,9 @@
 
                         <div class="title-row">
                             <h5 class="title yellow">
-                                You have 4 New Notification
+                                {{ trans('admin/header-section.youHave4NewNotification') }}
                             </h5>
-                            <a href="javascript:;" class="btn-warning btn-view-all">View all</a>
+                            <a href="javascript:;" class="btn-warning btn-view-all">{{ trans('admin/header-section.viewAll') }}</a>
                         </div>
                         <div class="notification-list-scroll sidebar">
                             <div class="notification-list mail-list not-list">
@@ -106,12 +106,12 @@
                                     <span class="icon bg-primary">
                                         <i class="fa fa-envelope-o"></i>
                                     </span>
-                                    <strong>New User Registration</strong>
+                                    <strong>{{ trans('admin/header-section.newUserRegistration') }}</strong>
 
                                     <p>
-                                        <small>Just Now</small>
+                                        <small>{{ trans('admin/header-section.justNow') }}</small>
                                     </p>
-                                    <span class="un-read tooltips" data-original-title="Mark as Read" data-toggle="tooltip" data-placement="left">
+                                    <span class="un-read tooltips" data-original-title="{{ trans('admin/header-section.markAsRead') }}" data-toggle="tooltip" data-placement="left">
                                         <i class="fa fa-circle"></i>
                                     </span>
                                 </a>
@@ -119,34 +119,34 @@
                                     <span class="icon bg-success">
                                         <i class="fa fa-comments-o"></i>
                                     </span>
-                                    <strong> Private message Send</strong>
+                                    <strong>{{ trans('admin/header-section.privateMessageSend') }}</strong>
 
                                     <p>
-                                        <small>30 Mins Ago</small>
+                                        <small>{{ trans('admin/header-section.30MinsAgo') }}</small>
                                     </p>
-                                    <span class="un-read tooltips" data-original-title="Mark as Read" data-toggle="tooltip" data-placement="left">
+                                    <span class="un-read tooltips" data-original-title="{{ trans('admin/header-section.markAsRead') }}" data-toggle="tooltip" data-placement="left">
                                         <i class="fa fa-circle"></i>
                                     </span>
                                 </a>
                                 <a href="javascript:;" class="single-mail">
                                     <span class="icon bg-warning">
                                         <i class="fa fa-warning"></i>
-                                    </span> Application Error
+                                    </span> {{ trans('admin/header-section.applicationError') }}
                                     <p>
-                                        <small> 2 Days Ago</small>
+                                        <small>{{ trans('admin/header-section.2DaysAgo') }}</small>
                                     </p>
-                                    <span class="read tooltips" data-original-title="Mark as Unread" data-toggle="tooltip" data-placement="left">
+                                    <span class="read tooltips" data-original-title="{{ trans('admin/header-section.markAsUnread') }}" data-toggle="tooltip" data-placement="left">
                                         <i class="fa fa-circle-o"></i>
                                     </span>
                                 </a>
                                 <a href="javascript:;" class="single-mail">
                                     <span class="icon bg-dark">
                                        <i class="fa fa-database"></i>
-                                    </span> Database Overloaded 24%
+                                    </span>{{ trans('admin/header-section.databaseOverloaded24') }}
                                     <p>
-                                        <small>1 Week Ago</small>
+                                        <small>{{ trans('admin/header-section.1WeekAgo') }}</small>
                                     </p>
-                                    <span class="read tooltips" data-original-title="Mark as Unread" data-toggle="tooltip" data-placement="left">
+                                    <span class="read tooltips" data-original-title="{{ trans('admin/header-section.markAsUnread') }}" data-toggle="tooltip" data-placement="left">
                                         <i class="fa fa-circle-o"></i>
                                     </span>
                                 </a>
@@ -154,12 +154,12 @@
                                     <span class="icon bg-danger">
                                         <i class="fa fa-warning"></i>
                                     </span>
-                                    <strong>Server Failed Notification</strong>
+                                    <strong>{{ trans('admin/header-section.serverFailedNotification') }}</strong>
 
                                     <p>
-                                        <small>10 Days Ago</small>
+                                        <small>{{ trans('admin/header-section.10DaysAgo') }}</small>
                                     </p>
-                                    <span class="un-read tooltips" data-original-title="Mark as Read" data-toggle="tooltip" data-placement="left">
+                                    <span class="un-read tooltips" data-original-title="{{ trans('admin/header-section.markAsRead') }}" data-toggle="tooltip" data-placement="left">
                                         <i class="fa fa-circle"></i>
                                     </span>
                                 </a>
@@ -198,8 +198,8 @@
                         <span class=" fa fa-angle-down"></span>
                     </a>
                     <ul class="dropdown-menu dropdown-usermenu purple pull-right">
-                        <li><a href="{{ url('/admin/profile') }}">  Profile</a></li>
-                        <li><a href="{{ url('/logout') }}"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                        <li><a href="{{ url('/admin/profile') }}"> {{ trans('admin/header-section.profile') }}</a></li>
+                        <li><a href="{{ url('/logout') }}"><i class="fa fa-sign-out pull-right"></i> {{ trans('admin/header-section.logOut') }}</a></li>
                     </ul>
                 </li>
 

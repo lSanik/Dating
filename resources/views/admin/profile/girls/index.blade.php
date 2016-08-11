@@ -13,15 +13,15 @@
             <table class="table table-hovered">
                 <thead>
                 <th>ID</th>
-                <th>Имя/Фамилия</th>
-                <th>Аватар</th>
+                <th>{{trans('/admin/index.name')}}/{{trans('/admin/index.surname')}}</th>
+                <th>{{trans('/admin/index.avatar')}}</th>
                 @if( Auth::user()->hasRole('Owner') )
-                    <th> Партнер </th>
+                    <th>{{trans('/admin/index.partner')}}</th>
                 @endif
-                <th>Онлайн</th>
-                <th>Web камера</th>
-                <th>Последний вход</th>
-                <th><i class="fa fa-cogs"></i> Управление</th>
+                <th>{{trans('/admin/index.online')}}</th>
+                <th>{{trans('/admin/index.webCam')}}</th>
+                <th>{{trans('/admin/index.lastEntrance')}}</th>
+                <th><i class="fa fa-cogs"></i> {{trans('/admin/index.control')}}</th>
                 </thead>
                 <tbody>
                 @foreach($girls as $girl)
@@ -40,7 +40,7 @@
                             <a class="btn btn-success btn-xs"><i class="fa fa-check"></i></a>
                             <a href="{{ url('admin/girl/edit/'.$girl->id) }}" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
                             <a class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
-                            <a data-toggle="tooltip" data-placement="bottom" data-original-title="Рассылка" href="{{ url('admin/sender/new/'.$girl->id) }}" class="btn btn-primary btn-xs"><i class="fa fa-comment-o"></i></a>
+                            <a data-toggle="tooltip" data-placement="bottom" data-original-title="{{trans('/admin/index.sender')}}" href="{{ url('admin/sender/new/'.$girl->id) }}" class="btn btn-primary btn-xs"><i class="fa fa-comment-o"></i></a>
                         </td>
                     </tr>
                 @endforeach

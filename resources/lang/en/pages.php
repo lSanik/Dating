@@ -14,4 +14,5 @@ return [
     'updated'   => 'Page updated',
     'girls'     => 'Girls Online',
     'mans'      => 'Mans Online',
+    'actions'    => 'Action',
 ];

@@ -53,7 +53,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            {!! Form::label('files', 'Скриншоты') !!}
+                            {!! Form::label('files', trans('/admin/support.screen')) !!}
                             <input type="file" class="form-control file" name="files[]" accept="image/*" multiple>
                         </div>
                         <hr/>

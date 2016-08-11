@@ -18,11 +18,11 @@
                         <th></th>
                         <th>#</th>
                         <th></th>
-                        <th>Партене</th>
-                        <th>Тематика</th>
-                        <th>Тема</th>
+                        <th>{{trans('/admin/support.partner')}}</th>
+                        <th>{{trans('/admin/support.subject')}}</th>
+                        <th>{{trans('/admin/support.theme')}}</th>
                         <th></th>
-                        <th>Дата</th>
+                        <th>{{trans('/admin/support.date')}}</th>
                     </tr>
 
                 </thead>

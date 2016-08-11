@@ -285,4 +285,8 @@ class User extends Authenticatable
     {
         return \DB::table('users')->select('partner_id')->where('id', '=', $girl_id)->first()->partner_id;
     }
+
+    public static function  getUserIdSession ($session_key){
+        return \DB::table('sessions')->select('user_id')->where('id',"=",$session_key)->get()[0]->user_id;
+    }
 }

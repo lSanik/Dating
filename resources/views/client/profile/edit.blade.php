@@ -32,11 +32,11 @@
                             </div>
                             <div class="form-group">
                                 {!! Form::label('first_name', trans('profile.first_name')) !!}
-                                {!! Form::text('first_name', !empty($user->first_name) ? $user->firstName : '', ['class'=>'form-control', 'placeholder' => 'Name']) !!}
+                                {!! Form::text('first_name', !empty($user->first_name) ? $user->firstName : '', ['class'=>'form-control', 'placeholder' => trans('profile.placeholder_name')]) !!}
                             </div>
                             <div class="form-group">
                                 {!! Form::label('second_name', trans('profile.last_name')) !!}
-                                {!! Form::text('second_name', !empty($user->last_name) ? $user->lastName : '', ['class'=>'form-control', 'placeholder' => 'Surname']) !!}
+                                {!! Form::text('second_name', !empty($user->last_name) ? $user->lastName : '', ['class'=>'form-control', 'placeholder' => trans("profile.placeholder_surname")]) !!}
                             </div>
                             <div class="form-group">
                                 {!! Form::label('birthday', trans('profile.birthday')) !!}
@@ -62,7 +62,7 @@
                                                 @if( $country->id == $user->country_id )
                                                 selected="selected"
                                                 @endif
-                                        > {{ $country->name }}</option>
+                                        > {{ trans('country.'.$country->name) }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -85,7 +85,7 @@
 
 
                         <div class="col-md-6">
-                            <h3>Ищу</h3>
+                            <h3>{{trans('profile.lookingFor')}}</h3>
                             <div class="form-group">
                                 {!! Form::label('l_age_start', trans('profile.l_age_start') ) !!}
                                 {!! Form::number('l_age_start', !empty($user->profile->l_age_start) ? $user->profile->l_age_start : '18', ['class' => 'form-control'] )!!}
@@ -98,7 +98,7 @@
                                 {!! Form::label('looking', trans('profile.looking') ) !!}
                                 {!! Form::textarea('looking', !empty($user->profile->looking) ? $user->profile->looking : '', ['class' => 'form-control'] )!!}
                             </div>
-                            <h3> Дополнительная информация профиля </h3>
+                            <h3> {{trans('profile.additionalInformation')}} </h3>
                             <div class="form-group">
                                 {!! Form::label('height', trans('profile.height') ) !!}
                                 {!! Form::text('height', !empty($user->profile->height) ? $user->profile->height : '' , ['class' => 'form-control']) !!}
@@ -113,44 +113,90 @@
                             </div>
                             <div class="form-group">
                                 {!! Form::label('gender', trans('profile.gender') ) !!}
-                                {!! Form::select('gender', $selects['gender'], !empty($user->profile->gender) ? $user->profile->gender : '' ,  ['class' => 'form-control']) !!}
-                            </div>
+
+<select name="gender" class="form-control">
+@foreach($selects['gender'] as $gender)
+<option value="{{ $gender }}">{{ trans('profile.'.$gender) }}</option>
+@endforeach       
+</select>                            
+			    </div>
                             <div class="form-group">
                                 {!! Form::label('eye', trans('profile.eye') ) !!}
-                                {!! Form::select('eye', $selects['eye'] , !empty( $user->profile->eye ) ? $user->profile->eye : '' ,  ['class' => 'form-control']) !!}
-                            </div>
+
+<select name="eye" class="form-control">
+@foreach($selects['eye'] as $eye)
+<option value="{{ $eye }}">{{ trans('profile.'.$eye) }}</option>
+@endforeach       
+</select>                            
+			    </div>
                             <div class="form-group">
                                 {!! Form::label('hair', trans('profile.hair') ) !!}
-                                {!! Form::select('hair', $selects['hair'], !empty($user->profile->hair) ? $user->profile->hair : '',  ['class' => 'form-control']) !!}
+
+<select name="hair" class="form-control">
+@foreach($selects['hair'] as $hair)
+<option value="{{ $hair }}">{{ trans('profile.'.$hair) }}</option>
+@endforeach       
+</select>                    
                             </div>
                             <div class="form-group">
                                 {!! Form::label('education', trans('profile.education') ) !!}
                                 {!! Form::select('education', $selects['education'], !empty($user->profile->education) ? $user->profile->education : '',  ['class' => 'form-control']) !!}
-                            </div>
+                           
+			    </div>
                             <div class="form-group">
                                 {!! Form::label('kids', trans('profile.kids') ) !!}
-                                {!! Form::select('kids', $selects['kids'], !empty($user->profile->kids) ? $user->profile->kids : '',  ['class' => 'form-control']) !!}
-                            </div>
+
+<select name="kids" class="form-control">
+@foreach($selects['kids'] as $kids)
+<option value="{{ $kids }}">{{ trans('profile.'.$kids) }}</option>
+@endforeach       
+</select>
+			    </div>
                             <div class="form-group">
                                 {!! Form::label('want_kids', trans('profile.want_kids') ) !!}
-                                {!! Form::select('want_kids', $selects['want_k'], !empty($user->profile->want_k) ? $user->profile->want_k : '',  ['class' => 'form-control']) !!}
-                            </div>
+
+<select name="want_k" class="form-control">
+@foreach($selects['want_k'] as $want_k)
+<option value="{{ $want_k }}">{{ trans('profile.'.$want_k) }}</option>
+@endforeach       
+</select>
+ 			    </div>
                             <div class="form-group">
                                 {!! Form::label('family', trans('profile.family') ) !!}
-                                {!! Form::select('family', $selects['family'], !empty($user->profile->family) ? $user->profile->family : '',  ['class' => 'form-control']) !!}
-                            </div>
+
+<select name="family" class="form-control">
+@foreach($selects['family'] as $family)
+<option value="{{ $family }}">{{ trans('profile.'.$family) }}</option>
+@endforeach       
+</select>
+			    </div>
                             <div class="form-group">
                                 {!! Form::label('religion', trans('profile.religion') ) !!}
-                                {!! Form::select('religion', $selects['religion'], !empty($user->profile->religion)? $user->profile->religion : '',  ['class' => 'form-control']) !!}
-                            </div>
+
+<select name="religion" class="form-control">
+@foreach($selects['religion'] as $religion)
+<option value="{{ $religion }}">{{ trans('profile.'.$religion) }}</option>
+@endforeach       
+</select>                            
+			    </div>
                             <div class="form-group">
                                 {!! Form::label('smoke', trans('profile.smoke') ) !!}
-                                {!! Form::select('smoke', $selects['smoke'], empty($user->profile->smoke) ? '' : $user->profile->smoke,  ['class' => 'form-control']) !!}
-                            </div>
+
+<select name="smoke" class="form-control">
+@foreach($selects['smoke'] as $smoke)
+<option value="{{ $smoke }}">{{ trans('profile.'.$smoke) }}</option>
+@endforeach       
+</select>                            
+			    </div>
                             <div class="form-group">
                                 {!! Form::label('drink', trans('profile.drink') ) !!}
-                                {!! Form::select('drink', $selects['drink'], empty($user->profile->drink) ? '' : $user->profile->drink,  ['class' => 'form-control']) !!}
-                            </div>
+
+<select name="drink" class="form-control">
+@foreach($selects['drink'] as $drink)
+<option value="{{ $drink }}">{{ trans('profile.'.$drink) }}</option>
+@endforeach       
+</select>                            
+			    </div>
                             <div class="form-group">
                                 {!! Form::submit('Submit', ['class' => 'btn btn-success']) !!}
                             </div>

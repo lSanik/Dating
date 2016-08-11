@@ -10,7 +10,7 @@
             <section class="panel">
                 @if(Auth::user()->hasRole('Owner'))
                     <header class="panel-heading head-border">
-                        Лимит рассылок
+                        {{trans('sender.senderLimit')}}
                     </header>
                     {!! Form::open(['url' => App::getLocale().'/admin/sender/', 'class' => 'form', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
                     <div class="form-group col-md-6">
@@ -27,20 +27,20 @@
                     {!! Form::close() !!}
                 @endif
                 <header class="panel-heading head-border">
-                    Шаблоны рассылки
+                    {{trans('sender.templateSender')}}
                 </header>
                     <table class="table table-hovered">
                         <thead>
                             <th>ID</th>
-                            <th>От девушки</th>
+                            <th>{{trans('sender.fromTheGirl')}}</th>
                             @if( Auth::user()->hasRole('Owner') || Auth::user()->hasRole('Moder') )
-                                <th> Партнер </th>
+                                <th> {{trans('sender.partner')}}</th>
                             @endif
-                            <th>Заголовок</th>
-                            <th>Состояние письма</th>
-                            <th>Охват мужчин</th>
-                            <th>Последнее редактирование</th>
-                            <th><i class="fa fa-cogs"></i> Управление</th>
+                            <th>{{trans('sender.header')}}</th>
+                            <th>{{trans('sender.letterState')}}</th>
+                            <th>{{trans('sender.coverageTheMan')}}</th>
+                            <th>{{trans('sender.lastEdit')}}</th>
+                            <th><i class="fa fa-cogs"></i> {{trans('sender.control')}}</th>
                         </thead>
                         <tbody>
                         @foreach($all_messages as $message)
