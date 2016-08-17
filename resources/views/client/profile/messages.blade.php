@@ -5,8 +5,8 @@
         <div class="messages">
             @foreach($messages as $m)
                 <div class="message">
-                    <div class="photo"><img src=""></div>
-                    <div class="name"><a href="">From name</a></div>
+                    <div class="photo"><img src="{{ url('uploads/girls/avatars/'.$m->ava) }}" width="150px"></div>
+                    <div class="name">{{ $m->name }}</div>
                     <div class="text-left">{{ $m->message }}</div>
                 </div>
             @endforeach

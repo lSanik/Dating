@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Constants;
 use App\Models\Album;
 use App\Models\Images;
+use App\Services\ExpenseService;
+use Carbon\Carbon;
 use Faker\Provider\Image;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -12,10 +15,43 @@ use Illuminate\Support\Facades\Validator;
 
 class AlbumController extends Controller
 {
+    /**
+     * @var ExpenseService
+     */
+    private $expensesService;
 
+    /**
+     * AlbumController constructor.
+     * @param ExpenseService $expenseService
+     */
+    public function __construct(ExpenseService $expenseService)
+    {
+        $this->expensesService = $expenseService;
+    }
 
     public function show($id, $aid)
     {
+        if(\Auth::user()->hasRole('male')) {
+
+            if (!$this->expensesService->checkExpense(\Auth::user()->id, $id, Constants::EXP_ALBUM)) {
+                if (!(
+                    (float) $this->getMoney() >= (float) $this->expensesService->getCost(Constants::EXP_ALBUM)
+                )){
+                    Session::flash('message', 'Enough Love Coins!');
+                    return back();
+                }
+                ///todo : review logic
+                $this->expensesService->setExpense(
+                    \Auth::user()->id,
+                    $id,
+                    Constants::EXP_ALBUM,
+                    $this->expensesService->getCost(Constants::EXP_ALBUM),
+                    Carbon::now()->addWeek()
+                );
+
+            }
+        }
+
         $photos = Images::where('album_id', '=', $aid)->get();
 
         return view('client.profile.albums.show')->with([

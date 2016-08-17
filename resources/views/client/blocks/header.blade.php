@@ -64,7 +64,7 @@
                         </li>
                         @if(Request::url() != 'http://dating.seoport.com.ua/profile/1')
                             <a href="{{ url(App::getLocale().'/profile/'. Auth::user()->id) }}" class="btn btn-default pull-right"><i class="fa fa-user"></i> PROFILE</a>
-                            <a href="/logout" class="btn btn-default pull-right"><i class="fa fa-sign-out"></i> LOG OUT</a>
+                            <a href="{{ url('/logout') }}" class="btn btn-default pull-right"><i class="fa fa-sign-out"></i> LOG OUT</a>
                         </div>
                         @else
                             <a href="#" class="coin_btn pull-right"><i class="fa fa-btc" aria-hidden="true"></i> Coins</a>

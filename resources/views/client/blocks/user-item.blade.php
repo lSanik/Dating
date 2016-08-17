@@ -5,18 +5,20 @@
     <div class="girl-action">
         <ul>
             <div class="cub">
+                @if( $u->webcam !== 0)
                 <li>
-                    <img src="/assets/img/video1.png" alt="Webcam online" title="{{ trans('users.webcamOnline') }}">
+                    <img src="/assets/img/video1.png" alt="Webcam online" title="Webcam online">
+                </li>
+                @endif
+            </div>
+            <div class="cub">
+                <li>
+                    <a href="#chat"><img src="/assets/img/interface1.png" alt="Chat now" title="Chat now!"></a>
                 </li>
             </div>
             <div class="cub">
                 <li>
-                    <a href="#chat"><img src="/assets/img/interface1.png" alt="Chat now" title="{{ trans('users.chatNow') }}!"></a>
-                </li>
-            </div>
-            <div class="cub">
-                <li>
-                    <a href="#message"><img src="/assets/img/note1.png" alt="Leave a message" title="{{ trans('users.leaveAMessage') }}"></a>
+                    <a href="{{ url('/'.App::getLocale().'/profile/'.$u->id.'/message/') }}"><img src="{{ url('/assets/img/note1.png') }}" alt="Leave a message" title="Leave a message"></a>
                 </li>
             </div>
         </ul>

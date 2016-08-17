@@ -32,7 +32,7 @@ class HomeController extends Controller
         return User::select(['id', 'first_name', 'avatar', 'webcam'])
             ->where('role_id', '=', $roleId)
             ->where('status_id', '=', 1)
-            ->where('home', '=', 1)
+            ->where('hot', '=', 1)
             ->get();
     }
 }

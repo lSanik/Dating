@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="doh">
-        <section class="panel panel-default col-md-4 col-md-offset-1">
+        <section class="panel panel-default col-md-4">
             <header class="panel-heading">
                 {{trans('stat.INCOME-FOR-THE-PAST-MONTH')}}
             </header>
@@ -73,6 +73,40 @@
             </div>
         </section>
 
+        <section class="panel panel-default col-md-4">
+            <header class="panel-heading">
+                Выплаты партнерам
+            </header>
+            <div class="panel-body">
+                <div class="all">
+                    Общая сумма: <span class="bold pull-right"> <b>$ {{ $amount * $rate->price }}</b></span>
+                </div>
+                @if( Auth::user()->hasRole('Owner') )
+                    <hr/>
+                    <div class="partners">
+                        <header>По партнерам</header>
+                        <table class="table table-hovered">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>{{ trans('stat.partner') }}</th>
+                                <th>{{ trans('stat.cost') }}</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($month as $m)
+                                <tr>
+                                    <td>{{ $m->uid }}</td>
+                                    <td>{{ $m->first_name }} {{ $m->last_name }}</td>
+                                    <td>{{ ($m->expense * $rate->price) / 2  }}</td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                @endif
+            </div>
+        </section>
     </div>
 
     <section class="panel panel-default col-md-12">

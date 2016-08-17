@@ -155,11 +155,6 @@ class Controller extends BaseController
             return;
     }
 
-    /** Get horoscope */
-    public function getHoroscope()
-    {
-        //todo get
-    }
 
     /** Users */
     //todo: move function to User model

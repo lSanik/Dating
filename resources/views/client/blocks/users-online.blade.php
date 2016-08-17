@@ -10,7 +10,7 @@
                 </div>
                 <div class="col-md-8">
                     {{ $u->first_name }} | ID: {{$u->id}}
-                    <a href="{{ url('/'.App::getLocale().'/profile/'.$u->id.'/message/') }}"><img src="/assets/img/note.png" alt="Leave a message" title="Leave a message"></a>
+                    <a href="{{ url('/'.App::getLocale().'/profile/'.$u->id.'/message/') }}"><img src="{{ url('/assets/img/note.png') }}" alt="Leave a message" title="Leave a message"></a>
                     <a href="#chat"><img src="/assets/img/interface.png" alt="Chat now" title="Chat now!"></a>
                 </div>
             </div>

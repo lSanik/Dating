@@ -150,6 +150,9 @@ class GirlsController extends Controller
              */
 
             $this->user->avatar = $user_avatar;
+
+            $this->user->webcam = $request->input('webcam') ? 1 : 0;
+            $this->user->hot = $request->input('hot') ? 1 : 0;
             $this->user->first_name = $request->input('first_name');
             $this->user->last_name = $request->input('second_name');
             $this->user->email = $request->input('email');
@@ -299,6 +302,9 @@ class GirlsController extends Controller
 
         $user = User::find($id);
         $profile = Profile::where('user_id', '=', $id)->first();
+
+        $user->webcam = $request->input('webcam') ? 1 : 0;
+        $user->hot = $request->input('hot') ? 1 : 0;
 
         $user->first_name = $request->input('first_name');
         $user->last_name  = $request->input('second_name');

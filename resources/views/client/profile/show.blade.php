@@ -5,7 +5,7 @@
         <div class="hidden">
             {{ csrf_field() }}
         </div>
-        @foreach($user as $u)
+
             <div class="avatar col-md-4 col-xs-6"><img src="{{ url('/uploads/girls/avatars/'.$u->avatar) }}" width="100%"/></div>
             <div id="mobile_ver">
                 <div class="col-md-6 col-xs-6"> 
@@ -77,7 +77,7 @@
                         <div class="col-md-6"><strong>{{ trans('profile.city') }}:</strong>{{ trans('city.'.$u->city) }}</div>
                     </div>
                     <div class="row info">
-                        <div class="col-md-6"><strong>{{ trans('profile.horoscope') }}:</strong> {{ $u->birthday }}</div>
+                        <div class="col-md-6"><strong>{{ trans('profile.horoscope') }}:</strong> {{trans('zodiac.'.$sign) }}</div>
                         <div class="col-md-6"><strong>{{ trans('profile.height') }}:</strong> {{ $u->height }}</div>
                     </div>
                     <div class="row info">
@@ -155,16 +155,20 @@
                 <hr />
                     <header>Gallery</header>
                     <div class="owl online">
-                        <div class="item">
-                            <div class="row text-center" id="photo">
-                                <img src="/uploads/girls/avatars/"/>
+                        @foreach($albums as $a)
+                            <div class="item">
+                                <div class="row text-center">
+                                    <a href="{{ url(App::getLocale().'/profile/'.$id.'/gallery/'.$a->id) }}">
+                                        <img src="{{ url('/uploads/'.$a->cover_image) }}" width="250px">
+                                        <div class="text-center">{{ $a->name }}</div>
+                                    </a>
+                                </div>
                             </div>
-                        </div>
+                        @endforeach
                     </div>
-                <a href="#" class="photo_link">All Photos</a>
                 </div>
             </div>
-        @endforeach
+
     </div>
 
 @stop
@@ -183,6 +187,9 @@
                     data: {girl_id: parseInt($('#id').html()), _token: $('input[name="_token"]').val()},
                     success: function( response ) {
                         $('#serviceModal').modal();
+                        $('#serviceModal').find('.modal-body').append(
+                                "<div>" + response.text + "</div>"
+                        );
                     },
                     error: function( response ) {
                         $('#serviceModal').modal();

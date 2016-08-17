@@ -53,6 +53,18 @@
                                 <input type="file" class="form-control file" name="avatar" accept="image/*" value="{{ $user->avatar }}">
                             </div>
                             <div class="form-group">
+                                {!! Form::label('webcam', 'Вебкамера') !!}
+                                <input type="checkbox" name="webcam"
+                                    @if($user->webcam !== 0)
+                                        checked
+                                    @endif
+                                >
+                            </div>
+                            <div class="form-group">
+                                {!! Form::label('hot', 'Hot Block') !!}
+                                <input type="checkbox" name="hot" {{ ($user->hot == 0) ?: 'checked' }}>
+                            </div>
+                            <div class="form-group">
                                 {!! Form::label('first_name', 'Имя') !!}
                                 {!! Form::text('first_name', $user->first_name, ['class'=>'form-control', 'placeholder' => 'Name']) !!}
                             </div>

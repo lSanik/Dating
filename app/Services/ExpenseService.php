@@ -3,10 +3,17 @@
 namespace App\Services;
 
 use App\Models\Expenses;
+use App\Models\Finance;
 use App\Models\ServicesPrice;
 use App\Models\User;
 use Carbon\Carbon;
 
+/**
+ * Class ExpenseService
+ * @package App\Services
+ *
+ * todo: refactor
+ */
 class ExpenseService
 {
     /**
@@ -14,7 +21,10 @@ class ExpenseService
      */
     private $expense;
 
-
+    /**
+     * ExpenseService constructor.
+     * @param Expenses $expenses
+     */
     public function __construct(Expenses $expenses)
     {
         $this->expense = $expenses;
@@ -45,13 +55,29 @@ class ExpenseService
             ->where('girl_id', '=', (int) $girl_id)
             ->where('type', '=', $type)
             ->first();
-
-        if ($expense) {
+        // todo review and test logic
+        if ($expense && $this->checkExpire($expense->id)) {
             return true;
         }
 
         return false;
     }
+
+    /**
+     * @param $id
+     * @return bool
+     */
+    private function checkExpire($id)
+    {
+        $expire = Carbon::createFromFormat('Y-m-d', Expenses::find($id)->expire);
+
+        if ( !is_null($expire) && $expire->isSameDay(Carbon::now()) ) {
+            return false;
+        }
+
+        return true;
+    }
+
 
     /**
      * @param $user_id
@@ -71,5 +97,20 @@ class ExpenseService
             'partner_id' => User::getPartnerId($girl_id),
             'created_at' => Carbon::now(),
         ]);
+
+        $this->changeBalance($user_id, $expense_count);
+    }
+
+    /**
+     * todo move to finance service
+     * 
+     * @param integer $user_id
+     * @param float|integer $cost
+     */
+    private function changeBalance($user_id, $cost)
+    {
+        $user = Finance::where('user_id', '=', $user_id)->first();
+        $user->amount -= $cost;
+        $user->save();
     }
 }

@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 
+use App\Constants;
 use App\Models\Expenses;
 use App\Models\ServicesPrice;
 use App\Models\User;
+use App\Services\ExpenseService;
 use Illuminate\Http\Request;
 use App\Models\Messages;
 
@@ -14,17 +16,14 @@ use Illuminate\Support\Facades\Validator;
 
 class MessagesController extends Controller
 {
+    /**
+     * @var
+     */
+    private $expenseService;
 
-    private $cost;
-
-    public function __construct()
+    public function __construct(ExpenseService $expenseService)
     {
-        
-        $cost = ServicesPrice::select('price')
-            ->where('name', 'like', 'message')->first();
-
-        $this->cost = $cost->price;
-
+        $this->expenseService = $expenseService;
         
         parent::__construct();
     }
@@ -46,7 +45,7 @@ class MessagesController extends Controller
             ->where('messages.to_user', '=', $id)
             ->orderBy('messages.created_at', 'asc')
             ->get();
-
+        
         $messages = array_merge($from_user, $to_user);
 
         usort($messages, [$this, 'cmp_time']);
@@ -65,39 +64,38 @@ class MessagesController extends Controller
 
     public function send(Request $request, $id)
     {
-        if( \Auth::user()->hasRole('male') ){
-            $money = $this->getMoney();
+        $rules = [
+            'to'        => 'required',
+            'from'      => 'required',
+            'message'   => 'required',
+        ];
 
-            if( !($money->amount >= $this->cost) ){
+        $v = Validator::make($request->all(), $rules);
+
+        if($v->fails())
+        {
+            return redirect()->back()->withErrors($v->errors());
+        }
+
+        if( \Auth::user()->hasRole('male') ){
+
+            if (!(
+                (float) $this->getMoney() >= (float) $this->expenseService->getCost(Constants::EXP_FLP)
+            )){
                 \Session::flash('flash-warning', trans('payments.enoughMoney'));
                 return redirect()->back();
-            } else {
-                $money->amount -= $this->cost;
-                $money->save();
 
-                $exp = new Expenses();
-                $exp->user_id = \Auth::user()->id;
-                $exp->girl_id = $id;
-                $exp->expense = $this->cost;
-                $exp->save();
+            } else {
+                $this->expenseService->setExpense(
+                    \Auth::user()->id,
+                    $request->input('to'),
+                    Constants::EXP_MESSAGE,
+                    $this->expenseService->getCost(Constants::EXP_MESSAGE)
+                );
             }
         }
 
         if($request->input('to') == $id){
-
-            $rules = [
-                'to'        => 'required',
-                'from'      => 'required',
-                'message'   => 'required',
-            ];
-
-            $v = Validator::make($request->all(), $rules);
-
-            if($v->fails())
-            {
-                return redirect()->back()->withErrors($v->errors());
-            }
-
 
             $message = new Messages();
             $message->from_user = $request->input('from');

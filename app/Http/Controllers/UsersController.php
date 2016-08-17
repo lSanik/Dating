@@ -10,25 +10,38 @@ use App\Models\Session;
 use App\Models\Smiles;
 use App\Models\State;
 use App\Models\User;
+use App\Services\ZodiacSignService;
 use Illuminate\Http\Request;
 
 class UsersController extends Controller
 {
+    /**
+     * @var User
+     */
     private $user;
+
+    /**
+     * @var Profile
+     */
     private $profile;
 
-    public function __construct(User $user, Profile $profile)
+    /**
+     * @var ZodiacSignService
+     */
+    private $zodiacSignService;
+
+    public function __construct(User $user, Profile $profile, ZodiacSignService $zodiacSignService)
     {
         $this->user = $user;
         $this->profile = $profile;
+        $this->zodiacSignService = $zodiacSignService;
         parent::__construct();
     }
 
     public function show($id)
     {
-        $user = \DB::table('users')
-            ->select(
-                'users.id as uid',
+        $user = User::select([
+            'users.id as uid',
                 'users.first_name',
                 'users.last_name',
                 'users.email',
@@ -36,19 +49,21 @@ class UsersController extends Controller
                 'users.webcam',
                 'profile.*',
                 'countries.name as country',
-                'cities.name as city')
+                'cities.name as city',
+            ])
             ->join('profile', 'profile.user_id', '=', 'users.id')
-            ->join('countries', 'users.country_id', '=', 'countries.id')
-            ->join('cities', 'users.city_id', '=', 'cities.id')
+            ->join('countries', 'countries.id', '=', 'users.id')
+            ->join('cities', 'cities.id', '=', 'users.id')
             ->where('users.id', '=', $id)
-            ->get();
+            ->first();
 
-        $albus = Album::where('user_id', '=', $id)->get();
+        $albums = Album::where('user_id', '=', $id)->get();
 
         return view('client.profile.show')->with([
-            'user'      => $user,
-            'albums'    => $albus,
-            'id'        => $id
+            'u' => $user,
+            'id' => $id,
+            'albums' => $albums,
+            'sign'  => $this->zodiacSignService->getSignByBirthday($user->birthday),
         ]);
     }
 
@@ -223,7 +238,7 @@ class UsersController extends Controller
             'email'      => 'required',
         ]);
 
-        dump($request->input());
+     //   dump($request->input());
 
         $user = User::find($id);
 

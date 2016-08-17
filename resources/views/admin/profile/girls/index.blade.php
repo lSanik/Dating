@@ -20,6 +20,7 @@
                 @endif
                 <th>{{trans('/admin/index.online')}}</th>
                 <th>{{trans('/admin/index.webCam')}}</th>
+                <th>Hot block</th>
                 <th>{{trans('/admin/index.lastEntrance')}}</th>
                 <th><i class="fa fa-cogs"></i> {{trans('/admin/index.control')}}</th>
                 </thead>
@@ -33,8 +34,27 @@
                             <td>{{ $girl->partner_id }}</td> <!-- Уточнить что выводить -->
                         @endif
 
-                        <td> TRUE/FALSE <!-- @todo logic --> </td>
-                        <td> TRUE/FALSE <!-- @todo logic --> </td>
+                        <td>
+                            @if($girl->isOnline())
+                               <button class="btn btn-small online_btn"> Online </button>
+                            @else
+                                <span class="red">{{ trans('admin.No') }}</span>
+                            @endif
+                        </td>
+                        <td>
+                            @if($girl->webcam !== 0)
+                                <span class="green">{{ trans('admin.yes') }}</span>
+                            @else
+                                <span class="red">{{ trans('admin.No') }}</span>
+                            @endif
+                        </td>
+                        <td>
+                            @if($girl->hot !== 0)
+                                <span class="green">{{ trans('admin.yes') }}</span>
+                            @else
+                                <span class="red">{{ trans('admin.No') }}</span>
+                            @endif
+                        </td>
                         <td> {{ $girl->last_login }} </td>
                         <td>
                             <a class="btn btn-success btn-xs"><i class="fa fa-check"></i></a>
