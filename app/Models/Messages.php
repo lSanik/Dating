@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Messages extends Model
 {
-    protected $table = 'messages_static';
+    protected $table = 'messages';
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

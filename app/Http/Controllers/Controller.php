@@ -90,7 +90,7 @@ class Controller extends BaseController
      * @param $message string
      * @return mixed string
      */
-    public function robot($message)
+    public static function robot($message)
     {
         $email_pattern = '/[^@\s]*@[^@\s]*\.[^@\s]*/';
         $links_pattern = '/[a-zA-Z]*[:\/\/]*[A-Za-z0-9\-_]+\.+[A-Za-z0-9\.\/%&=\?\-_]+/i';

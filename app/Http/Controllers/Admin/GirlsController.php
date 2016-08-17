@@ -337,6 +337,9 @@ class GirlsController extends Controller
     public function destroy($id)
     {
         //@todo SoftDelete Row whre ID
+        //@TODO: DELETE!
+        User::where('id', $id)->delete();
+        return redirect('/admin/girls');
     }
 
     public function getByStatus($status)

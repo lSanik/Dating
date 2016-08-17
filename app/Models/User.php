@@ -286,7 +286,55 @@ class User extends Authenticatable
         return \DB::table('users')->select('partner_id')->where('id', '=', $girl_id)->first()->partner_id;
     }
 
-    public static function  getUserIdSession ($session_key){
-        return \DB::table('sessions')->select('user_id')->where('id',"=",$session_key)->get()[0]->user_id;
+    public static function getName($user_id){
+        //return \DB::table('users')->select('partner_id')->where('id', '=', $girl_id)->first()->partner_id;
     }
+
+    public static function getAvatar($user_id){
+        //return \DB::table('users')->select('partner_id')->where('id', '=', $girl_id)->first()->partner_id;
+    }
+
+    public static function getAge($user_id){
+        //return \DB::table('users')->select('partner_id')->where('id', '=', $girl_id)->first()->partner_id;
+    }
+
+    public static function getUserShtInfo($user_id){
+        return \DB::table('users')->select(['users.id','users.first_name','users.last_name','users.nickname','users.avatar','profile.birthday','sessions.id as sessionID'])
+            ->where('users.id','=',$user_id)
+            ->leftJoin('profile', 'users.id', '=', 'profile.user_id')
+            ->leftJoin('sessions', 'users.id', '=', 'sessions.user_id')
+            ->get();
+        //return \DB::table('users')->select('partner_id')->where('id', '=', $girl_id)->first()->partner_id;
+    }
+
+
+    public static function  getUserIdSession ($session_key){
+        $query=\DB::table('sessions')->select('user_id')->where('id',"=",$session_key)->get();//->user_id
+            if(is_array($query)){
+                if(array_key_exists(0,$query)){
+                    $query=$query[0]->user_id;
+                }else{
+                    $query='not_found';
+                }
+            }else{
+                $query='not_found';
+            }
+        return $query;
+    }
+
+
+    public static function  getUserSessionId ($id){
+        $query=\DB::table('sessions')->select('id')->where('user_id',"=",$id)->get();//->user_id
+        if(is_array($query)){
+            if(array_key_exists(0,$query)){
+                $query=$query[0]->id;
+            }else{
+                $query='not_found';
+            }
+        }else{
+            $query='not_found';
+        }
+        return $query;
+    }
+
 }

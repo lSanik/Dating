@@ -52,7 +52,7 @@ class SearchController extends Controller
 
     public function searchGetProfiles($request){
         $profile_attrs=$request->input();
-        if($profile_attrs['is_avatar']==1){
+        if(isset($profile_attrs['is_avatar']) && $profile_attrs['is_avatar']==1){
             $avatar='';
         }else{
             $avatar='iss_set';
@@ -60,19 +60,19 @@ class SearchController extends Controller
         $find_users=User::select(['users.*','profile.birthday'])
             ->whereHas('profile', function ($query) use ($profile_attrs){
                 $arr_betwen='`birthday` BETWEEN  STR_TO_DATE(YEAR(CURDATE())-'.$profile_attrs["age_stop"].', "%Y") AND STR_TO_DATE(YEAR(CURDATE())-'.($profile_attrs["age_start"]-1).', "%Y")';
-                if($profile_attrs['age_start']!='---'){      $query->whereRaw($arr_betwen );}
-                if($profile_attrs['eyes']!= "---"){      $query->where('eye', '=', $profile_attrs['eyes']);}
-                if($profile_attrs['hair']!='---'){      $query->where('hair', '=', $profile_attrs['hair']);}
-                if($profile_attrs['education']!='---'){ $query->where('education', '=', $profile_attrs['education']);}
-                if($profile_attrs['kids']!='---'){      $query->where('kids', '=', $profile_attrs['kids']);}
-                if($profile_attrs['want_k']!='---'){ $query->where('want_kids', '=', $profile_attrs['want_k']);}
-                if($profile_attrs['family']!='---'){    $query->where('family', '=', $profile_attrs['family']);}
-                if($profile_attrs['religion']!='---'){  $query->where('religion', '=', $profile_attrs['religion']);}
-                if($profile_attrs['smoke']!='---'){     $query->where('smoke', '=', $profile_attrs['smoke']);}
-                if($profile_attrs['drink']!='---'){     $query->where('drink', '=', $profile_attrs['drink']);}
+                if(isset($profile_attrs['age_start']) && $profile_attrs['age_start']!='---'){      $query->whereRaw($arr_betwen );}
+                if(isset($profile_attrs['eyes']) && $profile_attrs['eyes']!= "---"){      $query->where('eye', '=', $profile_attrs['eyes']);}
+                if(isset($profile_attrs['hair']) && $profile_attrs['hair']!='---'){      $query->where('hair', '=', $profile_attrs['hair']);}
+                if(isset($profile_attrs['education']) && $profile_attrs['education']!='---'){ $query->where('education', '=', $profile_attrs['education']);}
+                if(isset($profile_attrs['kids']) && $profile_attrs['kids']!='---'){      $query->where('kids', '=', $profile_attrs['kids']);}
+                if(isset($profile_attrs['want_k']) && $profile_attrs['want_k']!='---'){ $query->where('want_kids', '=', $profile_attrs['want_k']);}
+                if(isset($profile_attrs['family']) && $profile_attrs['family']!='---'){    $query->where('family', '=', $profile_attrs['family']);}
+                if(isset($profile_attrs['religion']) && $profile_attrs['religion']!='---'){  $query->where('religion', '=', $profile_attrs['religion']);}
+                if(isset($profile_attrs['smoke']) && $profile_attrs['smoke']!='---'){     $query->where('smoke', '=', $profile_attrs['smoke']);}
+                if(isset($profile_attrs['drink']) && $profile_attrs['drink']!='---'){     $query->where('drink', '=', $profile_attrs['drink']);}
 
-                if($profile_attrs['height']!='---' && $profile_attrs['height']!=0  ){     $query->where('height', '=', $profile_attrs['height']);}
-                if($profile_attrs['weight']!='---' && $profile_attrs['weight']!=0){     $query->where('weight', '=', $profile_attrs['weight']);}
+                if(isset($profile_attrs['height']) && $profile_attrs['height']!='---' && $profile_attrs['height']!=0  ){     $query->where('height', '=', $profile_attrs['height']);}
+                if(isset($profile_attrs['weight']) && $profile_attrs['weight']!='---' && $profile_attrs['weight']!=0){     $query->where('weight', '=', $profile_attrs['weight']);}
             })
 
             ->where('role_id', '=', '4')

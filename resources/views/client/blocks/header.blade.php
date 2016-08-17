@@ -4,7 +4,7 @@
 
             <!-- Logo -->
             <div class="col-lg-7 col-md-6 col-sm-5 logo">
-                <a href="{{ url('/') }}">
+                <a href="{{ url(App::getLocale().'/') }}">
                     <img id="logo_img" src="/public/uploads/datelogo.jpg" alt="Logo"><span class='logo_text'>GET MARRIED CLUB</span>
                 </a>
             </div>
@@ -63,7 +63,7 @@
                             </ul>
                         </li>
                         @if(Request::url() != 'http://dating.seoport.com.ua/profile/1')
-                            <a href="/profile/{{ Auth::user()->id }}" class="btn btn-default pull-right"><i class="fa fa-user"></i> PROFILE</a>
+                            <a href="{{ url(App::getLocale().'/profile/'. Auth::user()->id) }}" class="btn btn-default pull-right"><i class="fa fa-user"></i> PROFILE</a>
                             <a href="/logout" class="btn btn-default pull-right"><i class="fa fa-sign-out"></i> LOG OUT</a>
                         </div>
                         @else

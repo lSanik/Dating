@@ -245,7 +245,7 @@ class MessageSenderController extends Controller
             $status="0";
         }
 
-        $MessageSender=$this->MessageSender::find($request->input()["id"]);
+        $MessageSender=$this->MessageSender->find($request->input()["id"]);
 
         if (!empty($request->input()["girl_id"])) {
             $MessageSender->girl_id = $request->input('girl_id');
@@ -271,7 +271,7 @@ class MessageSenderController extends Controller
     }
 
     public function send($id){
-        $MessageSender = $this->MessageSender::find($id);
+        $MessageSender = $this->MessageSender->find($id);
         if($MessageSender->status==1){
             $latest_sended=Message_sender_limit::get_day_count($MessageSender->partner_id);
             $counter=0;

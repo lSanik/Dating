@@ -74,6 +74,8 @@ Route::group([  'prefix'        => LaravelLocalization::setLocale(),
                 'roles'         => ['Alien', 'Male', 'Female']
 ], function(){
     Route::get('chat', 'ChatController@index');
+
+    Route::post('chat/ajax', 'ChatController@ajax');
     /** Users profile */
     Route::get('profile/{id}', 'UsersController@edit');
     Route::get('profile/{id}/photo', 'UsersController@profilePhoto');
@@ -194,6 +196,8 @@ Route::group([  'prefix' => LaravelLocalization::setLocale().'/admin',
 
     Route::get('girl/edit/{id}', 'Admin\GirlsController@edit'); // Edit Girl profile
     Route::get('girl/show/{id}', 'Admin\GirlsController@show'); // Show Girl profile
+    Route::get('girl/drop/{id}', 'Admin\GirlsController@destroy');//
+
 
     Route::post('girl/check', ['as' => 'check_pass', 'uses' => 'Admin\GirlsController@check']); // Check passport at DB
     Route::post('girl/store', 'Admin\GirlsController@store'); //Store new to db

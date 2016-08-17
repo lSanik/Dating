@@ -16,8 +16,8 @@
                         <td>{{ $m->email }}</td>
                         <td>{{ $m->subject }}</td>
                         <td>
-                            <a href="{{ url('/admin/contacts/message/'.$m->id) }}"><i class="fa fa-eye"></i></a>
-                            <a href="{{ url('/admin/contacts/dropMessage/'.$m->id) }}"><i class="fa fa-trash"></i></a>
+                            <a href="{{ url(App::getLocale().'/admin/contacts/message/'.$m->id) }}"><i class="fa fa-eye"></i></a>
+                            <a href="{{ url(App::getLocale().'/admin/contacts/dropMessage/'.$m->id) }}"><i class="fa fa-trash"></i></a>
                         </td>
                     </tr>
                 @endforeach

@@ -23,11 +23,11 @@
             <div class="col-lg-6">
                 <section class="panel">
                     <header class="panel-heading">
-                        Основная информация
+                        {{trans('/admin/index.mainInformation')}}
                     </header>
                     <div class="panel-body">
                         <div class="form-group">
-                            <label for="first_name" class="col-lg-2 col-sm-2 control-label">Имя</label>
+                            <label for="first_name" class="col-lg-2 col-sm-2 control-label">{{trans('/admin/index.name')}}</label>
                             <div class="col-lg-10">
                                 {!! Form::text('first_name', $user->first_name,
                                 ['class'=>'form-control', 'placeholder' => '', 'required' => 'required']) !!}
@@ -35,7 +35,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="last_name" class="col-lg-2 col-sm-2 control-label">Фамилия</label>
+                            <label for="last_name" class="col-lg-2 col-sm-2 control-label">{{trans('/admin/index.surname')}}</label>
                             <div class="col-lg-10">
                                 {!! Form::text('last_name', $user->last_name,
                                 ['class'=>'form-control', 'placeholder' => '', 'required' => 'required']) !!}
@@ -51,20 +51,20 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="phone" class="col-lg-2 col-sm-2 control-label"> Телефон </label>
+                            <label for="phone" class="col-lg-2 col-sm-2 control-label">{{trans('/admin/index.phone')}}</label>
                             <div class="col-lg-10">
                                 <input type="phone" name="phone" value="{{ $user->phone }}" class="form-control" required>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="password" class="col-lg-2 col-sm-2 control-label">Password</label>
+                            <label for="password" class="col-lg-2 col-sm-2 control-label">{{trans('/admin/index.password')}}</label>
                             <div class="col-lg-10">
                                 <input type="password" class="form-control" name="password">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="avatar" class="col-lg-2 col-sm-2 control-label">Фото</label>
+                            <label for="avatar" class="col-lg-2 col-sm-2 control-label">{{trans('/admin/index.photo')}}</label>
                             <div class="col-lg-10">
                                 <img src="{{ url('/uploads/admins/'.$user->avatar) }}" id="preview" width="100%">
                                 <input type="file" class="form-control file" name="avatar">
@@ -78,11 +78,11 @@
             <div class="col-lg-6">
                 <section class="panel">
                     <header class="panel-heading">
-                        Дополнительная информация
+                        {{trans('/admin/index.additionalInformation')}}
                     </header>
                     <div class="panel-body">
                         <div class="form-group">
-                            <label for="first_name" class="col-lg-2 col-sm-2 control-label">Компания</label>
+                            <label for="first_name" class="col-lg-2 col-sm-2 control-label">{{trans('/admin/index.company')}}</label>
                             <div class="col-lg-10">
                                 {!! Form::text('company', $user->company_name,
                                  ['class'=>'form-control', 'placeholder' => '']) !!}
@@ -90,7 +90,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="last_name" class="col-lg-2 col-sm-2 control-label">Инфо</label>
+                            <label for="last_name" class="col-lg-2 col-sm-2 control-label">{{trans('/admin/index.info')}}</label>
                             <div class="col-lg-10">
                                 {!! Form::textarea('info', $user->info,
                                 ['class'=>'form-control', 'placeholder' => '', 'rows' => 4]) !!}
@@ -98,7 +98,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="email" class="col-lg-2 col-sm-2 control-label">Адрес</label>
+                            <label for="email" class="col-lg-2 col-sm-2 control-label">{{trans('/admin/index.address')}}</label>
                             <div class="col-lg-10">
                                 {!! Form::text('address', $user->address,
                                 ['class'=>'form-control', 'placeholder' => '']) !!}
@@ -106,7 +106,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="email" class="col-lg-2 col-sm-2 control-label">Контакты</label>
+                            <label for="email" class="col-lg-2 col-sm-2 control-label">{{trans('/admin/index.contacts')}}</label>
                             <div class="col-lg-10">
                                 {!! Form::textarea('contacts', $user->contacts,
                                 ['class'=>'form-control', 'placeholder' => '', 'rows' => 4]) !!}
@@ -114,7 +114,7 @@
                         </div>
 
                         <div class="panel-footer text-center" style="background-color: white">
-                            <button type="submit" class="btn btn-success"> Обновить </button>
+                            <button type="submit" class="btn btn-success">{{trans('/admin/index.refresh')}}</button>
                         </div>
                     </div>
                 </section>
