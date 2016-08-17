@@ -173,7 +173,25 @@
                         </div>
                         <header style="margin-bottom: 60px; clear: both">
                         </header>
+
+                        @if (count($errors) > 0)
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                            <script>
+                                window.onload = function() {
+                                    $("#button-register.btn.btn-default").click();
+                                };
+                                // @TODO: fix popup and validate register!!!
+                            </script>
+                        @endif
+
                         <form action="/register" method="post" class="form"/>
+
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <div class="form-group col-md-6">
                                 <label for="first_name">{{ trans('profile.first_name') }}</label>

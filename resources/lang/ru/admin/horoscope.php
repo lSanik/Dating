@@ -1,0 +1,26 @@
+<?php
+
+return [
+    'from'  => 'from',
+     'Aries'        => 'Овен',
+     'Taurus'       => 'Телец',
+     'Gemini'       => 'Близнецы',
+     'Cancer'       => 'Рак',
+     'Leo'          => 'Лев',
+     'Virgo'        => 'Дева',
+     'Libra'        => 'Весы',
+     'Scorpio'      => 'Скорпион',
+     'Sagittarius'  => 'Стрелец',
+     'Capricornus'  => 'Козерог',
+     'Aquarius'     => 'Водолей',
+     'Pisces'       => 'Рыбы',
+     'to'           => 'To',
+     'actions'      => 'Действия',
+     'horoscope'    => 'Horoscope',
+     'save'         => 'Сохранить',
+     'begin'        => 'Совместимость между',
+     'end'          => 'Совместимость между',
+     'locale'       => 'Язык',
+     'text'         => 'Текст',
+     'edit'         => 'Редактировать',
+];

@@ -305,10 +305,29 @@ class GirlsController extends Controller
 
         $user->webcam = $request->input('webcam') ? 1 : 0;
         $user->hot = $request->input('hot') ? 1 : 0;
+/*
+        if ($request->file('avatar')) {
+            $file = $request->file('avatar');
+            $user_avatar = time().'-'.$file->getClientOriginalName();
+            $destination = public_path().'/uploads/girls/avatars';
+            $file->move($destination, $user_avatar);
+            $user->avatar = $user_avatar;
+        }
 
+        if(!$request->allFiles()['pass_photo']){
+            foreach ($request->allFiles()['pass_photo'] as $file) {
+                $pass = time().'-'.$file->getClientOriginalName();
+                $destination = public_path().'/uploads/girls/passports';
+                $file->move($destination, $pass);
+                array_push($this->passport_photos, $pass);
+            }
+        }
+*/
         $user->first_name = $request->input('first_name');
         $user->last_name  = $request->input('second_name');
-        $user->password   = bcrypt($request->input('password'));
+        if(!empty($request->input('password'))){
+            $user->password   = bcrypt($request->input('password'));
+        }
         $user->country_id = $request->input('country');
         $user->state_id   = $request->input('state');
         $user->city_id    = $request->input('city');

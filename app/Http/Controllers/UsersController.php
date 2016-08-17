@@ -232,7 +232,7 @@ class UsersController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'avatar' => 'required',
+            //'avatar' => 'required',
             'first_name' => 'required',
             'second_name'  => 'required',
             'email'      => 'required',
@@ -243,9 +243,25 @@ class UsersController extends Controller
         $user = User::find($id);
 
         if ( $request->file('avatar') ) {
-            $user->avatar = $this->upload($request->file('avatar'));
-        }
+            if ($request->file('avatar')) {
+                $file = $request->file('avatar');
+                $user_avatar = time().'-'.$file->getClientOriginalName();
+                $destination = public_path().'/uploads/girls/avatars';
+                $file->move($destination, $user_avatar);
+            }
 
+            $user->avatar = $user_avatar;
+        }
+/*
+ *
+           if ($request->file('avatar')) {
+                $file = $request->file('avatar');
+                $user_avatar = time().'-'.$file->getClientOriginalName();
+                $destination = public_path().'/uploads/girls/avatars';
+                $file->move($destination, $user_avatar);
+            }
+ *
+ */
         $user->first_name = $request->input('first_name');
         $user->last_name  = $request->input('second_name');
         $user->email      = $request->input('email');
@@ -259,20 +275,18 @@ class UsersController extends Controller
         $user->city_id    = $request->input('city');
 
         $user->save();
-
-        if( empty(Profile::where('user_id', '=', $id)->get()->items) ){
-
+        if( empty((Profile::where('user_id', '=', $id)->first())) ){
             $profile = new Profile();
             $profile->user_id   = $id;
             $profile->gender    = $request->input('gender');
-            $profile->birthday   = new \DateTime($request->input('birthday'));  //check age
+            $profile->birthday   = new \DateTime($request->input('birthday'));  //check age new \DateTime($request->input('birthday'));
             $profile->height    = $request->input('height');
             $profile->weight   = $request->input('weight');
             $profile->eye       = $request->input('eye');
             $profile->hair      = $request->input('hair');
             $profile->education = $request->input('education');
             $profile->kids      = $request->input('kids');
-            $profile->want_kids = $request->input('want_kids');
+            $profile->want_kids = $request->input('want_k');
             $profile->family    = $request->input('family');
             $profile->religion  = $request->input('religion');
             $profile->smoke     = $request->input('smoke');
@@ -283,14 +297,12 @@ class UsersController extends Controller
             $profile->l_age_start   = $request->input('l_age_start');
             $profile->l_age_stop    = $request->input('l_age_stop');
             $profile->save();
-
             return redirect('/'.\App::getLocale().'/profile/show/'.$id);
         } else {
-
-            $profile = Profile::find($id);
+            $profile = Profile::where('user_id', '=', $id)->first();
             $profile->user_id   = $id;
             $profile->gender    = $request->input('gender');
-            $profile->birthday  = new \DateTime($request->input('birthday'));  //check age
+            $profile->birthday  = new \DateTime($request->input('birthday'));  //check age new \DateTime($request->input('birthday'));
             $profile->height    = $request->input('height');
             $profile->weight    = $request->input('weight');
             $profile->eye       = $request->input('eye');
@@ -308,7 +320,7 @@ class UsersController extends Controller
             $profile->l_age_start = $request->input('l_age_start');
             $profile->l_age_stop = $request->input('l_age_stop');
             $profile->save();
-
+            return redirect('/'.\App::getLocale().'/profile/show/'.$id);
         }
     }
 }

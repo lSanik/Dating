@@ -27,16 +27,16 @@
                             <h3> {{ trans('profile.primary') }}</h3>
                             <div class="form-group">
                                 {!! Form::label('avatar', trans('profile.avatar')) !!}<br/>
-                                <img width="373rem" src="{{ !empty($user->avatar) ? url('/uploads/girls/avatars/'. $user->avatar ) : '' }}" id="preview-avatar">
-                                <input type="file" class="form-control file" name="avatar" accept="image/*" value="{{ !empty($user->avatar) ? $user->avatar : ''}}">
+                                <img width="373rem" src="{{ url('/uploads/girls/avatars/'. $user->avatar) }}" id="preview-avatar">
+                                <input type="file" class="form-control file" name="avatar" accept="image/*" value="{{ $user->avatar }}">
                             </div>
                             <div class="form-group">
                                 {!! Form::label('first_name', trans('profile.first_name')) !!}
-                                {!! Form::text('first_name', !empty($user->first_name) ? $user->firstName : '', ['class'=>'form-control', 'placeholder' => trans('profile.placeholder_name')]) !!}
+                                {!! Form::text('first_name', !empty($user->first_name) ? $user->first_name : '', ['class'=>'form-control', 'placeholder' => trans('profile.placeholder_name')]) !!}
                             </div>
                             <div class="form-group">
                                 {!! Form::label('second_name', trans('profile.last_name')) !!}
-                                {!! Form::text('second_name', !empty($user->last_name) ? $user->lastName : '', ['class'=>'form-control', 'placeholder' => trans("profile.placeholder_surname")]) !!}
+                                {!! Form::text('second_name', !empty($user->last_name) ? $user->last_name : '', ['class'=>'form-control', 'placeholder' => trans("profile.placeholder_surname")]) !!}
                             </div>
                             <div class="form-group">
                                 {!! Form::label('birthday', trans('profile.birthday')) !!}
@@ -52,7 +52,7 @@
                             </div>
                             <div class="form-group">
                                 {!! Form::label('password', trans('profile.password')) !!}
-                                {!! Form::password('password', ['class' => 'form-control', 'required' => 'required']) !!}
+                                {!! Form::password('password', ['class' => 'form-control', ]) !!}
                             </div>
                             <div class="form-group">
                                 {!! Form::label('coutry', trans('profile.country')) !!}

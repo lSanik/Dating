@@ -172,7 +172,8 @@ class MessageSenderController extends Controller
                 if($profile_attrs['smoke']!='---'){     $query->where('smoke', '=', $profile_attrs['smoke']);}
                 if($profile_attrs['drink']!='---'){     $query->where('drink', '=', $profile_attrs['drink']);}
             })
-            ->where('status_id', '=', '1')
+            ->where('role_id', '=', '4')
+            //->where('status_id', '=', '1') //@TODO: Profile validation is ACTIVE!
             ->where('country_id', '=', $profile_attrs['county'])
             ->where('state_id', '=', $profile_attrs['user_state_id'])
             ->join('profile', 'users.id', '=', 'profile.user_id')

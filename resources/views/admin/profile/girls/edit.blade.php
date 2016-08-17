@@ -86,7 +86,7 @@
                             </div>
                             <div class="form-group">
                                 {!! Form::label('password', 'Password') !!}
-                                {!! Form::password('password', ['class' => 'form-control', 'required' => 'required']) !!}
+                                {!! Form::password('password', ['class' => 'form-control']) !!}
                             </div>
                             <div class="form-group">
                                 {!! Form::label('coutry', 'Cтрана') !!}
@@ -122,7 +122,7 @@
                                 {!! Form::label('avatar', 'Фото/Скан паспорта') !!}
                                 <br/>
                                 <img width="373rem" src="{{ url('/uploads/girls/passports/'. $user->passport->cover) }}">
-                                <input type="file" class="form-control file" name="pass_photo" value="{{ $user->passport->cover }}" disabled="disabled" accept="image/*">
+                                <input type="file" class="form-control file" name="pass_photo" value="{{ $user->passport->cover }}"  disabled="disabled" accept="image/*"><!--disabled="disabled"-->
                             </div>
 
                         </div>
