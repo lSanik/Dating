@@ -150,7 +150,8 @@ class Controller extends BaseController
     public function getMoney()
     {
         if(\Auth::user() && \Auth::user()->hasRole('male')){
-            return \App\Models\Finance::where('user_id', '=', \Auth::user()->id)->first()->amount;
+            $user = \App\Models\Finance::where('user_id', '=', \Auth::user()->id)->first();
+            return isset($user->amoun) ?: false;
         } else
             return;
     }

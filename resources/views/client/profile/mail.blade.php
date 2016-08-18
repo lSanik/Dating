@@ -38,7 +38,7 @@
                                     <td>{{ $d->id }}</td>
                                     <td>
                                         <a href="{{ url('/'.App::getLocale().'/profile/'.$d->uid.'/message/') }}">
-                                            <img src="{{ url('/uploads/girls/avatars/'.$d->avatar) }}" width="32">
+                                            <img src="{{ url('/uploads/'.$d->avatar) }}" width="32">
                                             {{ $d->first_name }}
                                         </a>
                                     </td>

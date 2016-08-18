@@ -90,7 +90,13 @@
                             {!! Form::textarea('info', null, ['class'=>'form-control', 'placeholder' => '', 'rows' => 4]) !!}
                         </div>
                     </div>
-
+                    <div class="form-group">
+                        <label for="email" class="col-lg-2 col-sm-2 control-label">{{trans('/admin/index.address')}}</label>
+                        <div class="col-lg-10">
+                            {!! Form::text('address', '',
+                            ['class'=>'form-control', 'placeholder' => '']) !!}
+                        </div>
+                    </div>
                     <div class="form-group">
                         <label for="email" class="col-lg-2 col-sm-2 control-label">{{trans('/admin/index.contacts')}}</label>
                         <div class="col-lg-10">

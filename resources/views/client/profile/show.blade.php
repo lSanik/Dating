@@ -6,7 +6,7 @@
             {{ csrf_field() }}
         </div>
 
-            <div class="avatar col-md-4 col-xs-6"><img src="{{ url('/uploads/girls/avatars/'.$u->avatar) }}" width="100%"/></div>
+            <div class="avatar col-md-4 col-xs-6"><img src="{{ url('/uploads/'.$u->avatar) }}" width="100%"/></div>
             <div id="mobile_ver">
                 <div class="col-md-6 col-xs-6"> 
                     <div class="row info mobile_ver">

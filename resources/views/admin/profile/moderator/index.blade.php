@@ -29,7 +29,7 @@
                         <td class="hidden-xs">
                             <a href="{{ url(App::getLocale().'/admin/partner/show/'. $user->id ) }}" class="btn btn-success btn-xs" target="_blank"><i class="fa fa-eye"></i></a>
                             <a href="{{ url(App::getLocale().'/admin/partner/edit/'.$user->id ) }}" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
-                            <a href="{{ url(App::getLocale().'/admin/partner/drop/'.$user->id) }}" class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
+                            <a href="{{ url(App::getLocale().'/admin/moderator/drop/'.$user->id) }}" class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
                         </td>
                     </tr>
                 @endforeach

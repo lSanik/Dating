@@ -185,7 +185,7 @@ class GiftsController extends Controller
      */
     public function drop($id)
     {
-        $this->present->delete($id);
+        $this->present->find($id)->delete();
 
         \Session::flash('flash_success', 'Подарок удален');
 

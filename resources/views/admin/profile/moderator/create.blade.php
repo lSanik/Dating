@@ -7,8 +7,17 @@
 
 @section('content')
     <div class="row">
+        @if (count($errors) > 0)
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <!-- Form -->
-        {!! Form::open(['url' => '/admin/moderator/store', 'class' => 'form-horizontal']) !!}
+        {!! Form::open(['url' => '/admin/moderator/store', 'class' => 'form-horizontal',  'enctype' => 'multipart/form-data']) !!}
         <div class="col-lg-6">
             <section class="panel">
                 <header class="panel-heading">
@@ -77,6 +86,14 @@
                         <label for="last_name" class="col-lg-2 col-sm-2 control-label">{{trans('/admin/index.info')}}</label>
                         <div class="col-lg-10">
                             {!! Form::textarea('info', null, ['class'=>'form-control', 'placeholder' => '', 'rows' => 4]) !!}
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email" class="col-lg-2 col-sm-2 control-label">{{trans('/admin/index.address')}}</label>
+                        <div class="col-lg-10">
+                            {!! Form::text('address', '',
+                            ['class'=>'form-control', 'placeholder' => '']) !!}
                         </div>
                     </div>
 

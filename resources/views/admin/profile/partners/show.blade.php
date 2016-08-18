@@ -29,6 +29,16 @@
                 <div class="row">
                     Информация:  <b>{{ $user->info }}</b>
                 </div>
+
+                <div class="row">
+                    Компания: <b>{{ $user->company_name }}</b>
+                </div>
+                <div class="row">
+                    Телефон: <b>{{ $user->phone }}</b>
+                </div>
+                <div class="row">
+                    Email: <b>{{ $user->email }}</b>
+                </div>
             </div>
         </div>
     </div>

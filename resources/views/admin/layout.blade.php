@@ -33,6 +33,15 @@
         .response > span {
             padding: 10px;
         }
+
+        .danger {
+            color: red;
+        }
+
+         .kv-fileinput-upload, .fileinput-remove-button{
+             display: none;
+         }
+
     </style>
     @yield('styles')
 
@@ -41,7 +50,6 @@
     <script src="{{ url('/assets/js/html5shiv.js') }}"></script>
     <script src="{{ url('/assets/js/respond.min.js') }}"></script>
     <![endif]-->
-
 
 </head>
 <body class="sticky-header">
@@ -56,6 +64,7 @@
                 <h3 class="m-b-less">
                     {{ $heading }}
                 </h3>
+                <h3 class="danger">{{ isset($notice) ?: '' }}</h3>
             </div>
 
             @include('admin.blocks.flash-error')

@@ -62,8 +62,8 @@ class PartnerController extends Controller
         $rules = [
             'first_name'    => 'required',
             'last_name'     => 'required',
-            'email'         => 'required',
-            'phone'         => 'required',
+            'email'         => 'required|unique:users',
+            'phone'         => 'required|unique:users',
             'password'      => 'required',
         ];
 
@@ -107,7 +107,7 @@ class PartnerController extends Controller
         if (!empty($request->input('contacts'))) {
             $u->contacts = $request->input('contacts');
         }
-
+        $u->address = $request->input('address');
         $u->save();
 
         return redirect('/admin/partners');
@@ -198,6 +198,8 @@ class PartnerController extends Controller
                 $user->password = brypt($request->input('password'));
             }
         }
+
+        $user->address = $request->input('address');
 
         /* Check new file  */
         if (!empty($request->file())) {

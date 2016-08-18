@@ -27,13 +27,25 @@
                     <tr>
                         <td>{{ $girl->id }}</td>
                         <td>{{ $girl->first_name }} {{ $girl->last_name }}</td>
-                        <td><img width="150px" src="{{ url('uploads/girls/avatars/'.$girl->avatar)}}"></td>
+                        <td><img width="150px" src="{{ url('uploads/'.$girl->avatar)}}"></td>
                         @if( Auth::user()->hasRole('Owner') )
                             <td>{{ $girl->partner_id }}</td> <!-- Уточнить что выводить -->
                         @endif
 
-                        <td> TRUE/FALSE <!-- @todo logic --> </td>
-                        <td> TRUE/FALSE <!-- @todo logic --> </td>
+                        <td>
+                            @if($girl->isOnline())
+                                <button class="btn btn-small online_btn"> Online </button>
+                            @else
+                                <span class="red">{{ trans('admin.No') }}</span>
+                            @endif
+                        </td>
+                        <td>
+                            @if($girl->webcam !== 0)
+                                <span class="green">{{ trans('admin.yes') }}</span>
+                            @else
+                                <span class="red">{{ trans('admin.No') }}</span>
+                            @endif
+                        </td>
                         <td> {{ $girl->last_login }} </td>
                         <td>
                             <a class="btn btn-success btn-xs"><i class="fa fa-check"></i></a>

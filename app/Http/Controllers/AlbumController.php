@@ -37,7 +37,7 @@ class AlbumController extends Controller
                 if (!(
                     (float) $this->getMoney() >= (float) $this->expensesService->getCost(Constants::EXP_ALBUM)
                 )){
-                    Session::flash('message', 'Enough Love Coins!');
+                    \Session::flash('message', 'Enough Love Coins!');
                     return back();
                 }
                 ///todo : review logic

@@ -57,35 +57,24 @@ class ModeratorController extends Controller
      */
     public function store(Request $request)
     {
-        $user = new User();
-
-        $rules = [
+        $this->validate($request, [
             'first_name' => 'required',
             'last_name'  => 'required',
-            'email'      => 'required|unique',
-            'phone'      => 'required|unique',
+            'email'      => 'required|unique:users',
+            'phone'      => 'required|unique:users',
             'password'   => 'required',
-        ];
-
-        /*
-        $this->validate($request, $rules);
-
-        $validator = Validator::make( $request->input(), $rules);
-        if ($validator->fails()) {
-            $messages = $validator->messages();
-            return Redirect::back()->withErrors($validator)->withInput();
-        } */
-        if (!empty($request->file())) {
-            $file = $request->file('avatar');
-            $fileName = time().'-'.$file->getClientOriginalName();
-            $destination = public_path().'/uploads/admins';
-
-            $file->move($destination, $fileName);
-        } else {
-            $fileName = 'empty.png';
-        }
+        ]);
 
         $u = new User();
+        $u->avatar = 'empty.png';
+        
+        if ($request->file('avatar')) {
+            $file = $request->file('avatar');
+            $u->avatar = time().'-'.$file->getClientOriginalName();
+            $destination = public_path().'/uploads/admins';
+            $file->move($destination, $u->avatar);
+        }
+
 
         $u->email = $request->input('email');
         $u->password = bcrypt($request->input('password'));
@@ -93,8 +82,6 @@ class ModeratorController extends Controller
         $u->first_name = $request->input('first_name');
         $u->last_name = $request->input('last_name');
         $u->role_id = 2;
-
-        $u->avatar = $fileName;
 
         if (!empty($request->input('info'))) {
             $u->info = $request->input('info');
@@ -107,10 +94,10 @@ class ModeratorController extends Controller
         if (!empty($request->input('contacts'))) {
             $u->contacts = $request->input('contacts');
         }
-
+        $u->address = $request->input('address');
         $u->save();
 
-        return redirect('/admin/moderators');
+        return redirect('admin/moderators');
     }
 
     /**
@@ -214,10 +201,11 @@ class ModeratorController extends Controller
 
             $user->avatar = $fileName;
         }
-
+        $user->address = $request->input('address');
         $user->save();
 
-        return redirect('/admin/moderators');
+        \Session::flash('flash_success', 'Update success!');
+        return back();
     }
 
     /**
@@ -231,6 +219,7 @@ class ModeratorController extends Controller
     {
         User::where('id', $id)->delete();
 
-        return redirect('/admin/moderators');
+        \Session::flash('flash_success', 'Drop success!');
+        return back();
     }
 }

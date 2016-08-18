@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Hamedmehryar\Chat\Traits\Chatable;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Cache;
 
@@ -10,8 +11,20 @@ class User extends Authenticatable
 {
     use \HighIdeas\UsersOnline\Traits\UsersOnlineTrait;
     use Chatable;
+    use SoftDeletes;
 
+    /**
+     * @var string
+     */
     protected $table = 'users';
+
+    /**
+     * The attributes that should be mutated to dates.
+     *
+     * @var array
+     */
+    protected $dates = ['deleted_at'];
+    
     /**
      * The attributes that are mass assignable.
      *

@@ -27,7 +27,7 @@
                             <h3> {{ trans('profile.primary') }}</h3>
                             <div class="form-group">
                                 {!! Form::label('avatar', trans('profile.avatar')) !!}<br/>
-                                <img width="373rem" src="{{ url('/uploads/girls/avatars/'. $user->avatar) }}" id="preview-avatar">
+                                <img width="373rem" src="{{ url('/uploads/'. $user->avatar) }}" id="preview-avatar">
                                 <input type="file" class="form-control file" name="avatar" accept="image/*" value="{{ $user->avatar }}">
                             </div>
                             <div class="form-group">

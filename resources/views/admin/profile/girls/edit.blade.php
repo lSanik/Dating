@@ -49,7 +49,7 @@
                             <h3> Основная информация профиля </h3>
                             <div class="form-group">
                                 {!! Form::label('avatar', 'Аватар') !!}<br/>
-                                <img width="373rem" src="{{ url('/uploads/girls/avatars/'. $user->avatar) }}" id="preview-avatar">
+                                <img width="373rem" src="{{ url('/uploads/'. $user->avatar) }}" id="preview-avatar">
                                 <input type="file" class="form-control file" name="avatar" accept="image/*" value="{{ $user->avatar }}">
                             </div>
                             <div class="form-group">
@@ -121,7 +121,7 @@
                             <div class="form-group">
                                 {!! Form::label('avatar', 'Фото/Скан паспорта') !!}
                                 <br/>
-                                <img width="373rem" src="{{ url('/uploads/girls/passports/'. $user->passport->cover) }}">
+                                <img width="373rem" src="{{ url('/uploads/'. $user->passport->cover) }}">
                                 <input type="file" class="form-control file" name="pass_photo" value="{{ $user->passport->cover }}"  disabled="disabled" accept="image/*"><!--disabled="disabled"-->
                             </div>
 

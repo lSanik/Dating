@@ -46,7 +46,7 @@
 @foreach($find_users as $fu)
     <div class="col-md-2 man">
         <input type="checkbox" name="mans_id[]" value="{{$fu->id}}" @if(isset($edit_page)) {{'checked'}} @endif>
-        <img src="{{ url('/uploads/girls/avatars/'.$fu->avatar) }}" width="100%"/>
+        <img src="{{ url('/uploads/'.$fu->avatar) }}" width="100%"/>
         <div class="first_name">{{$fu->first_name}}</div>
         <div class="last_name">{{$fu->last_name}}</div>
         <div class="age">{{ date('Y-m-d') - $fu->birthday }}</div>

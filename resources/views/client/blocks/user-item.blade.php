@@ -1,6 +1,6 @@
 <div class="item">
     <div class="row text-center" id="photo">
-        <img src="{{ url('/uploads/girls/avatars/'.$u->avatar) }}"/>
+        <img src="{{ url('/uploads/'.$u->avatar) }}"/>
     </div>
     <div class="girl-action">
         <ul>

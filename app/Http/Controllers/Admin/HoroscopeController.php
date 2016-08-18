@@ -23,11 +23,12 @@ class HoroscopeController extends Controller
         foreach($this->horoscope as $hp){
             $this->h[$hp->id] = $hp->name;
         }
-
+        /** todo: refactor this shit */
         view()->share('new_ticket_messages', parent::getUnreadMessages());
         view()->share('unread_ticket_count', parent::getUnreadMessagesCount());
         view()->share('unread_contact_count', parent::getContactUnread());
         view()->share('unread_contact_message', parent::getContactMessages());
+        view()->share('notice', 'Нажмите сохранить перед сменой языка!');
     }
 
     public function index()

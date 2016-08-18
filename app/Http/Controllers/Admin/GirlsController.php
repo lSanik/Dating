@@ -129,18 +129,15 @@ class GirlsController extends Controller
             $user_avatar = 'empty_girl.png';
 
             if ($request->file('avatar')) {
-                $file = $request->file('avatar');
-                $user_avatar = time().'-'.$file->getClientOriginalName();
-                $destination = public_path().'/uploads/girls/avatars';
-                $file->move($destination, $user_avatar);
+
+                $user_avatar = $this->upload($request->file('avatar'));
+
             }
             //var_dump($request->allFiles()['pass_photo']);
 
             if(!$request->allFiles()['pass_photo']){
                 foreach ($request->allFiles()['pass_photo'] as $file) {
-                    $pass = time().'-'.$file->getClientOriginalName();
-                    $destination = public_path().'/uploads/girls/passports';
-                    $file->move($destination, $pass);
+                    $pass = $this->upload($file);
                     array_push($this->passport_photos, $pass);
                 }
             }
@@ -361,9 +358,8 @@ class GirlsController extends Controller
      */
     public function destroy($id)
     {
-        //@todo SoftDelete Row whre ID
-        //@TODO: DELETE!
-        User::where('id', $id)->delete();
+        $this->user->find($id)->delete();
+
         return redirect('/admin/girls');
     }
 

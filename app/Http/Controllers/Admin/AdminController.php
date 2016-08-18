@@ -95,7 +95,7 @@ class AdminController extends Controller
 
         $user = User::find($id);
 
-        return view('admin.profile')->with([
+        return view('admin.profile.partners.edit')->with([
             'user'    => $user,
             'heading' => 'Профиль пользователя',
 
@@ -109,6 +109,7 @@ class AdminController extends Controller
         $user->first_name = $request->input('first_name');
         $user->last_name = $request->input('last_name');
 
+        $user->address = $request->input('address');
         $user->company_name = $request->input('company');
         $user->info = $request->input('info');
         $user->contacts = $request->input('contacts');

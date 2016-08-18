@@ -20,6 +20,7 @@
 
                     <!-- Form -->
             {!! Form::open(['url' => '#', 'class' => 'form-horizontal', 'enctype' => 'multipart/form-data']) !!}
+            <input type="hidden" value="{{ $user->id }}" name="id">
             <div class="col-lg-6">
                 <section class="panel">
                     <header class="panel-heading">

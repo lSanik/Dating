@@ -6,7 +6,7 @@
         @if($u->isOnline())
             <div class="col-md-12">
                 <div class="col-md-4">
-                    <img src="{{ url('/uploads/girls/avatars/'.$u->avatar) }}">
+                    <img src="{{ url('/uploads/'.$u->avatar) }}">
                 </div>
                 <div class="col-md-8">
                     {{ $u->first_name }} | ID: {{$u->id}}

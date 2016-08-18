@@ -8,7 +8,7 @@
                         </div>
                     </div>
                     <div class="image">
-                        <img style="width: 100%;border-radius: 50px;" src="{{ url('/uploads/girls/avatars/'.$contact[0]->avatar) }}">
+                        <img style="width: 100%;border-radius: 50px;" src="{{ url('/uploads/'.$contact[0]->avatar) }}">
                     </div>
                     <div class="name">
                         <span>{{ $contact[0]->first_name }} {{ $contact[0]->last_name }}</span>
